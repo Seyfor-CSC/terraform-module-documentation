@@ -118,7 +118,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 ## Public Network Access
 If you set `public_network_access_enabled` variable value to _false_, network access from all networks to this storage account will stay enabled unless private endpoint inside this module is also configured.
 ## Subscription Id
-When using the module, subscription_id variable needs to be configured in the same place as source or config. Set the value of this variable to the subscription you will deploy your resources into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
+When using the module, subscription_id variable needs to be configured in the same place as source or the config variable. Set the value of this variable to the subscription you will deploy your resources into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
 
 &nbsp;
 
