@@ -1,11 +1,11 @@
-# Variable Structure
+# Variables
 
 ```
-variable "config" {
-  type = list(object({
+variable "config" {  type = list(object({
+    # recovery services vault
     name                = string
-    location            = string
     resource_group_name = string
+    location            = string
     sku                 = string
     identity = optional(object({
       type         = string
@@ -23,12 +23,13 @@ variable "config" {
       use_system_assigned_identity      = optional(bool)
     }))
     classic_vmware_replication_enabled = optional(bool)
+    tags                               = optional(map(any))
 
     # backup policy vm
     backup_policy = optional(list(object({
       name                = string
-      resource_group_name = optional(string) # If not provided, inherited from parent resource
-      recovery_vault_name = optional(string) # Inherited from parent resource
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      recovery_vault_name = optional(string) # Inherited in module from parent resource
       backup = object({
         frequency     = string
         time          = string
@@ -36,8 +37,8 @@ variable "config" {
         hour_duration = optional(number)
         weekdays      = optional(list(string))
       })
-      timezone                       = optional(string)
       policy_type                    = optional(string)
+      timezone                       = optional(string)
       instant_restore_retention_days = optional(number)
       instant_restore_resource_group = optional(object({
         prefix = string
@@ -64,10 +65,10 @@ variable "config" {
 
       # backup protected vm
       protected_vm = optional(list(object({
-        resource_group_name = optional(string) # If not provided, inherited from parent resource
-        recovery_vault_name = optional(string) # Inherited from parent resource
-        backup_policy_id    = optional(string) # Inherited from parent resource
+        resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+        recovery_vault_name = optional(string) # Inherited in module from parent resource
         source_vm_id        = optional(string)
+        backup_policy_id    = optional(string) # Inherited in module from parent resource
         exclude_disk_luns   = optional(list(number))
         include_disk_luns   = optional(list(number))
       })), [])
@@ -76,8 +77,8 @@ variable "config" {
     # private endpoint
     private_endpoint = optional(list(object({
       name                = string
-      resource_group_name = optional(string) # If not provided, inherited from parent resource
-      location            = optional(string) # If not provided, inherited from parent resource
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      location            = optional(string) # If not provided, inherited in module from parent resource
       subnet_id           = string
       private_service_connection = list(object({
         name                              = string
@@ -102,103 +103,111 @@ variable "config" {
     })), [])
 
     # monitoring
-    monitoring = optional(list(object({ # Custom object for enabling diagnostic settings
+    monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
       diag_name                      = optional(string) # Name of the diagnostic setting
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
-      eventhub_authorization_rule_id = optional(string) # Event Hub namespace authorization rule
+      eventhub_authorization_rule_id = optional(string)
+      recovery                       = optional(bool, false) # Custom variable used to enable recovery logs
+      backup                         = optional(bool, false) # Custom variable used to enable backup logs
+      backup_report                  = optional(bool, false) # Custom variable used to enable backup report logs
     })), [])
-
-    tags = optional(map(any))
   }))
 }
+
+
 ```
 
-# Table
- 
 
-| Parameter name                                | Data type    | Requirement | Default value | Comment                                         |
-| --------------------------------------------- | ------------ | ----------- | ------------- | ----------------------------------------------- |
-| name                                          | string       | Required    |               |                                                 |
-| location                                      | string       | Required    |               |                                                 |
-| resource_group_name                           | string       | Required    |               |                                                 |
-| sku                                           | string       | Required    |               |                                                 |
-| identity                                      | object       | Optional    |               |                                                 |
-| &emsp;type                                    | string       | Required    |               |                                                 |
-| &emsp;identity_ids                            | list(string) | Optional    |               |                                                 |
-| public_network_access_enabled                 | string       | Optional    |               |                                                 |
-| immutability                                  | string       | Optional    |               |                                                 |
-| storage_mode_type                             | string       | Optional    |               |                                                 |
-| cross_region_restore_enabled                  | string       | Optional    |               |                                                 |
-| soft_delete_enabled                           | string       | Optional    |               |                                                 |
-| encryption                                    | object       | Optional    |               |                                                 |
-| &emsp;key_id                                  | string       | Required    |               |                                                 |
-| &emsp;infrastructure_encryption_enabled       | bool         | Required    |               |                                                 |
-| &emsp;user_assigned_identity_id               | string       | Optional    |               |                                                 |
-| &emsp;use_system_assigned_identity            | bool         | Optional    |               |                                                 |
-| classic_vmware_replication_enabled            | bool         | Optional    |               |                                                 |
-| backup_policy                                 | list(object) | Optional    | []            |                                                 |
-| &emsp;name                                    | string       | Required    |               |                                                 |
-| &emsp;resource_group_name                     | string       | Optional    |               | If not provided, inherited from parent resource |
-| &emsp;recovery_vault_name                     | string       | Optional    |               | Inherited from parent resource                  |
-| &emsp;backup                                  | object       | Required    |               |                                                 |
-| &emsp;&emsp;frequency                         | string       | Required    |               |                                                 |
-| &emsp;&emsp;time                              | string       | Required    |               |                                                 |
-| &emsp;&emsp;hour_interval                     | number       | Optional    |               |                                                 |
-| &emsp;&emsp;hour_duration                     | number       | Optional    |               |                                                 |
-| &emsp;&emsp;weekdays                          | list(string) | Optional    |               |                                                 |
-| &emsp;timezone                                | string       | Optional    |               |                                                 |
-| &emsp;policy_type                             | string       | Optional    |               |                                                 |
-| &emsp;instant_restore_retention_days          | number       | Optional    |               |                                                 |
-| &emsp;instant_restore_resource_group          | object       | Optional    |               |                                                 |
-| &emsp;&emsp;prefix                            | string       | Required    |               |                                                 |
-| &emsp;&emsp;suffix                            | string       | Optional    |               |                                                 |
-| &emsp;retention_daily                         | object       | Optional    |               |                                                 |
-| &emsp;&emsp;count                             | number       | Required    |               |                                                 |
-| &emsp;retention_weekly                        | object       | Optional    |               |                                                 |
-| &emsp;&emsp;count                             | number       | Required    |               |                                                 |
-| &emsp;&emsp;weekdays                          | list(string) | Required    |               |                                                 |
-| &emsp;retention_monthly                       | object       | Optional    |               |                                                 |
-| &emsp;&emsp;count                             | number       | Required    |               |                                                 |
-| &emsp;&emsp;weekdays                          | list(string) | Required    |               |                                                 |
-| &emsp;&emsp;weeks                             | list(string) | Required    |               |                                                 |
-| &emsp;retention_yearly                        | object       | Optional    |               |                                                 |
-| &emsp;&emsp;count                             | number       | Required    |               |                                                 |
-| &emsp;&emsp;weekdays                          | list(string) | Required    |               |                                                 |
-| &emsp;&emsp;weeks                             | list(string) | Required    |               |                                                 |
-| &emsp;&emsp;months                            | list(string) | Required    |               |                                                 |
-| protected_vm                                  | list(object) | Optional    | []            |                                                 |
-| &emsp;resource_group_name                     | string       | Optional    |               | If not provided, inherited from parent resource |
-| &emsp;recovery_vault_name                     | string       | Optional    |               | Inherited from parent resource                  |
-| &emsp;backup_policy_id                        | string       | Optional    |               | Inherited from parent resource                  |
-| &emsp;source_vm_id                            | string       | Optional    |               |                                                 |
-| &emsp;exclude_disk_luns                       | list(number) | Optional    |               |                                                 |
-| &emsp;include_disk_luns                       | list(number) | Optional    |               |                                                 |
-| private_endpoint                              | list(object) | Optional    | []            |                                                 |
-| &emsp;name                                    | string       | Required    |               |                                                 |
-| &emsp;resource_group_name                     | string       | Optional    |               | If not provided, inherited from parent resource |
-| &emsp;location                                | string       | Optional    |               | If not provided, inherited from parent resource |
-| &emsp;subnet_id                               | string       | Required    |               |                                                 |
-| &emsp;private_service_connection              | list(object) | Required    | []            |                                                 |
-| &emsp;&emsp;name                              | string       | Required    |               |                                                 |
-| &emsp;&emsp;is_manual_connection              | bool         | Required    |               |                                                 |
-| &emsp;&emsp;private_connection_resource_id    | string       | Optional    |               |                                                 |
-| &emsp;&emsp;private_connection_resource_alias | string       | Optional    |               |                                                 |
-| &emsp;&emsp;subresource_names                 | list(string) | Optional    |               |                                                 |
-| &emsp;&emsp;request_message                   | string       | Optional    |               |                                                 |
-| &emsp;custom_network_interface_name           | string       | Optional    |               |                                                 |
-| &emsp;private_dns_zone_group                  | list(object) | Optional    | []            |                                                 |
-| &emsp;&emsp;name                              | string       | Required    |               |                                                 |
-| &emsp;&emsp;private_dns_zone_ids              | list(string) | Required    |               |                                                 |
-| &emsp;ip_configuration                        | list(object) | Optional    | []            |                                                 |
-| &emsp;&emsp;name                              | string       | Required    |               |                                                 |
-| &emsp;&emsp;private_ip_address                | string       | Required    |               |                                                 |
-| &emsp;&emsp;subresource_name                  | string       | Required    |               |                                                 |
-| &emsp;&emsp;member_name                       | string       | Optional    |               |                                                 |
-| &emsp;tags                                    | map(any)     | Optional    |               |                                                 |
-| monitoring                                    | list(object) | Optional    | []            | Custom object for enabling diagnostic settings  |
-| &emsp;diag_name                               | string       | Optional    |               | Name of the diagnostic setting                  |
-| &emsp;log_analytics_workspace_id              | string       | Optional    |               |                                                 |
-| &emsp;eventhub_name                           | string       | Optional    |               |                                                 |
-| &emsp;eventhub_authorization_rule_id          | string       | Optional    |               | Event Hub namespace authorization rule          |
-| tags                                          | map(any)     | Optional    |               |                                                 |
+## Table with config variables
+
+| Name | Data Type | Requirement | Default Value | Comment |
+| ------- | --------- | ----------- | ------------- | ------- |
+|name | string | Required |  |  |
+|resource_group_name | string | Required |  |  |
+|location | string | Required |  |  |
+|sku | string | Required |  |  |
+|identity | object | Optional |  |  |
+|&nbsp;type | string | Required |  |  |
+|&nbsp;identity_ids | list(string) | Optional |  |  |
+|public_network_access_enabled | string | Optional |  |  |
+|immutability | string | Optional |  |  |
+|storage_mode_type | string | Optional |  |  |
+|cross_region_restore_enabled | string | Optional |  |  |
+|soft_delete_enabled | string | Optional |  |  |
+|encryption | object | Optional |  |  |
+|&nbsp;key_id | string | Required |  |  |
+|&nbsp;infrastructure_encryption_enabled | bool | Required |  |  |
+|&nbsp;user_assigned_identity_id | string | Optional |  |  |
+|&nbsp;use_system_assigned_identity | bool | Optional |  |  |
+|classic_vmware_replication_enabled | bool | Optional |  |  |
+|tags | map(any) | Optional |  |  |
+|backup_policy | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;recovery_vault_name | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;backup | object | Required |  |  |
+|&nbsp;&nbsp;frequency | string | Required |  |  |
+|&nbsp;&nbsp;time | string | Required |  |  |
+|&nbsp;&nbsp;hour_interval | number | Optional |  |  |
+|&nbsp;&nbsp;hour_duration | number | Optional |  |  |
+|&nbsp;&nbsp;weekdays | list(string) | Optional |  |  |
+|&nbsp;policy_type | string | Optional |  |  |
+|&nbsp;timezone | string | Optional |  |  |
+|&nbsp;instant_restore_retention_days | number | Optional |  |  |
+|&nbsp;instant_restore_resource_group | object | Optional |  |  |
+|&nbsp;&nbsp;prefix | string | Required |  |  |
+|&nbsp;&nbsp;suffix | string | Optional |  |  |
+|&nbsp;retention_daily | object | Optional |  |  |
+|&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;retention_weekly | object | Optional |  |  |
+|&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
+|&nbsp;retention_monthly | object | Optional |  |  |
+|&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
+|&nbsp;&nbsp;weeks | list(string) | Required |  |  |
+|&nbsp;retention_yearly | object | Optional |  |  |
+|&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
+|&nbsp;&nbsp;weeks | list(string) | Required |  |  |
+|&nbsp;&nbsp;months | list(string) | Required |  |  |
+|&nbsp;protected_vm | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;recovery_vault_name | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;source_vm_id | string | Optional |  |  |
+|&nbsp;&nbsp;backup_policy_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;exclude_disk_luns | list(number) | Optional |  |  |
+|&nbsp;&nbsp;include_disk_luns | list(number) | Optional |  |  |
+|private_endpoint | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;private_service_connection | list(object) | Required |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
+|&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
+|&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
+|&nbsp;&nbsp;request_message | string | Optional |  |  |
+|&nbsp;custom_network_interface_name | string | Optional |  |  |
+|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
+|&nbsp;ip_configuration | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;private_ip_address | string | Required |  |  |
+|&nbsp;&nbsp;subresource_name | string | Required |  |  |
+|&nbsp;&nbsp;member_name | string | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  |
+|monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;recovery | bool | Optional |  false |  Custom variable used to enable recovery logs |
+|&nbsp;backup | bool | Optional |  false |  Custom variable used to enable backup logs |
+|&nbsp;backup_report | bool | Optional |  false |  Custom variable used to enable backup report logs |
+
+
