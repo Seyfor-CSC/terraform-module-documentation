@@ -1,0 +1,50 @@
+# Changelog
+
+## Release v1.3.0
+
+### Added
+- `azurerm_automation_runbook` resource
+- `azurerm_automation_job_schedule` resource
+- `azurerm_automation_schedule` resource
+### Updated
+- README.md format
+   
+## Release v1.2.2
+
+### Updated
+- Optional variable `location` for private endpoint
+- Optional variable  `resource_group_name` for private endpoint
+
+
+   
+## Release v1.2.1
+
+### Updated
+- Output of identity parameter `principal_id` 
+- Private endpoint `subresource_name` is required
+   
+## Release v1.2.0
+
+### Removed
+
+- `encryption.key_source` parameter
+
+### Version upgrade
+
+- Azurerm provider: 3.51.0
+
+- Terraform: 1.4.5
+
+   
+## Release v1.1.0
+
+### Added
+
+- Private Endpoint
+   
+## Release v1.0.0
+
+### Added
+
+- Initial code
+   

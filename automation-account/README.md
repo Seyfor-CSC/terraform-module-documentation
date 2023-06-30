@@ -1,6 +1,9 @@
 # Introduction
 Automation Account module can deploy these resources:
 * azurerm_automation_account (required)
+* azurerm_automation_runbook (optional)
+* azurerm_automation_job_schedule (optional)
+* azurerm_automation_schedule (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -14,6 +17,12 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_account
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_runbook
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_job_schedule
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_schedule
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
@@ -24,6 +33,12 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Automation Account
 * terraform import '`<path-to-module>`.azurerm_automation_account.automation_account["`<automation-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`'
+### Automation Runbook
+* terraform import '`<path-to-module>`.azurerm_automation_runbook.automation_runbook["`<automation-runbook-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/automationAccounts/`<automation-account-name>`/runbooks/`<automation-runbook-name>`'
+### Automation Job Schedule
+* terraform import '`<path-to-module>`.azurerm_automation_job_schedule.automation_job_schedule["`<automation-account-name>`_`<automation-runbook-name>`_`<automation-job-schedule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`/jobSchedules/`<automation-job-schedule-UUID>`'
+### Automation Schedule
+* terraform import '`<path-to-module>`.azurerm_automation_runbook.automation_runbook["`<automation-account-name>`_`<automation-schedule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/automationAccounts/`<automation-account-name>`/schedules/`<automation-schedule-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<automation-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`|`<diag-name>`'
  ### Private Endpoint
@@ -36,12 +51,20 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
-|             | principal_id | principal_id (object_id) of system assigned identity |
-
+| Output Name | Value                       | Comment                                              |
+| ----------- | --------------------------- | ---------------------------------------------------- |
+| outputs     | name                        |                                                      |
+|             | id                          |                                                      |
+|             | principal_id                | principal_id (object_id) of system assigned identity |
+|             | runbook                     | Automation Runbook outputs                           |
+|             | &nbsp;name                  |                                                      |
+|             | &nbsp;id                    |                                                      |
+|             | &nbsp;job_schedule          | Automation Job Schedule outputs                      |
+|             | &nbsp;&nbsp;id              |                                                      |
+|             | &nbsp;&nbsp;job_schedule_id | The UUID identifying the Automation Job Schedule     |
+|             | schedule                    | Automation Schedule outputs                          |
+|             | &nbsp;name                  |                                                      |
+|             | &nbsp;id                    |                                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Automation Account module is used as a value for the _scope_ variable in Role Assignment resource.
