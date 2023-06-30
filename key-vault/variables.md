@@ -1,11 +1,154 @@
-# Variable Structure
+# Variables
 
 ```
+variable "config" {  type = list(object({
+    # key vault
+    name                = string
+    resource_group_name = string
+    location            = string
+    sku_name            = string
+    access_policy = optional(object({
+      tenant_id               = string
+      object_id               = string
+      application_id          = optional(string)
+      certificate_permissions = optional(list(string))
+      key_permissions         = optional(list(string))
+      secret_permissions      = optional(list(string))
+      storage_permissions     = optional(list(string))
+    }))
+    enabled_for_deployment          = optional(bool)
+    enabled_for_disk_encryption     = optional(bool)
+    enabled_for_template_deployment = optional(bool)
+    enable_rbac_authorization       = optional(bool, true)
+    network_acls = optional(object({
+      default_action             = string
+      bypass                     = optional(string, "AzureServices")
+      ip_rules                   = optional(list(string))
+      virtual_network_subnet_ids = optional(list(string))
+    }))
+    purge_protection_enabled      = optional(bool)
+    public_network_access_enabled = optional(bool)
+    soft_delete_retention_days    = optional(number)
+    tags                          = optional(map(any))
+
+    # key vault secret
+    secret = optional(list(object({
+      name            = string
+      value           = optional(string)     # If not provided, generated in module in random_password resource
+      key_vault_id    = optional(string)     # Inherited in module from parent resource
+      length          = optional(number, 12) # Custom variable setting the legth of the secret value
+      content_type    = optional(string)
+      not_before_date = optional(string)
+      expiration_date = optional(string)
+      tags            = optional(map(any))
+    })), [])
+
+    # private endpoint
+    private_endpoint = optional(list(object({
+      name                = string
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      location            = optional(string) # If not provided, inherited in module from parent resource
+      subnet_id           = string
+      private_service_connection = list(object({
+        name                              = string
+        is_manual_connection              = bool
+        private_connection_resource_id    = optional(string)
+        private_connection_resource_alias = optional(string)
+        subresource_names                 = optional(list(string))
+        request_message                   = optional(string)
+      }))
+      custom_network_interface_name = optional(string)
+      private_dns_zone_group = optional(list(object({
+        name                 = string
+        private_dns_zone_ids = list(string)
+      })), [])
+      ip_configuration = optional(list(object({
+        name               = string
+        private_ip_address = string
+        subresource_name   = string
+        member_name        = optional(string)
+      })), [])
+      tags = optional(map(any))
+    })), [])
+
+    # monitoring
+    monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
+      diag_name                      = optional(string) # Name of the diagnostic setting
+      log_analytics_workspace_id     = optional(string)
+      eventhub_name                  = optional(string)
+      eventhub_authorization_rule_id = optional(string)
+    })), [])
+  }))
+}
+
+
 ```
 
-# Table
- 
+
+## Table with config variables
 
 | Name | Data Type | Requirement | Default Value | Comment |
-| ---- | --------- | ----------- | ------------- | ------- |
-|      |           |             |               |         |
+| ------- | --------- | ----------- | ------------- | ------- |
+|name | string | Required |  |  |
+|resource_group_name | string | Required |  |  |
+|location | string | Required |  |  |
+|sku_name | string | Required |  |  |
+|access_policy | object | Optional |  |  |
+|&nbsp;tenant_id | string | Required |  |  |
+|&nbsp;object_id | string | Required |  |  |
+|&nbsp;&nbsp;application_id | string | Optional |  |  |
+|&nbsp;&nbsp;certificate_permissions | list(string) | Optional |  |  |
+|&nbsp;&nbsp;key_permissions | list(string) | Optional |  |  |
+|&nbsp;&nbsp;secret_permissions | list(string) | Optional |  |  |
+|&nbsp;&nbsp;storage_permissions | list(string) | Optional |  |  |
+|&nbsp;enabled_for_deployment | bool | Optional |  |  |
+|&nbsp;enabled_for_disk_encryption | bool | Optional |  |  |
+|&nbsp;enabled_for_template_deployment | bool | Optional |  |  |
+|&nbsp;enable_rbac_authorization | bool | Optional |  true |  |
+|&nbsp;network_acls | object | Optional |  |  |
+|&nbsp;&nbsp;default_action | string | Required |  |  |
+|&nbsp;&nbsp;bypass | string | Optional |  "AzureServices" |  |
+|&nbsp;&nbsp;ip_rules | list(string) | Optional |  |  |
+|&nbsp;&nbsp;virtual_network_subnet_ids | list(string) | Optional |  |  |
+|&nbsp;purge_protection_enabled | bool | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  |  |
+|&nbsp;soft_delete_retention_days | number | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;secret | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;value | string | Optional |  |  If not provided, generated in module in random_password resource |
+|&nbsp;&nbsp;key_vault_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;length | number | Optional |  12 |  Custom variable setting the legth of the secret value |
+|&nbsp;&nbsp;content_type | string | Optional |  |  |
+|&nbsp;&nbsp;not_before_date | string | Optional |  |  |
+|&nbsp;&nbsp;expiration_date | string | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;private_endpoint | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;&nbsp;private_service_connection | list(object) | Required |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
+|&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
+|&nbsp;&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
+|&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_ip_address | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;subresource_name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;member_name | string | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+
+
