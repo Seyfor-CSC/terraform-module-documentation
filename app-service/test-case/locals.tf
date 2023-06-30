@@ -22,6 +22,9 @@ locals {
           name        = local.naming.app_1
           location    = local.location
           site_config = {}
+          application_stack_windows = {
+            dotnet_version = "v5.0"
+          }
 
           private_endpoint = [
             {

@@ -7,52 +7,51 @@ The same goes for the resource group and location variables. You don't need to s
 
 By default, { ManagedBy = "Terraform" } tag is added to every resource deployed using our modules.
 
-&nbsp;
+## List of all available modules
 
-# List of all available modules
-| Name                                                                 | Latest Version |
-| -------------------------------------------------------------------- | -------------- |
-| [App Service](./app-service/readme.md)                               | 1.0.0          |
-| [Automation Account](./automation-account/readme.md)                 | 1.2.1          |
-| [Automation Module](./automation-module/readme.md)                   | 1.0.0          |
-| [Availability Set](./availability-set/readme.md)                     | 1.0.0          |
-| [Backup Vault](./backup-vault/readme.md)                             | 1.1.3          |
-| [Bastion Host](./bastion-host/readme.md)                             | 1.1.0          |
-| [Cognitive Account](./cognitive-account/readme.md)                   | 1.0.0          |
-| [Container Instance](./container-instance/readme.md)                 | 1.1.2          |
-| [Container Registry](./container-registry/readme.md)                 | 1.1.2          |
-| [Data Collection Rule](./data-collection-rule/readme.md)             | 1.0.2          |
-| [Data Factory](./data-factory/readme.md)                             | 1.1.3          |
-| [Event Hub](./event-hub/readme.md)                                   | 1.2.3          |
-| [Key Vault](./key-vault/readme.md)                                   | 1.2.1          |
-| [Kubernetes Cluster](./kubernetes-cluster/readme.md)                 | 1.1.3          |
-| [Linux Virtual Machine](./linux-virtual-machine/readme.md)           | 1.1.5          |
-| [Load Balancer](./load-balancer/readme.md)                           | 1.1.2          |
-| [Log Analytics Workspace](./log-analytics-workspace/readme.md)       | 1.1.0          |
-| [Logic App Standard](./logic-app-standard/readme.md)                 | 1.0.0          |
-| [Logic App Workflow](./logic-app-workflow/readme.md)                 | 1.0.0          |
-| [Monitor Action Group](./monitor-action-group/readme.md)             | 1.0.0          |
-| [Monitor Alert](./monitor-alert/readme.md)                           | 1.0.1          |
-| [MSSQL Database](./mssql-database/readme.md)                         | 1.1.3          |
-| [MSSQL Managed Instance](./mssql-managed-instance/readme.md)         | 1.0.1          |
-| [Network Security Group](./network-security-group/readme.md)         | 1.1.2          |
-| [Network Watcher](./network-watcher/readme.md)                       | 1.1.0          |
-| [Policy Assignment](./policy-assignment/readme.md)                   | 1.1.1          |
-| [Policy Set Definition](./policy-set-definition/readme.md)           | 1.1.0          |
-| [PostgreSQL Flexible Server](./postgresql-flexible-server/readme.md) | 1.0.2          |
-| [Private DNS Zone](./private-dns-zone/readme.md)                     | 1.1.1          |
-| [Private Endpoint](./private-endpoint/readme.md)                     | 1.0.0          |
-| [Public IP Address](./public-ip-address/readme.md)                   | 1.1.0          |
-| [Public IP Prefix](./public-ip-prefix/readme.md)                     | 1.1.0          |
-| [Recovery Services Vault](./recovery-services-vault/readme.md)       | 1.2.5          |
-| [Resource Group](./resource-group/readme.md)                         | 1.1.0          |
-| [Role Assignment](./role-assignment/readme.md)                       | 1.1.1          |
-| [Role Definition](./role-definition/readme.md)                       | 1.1.1          |
-| [Route Table](./route-table/readme.md)                               | 1.1.0          |
-| [Shared Image Gallery](./shared-image-gallery/readme.md)             | 1.0.0          |
-| [Storage Account](./storage-account/readme.md)                       | 1.2.4          |
-| [Storage Sync](./storage-sync/readme.md)                             | 1.1.1          |
-| [User Assigned Identity](./user-assigned-identity/readme.md)         | 1.0.0          |
-| [Virtual Network](./virtual-network/readme.md)                       | 1.1.4          |
-| [Virtual Network Peering](./virtual-network-peering/readme.md)       | 1.1.1          |
-| [Windows Virtual Machine](./windows-virtual-machine/readme.md)       | 1.1.7          |
+| Name | Latest Version |
+| ---- | -------------- |
+| [app service](./app-service/README.md) | v1.0.0 |
+| [automation account](./automation-account/README.md) | v1.3.0 |
+| [automation module](./automation-module/README.md) | v1.0.0 |
+| [availability set](./availability-set/README.md) | v1.0.0 |
+| [backup vault](./backup-vault/README.md) | v1.1.3 |
+| [bastion host](./bastion-host/README.md) | v1.1.0 |
+| [cognitive account](./cognitive-account/README.md) | v1.0.0 |
+| [container instance](./container-instance/README.md) | v1.1.2 |
+| [container registry](./container-registry/README.md) | v1.1.2 |
+| [data collection rule](./data-collection-rule/README.md) | v1.0.2 |
+| [data factory](./data-factory/README.md) | v1.1.3 |
+| [event hub](./event-hub/README.md) | v1.2.4 |
+| [key vault](./key-vault/README.md) | v1.2.1 |
+| [kubernetes cluster](./kubernetes-cluster/README.md) | v1.1.3 |
+| [linux virtual machine](./linux-virtual-machine/README.md) | v1.1.5 |
+| [load balancer](./load-balancer/README.md) | v1.1.3 |
+| [log analytics workspace](./log-analytics-workspace/README.md) | v1.1.0 |
+| [logic app standard](./logic-app-standard/README.md) | v1.0.0 |
+| [logic app workflow](./logic-app-workflow/README.md) | v1.1.0 |
+| [monitor action group](./monitor-action-group/README.md) | v1.0.0 |
+| [monitor alert](./monitor-alert/README.md) | v1.0.2 |
+| [mssql database](./mssql-database/README.md) | v1.1.3 |
+| [mssql managed instance](./mssql-managed-instance/README.md) | v1.0.1 |
+| [network security group](./network-security-group/README.md) | v1.1.2 |
+| [network watcher](./network-watcher/README.md) | v1.1.0 |
+| [policy assignment](./policy-assignment/README.md) | v1.1.1 |
+| [policy set definition](./policy-set-definition/README.md) | v1.1.0 |
+| [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.0.2 |
+| [private dns zone](./private-dns-zone/README.md) | v1.1.1 |
+| [private endpoint](./private-endpoint/README.md) | v1.0.0 |
+| [public ip address](./public-ip-address/README.md) | v1.1.0 |
+| [public ip prefix](./public-ip-prefix/README.md) | v1.1.0 |
+| [recovery services vault](./recovery-services-vault/README.md) | v1.2.6 |
+| [resource group](./resource-group/README.md) | v1.1.0 |
+| [role assignment](./role-assignment/README.md) | v1.1.1 |
+| [role definition](./role-definition/README.md) | v1.1.1 |
+| [route table](./route-table/README.md) | v1.1.0 |
+| [shared image gallery](./shared-image-gallery/README.md) | v1.0.0 |
+| [storage account](./storage-account/README.md) | v1.2.4 |
+| [storage sync](./storage-sync/README.md) | v1.1.2 |
+| [user assigned identity](./user-assigned-identity/README.md) | v1.0.0 |
+| [virtual network](./virtual-network/README.md) | v1.1.4 |
+| [virtual network peering](./virtual-network-peering/README.md) | v1.1.1 |
+| [windows virtual machine](./windows-virtual-machine/README.md) | v1.1.7 |
