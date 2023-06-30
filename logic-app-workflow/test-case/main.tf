@@ -19,9 +19,22 @@ resource "azurerm_resource_group" "rg" {
   location = local.location
 }
 
+# monitoring prerequisities
+resource "azurerm_log_analytics_workspace" "la" {
+  name                = "SEY-TERRAFORM-NE-LA01"
+  location            = local.location
+  resource_group_name = local.naming.rg
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+
 # logic app workflow
 module "logic_app_workflow" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-workflow.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-workflow.git?ref=v1.1.0"
   config = local.logic
 
   depends_on = [
