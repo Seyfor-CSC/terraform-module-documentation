@@ -1,6 +1,7 @@
 # Introduction
 Logic App Standard module can deploy these resources:
 * azurerm_logic_app_standard (required)
+* azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -12,12 +13,16 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/logic_app_standard
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+
 &nbsp;
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Logic App Standard
 * terraform import '`<path-to-module>`.azurerm_logic_app_standard.logic_app_standard["`<logic-app-standard-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<logic-app-standard-name>`'
+### Diagnostic Setting
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<public-ip-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<public-ip-name>`|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.logic\_app\_standard_
 

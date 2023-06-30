@@ -7,7 +7,7 @@ locals {
     logic_2 = "SEY-TERRAFORM-NE-LOGIC02"
   }
 
-    logic = [
+  logic = [
     {
       name                       = local.naming.logic_1
       location                   = local.location
@@ -22,6 +22,13 @@ locals {
         "FUNCTIONS_WORKER_RUNTIME"     = "node"
         "WEBSITE_NODE_DEFAULT_VERSION" = "~18"
       }
+
+      monitoring = [
+        {
+          diag_name                  = "Monitoring"
+          log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+        }
+      ]
 
       tags = {}
     },
