@@ -187,6 +187,25 @@ variable "config" {  type = list(object({
       data_collection_rule_id     = optional(string)
       description                 = optional(string)
     })), [])
+
+    # virtual machine extension
+    vm_extensions = optional(list(object({
+      name                        = string
+      virtual_machine_id          = optional(string) # Inherited in module from parent resource
+      publisher                   = string
+      type                        = string
+      type_handler_version        = string
+      auto_upgrade_minor_version  = optional(bool)
+      automatic_upgrade_enabled   = optional(bool)
+      settings                    = optional(string)
+      failure_suppression_enabled = optional(bool)
+      protected_settings          = optional(string)
+      protected_settings_from_key_vault = optional(object({
+        secret_url      = string
+        source_vault_id = string
+      }))
+      tags = optional(map(any)) # Inherited in module from parent resource
+    })), [])
   }))
 }
 
@@ -353,5 +372,20 @@ variable "config" {  type = list(object({
 |&nbsp;data_collection_endpoint_id | string | Optional |  |  |
 |&nbsp;data_collection_rule_id | string | Optional |  |  |
 |&nbsp;description | string | Optional |  |  |
+|vm_extensions | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;virtual_machine_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;publisher | string | Required |  |  |
+|&nbsp;type | string | Required |  |  |
+|&nbsp;type_handler_version | string | Required |  |  |
+|&nbsp;auto_upgrade_minor_version | bool | Optional |  |  |
+|&nbsp;automatic_upgrade_enabled | bool | Optional |  |  |
+|&nbsp;settings | string | Optional |  |  |
+|&nbsp;failure_suppression_enabled | bool | Optional |  |  |
+|&nbsp;protected_settings | string | Optional |  |  |
+|&nbsp;protected_settings_from_key_vault | object | Optional |  |  |
+|&nbsp;&nbsp;secret_url | string | Required |  |  |
+|&nbsp;&nbsp;source_vault_id | string | Required |  |  |
+|&nbsp;tags | map(any) | Optional |  |  Inherited in module from parent resource |
 
 

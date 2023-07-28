@@ -55,4 +55,4 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [user assigned identity](./user-assigned-identity/README.md) | v1.0.0 |
 | [virtual network](./virtual-network/README.md) | v1.1.4 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.1.1 |
-| [windows virtual machine](./windows-virtual-machine/README.md) | v1.1.7 |
+| [windows virtual machine](./windows-virtual-machine/README.md) | v1.2.0 |

@@ -5,6 +5,7 @@ Windows Virtual Machine module can deploy these resources:
 * azurerm_managed_disk (optional)
 * azurerm_virtual_machine_data_disk_attachment (optional)
 * azurerm_monitor_data_collection_rule_association (optional)
+* azurerm_virtual_machine_extension (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -24,6 +25,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_data_collection_rule_association
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/virtual_machine_extension
+
 &nbsp;
 
 # Terraform Import
@@ -38,6 +41,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_virtual_machine_data_disk_attachment.virtual_machine_data_disk_attachment[`<managed-disk-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/dataDisks/`<managed-disk-name>`'
 ### Data Collection Rule Association
 * terraform import '`<path-to-module>`.azurerm_monitor_data_collection_rule_association.monitor_data_collection_rule_association[`<windows-virtual-machine-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/providers/Microsoft.Insights/dataCollectionRuleAssociations/`<data-collection-rule-association-name>`'
+### Virtual Machine Extension
+* terraform import '`<path-to-module>`.azurerm_virtual_machine_extension.virtual_machine_extension[`<virtual-machine-extension-name`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/extensions/`<extensionName>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.windows\_virtual\_machine_
 
@@ -55,6 +60,9 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | &nbsp;name         |                                                      |
 |             | &nbsp;id           |                                                      |
 |             | managed_disks      | Managed Disk outputs                                 |
+|             | &nbsp;name         |                                                      |
+|             | &nbsp;id           |                                                      |
+|             | vm_extensions      | Virtual Machine Extension outputs                    |
 |             | &nbsp;name         |                                                      |
 |             | &nbsp;id           |                                                      |
 

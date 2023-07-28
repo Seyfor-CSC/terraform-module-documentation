@@ -7,7 +7,7 @@ locals {
     vm_2 = "SEY-TERRAFORM-NE-VM02"
   }
 
-    vm = [
+  vm = [
     {
       name                            = local.naming.vm_1
       location                        = local.location
@@ -80,6 +80,23 @@ locals {
             lun     = 3
             caching = "None"
           }]
+        }
+      ]
+
+      vm_extensions = [
+        {
+          name                 = "vmAgentExtension"
+          publisher            = "Microsoft.Compute"
+          type                 = "VMAccessAgent"
+          type_handler_version = "2.0"
+          settings             = <<SETTINGS
+          {
+            "protectedSettings": {
+              "username": "adminuser",
+              "password": "P@ssw0rd1234!"
+          }
+        }
+          SETTINGS
         }
       ]
 
