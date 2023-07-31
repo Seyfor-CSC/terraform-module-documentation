@@ -41,7 +41,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.0.2 |
 | [private dns resolver](./private-dns-resolver/README.md) | v1.0.0 |
 | [private dns zone](./private-dns-zone/README.md) | v1.1.1 |
-| [private endpoint](./private-endpoint/README.md) | v1.0.0 |
+| [private endpoint](./private-endpoint/README.md) | v1.1.0 |
 | [public ip address](./public-ip-address/README.md) | v1.1.0 |
 | [public ip prefix](./public-ip-prefix/README.md) | v1.1.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.2.6 |
