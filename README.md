@@ -16,7 +16,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [automation module](./automation-module/README.md) | v1.0.0 |
 | [availability set](./availability-set/README.md) | v1.1.0 |
 | [backup vault](./backup-vault/README.md) | v1.1.3 |
-| [bastion host](./bastion-host/README.md) | v1.1.0 |
+| [bastion host](./bastion-host/README.md) | v1.2.0 |
 | [cognitive account](./cognitive-account/README.md) | v1.0.0 |
 | [container instance](./container-instance/README.md) | v1.1.2 |
 | [container registry](./container-registry/README.md) | v1.1.2 |
