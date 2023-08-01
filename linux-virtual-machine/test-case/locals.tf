@@ -7,7 +7,7 @@ locals {
     vm_2 = "SEY-TERRAFORM-NE-VM02"
   }
 
-    vm = [
+  vm = [
     {
       name                            = local.naming.vm_1
       location                        = local.location
@@ -79,6 +79,27 @@ locals {
             lun     = 3
             caching = "None"
           }]
+        }
+      ]
+
+      vm_extensions = [
+        {
+          name                 = "hostname"
+          publisher            = "Microsoft.Azure.Extensions"
+          type                 = "CustomScript"
+          type_handler_version = "2.0"
+          settings             = <<SETTINGS
+          {
+            "commandToExecute": "hostname && uptime"
+          }
+          SETTINGS
+        },
+        {
+          name                       = "networkwatcher"
+          publisher                  = "Microsoft.Azure.NetworkWatcher"
+          type                       = "NetworkWatcherAgentLinux"
+          type_handler_version       = "1.4"
+          auto_upgrade_minor_version = "true"
         }
       ]
 

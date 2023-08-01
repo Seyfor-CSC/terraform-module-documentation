@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.2.0
+
+### Added
+* Add resource Virtual Machine Extension in https://github.com/Seyfor-CSC/mit.linux-virtual-machine/pull/11
+   
 ## Release v1.1.5
 
 ### Updated
