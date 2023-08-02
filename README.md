@@ -20,7 +20,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [cognitive account](./cognitive-account/README.md) | v1.0.0 |
 | [container instance](./container-instance/README.md) | v1.1.2 |
 | [container registry](./container-registry/README.md) | v1.1.2 |
-| [data collection rule](./data-collection-rule/README.md) | v1.0.2 |
+| [data collection rule](./data-collection-rule/README.md) | 1.1.0 |
 | [data factory](./data-factory/README.md) | v1.1.3 |
 | [event hub](./event-hub/README.md) | v1.2.4 |
 | [key vault](./key-vault/README.md) | v1.2.1 |
