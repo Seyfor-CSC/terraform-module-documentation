@@ -20,11 +20,12 @@ variable "config" {  type = list(object({
       type         = string
       identity_ids = optional(list(string))
     }))
-    minimum_tls_version                  = optional(string)
-    public_network_access_enabled        = optional(bool)
-    outbound_network_restriction_enabled = optional(bool)
-    primary_user_assigned_identity_id    = optional(string)
-    tags                                 = optional(map(any))
+    transparent_data_encryption_key_vault_key_id = optional(string)
+    minimum_tls_version                          = optional(string)
+    public_network_access_enabled                = optional(bool)
+    outbound_network_restriction_enabled         = optional(bool)
+    primary_user_assigned_identity_id            = optional(string)
+    tags                                         = optional(map(any))
 
     # mssql database
     mssql_db = optional(list(object({
@@ -151,6 +152,7 @@ variable "config" {  type = list(object({
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
+|&nbsp;transparent_data_encryption_key_vault_key_id | string | Optional |  |  |
 |&nbsp;minimum_tls_version | string | Optional |  |  |
 |&nbsp;public_network_access_enabled | bool | Optional |  |  |
 |&nbsp;outbound_network_restriction_enabled | bool | Optional |  |  |
