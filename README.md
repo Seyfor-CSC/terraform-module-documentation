@@ -23,7 +23,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [data collection rule](./data-collection-rule/README.md) | 1.1.0 |
 | [data factory](./data-factory/README.md) | v1.1.3 |
 | [event hub](./event-hub/README.md) | v1.2.4 |
-| [key vault](./key-vault/README.md) | v1.2.1 |
+| [key vault](./key-vault/README.md) | v1.3.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.1.3 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.2.0 |
 | [load balancer](./load-balancer/README.md) | v1.1.3 |
@@ -49,7 +49,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [role assignment](./role-assignment/README.md) | v1.1.1 |
 | [role definition](./role-definition/README.md) | v1.1.1 |
 | [route table](./route-table/README.md) | v1.1.0 |
-| [shared image gallery](./shared-image-gallery/README.md) | v1.0.0 |
+| [shared image gallery](./shared-image-gallery/README.md) | v1.1.0 |
 | [storage account](./storage-account/README.md) | v1.2.4 |
 | [storage sync](./storage-sync/README.md) | v1.1.2 |
 | [user assigned identity](./user-assigned-identity/README.md) | v1.0.0 |
