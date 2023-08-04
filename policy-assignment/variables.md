@@ -12,7 +12,7 @@ variable "config" {  type = list(object({
     enforce              = optional(bool)
     identity = optional(object({
       type         = string
-      identity_ids = optional(list(string), [])
+      identity_ids = optional(list(string))
     }))
     location = optional(string)
     metadata = optional(string)
@@ -20,7 +20,7 @@ variable "config" {  type = list(object({
       content                        = string
       policy_definition_reference_id = optional(string)
     })), [])
-    not_scopes = optional(list(string), [])
+    not_scopes = optional(list(string))
     parameters = optional(string)
   }))
 }
@@ -42,13 +42,13 @@ variable "config" {  type = list(object({
 |enforce | bool | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
-|&nbsp;identity_ids | list(string) | Optional | [] |  |
+|&nbsp;identity_ids | list(string) | Optional |  |  |
 |location | string | Optional |  |  |
 |metadata | string | Optional |  |  |
 |non_compliance_message | list(object) | Optional | [] |  |
 |&nbsp;content | string | Required |  |  |
 |&nbsp;policy_definition_reference_id | string | Optional |  |  |
-|not_scopes | list(string) | Optional | [] |  |
+|not_scopes | list(string) | Optional |  |  |
 |parameters | string | Optional |  |  |
 
 
