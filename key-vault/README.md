@@ -14,15 +14,15 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/key_vault
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/key_vault_secret
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_secret
 
 https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -81,6 +81,9 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Random Secret Generator
 This module has a resource called "random_password" which is used to generate a random secret value. This way we can avoid hardcoding secrets in the code. For this purpose we created a variable called `length` of data type number, which is used to define the length of the secret. The default value is 12 characters. You can change the length of the secret by passing a different number to the `length` variable in the key vault secret configuration. If you still decide to hardcode the secret into the code, you can do so by setting the variable called `value` to your desired value. This will override the random secret generator. Go to [test-case/locals.tf](test-case/locals.tf) to see an example of how to use this feature.
+
+## Role Assignment for Key Vault seeding
+If you want to create a secret for the Key Vault, you need the `Key Vault Secrets Officer` role assigned. This module does it for you with the azurerm_role_assignment resource. The whole logic is resolved inside the module so you don't have to do anything.
 
 &nbsp;
 

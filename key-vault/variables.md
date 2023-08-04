@@ -7,29 +7,35 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     sku_name            = string
-    access_policy = optional(object({
-      tenant_id               = string
+    tenant_id           = optional(string) # Value is supplyed in module from data source "azurerm_client_config"
+    access_policy = optional(list(object({
+      tenant_id               = optional(string) # Value is supplyed in module from data source "azurerm_client_config"
       object_id               = string
       application_id          = optional(string)
       certificate_permissions = optional(list(string))
       key_permissions         = optional(list(string))
       secret_permissions      = optional(list(string))
       storage_permissions     = optional(list(string))
-    }))
+    })), [])
     enabled_for_deployment          = optional(bool)
     enabled_for_disk_encryption     = optional(bool)
     enabled_for_template_deployment = optional(bool)
     enable_rbac_authorization       = optional(bool, true)
     network_acls = optional(object({
-      default_action             = string
       bypass                     = optional(string, "AzureServices")
+      default_action             = string
       ip_rules                   = optional(list(string))
       virtual_network_subnet_ids = optional(list(string))
     }))
     purge_protection_enabled      = optional(bool)
     public_network_access_enabled = optional(bool)
     soft_delete_retention_days    = optional(number)
-    tags                          = optional(map(any))
+    contact = optional(list(object({
+      email = string
+      name  = optional(string)
+      phone = optional(string)
+    })), [])
+    tags = optional(map(any))
 
     # key vault secret
     secret = optional(list(object({
@@ -93,8 +99,9 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |sku_name | string | Required |  |  |
-|access_policy | object | Optional |  |  |
-|&nbsp;tenant_id | string | Required |  |  |
+|tenant_id | string | Optional |  |  Value is supplyed in module from data source "azurerm_client_config" |
+|access_policy | list(object) | Optional | [] |  |
+|&nbsp;tenant_id | string | Optional |  |  Value is supplyed in module from data source "azurerm_client_config" |
 |&nbsp;object_id | string | Required |  |  |
 |&nbsp;&nbsp;application_id | string | Optional |  |  |
 |&nbsp;&nbsp;certificate_permissions | list(string) | Optional |  |  |
@@ -106,13 +113,17 @@ variable "config" {  type = list(object({
 |&nbsp;enabled_for_template_deployment | bool | Optional |  |  |
 |&nbsp;enable_rbac_authorization | bool | Optional |  true |  |
 |&nbsp;network_acls | object | Optional |  |  |
-|&nbsp;&nbsp;default_action | string | Required |  |  |
 |&nbsp;&nbsp;bypass | string | Optional |  "AzureServices" |  |
+|&nbsp;&nbsp;default_action | string | Required |  |  |
 |&nbsp;&nbsp;ip_rules | list(string) | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_ids | list(string) | Optional |  |  |
 |&nbsp;purge_protection_enabled | bool | Optional |  |  |
 |&nbsp;public_network_access_enabled | bool | Optional |  |  |
 |&nbsp;soft_delete_retention_days | number | Optional |  |  |
+|&nbsp;contact | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;email | string | Required |  |  |
+|&nbsp;&nbsp;name | string | Optional |  |  |
+|&nbsp;&nbsp;phone | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |
 |&nbsp;secret | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
