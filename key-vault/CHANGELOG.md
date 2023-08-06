@@ -11,8 +11,6 @@
 ### Updated
 - Optional variable `location` for private endpoint
 - Optional variable  `resource_group_name` for private endpoint
-
-
    
 ## Release v1.2.0
 
