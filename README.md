@@ -19,12 +19,12 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [bastion host](./bastion-host/README.md) | v1.2.0 |
 | [cognitive account](./cognitive-account/README.md) | v1.1.0 |
 | [container instance](./container-instance/README.md) | v1.2.0 |
-| [container registry](./container-registry/README.md) | v1.1.2 |
+| [container registry](./container-registry/README.md) | v1.2.0 |
 | [data collection rule](./data-collection-rule/README.md) | v1.1.0 |
 | [data factory](./data-factory/README.md) | v1.2.0 |
 | [event hub](./event-hub/README.md) | v1.3.0 |
 | [key vault](./key-vault/README.md) | v1.3.0 |
-| [kubernetes cluster](./kubernetes-cluster/README.md) | v1.2.0 |
+| [kubernetes cluster](./kubernetes-cluster/README.md) | v1.1.3 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.2.0 |
 | [load balancer](./load-balancer/README.md) | v1.1.3 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v1.2.0 |
