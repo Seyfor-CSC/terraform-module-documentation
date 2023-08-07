@@ -15,8 +15,10 @@ variable "config" {  type = list(object({
     }))
     backup_retention_days = optional(number)
     customer_managed_key = optional(object({
-      key_vault_key_id                  = optional(string)
-      primary_user_assigned_identity_id = optional(string)
+      key_vault_key_id                     = optional(string)
+      primary_user_assigned_identity_id    = optional(string)
+      geo_backup_key_vault_key_id          = optional(string)
+      geo_backup_user_assigned_identity_id = optional(string)
     }))
     geo_redundant_backup_enabled = optional(bool)
     create_mode                  = optional(string)
@@ -28,7 +30,7 @@ variable "config" {  type = list(object({
     }))
     identity = optional(object({
       type         = string
-      identity_ids = optional(list(string))
+      identity_ids = list(string)
     }))
     maintenance_window = optional(object({
       day_of_week  = optional(number)
@@ -100,6 +102,8 @@ variable "config" {  type = list(object({
 |customer_managed_key | object | Optional |  |  |
 |&nbsp;key_vault_key_id | string | Optional |  |  |
 |&nbsp;primary_user_assigned_identity_id | string | Optional |  |  |
+|&nbsp;geo_backup_key_vault_key_id | string | Optional |  |  |
+|&nbsp;geo_backup_user_assigned_identity_id | string | Optional |  |  |
 |geo_redundant_backup_enabled | bool | Optional |  |  |
 |create_mode | string | Optional |  |  |
 |delegated_subnet_id | string | Optional |  |  |
@@ -109,7 +113,7 @@ variable "config" {  type = list(object({
 |&nbsp;standby_availability_zone | string | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
-|&nbsp;identity_ids | list(string) | Optional |  |  |
+|&nbsp;identity_ids | list(string) | Required |  |  |
 |maintenance_window | object | Optional |  |  |
 |&nbsp;day_of_week | number | Optional |  |  |
 |&nbsp;start_hour | number | Optional |  |  |

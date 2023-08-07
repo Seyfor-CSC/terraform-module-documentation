@@ -14,15 +14,15 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/postgresql_flexible_server
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/postgresql_flexible_server_database
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/postgresql_flexible_server_configuration
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server_configuration
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/postgresql_flexible_server_active_directory_administrator
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server_active_directory_administrator
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -50,7 +50,6 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | ----------- | ------------ | ---------------------------------------------------- |
 | outputs     | name         |                                                      |
 |             | id           |                                                      |
-|             | principal_id | principal_id (object_id) of system assigned identity |
 |             | fqdn         |                                                      |
 |             | databases    | PostgreSQL Flexible Database outputs                 |
 |             | &nbsp;name   |                                                      |

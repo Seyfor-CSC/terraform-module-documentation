@@ -17,9 +17,6 @@ locals {
       administrator_login    = "useradmin"
       administrator_password = "Password1234+"
       storage_mb             = "32768"
-      identity = {
-        type = "SystemAssigned"
-      }
       flexible_db = [
         {
           name = "flexibledbexample"

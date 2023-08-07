@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -36,7 +36,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # postgresql flexible server
 module "postgresql_flexible_server" {
-  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v1.0.2"
+  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v1.1.0"
   config = local.pgsql
 
   depends_on = [
