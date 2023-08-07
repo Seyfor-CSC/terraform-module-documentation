@@ -47,7 +47,7 @@ variable "config" {  type = list(object({
           ip_address = string
           port       = optional(number)
         }))
-        enabled  = optional(string)
+        enabled  = optional(bool)
         metadata = optional(map(any))
       })), [])
 
@@ -104,7 +104,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;target_dns_servers | list(object) | Required |  |  |
 |&nbsp;&nbsp;&nbsp;ip_address | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;port | number | Optional |  |  |
-|&nbsp;&nbsp;enabled | string | Optional |  |  |
+|&nbsp;&nbsp;enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;metadata | map(any) | Optional |  |  |
 |&nbsp;private_dns_resolver_virtual_network_links | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
