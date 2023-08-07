@@ -24,10 +24,10 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [data factory](./data-factory/README.md) | v1.2.0 |
 | [event hub](./event-hub/README.md) | v1.3.0 |
 | [key vault](./key-vault/README.md) | v1.3.0 |
-| [kubernetes cluster](./kubernetes-cluster/README.md) | v1.1.3 |
+| [kubernetes cluster](./kubernetes-cluster/README.md) | v1.2.0 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.2.0 |
 | [load balancer](./load-balancer/README.md) | v1.1.3 |
-| [log analytics workspace](./log-analytics-workspace/README.md) | v1.2.0 |
+| [log analytics workspace](./log-analytics-workspace/README.md) | v1.1.0 |
 | [logic app standard](./logic-app-standard/README.md) | v1.1.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v1.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v1.1.0 |

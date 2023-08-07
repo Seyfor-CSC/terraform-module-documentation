@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -34,7 +34,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # kubernetes cluster
 module "kubernetes_cluster" {
-  source = "git@github.com:Seyfor-CSC/mit.kubernetes-cluster.git?ref=v1.1.3"
+  source = "git@github.com:Seyfor-CSC/mit.kubernetes-cluster.git?ref=v1.2.0"
   config = local.aks
 
   depends_on = [
