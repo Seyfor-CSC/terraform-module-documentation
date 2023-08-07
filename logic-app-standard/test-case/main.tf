@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -58,7 +58,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # logic app standard
 module "logic_app_standard" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-standard.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-standard.git?ref=v1.1.0"
   config = local.logic
 
   depends_on = [
