@@ -79,7 +79,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # storage account
 module "storage_account" {
-  source          = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v1.2.4"
+  source          = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v1.3.0"
   config          = local.sa
   subscription_id = data.azurerm_subscription.primary.id
 

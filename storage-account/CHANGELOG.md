@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.2.5
+
+### Updated
+- Enabled provisioner
+   
 ## Release v1.2.4
 
 ### Updated

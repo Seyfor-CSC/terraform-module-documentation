@@ -7,7 +7,7 @@ locals {
     sa_2 = "seyterraformnesa02"
   }
 
-    sa = [
+  sa = [
     {
       name                         = local.naming.sa_1
       location                     = local.location
@@ -67,6 +67,22 @@ locals {
         }
       ]
 
+      management_policy = {
+        rule = [
+          {
+            name = "DeletePreviousVersions"
+            filters = {
+              blob_types = ["blockBlob", "appendBlob"]
+            }
+            actions = {
+              version = {
+                delete_after_days_since_creation = 30
+              }
+            }
+          }
+        ]
+      }
+      
       private_endpoint = [
         {
           name                          = "${local.naming.sa_1}-PE01"

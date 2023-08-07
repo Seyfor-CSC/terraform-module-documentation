@@ -187,6 +187,23 @@ variable "config" {  type = list(object({
       storage_account_name = optional(string) # Inherited in module from parent resource
     })), [])
 
+    # storage management policy
+    management_policy = optional(object({
+      storage_account_id = optional(string) # Inherited in module from parent resource
+      rule = optional(list(object({
+        name    = string
+        enabled = optional(bool, true)
+        filters = object({
+          blob_types = list(string)
+        })
+        actions = object({
+          version = optional(object({
+            delete_after_days_since_creation = optional(number)
+          }))
+        })
+      })), [])
+    }))
+
     # private endpoint
     private_endpoint = optional(list(object({
       name                = string
@@ -381,6 +398,16 @@ variable "subscription_id" { # Custom variable whose value should be set to the 
 |tables | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |
+|management_policy | object | Optional |  |  |
+|&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;rule | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;enabled | bool | Optional |  true |  |
+|&nbsp;&nbsp;filters | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;blob_types | list(string) | Required |  |  |
+|&nbsp;&nbsp;actions | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;version | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;delete_after_days_since_creation | number | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

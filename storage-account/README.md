@@ -5,6 +5,7 @@ Storage Account module can deploy these resources:
 * azurerm_storage_share (optional)
 * azurerm_storage_queue (optional)
 * azurerm_storage_table (optional)
+* azurerm_storage_management_policy (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -26,6 +27,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_table
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_management_policy
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
@@ -44,6 +47,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_storage_queue.storage_queue["`<storage-account-name>`_`<storage-queue-name>`"]' 'https://`<storage-account-name>`.queue.core.windows.net/`<storage-queue-name>`'
 ### Table
 * terraform import '`<path-to-module>`.azurerm_storage_table.storage_table["`<storage-account-name>`_`<storage-table-name>`"]' 'https://`<storage-account-name>`.table.core.windows.net/Tables(`'<storage-table-name>'`)'
+### Management Policy
+* terraform import '`<path-to-module>`.azurerm_storage_management_policy.storage_management_policy["`<storage-management-policy-name`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/managementPolicies/`<storage-management-policy-name>`'
 ### Diagnostic Setting
 #### Storage
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`|`<diag-name>`'
