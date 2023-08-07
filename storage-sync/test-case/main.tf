@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -64,7 +64,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
 
 # storage sync
 module "storage_sync" {
-  source = "git@github.com:Seyfor-CSC/mit.storage-sync.git?ref=v1.1.1"
+  source = "git@github.com:Seyfor-CSC/mit.storage-sync.git?ref=v1.2.0"
   config = local.sync
 
   depends_on = [
