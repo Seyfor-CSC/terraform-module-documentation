@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.2.6
+
+### Updated
+- Provisioner trigger changed to timestamp()
+   
 ## Release v1.2.5
 
 ### Updated
