@@ -46,7 +46,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [public ip prefix](./public-ip-prefix/README.md) | v1.2.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.2.6 |
 | [resource group](./resource-group/README.md) | v1.1.0 |
-| [role assignment](./role-assignment/README.md) | v1.1.1 |
+| [role assignment](./role-assignment/README.md) | v1.2.0 |
 | [role definition](./role-definition/README.md) | v1.2.0 |
 | [route table](./route-table/README.md) | v1.2.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v1.1.0 |
