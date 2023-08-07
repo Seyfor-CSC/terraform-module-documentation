@@ -4,7 +4,7 @@
 variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
-    
+
     # monitor scheduled query rules alert v2
     logv2_alerts = optional(list(object({
       name = string
@@ -36,6 +36,7 @@ variable "config" {  type = list(object({
       auto_mitigation_enabled           = optional(bool)
       workspace_alerts_storage_enabled  = optional(bool)
       description                       = optional(string)
+      display_name                      = optional(string)
       enabled                           = optional(bool)
       mute_actions_after_alert_duration = optional(string)
       query_time_range_override         = optional(string)
@@ -49,15 +50,22 @@ variable "config" {  type = list(object({
       scopes = list(string)
       criteria = object({
         category                = string
+        caller                  = optional(string)
         operation_name          = optional(string)
         resource_provider       = optional(string)
+        resource_providers      = optional(list(string))
         resource_type           = optional(string)
+        resource_types          = optional(list(string))
         resource_group          = optional(string)
+        resource_groups         = optional(list(string))
         resource_id             = optional(string)
-        caller                  = optional(string)
+        resource_ids            = optional(list(string))
         level                   = optional(string)
+        levels                  = optional(list(string))
         status                  = optional(string)
+        statuses                = optional(list(string))
         sub_status              = optional(string)
+        sub_statuses            = optional(list(string))
         recommendation_type     = optional(string)
         recommendation_category = optional(string)
         recommendation_impact   = optional(string)
@@ -119,6 +127,7 @@ variable "config" {  type = list(object({
 |&nbsp;auto_mitigation_enabled | bool | Optional |  |  |
 |&nbsp;workspace_alerts_storage_enabled | bool | Optional |  |  |
 |&nbsp;description | string | Optional |  |  |
+|&nbsp;display_name | string | Optional |  |  |
 |&nbsp;enabled | bool | Optional |  |  |
 |&nbsp;mute_actions_after_alert_duration | string | Optional |  |  |
 |&nbsp;query_time_range_override | string | Optional |  |  |
@@ -129,15 +138,22 @@ variable "config" {  type = list(object({
 |&nbsp;scopes | list(string) | Required |  |  |
 |&nbsp;criteria | object | Required |  |  |
 |&nbsp;&nbsp;category | string | Required |  |  |
+|&nbsp;&nbsp;caller | string | Optional |  |  |
 |&nbsp;&nbsp;operation_name | string | Optional |  |  |
 |&nbsp;&nbsp;resource_provider | string | Optional |  |  |
+|&nbsp;&nbsp;resource_providers | list(string) | Optional |  |  |
 |&nbsp;&nbsp;resource_type | string | Optional |  |  |
+|&nbsp;&nbsp;resource_types | list(string) | Optional |  |  |
 |&nbsp;&nbsp;resource_group | string | Optional |  |  |
+|&nbsp;&nbsp;resource_groups | list(string) | Optional |  |  |
 |&nbsp;&nbsp;resource_id | string | Optional |  |  |
-|&nbsp;&nbsp;caller | string | Optional |  |  |
+|&nbsp;&nbsp;resource_ids | list(string) | Optional |  |  |
 |&nbsp;&nbsp;level | string | Optional |  |  |
+|&nbsp;&nbsp;levels | list(string) | Optional |  |  |
 |&nbsp;&nbsp;status | string | Optional |  |  |
+|&nbsp;&nbsp;statuses | list(string) | Optional |  |  |
 |&nbsp;&nbsp;sub_status | string | Optional |  |  |
+|&nbsp;&nbsp;sub_statuses | list(string) | Optional |  |  |
 |&nbsp;&nbsp;recommendation_type | string | Optional |  |  |
 |&nbsp;&nbsp;recommendation_category | string | Optional |  |  |
 |&nbsp;&nbsp;recommendation_impact | string | Optional |  |  |

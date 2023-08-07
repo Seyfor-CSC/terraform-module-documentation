@@ -31,7 +31,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [logic app standard](./logic-app-standard/README.md) | v1.1.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v1.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v1.1.0 |
-| [monitor alert](./monitor-alert/README.md) | v1.0.2 |
+| [monitor alert](./monitor-alert/README.md) | v1.1.0 |
 | [mssql database](./mssql-database/README.md) | v1.2.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v1.1.0 |
 | [network security group](./network-security-group/README.md) | v1.2.0 |
@@ -43,7 +43,6 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [private dns zone](./private-dns-zone/README.md) | v1.2.0 |
 | [private endpoint](./private-endpoint/README.md) | v1.1.0 |
 | [public ip address](./public-ip-address/README.md) | v1.2.0 |
-| [public ip prefix](./public-ip-prefix/README.md) | v1.2.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.2.6 |
 | [resource group](./resource-group/README.md) | v1.2.0 |
 | [role assignment](./role-assignment/README.md) | v1.2.0 |

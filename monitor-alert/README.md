@@ -11,9 +11,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_scheduled_query_rules_alert_v2
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_scheduled_query_rules_alert_v2
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_activity_log_alert
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_activity_log_alert
 
 &nbsp;
 
