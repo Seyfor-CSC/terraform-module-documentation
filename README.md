@@ -22,7 +22,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [container registry](./container-registry/README.md) | v1.2.0 |
 | [data collection rule](./data-collection-rule/README.md) | v1.1.0 |
 | [data factory](./data-factory/README.md) | v1.1.3 |
-| [event hub](./event-hub/README.md) | v1.2.4 |
+| [event hub](./event-hub/README.md) | v1.3.0 |
 | [key vault](./key-vault/README.md) | v1.3.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.2.0 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.2.0 |

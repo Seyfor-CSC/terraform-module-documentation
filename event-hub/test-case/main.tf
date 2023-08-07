@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -77,7 +77,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # event hub
 module "event_hub" {
-  source = "git@github.com:Seyfor-CSC/mit.event-hub.git?ref=v1.2.4"
+  source = "git@github.com:Seyfor-CSC/mit.event-hub.git?ref=v1.3.0"
   config = local.evhns
 
   depends_on = [
