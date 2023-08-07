@@ -15,17 +15,17 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/automation_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_runbook
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/automation_runbook
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_job_schedule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/automation_job_schedule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/automation_schedule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/automation_schedule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
 
 &nbsp;
 

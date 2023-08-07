@@ -7,8 +7,8 @@ variable "config" {  type = list(object({
     resource_group_name           = string
     location                      = string
     sku_name                      = string
-    public_network_access_enabled = optional(bool)
     local_authentication_enabled  = optional(bool)
+    public_network_access_enabled = optional(bool)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -140,8 +140,8 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |sku_name | string | Required |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
 |local_authentication_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
