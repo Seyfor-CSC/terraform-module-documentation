@@ -43,11 +43,12 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [private dns zone](./private-dns-zone/README.md) | v1.2.0 |
 | [private endpoint](./private-endpoint/README.md) | v1.1.0 |
 | [public ip address](./public-ip-address/README.md) | v1.2.0 |
+| [public ip prefix](./public-ip-prefix/README.md) | v1.2.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.2.6 |
 | [resource group](./resource-group/README.md) | v1.2.0 |
 | [role assignment](./role-assignment/README.md) | v1.2.0 |
 | [role definition](./role-definition/README.md) | v1.2.0 |
-| [route table](./route-table/README.md) | v1.2.0 |
+| [route table](./route-table/README.md) | v1.1.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v1.1.0 |
 | [storage account](./storage-account/README.md) | v1.2.6 |
 | [storage sync](./storage-sync/README.md) | v1.2.0 |
