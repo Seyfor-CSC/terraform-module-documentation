@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # monitor action group
 module "monitor_action_group" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-action-group.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-action-group.git?ref=v1.1.0"
   config = local.ag
 
   depends_on = [
