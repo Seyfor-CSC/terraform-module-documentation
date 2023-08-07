@@ -11,11 +11,12 @@ variable "config" {  type = list(object({
     # network security rule
     nsg_rule = optional(list(object({
       name                                       = string
+      resource_group_name                        = optional(string) # If not provided, inherited in module from parent resource
+      network_security_group_name                = optional(string) # Inherited in module from parent resource
       protocol                                   = string
       access                                     = string
       priority                                   = number
       direction                                  = string
-      resource_group_name                        = optional(string) # If not provided, inherited in module from parent resource
       description                                = optional(string)
       source_port_range                          = optional(string)
       source_port_ranges                         = optional(list(string))
@@ -77,11 +78,12 @@ variable "config" {  type = list(object({
 |tags | map(any) | Optional |  |  |
 |nsg_rule | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
+|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;network_security_group_name | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;protocol | string | Required |  |  |
 |&nbsp;access | string | Required |  |  |
 |&nbsp;priority | number | Required |  |  |
 |&nbsp;direction | string | Required |  |  |
-|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;description | string | Optional |  |  |
 |&nbsp;source_port_range | string | Optional |  |  |
 |&nbsp;source_port_ranges | list(string) | Optional |  |  |
