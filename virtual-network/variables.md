@@ -8,17 +8,21 @@ variable "config" {  type = list(object({
     location                = string
     address_space           = list(string)
     bgp_community           = optional(string)
-    ddos_protection_plan_id = optional(string)
     dns_servers             = optional(list(string), [])
     edge_zone               = optional(string)
     flow_timeout_in_minutes = optional(number)
-    tags                    = optional(map(any))
+    ddos_protection_plan = optional(object({
+      id      = string
+      enabled = bool
+    }))
+    tags = optional(map(any))
 
     # subnet
     subnets = list(object({
-      name                = string
-      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
-      address_prefixes    = list(string)
+      name                 = string
+      resource_group_name  = optional(string) # If not provided, inherited in module from parent resource
+      virtual_network_name = optional(string) # Inherited in module from parent resource
+      address_prefixes     = list(string)
       delegation = optional(object({
         name = string
         service_delegation = object({
@@ -62,14 +66,17 @@ variable "subscription_id" { # Custom variable whose value should be set to the 
 |location | string | Required |  |  |
 |address_space | list(string) | Required |  |  |
 |bgp_community | string | Optional |  |  |
-|ddos_protection_plan_id | string | Optional |  |  |
 |dns_servers | list(string) | Optional | [] |  |
 |edge_zone | string | Optional |  |  |
 |flow_timeout_in_minutes | number | Optional |  |  |
+|ddos_protection_plan | object | Optional |  |  |
+|&nbsp;id | string | Required |  |  |
+|&nbsp;enabled | bool | Required |  |  |
 |tags | map(any) | Optional |  |  |
 |subnets | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;virtual_network_name | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;address_prefixes | list(string) | Required |  |  |
 |&nbsp;delegation | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
