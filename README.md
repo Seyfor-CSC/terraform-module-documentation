@@ -28,6 +28,7 @@ By default, { ManagedBy = "Terraform" } tag is added to every resource deployed 
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.2.0 |
 | [load balancer](./load-balancer/README.md) | v1.1.3 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v1.2.0 |
+| [logic app integration account](./logic-app-integration-account/README.md) | v1.0.0 |
 | [logic app standard](./logic-app-standard/README.md) | v1.1.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v1.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v1.1.0 |
