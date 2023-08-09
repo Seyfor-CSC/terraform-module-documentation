@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.2.1
+
+### Added
+- Parameters `enable_host_encryption`, `only_critical_addons_enabled` and `temporary_name_for_rotation`
+   
 ## Release v1.2.0
 
 ### Version upgrade

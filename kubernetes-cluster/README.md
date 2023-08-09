@@ -91,4 +91,4 @@ No special features in module.
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+Not all available variables are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.

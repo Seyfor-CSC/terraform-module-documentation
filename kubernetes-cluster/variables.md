@@ -7,25 +7,28 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     default_node_pool = object({
-      vm_size                  = string
-      name                     = optional(string, "systemnp")
-      enable_auto_scaling      = optional(bool)
-      enable_node_public_ip    = optional(bool)
-      max_pods                 = optional(number)
-      node_public_ip_prefix_id = optional(string)
-      node_labels              = optional(map(any))
-      node_taints              = optional(list(string))
-      os_disk_size_gb          = optional(string)
-      os_disk_type             = optional(string)
-      pod_subnet_id            = optional(string)
-      type                     = optional(string)
-      ultra_ssd_enabled        = optional(string)
-      vnet_subnet_id           = optional(string)
-      zones                    = optional(list(string))
-      max_count                = optional(number)
-      min_count                = optional(number)
-      node_count               = optional(number)
-      tags                     = optional(map(any))
+      vm_size                      = string
+      name                         = optional(string, "systemnp")
+      enable_auto_scaling          = optional(bool)
+      enable_host_encryption       = optional(bool)
+      enable_node_public_ip        = optional(bool)
+      max_pods                     = optional(number)
+      node_public_ip_prefix_id     = optional(string)
+      node_labels                  = optional(map(any))
+      node_taints                  = optional(list(string))
+      only_critical_addons_enabled = optional(bool)
+      os_disk_size_gb              = optional(string)
+      os_disk_type                 = optional(string)
+      pod_subnet_id                = optional(string)
+      temporary_name_for_rotation  = optional(string)
+      type                         = optional(string)
+      ultra_ssd_enabled            = optional(string)
+      vnet_subnet_id               = optional(string)
+      zones                        = optional(list(string))
+      max_count                    = optional(number)
+      min_count                    = optional(number)
+      node_count                   = optional(number)
+      tags                         = optional(map(any))
     })
     dns_prefix                 = optional(string)
     dns_prefix_private_cluster = optional(string)
@@ -95,6 +98,7 @@ variable "config" {  type = list(object({
       kubernetes_cluster_id    = optional(string) # Inherited in module from parent resource
       vm_size                  = string
       enable_auto_scaling      = optional(bool)
+      enable_host_encryption   = optional(bool)
       enable_node_public_ip    = optional(bool)
       max_pods                 = optional(number)
       node_labels              = optional(map(any))
@@ -137,14 +141,17 @@ variable "config" {  type = list(object({
 |&nbsp;vm_size | string | Required |  |  |
 |&nbsp;name | string | Optional |  "systemnp" |  |
 |&nbsp;enable_auto_scaling | bool | Optional |  |  |
+|&nbsp;enable_host_encryption | bool | Optional |  |  |
 |&nbsp;enable_node_public_ip | bool | Optional |  |  |
 |&nbsp;max_pods | number | Optional |  |  |
 |&nbsp;node_public_ip_prefix_id | string | Optional |  |  |
 |&nbsp;node_labels | map(any) | Optional |  |  |
 |&nbsp;node_taints | list(string) | Optional |  |  |
+|&nbsp;only_critical_addons_enabled | bool | Optional |  |  |
 |&nbsp;os_disk_size_gb | string | Optional |  |  |
 |&nbsp;os_disk_type | string | Optional |  |  |
 |&nbsp;pod_subnet_id | string | Optional |  |  |
+|&nbsp;temporary_name_for_rotation | string | Optional |  |  |
 |&nbsp;type | string | Optional |  |  |
 |&nbsp;ultra_ssd_enabled | string | Optional |  |  |
 |&nbsp;vnet_subnet_id | string | Optional |  |  |
@@ -209,6 +216,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;kubernetes_cluster_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;vm_size | string | Required |  |  |
 |&nbsp;&nbsp;enable_auto_scaling | bool | Optional |  |  |
+|&nbsp;&nbsp;enable_host_encryption | bool | Optional |  |  |
 |&nbsp;&nbsp;enable_node_public_ip | bool | Optional |  |  |
 |&nbsp;&nbsp;max_pods | number | Optional |  |  |
 |&nbsp;&nbsp;node_labels | map(any) | Optional |  |  |
