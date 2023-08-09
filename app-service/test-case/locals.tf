@@ -22,9 +22,10 @@ locals {
           name        = local.naming.app_1
           location    = local.location
           site_config = {}
-          application_stack_windows = {
+          application_stack = {
             dotnet_version = "v5.0"
           }
+          public_network_access_enabled = false
 
           private_endpoint = [
             {

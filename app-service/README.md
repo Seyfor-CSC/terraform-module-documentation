@@ -14,15 +14,15 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/service_plan
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/service_plan
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/linux_web_app
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/linux_web_app
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/windows_web_app
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/windows_web_app
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -100,9 +100,10 @@ resource "azurerm_role_assignment" "role_assignment" {
 
 # Module Features
 ## Linux or Windows Web App?
-This module can deploy Linux or Windows Web App. You can specify which one you want to deploy by setting the _os\_type_ variable for the App Service Plan resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
+This module can deploy Linux or Windows Web Apps. You can specify which one you want to deploy by setting the _os\_type_ variable for the App Service Plan resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
 
 &nbsp;
 
 # Known Issues
+## Supported Variables
 Not all available variables are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.

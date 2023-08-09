@@ -2,7 +2,7 @@
 
 ```
 variable "config" {  type = list(object({
-    # app service plan
+    # service plan
     name                         = string
     resource_group_name          = string
     location                     = string
@@ -19,35 +19,28 @@ variable "config" {  type = list(object({
     web_app = optional(list(object({
       name                = string
       resource_group_name = optional(string) # If not provided, inherited in module from parent resource
-      location            = string
+      location            = optional(string) # Inherited in module from parent resource
       service_plan_id     = optional(string) # Inherited in module from parent resource
       site_config = object({
-        application_stack_linux = optional(object({ # The application_stack variable for Linux Web App
-          docker_image        = optional(string)
-          docker_image_tag    = optional(string)
-          dotnet_version      = optional(string)
-          go_version          = optional(string)
-          java_server         = optional(string)
-          java_server_version = optional(string)
-          java_version        = optional(string)
-          node_version        = optional(string)
-          php_version         = optional(string)
-          python_version      = optional(string)
-          ruby_version        = optional(string)
-        }))
-        application_stack_windows = optional(object({ # The application_stack variable for Windows Web App
-          current_stack                = optional(string)
-          docker_container_name        = optional(string)
-          docker_container_registry    = optional(string)
-          docker_container_tag         = optional(string)
+        application_stack = optional(object({
+          current_stack                = optional(string) # Windows Web App only
+          docker_image_name            = optional(string)
+          docker_registry_url          = optional(string)
+          docker_registry_username     = optional(string)
+          docker_registry_password     = optional(string)
           dotnet_version               = optional(string)
-          dotnet_core_version          = optional(string)
-          tomcat_version               = optional(string)
-          java_embedded_server_enabled = optional(bool)
-          java_version                 = optional(string)
+          dotnet_core_version          = optional(string) # Windows Web App only
+          go_version                   = optional(string) # Linux Web App only
+          tomcat_version               = optional(string) # Windows Web App only
+          java_embedded_server_enabled = optional(bool)   # Windows Web App only
+          java_version                 = optional(string) # Windows Web App only
+          java_server                  = optional(string) # Linux Web App only
+          java_server_version          = optional(string) # Linux Web App only
           node_version                 = optional(string)
           php_version                  = optional(string)
-          python                       = optional(bool)
+          python                       = optional(bool)   # Windows Web App only
+          python_version               = optional(string) # Linux Web App only
+          ruby_version                 = optional(string) # Linux Web App only
         }))
         cors = optional(object({
           allowed_origins     = list(string)
@@ -90,7 +83,8 @@ variable "config" {  type = list(object({
         type  = string
         value = string
       })), [])
-      https_only = optional(bool)
+      https_only                    = optional(bool)
+      public_network_access_enabled = optional(bool)
       identity = optional(object({
         type         = string
         identity_ids = optional(list(string))
@@ -109,7 +103,7 @@ variable "config" {  type = list(object({
         failed_request_tracing  = optional(bool)
         http_logs = optional(object({
           azure_blob_storage = optional(object({
-            retention_in_days = number
+            retention_in_days = optional(number)
             sas_url           = string
           }))
           file_system = optional(object({
@@ -183,34 +177,28 @@ variable "config" {  type = list(object({
 |web_app | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;location | string | Required |  |  |
+|&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;service_plan_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;site_config | object | Required |  |  |
-|&nbsp;&nbsp;application_stack_linux | object | Optional |  |  The application_stack variable for Linux Web App |
-|&nbsp;&nbsp;&nbsp;docker_image | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;docker_image_tag | string | Optional |  |  |
+|&nbsp;&nbsp;application_stack | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;current_stack | string | Optional |  |  Windows Web App only |
+|&nbsp;&nbsp;&nbsp;docker_image_name | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;docker_registry_url | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;docker_registry_username | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;docker_registry_password | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;dotnet_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;go_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;java_server | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;java_server_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;java_version | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;dotnet_core_version | string | Optional |  |  Windows Web App only |
+|&nbsp;&nbsp;&nbsp;go_version | string | Optional |  |  Linux Web App only |
+|&nbsp;&nbsp;&nbsp;tomcat_version | string | Optional |  |  Windows Web App only |
+|&nbsp;&nbsp;&nbsp;java_embedded_server_enabled | bool | Optional |  |  Windows Web App only |
+|&nbsp;&nbsp;&nbsp;java_version | string | Optional |  |  Windows Web App only |
+|&nbsp;&nbsp;&nbsp;java_server | string | Optional |  |  Linux Web App only |
+|&nbsp;&nbsp;&nbsp;java_server_version | string | Optional |  |  Linux Web App only |
 |&nbsp;&nbsp;&nbsp;node_version | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;php_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;python_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;ruby_version | string | Optional |  |  |
-|&nbsp;&nbsp;application_stack_windows | object | Optional |  |  The application_stack variable for Windows Web App |
-|&nbsp;&nbsp;&nbsp;current_stack | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;docker_container_name | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;docker_container_registry | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;docker_container_tag | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;dotnet_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;dotnet_core_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;tomcat_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;java_embedded_server_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;java_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;node_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;php_version | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;python | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;python | bool | Optional |  |  Windows Web App only |
+|&nbsp;&nbsp;&nbsp;python_version | string | Optional |  |  Linux Web App only |
+|&nbsp;&nbsp;&nbsp;ruby_version | string | Optional |  |  Linux Web App only |
 |&nbsp;&nbsp;cors | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;allowed_origins | list(string) | Required |  |  |
 |&nbsp;&nbsp;&nbsp;support_credentials | bool | Optional |  |  |
@@ -246,6 +234,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;https_only | bool | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  |  |
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
@@ -261,7 +250,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;failed_request_tracing | bool | Optional |  |  |
 |&nbsp;&nbsp;http_logs | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;azure_blob_storage | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;&nbsp;retention_in_days | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;retention_in_days | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;sas_url | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;file_system | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;retention_in_days | number | Required |  |  |
