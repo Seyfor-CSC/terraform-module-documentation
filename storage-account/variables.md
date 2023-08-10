@@ -153,7 +153,8 @@ variable "config" {  type = list(object({
     containers = optional(list(object({
       name                  = string
       storage_account_name  = optional(string) # Inherited in module from parent resource
-      container_access_type = optional(string, null)
+      container_access_type = optional(string)
+      metadata              = optional(map(string))
     })), [])
 
     # storage share
@@ -377,7 +378,8 @@ variable "subscription_id" { # Custom variable whose value should be set to the 
 |containers | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;container_access_type | string | Optional |  null |  |
+|&nbsp;container_access_type | string | Optional |  |  |
+|&nbsp;metadata | map(string) | Optional |  |  |
 |file_shares | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |

@@ -17,21 +17,21 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -136,3 +136,5 @@ Module run will result in an error if you run it locally. Resources will still b
 [share_properties smb object produces changes for premium storage account.](https://github.com/hashicorp/terraform-provider-azurerm/issues/21182)
 
 [blob_properties not setting default value of soft delete](https://github.com/hashicorp/terraform-provider-azurerm/issues/21856)
+## Supported Variables
+Not all available variables for Storage Management Policy are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.
