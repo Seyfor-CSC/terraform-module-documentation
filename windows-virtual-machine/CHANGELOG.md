@@ -1,5 +1,16 @@
 # Changelog
 
+## Release v1.3.0
+
+### Version upgrade
+-	Azurerm provider: 3.67.0
+-	Terraform: 1.5.4
+   
+## Release v1.2.0
+
+### Added
+* Add resource Virtual Machine Extension in https://github.com/Seyfor-CSC/mit.windows-virtual-machine/pull/10
+   
 ## Release v1.1.7
 
 ### Updated

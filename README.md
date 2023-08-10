@@ -59,4 +59,4 @@
 | [user assigned identity](./user-assigned-identity/README.md) | v1.1.0 |
 | [virtual network](./virtual-network/README.md) | v1.2.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.2.0 |
-| [windows virtual machine](./windows-virtual-machine/README.md) | v1.2.0 |
+| [windows virtual machine](./windows-virtual-machine/README.md) | v1.3.0 |

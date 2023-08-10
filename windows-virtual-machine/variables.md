@@ -11,15 +11,15 @@ variable "config" {  type = list(object({
     network_interface_ids = optional(list(string)) # Inherited in module from network interface resource
     size                  = string
     os_disk = object({
-      name                 = string
-      storage_account_type = string
       caching              = optional(string, "ReadWrite")
-      diff_disk_settings = optional(list(object({
+      storage_account_type = string
+      diff_disk_settings = optional(object({
         option    = string
         placement = optional(string)
-      })), [])
+      }))
       disk_encryption_set_id           = optional(string)
       disk_size_gb                     = optional(number)
+      name                             = optional(string)
       secure_vm_disk_encryption_set_id = optional(string)
       security_encryption_type         = optional(string)
       write_accelerator_enabled        = optional(bool)
@@ -30,28 +30,29 @@ variable "config" {  type = list(object({
     additional_unattend_content = optional(list(object({
       content = string
       setting = string
-    })))
+    })), [])
     allow_extension_operations = optional(bool)
     availability_set_id        = optional(string)
     boot_diagnostics = optional(object({
       storage_account_uri = optional(string)
     }))
-    capacity_reservation_group_id = optional(string)
-    computer_name                 = optional(string)
-    custom_data                   = optional(string)
-    dedicated_host_id             = optional(string)
-    dedicated_host_group_id       = optional(string)
-    edge_zone                     = optional(string)
-    enable_automatic_updates      = optional(bool)
-    encryption_at_host_enabled    = optional(bool)
-    eviction_policy               = optional(string)
-    extensions_time_budget        = optional(string)
-    gallery_application = optional(object({
+    bypass_platform_safety_checks_on_user_schedule_enabled = optional(bool)
+    capacity_reservation_group_id                          = optional(string)
+    computer_name                                          = optional(string)
+    custom_data                                            = optional(string)
+    dedicated_host_id                                      = optional(string)
+    dedicated_host_group_id                                = optional(string)
+    edge_zone                                              = optional(string)
+    enable_automatic_updates                               = optional(bool)
+    encryption_at_host_enabled                             = optional(bool)
+    eviction_policy                                        = optional(string)
+    extensions_time_budget                                 = optional(string)
+    gallery_application = optional(list(object({
       version_id             = string
       configuration_blob_uri = optional(string)
       order                  = optional(number)
       tag                    = optional(string)
-    }))
+    })), [])
     hotpatching_enabled = optional(bool)
     identity = optional(object({
       type         = string
@@ -70,6 +71,7 @@ variable "config" {  type = list(object({
     priority                     = optional(string)
     provision_vm_agent           = optional(bool)
     proximity_placement_group_id = optional(string)
+    reboot_setting               = optional(string)
     secret = optional(list(object({
       certificate = list(object({
         store = string
@@ -96,7 +98,7 @@ variable "config" {  type = list(object({
     winrm_listener = optional(list(object({
       protocol        = optional(string, "Https")
       certificate_url = optional(string)
-    })))
+    })), [])
     zone = optional(string)
     tags = optional(map(any))
 
@@ -105,7 +107,7 @@ variable "config" {  type = list(object({
       name                = string
       resource_group_name = optional(string) # If not provided, inherited in module from parent resource
       location            = optional(string) # Inherited in module from parent resource
-      ip_configuration = object({
+      ip_configuration = list(object({
         name                                               = string
         private_ip_address_allocation                      = optional(string, "Dynamic")
         gateway_load_balancer_frontend_ip_configuration_id = optional(string)
@@ -114,7 +116,7 @@ variable "config" {  type = list(object({
         public_ip_address_id                               = optional(string)
         primary                                            = optional(bool)
         private_ip_address                                 = optional(string)
-      })
+      }))
       dns_servers                   = optional(list(string))
       edge_zone                     = optional(string)
       enable_ip_forwarding          = optional(bool)
@@ -225,14 +227,14 @@ variable "config" {  type = list(object({
 |network_interface_ids | list(string) | Optional |  |  Inherited in module from network interface resource |
 |size | string | Required |  |  |
 |os_disk | object | Required |  |  |
-|&nbsp;name | string | Required |  |  |
-|&nbsp;storage_account_type | string | Required |  |  |
 |&nbsp;caching | string | Optional |  "ReadWrite" |  |
-|&nbsp;diff_disk_settings | list(object) | Optional | [] |  |
+|&nbsp;storage_account_type | string | Required |  |  |
+|&nbsp;diff_disk_settings | object | Optional |  |  |
 |&nbsp;&nbsp;option | string | Required |  |  |
 |&nbsp;&nbsp;placement | string | Optional |  |  |
 |&nbsp;disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;disk_size_gb | number | Optional |  |  |
+|&nbsp;name | string | Optional |  |  |
 |&nbsp;secure_vm_disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;security_encryption_type | string | Optional |  |  |
 |&nbsp;write_accelerator_enabled | bool | Optional |  |  |
@@ -245,6 +247,7 @@ variable "config" {  type = list(object({
 |availability_set_id | string | Optional |  |  |
 |boot_diagnostics | object | Optional |  |  |
 |&nbsp;storage_account_uri | string | Optional |  |  |
+|bypass_platform_safety_checks_on_user_schedule_enabled | bool | Optional |  |  |
 |capacity_reservation_group_id | string | Optional |  |  |
 |computer_name | string | Optional |  |  |
 |custom_data | string | Optional |  |  |
@@ -255,7 +258,7 @@ variable "config" {  type = list(object({
 |encryption_at_host_enabled | bool | Optional |  |  |
 |eviction_policy | string | Optional |  |  |
 |extensions_time_budget | string | Optional |  |  |
-|gallery_application | object | Optional |  |  |
+|gallery_application | list(object) | Optional | [] |  |
 |&nbsp;version_id | string | Required |  |  |
 |&nbsp;configuration_blob_uri | string | Optional |  |  |
 |&nbsp;order | number | Optional |  |  |
@@ -276,6 +279,7 @@ variable "config" {  type = list(object({
 |priority | string | Optional |  |  |
 |provision_vm_agent | bool | Optional |  |  |
 |proximity_placement_group_id | string | Optional |  |  |
+|reboot_setting | string | Optional |  |  |
 |secret | list(object) | Optional | [] |  |
 |&nbsp;certificate | list(object) | Required |  |  |
 |&nbsp;&nbsp;store | string | Required |  |  |
@@ -304,7 +308,7 @@ variable "config" {  type = list(object({
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;ip_configuration | object | Required |  |  |
+|&nbsp;ip_configuration | list(object) | Required |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_ip_address_allocation | string | Optional |  "Dynamic" |  |
 |&nbsp;&nbsp;gateway_load_balancer_frontend_ip_configuration_id | string | Optional |  |  |

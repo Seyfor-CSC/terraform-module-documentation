@@ -36,20 +36,24 @@ locals {
       network_interfaces = [
         {
           name = "${local.naming.vm_1}-nic0"
-          ip_configuration = {
-            name                          = "ipconfig1"
-            subnet_id                     = azurerm_subnet.subnet.id
-            private_ip_address_allocation = "Static"
-            private_ip_address            = "10.0.1.26"
-          }
+          ip_configuration = [
+            {
+              name                          = "ipconfig1"
+              subnet_id                     = azurerm_subnet.subnet.id
+              private_ip_address_allocation = "Static"
+              private_ip_address            = "10.0.1.26"
+            }
+          ]
         },
         {
           name = "${local.naming.vm_1}-nic1"
-          ip_configuration = {
-            name                          = "ipconfig2"
-            subnet_id                     = azurerm_subnet.subnet.id
-            private_ip_address_allocation = "Dynamic"
-          }
+          ip_configuration = [
+            {
+              name                          = "ipconfig2"
+              subnet_id                     = azurerm_subnet.subnet.id
+              private_ip_address_allocation = "Dynamic"
+            }
+          ]
         }
       ]
 
@@ -126,11 +130,13 @@ locals {
       network_interfaces = [
         {
           name = "${local.naming.vm_2}-nic0"
-          ip_configuration = {
-            name                          = "internal"
-            subnet_id                     = azurerm_subnet.subnet.id
-            private_ip_address_allocation = "Dynamic"
-          }
+          ip_configuration = [
+            {
+              name                          = "internal"
+              subnet_id                     = azurerm_subnet.subnet.id
+              private_ip_address_allocation = "Dynamic"
+            }
+          ]
         }
       ]
 
