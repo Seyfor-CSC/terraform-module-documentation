@@ -34,7 +34,7 @@ locals {
       private_dns_resolver_dns_forwarding_rulesets = [
         {
           name                                       = "fwdrs01"
-          private_dns_resolver_outbound_endpoint_ids = ["outbound_ep"]
+          private_dns_resolver_outbound_endpoint_names = ["outbound_ep"]
 
 
           private_dns_resolver_forwarding_rules = [

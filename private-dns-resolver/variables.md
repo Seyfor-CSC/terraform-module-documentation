@@ -32,11 +32,12 @@ variable "config" {  type = list(object({
 
     # private dns resolver dns forwarding ruleset
     private_dns_resolver_dns_forwarding_rulesets = optional(list(object({
-      name                                       = string
-      resource_group_name                        = optional(string) # If not provided, inherited in module from private dns resolver resource
-      private_dns_resolver_outbound_endpoint_ids = list(string)     # Outbound endpoint names, which are being created in this private dns resolver, are expected, not ids
-      location                                   = optional(string) # Inherited in module from parent resource
-      tags                                       = optional(map(any))
+      name                                         = string
+      resource_group_name                          = optional(string)       # If not provided, inherited in module from private dns resolver resource
+      private_dns_resolver_outbound_endpoint_ids   = optional(list(string)) # Do not use, is replaced by private_dns_resolver_outbound_endpoint_names parameter
+      private_dns_resolver_outbound_endpoint_names = list(string)           # Custom variable replacing private_dns_resolver_outbound_endpoint_ids parameter. Outbound Endpoint names, which are being created in this private dns resolver, are required
+      location                                     = optional(string)       # Inherited in module from parent resource
+      tags                                         = optional(map(any))
 
       # private dns resolver forwarding rule
       private_dns_resolver_forwarding_rules = optional(list(object({
@@ -94,7 +95,8 @@ variable "config" {  type = list(object({
 |private_dns_resolver_dns_forwarding_rulesets | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from private dns resolver resource |
-|&nbsp;private_dns_resolver_outbound_endpoint_ids | list(string) | Required |  |  Outbound endpoint names, which are being created in this private dns resolver, are expected, not ids |
+|&nbsp;private_dns_resolver_outbound_endpoint_ids | list(string) | Optional |  |  Do not use, is replaced by private_dns_resolver_outbound_endpoint_names parameter |
+|&nbsp;private_dns_resolver_outbound_endpoint_names | list(string) | Required |  |  Custom variable replacing private_dns_resolver_outbound_endpoint_ids parameter. Outbound Endpoint names, which are being created in this private dns resolver, are required |
 |&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;tags | map(any) | Optional |  |  |
 |&nbsp;private_dns_resolver_forwarding_rules | list(object) | Optional | [] |  |

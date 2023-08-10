@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.1.1
+
+### Updated
+- custom variable `private_dns_resolver_outbound_endpoint_ids` replaced with `private_dns_resolver_outbound_endpoint_names`
+   
 ## Release v1.1.0
 
 ### Version upgrade
