@@ -15,9 +15,34 @@ locals {
       location            = local.location
       resource_group_name = local.naming.rg
       sku                 = "Standard"
+      frontend_ip_configuration = [
+        {
+          name               = "${local.naming.lb_1}-frontend-ip"
+          subnet_id          = azurerm_subnet.subnet.id
+          private_ip_address = "10.0.2.4"
+        }
+      ]
+
+      sku = "Gateway"
+
       backend_pools = [
         {
           name = "${local.naming.lb_1}-backend-pool"
+          tunnel_interface = [
+            {
+              identifier = "900"
+              type       = "Internal"
+              protocol   = "VXLAN"
+              port       = "339"
+            },
+            {
+              identifier = "910"
+              type       = "External"
+              protocol   = "VXLAN"
+              port       = "443"
+            }
+          ]
+
           nic_association = [
             {
               custom_name           = "${local.naming.nic_0}-association"
@@ -30,14 +55,20 @@ locals {
               network_interface_id  = azurerm_network_interface.nic1.id
             }
           ]
-          outbound_rules = [
+        },
+        {
+          name = "${local.naming.lb_1}-backend-pool2"
+          tunnel_interface = [
             {
-              name     = "${local.naming.lb_1}-outbound-r"
-              protocol = "All"
+              identifier = "910"
+              type       = "External"
+              protocol   = "VXLAN"
+              port       = "339"
             }
           ]
         }
       ]
+
       probes = [
         {
           name = "ssh-probe"
@@ -48,26 +79,16 @@ locals {
           port = 443
         }
       ]
+
       rules = [
         {
           name                           = "LBRule1"
-          protocol                       = "Tcp"
-          frontend_port                  = 339
-          backend_port                   = 339
+          protocol                       = "All"
+          frontend_port                  = 0
+          backend_port                   = 0
           frontend_ip_configuration_name = "${local.naming.lb_1}-frontend-ip"
           disable_outbound_snat          = true
-          probe                          = "ssh-probe"
-          backend_pool_name              = "${local.naming.lb_1}-backend-pool"
-        },
-        {
-          name                           = "LBRule2"
-          protocol                       = "Tcp"
-          frontend_port                  = 3393
-          backend_port                   = 3393
-          frontend_ip_configuration_name = "${local.naming.lb_1}-frontend-ip"
-          disable_outbound_snat          = true
-          probe                          = "ssh-probe"
-          backend_pool_name              = "${local.naming.lb_1}-backend-pool"
+          backend_address_pool_names       = ["${local.naming.lb_1}-backend-pool"]
         }
       ]
 
@@ -85,6 +106,13 @@ locals {
       location            = local.location
       resource_group_name = local.naming.rg
       sku                 = "Standard"
+      frontend_ip_configuration = [
+        {
+          name                 = "${local.naming.lb_2}-frontend-ip"
+          public_ip_address_id = azurerm_public_ip.pip1.id
+        }
+      ]
+
       backend_pools = [
         {
           name = "${local.naming.lb_2}-backend-pool"
@@ -102,12 +130,14 @@ locals {
           ]
         }
       ]
+
       probes = [
         {
           name = "ssh-probe"
           port = 22
         }
       ]
+
       rules = [
         {
           name                           = "LBRule1"
@@ -116,8 +146,8 @@ locals {
           backend_port                   = 339
           frontend_ip_configuration_name = "${local.naming.lb_2}-frontend-ip"
           disable_outbound_snat          = true
-          probe                          = "ssh-probe"
-          backend_pool_name              = "${local.naming.lb_2}-backend-pool"
+          probe_name                       = "ssh-probe"
+          backend_address_pool_names       = ["${local.naming.lb_2}-backend-pool"]
         }
       ]
 

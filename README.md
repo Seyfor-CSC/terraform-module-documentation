@@ -29,7 +29,7 @@
 | [key vault](./key-vault/README.md) | v1.3.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.2.1 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.3.0 |
-| [load balancer](./load-balancer/README.md) | v1.1.3 |
+| [load balancer](./load-balancer/README.md) | v1.2.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v1.2.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v1.0.0 |
 | [logic app standard](./logic-app-standard/README.md) | v1.1.0 |

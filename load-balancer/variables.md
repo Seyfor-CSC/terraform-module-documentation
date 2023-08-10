@@ -7,7 +7,6 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     edge_zone           = optional(string)
-
     frontend_ip_configuration = optional(list(object({
       name                                               = string
       zones                                              = optional(list(string))
@@ -18,65 +17,60 @@ variable "config" {  type = list(object({
       private_ip_address_version                         = optional(string)
       public_ip_address_id                               = optional(string)
       public_ip_prefix_id                                = optional(string)
-    })))
-
+    })), [])
     sku      = optional(string)
     sku_tier = optional(string)
+    tags     = optional(map(any))
 
-    tags = optional(map(any))
-
-    # backend pool
+    # lb backend address pool
     backend_pools = list(object({
-      name               = string
-      virtual_network_id = optional(string)
-      loadbalancer_id    = optional(string) # inherited from load balancer
-
-      tunnel_interface = optional(object({
+      name            = string
+      loadbalancer_id = optional(string) # Inherited in module from parent resource
+      tunnel_interface = optional(list(object({
         identifier = string
         type       = string
         protocol   = string
         port       = string
-      }))
+      })), [])
+      virtual_network_id = optional(string)
 
-      # nic association
+      # network interface backend address pool association
       nic_association = optional(list(object({
-        custom_name           = string
-        backend_pool_name     = optional(string) # inherited from backend pool if not specified
-        network_interface_id  = string
-        ip_configuration_name = string
+        custom_name            = string # Custom variable used as a unique value for terraform. Has to be a unique value for each nic association
+        network_interface_id   = string
+        ip_configuration_name  = string
+        backend_adress_pool_id = optional(string) # Inherited in module from lb backend address pool
       })), [])
 
-      # backend pool address
+      # lb backend address pool address
       backend_addresses = optional(list(object({
         name                                = string
-        backend_pool_name                   = optional(string) # inherited from backend pool if not specified
+        backend_address_pool_id             = optional(string) # Inherited in module from lb backend address pool
         ip_address                          = optional(string)
         virtual_network_id                  = optional(string)
         backend_address_ip_configuration_id = optional(string)
       })), [])
 
-      # outbound rules
+      # lb outbound rule
       outbound_rules = optional(list(object({
-        name     = string
-        protocol = string
-
+        name                    = string
+        loadbalancer_id         = optional(string) # Inherited in module from parent resource
+        backend_address_pool_id = optional(string) # Inherited in module from lb backend address pool
+        protocol                = string
         frontend_ip_configuration = optional(list(object({
           name = string
         })), [])
-
-        loadbalancer_id          = optional(string) # inherited from load balancer
-        backend_pool_name        = optional(string) # inherited from backend pool if not specified
         enable_tcp_reset         = optional(bool)
         allocated_outbound_ports = optional(number)
         idle_timeout_in_minutes  = optional(number)
       })), [])
     }))
 
-    # probes
+    # lb probe
     probes = list(object({
       name                = string
+      loadbalancer_id     = optional(string) # Inherited in module from parent resource
       port                = number
-      loadbalancer_id     = optional(string) # inherited from load balancer
       protocol            = optional(string)
       probe_threshold     = optional(number)
       request_path        = optional(string)
@@ -84,16 +78,18 @@ variable "config" {  type = list(object({
       number_of_probes    = optional(number)
     }))
 
-    # rules
+    # lb rule
     rules = list(object({
       name                           = string
+      loadbalancer_id                = optional(string) # Inherited in module from parent resource
       frontend_ip_configuration_name = string
       protocol                       = string
       frontend_port                  = number
       backend_port                   = number
-      backend_pool_name              = string
-      loadbalancer_id                = optional(string) # inherited from load balancer
-      probe                          = optional(string)
+      backend_address_pool_ids       = optional(list(string))     # Do not use, is replaced by backend_address_pool_names parameter
+      backend_address_pool_names     = list(string)     # Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are required
+      probe_id                       = optional(string) # Do not use, is replaced by probe_name parameter
+      probe_name                     = optional(string) # Custom variable replacing probe_id parameter. Probe name, which is being created in this load balancer, is expected
       enable_floating_ip             = optional(bool)
       idle_timeout_in_minutes        = optional(number)
       load_distribution              = optional(string)
@@ -138,38 +134,38 @@ variable "config" {  type = list(object({
 |tags | map(any) | Optional |  |  |
 |backend_pools | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;virtual_network_id | string | Optional |  |  |
-|&nbsp;loadbalancer_id | string | Optional |  |  inherited from load balancer |
-|&nbsp;tunnel_interface | object | Optional |  |  |
+|&nbsp;loadbalancer_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;tunnel_interface | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;identifier | string | Required |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;protocol | string | Required |  |  |
 |&nbsp;&nbsp;port | string | Required |  |  |
+|&nbsp;virtual_network_id | string | Optional |  |  |
 |&nbsp;nic_association | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;custom_name | string | Required |  |  |
-|&nbsp;&nbsp;backend_pool_name | string | Optional |  |  inherited from backend pool if not specified |
+|&nbsp;&nbsp;custom_name | string | Required |  |  Custom variable used as a unique value for terraform. Has to be a unique value for each nic association |
 |&nbsp;&nbsp;network_interface_id | string | Required |  |  |
 |&nbsp;&nbsp;ip_configuration_name | string | Required |  |  |
+|&nbsp;&nbsp;backend_adress_pool_id | string | Optional |  |  Inherited in module from lb backend address pool |
 |&nbsp;backend_addresses | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;backend_pool_name | string | Optional |  |  inherited from backend pool if not specified |
+|&nbsp;&nbsp;backend_address_pool_id | string | Optional |  |  Inherited in module from lb backend address pool |
 |&nbsp;&nbsp;ip_address | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_id | string | Optional |  |  |
 |&nbsp;&nbsp;backend_address_ip_configuration_id | string | Optional |  |  |
 |&nbsp;outbound_rules | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;loadbalancer_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;backend_address_pool_id | string | Optional |  |  Inherited in module from lb backend address pool |
 |&nbsp;&nbsp;protocol | string | Required |  |  |
 |&nbsp;&nbsp;frontend_ip_configuration | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;loadbalancer_id | string | Optional |  |  inherited from load balancer |
-|&nbsp;&nbsp;backend_pool_name | string | Optional |  |  inherited from backend pool if not specified |
 |&nbsp;&nbsp;enable_tcp_reset | bool | Optional |  |  |
 |&nbsp;&nbsp;allocated_outbound_ports | number | Optional |  |  |
 |&nbsp;&nbsp;idle_timeout_in_minutes | number | Optional |  |  |
 |probes | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
+|&nbsp;loadbalancer_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;port | number | Required |  |  |
-|&nbsp;loadbalancer_id | string | Optional |  |  inherited from load balancer |
 |&nbsp;protocol | string | Optional |  |  |
 |&nbsp;probe_threshold | number | Optional |  |  |
 |&nbsp;request_path | string | Optional |  |  |
@@ -177,13 +173,15 @@ variable "config" {  type = list(object({
 |&nbsp;number_of_probes | number | Optional |  |  |
 |rules | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
+|&nbsp;loadbalancer_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;frontend_ip_configuration_name | string | Required |  |  |
 |&nbsp;protocol | string | Required |  |  |
 |&nbsp;frontend_port | number | Required |  |  |
 |&nbsp;backend_port | number | Required |  |  |
-|&nbsp;backend_pool_name | string | Required |  |  |
-|&nbsp;loadbalancer_id | string | Optional |  |  inherited from load balancer |
-|&nbsp;probe | string | Optional |  |  |
+|&nbsp;backend_address_pool_ids | list(string) | Optional |  |  Do not use, is replaced by backend_address_pool_names parameter |
+|&nbsp;backend_address_pool_names | list(string) | Required |  |  Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are required |
+|&nbsp;probe_id | string | Optional |  |  Do not use, is replaced by probe_name parameter |
+|&nbsp;probe_name | string | Optional |  |  Custom variable replacing probe_id parameter. Probe name, which is being created in this load balancer, is expected |
 |&nbsp;enable_floating_ip | bool | Optional |  |  |
 |&nbsp;idle_timeout_in_minutes | number | Optional |  |  |
 |&nbsp;load_distribution | string | Optional |  |  |

@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.51.0"
+      version = "=3.67.0"
     }
   }
   backend "local" {}
@@ -18,6 +18,18 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
+}
+
+resource "azurerm_public_ip" "pip1" {
+  name                = "public-ip-1"
+  location            = local.location
+  resource_group_name = local.naming.rg
+  sku                 = "Standard"
+  allocation_method   = "Static"
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
 }
 
 resource "azurerm_virtual_network" "vnet" {
@@ -35,7 +47,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "subnet"
   resource_group_name  = local.naming.rg
   virtual_network_name = "vnet"
-  address_prefixes     = "10.0.2.0/24"
+  address_prefixes     = ["10.0.2.0/24"]
 
   depends_on = [
     azurerm_virtual_network.vnet
@@ -51,7 +63,7 @@ resource "azurerm_network_interface" "nic0" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Static"
-    private_ip_address            = local.port1
+    private_ip_address            = "10.0.2.4"
   }
 
   depends_on = [
@@ -68,7 +80,7 @@ resource "azurerm_network_interface" "nic1" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Static"
-    private_ip_address            = local.port2
+    private_ip_address            = "10.0.2.100"
   }
 
   depends_on = [
@@ -91,11 +103,12 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # load balancer
 module "load_balancer" {
-  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.1.2"
+  source ="git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.2.0"
   config = local.lb
 
   depends_on = [
     azurerm_resource_group.rg,
+    azurerm_public_ip.pip1,
     azurerm_network_interface.nic0,
     azurerm_network_interface.nic1
   ]

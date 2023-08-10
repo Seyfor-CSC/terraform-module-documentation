@@ -17,21 +17,21 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/lb
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/lb_backend_address_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_backend_address_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/lb_backend_address_pool_address
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_backend_address_pool_address
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/network_interface_backend_address_pool_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/network_interface_backend_address_pool_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/lb_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_outbound_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/lb_outbound_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_probe
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/lb_probe
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -61,10 +61,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
+| Output Name | Value | Comment |
+| ----------- | ----- | ------- |
+| outputs     | name  |         |
+|             | id    |         |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Load Balancer module is used as a value for the _scope_ variable in Role Assignment resource.
@@ -97,7 +97,9 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
+## Custom variables
+* `backend_address_pool_names` replaces the `backend_address_pool_ids` variable in the `rules` list of objects.
+* `probe_name` replaces the `probe_id` variable in the `rules` list of objects.
 
 &nbsp;
 
