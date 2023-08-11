@@ -19,7 +19,7 @@ variable "config" {  type = list(object({
       }))
       disk_encryption_set_id           = optional(string)
       disk_size_gb                     = optional(number)
-      name                             = optional(string)
+      name                             = optional(string) # If not provided, value is generated in the format of '<vm_name>-osdisk'
       secure_vm_disk_encryption_set_id = optional(string)
       security_encryption_type         = optional(string)
       write_accelerator_enabled        = optional(bool)
@@ -234,7 +234,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;placement | string | Optional |  |  |
 |&nbsp;disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;disk_size_gb | number | Optional |  |  |
-|&nbsp;name | string | Optional |  |  |
+|&nbsp;name | string | Optional |  |  If not provided, value is generated in the format of '<vm_name>-osdisk' |
 |&nbsp;secure_vm_disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;security_encryption_type | string | Optional |  |  |
 |&nbsp;write_accelerator_enabled | bool | Optional |  |  |

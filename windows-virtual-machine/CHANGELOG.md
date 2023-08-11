@@ -1,5 +1,11 @@
 # Changelog
 
+## Release v1.3.1
+
+### Added
+- Default `os_disk` name value if not provided
+
+   
 ## Release v1.3.0
 
 ### Version upgrade

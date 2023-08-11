@@ -62,7 +62,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
 
 # windows virtual machine
 module "windows_virtual_machine" {
-  source = "git@github.com:Seyfor-CSC/mit.windows-virtual-machine.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.windows-virtual-machine.git?ref=v1.3.1"
   config = local.vm
 
   depends_on = [
