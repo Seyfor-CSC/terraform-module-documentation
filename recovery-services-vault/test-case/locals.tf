@@ -7,7 +7,7 @@ locals {
     rsv_2 = "SEY-TERRAFORM-NE-RSV02"
   }
 
-    rsv = [
+  rsv = [
     {
       name                = local.naming.rsv_1
       location            = local.location

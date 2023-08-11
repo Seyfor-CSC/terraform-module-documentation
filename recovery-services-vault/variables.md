@@ -6,11 +6,11 @@ variable "config" {  type = list(object({
     name                = string
     resource_group_name = string
     location            = string
-    sku                 = string
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
     }))
+    sku                           = string
     public_network_access_enabled = optional(string)
     immutability                  = optional(string)
     storage_mode_type             = optional(string)
@@ -23,7 +23,11 @@ variable "config" {  type = list(object({
       use_system_assigned_identity      = optional(bool)
     }))
     classic_vmware_replication_enabled = optional(bool)
-    tags                               = optional(map(any))
+    monitoring_rsv = optional(object({
+      alerts_for_all_job_failures_enabled            = optional(bool)
+      alerts_for_critical_operation_failures_enabled = optional(bool)
+    }))
+    tags = optional(map(any))
 
     # backup policy vm
     backup_policy = optional(list(object({
@@ -52,15 +56,19 @@ variable "config" {  type = list(object({
         weekdays = list(string)
       }))
       retention_monthly = optional(object({
-        count    = number
-        weekdays = list(string)
-        weeks    = list(string)
+        count             = number
+        weekdays          = optional(list(string))
+        weeks             = optional(list(string))
+        days              = optional(list(number))
+        include_last_days = optional(bool)
       }))
       retention_yearly = optional(object({
-        count    = number
-        weekdays = list(string)
-        weeks    = list(string)
-        months   = list(string)
+        count             = number
+        months            = list(string)
+        weekdays          = optional(list(string))
+        weeks             = optional(list(string))
+        days              = optional(list(number))
+        include_last_days = optional(bool)
       }))
 
       # backup protected vm
@@ -71,6 +79,7 @@ variable "config" {  type = list(object({
         backup_policy_id    = optional(string) # Inherited in module from parent resource
         exclude_disk_luns   = optional(list(number))
         include_disk_luns   = optional(list(number))
+        protection_state    = optional(string)
       })), [])
     })), [])
 
@@ -126,10 +135,10 @@ variable "config" {  type = list(object({
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
-|sku | string | Required |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
+|sku | string | Required |  |  |
 |public_network_access_enabled | string | Optional |  |  |
 |immutability | string | Optional |  |  |
 |storage_mode_type | string | Optional |  |  |
@@ -141,6 +150,9 @@ variable "config" {  type = list(object({
 |&nbsp;user_assigned_identity_id | string | Optional |  |  |
 |&nbsp;use_system_assigned_identity | bool | Optional |  |  |
 |classic_vmware_replication_enabled | bool | Optional |  |  |
+|monitoring_rsv | object | Optional |  |  |
+|&nbsp;alerts_for_all_job_failures_enabled | bool | Optional |  |  |
+|&nbsp;alerts_for_critical_operation_failures_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |backup_policy | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
@@ -165,13 +177,17 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
 |&nbsp;retention_monthly | object | Optional |  |  |
 |&nbsp;&nbsp;count | number | Required |  |  |
-|&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
-|&nbsp;&nbsp;weeks | list(string) | Required |  |  |
+|&nbsp;&nbsp;weekdays | list(string) | Optional |  |  |
+|&nbsp;&nbsp;weeks | list(string) | Optional |  |  |
+|&nbsp;&nbsp;days | list(number) | Optional |  |  |
+|&nbsp;&nbsp;include_last_days | bool | Optional |  |  |
 |&nbsp;retention_yearly | object | Optional |  |  |
 |&nbsp;&nbsp;count | number | Required |  |  |
-|&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
-|&nbsp;&nbsp;weeks | list(string) | Required |  |  |
 |&nbsp;&nbsp;months | list(string) | Required |  |  |
+|&nbsp;&nbsp;weekdays | list(string) | Optional |  |  |
+|&nbsp;&nbsp;weeks | list(string) | Optional |  |  |
+|&nbsp;&nbsp;days | list(number) | Optional |  |  |
+|&nbsp;&nbsp;include_last_days | bool | Optional |  |  |
 |&nbsp;protected_vm | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;recovery_vault_name | string | Optional |  |  Inherited in module from parent resource |
@@ -179,6 +195,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;backup_policy_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;exclude_disk_luns | list(number) | Optional |  |  |
 |&nbsp;&nbsp;include_disk_luns | list(number) | Optional |  |  |
+|&nbsp;&nbsp;protection_state | string | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

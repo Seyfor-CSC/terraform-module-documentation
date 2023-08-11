@@ -14,15 +14,15 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/recovery_services_vault
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/recovery_services_vault
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/backup_policy_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_policy_vm
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_protected_vm
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.51.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -112,4 +112,4 @@ This table shows which log categories are associated with which variable:
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+Custom variable `monitoring_rsv` replacing official Terraform variable `monitoring` has been created to prevent conflict with our custom variable `monitoring` used for diag-settings.
