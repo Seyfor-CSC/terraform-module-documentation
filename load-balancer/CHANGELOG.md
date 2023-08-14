@@ -5,6 +5,11 @@
 ### Version upgrade
 -	Azurerm provider: 3.67.0
 -	Terraform: 1.5.4
+### Updated
+`backend_pool_name` variable renamed to `backend_address_pool_id`
+`rules.backend_pool_name` variable renamed to `rules.backend_address_pool_names` and changed variable type to a list of strings
+`rules.probe` variable renamed to `rules.probe_name`
+
    
 ## Release v1.1.3
 
