@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.2.1
+
+### Added
+* `azurerm_data_protection_backup_policy_disk` id to outputs in https://github.com/Seyfor-CSC/mit.backup-vault/pull/8
+   
 ## Release v1.2.0
 
 ### Version upgrade

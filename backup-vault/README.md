@@ -36,6 +36,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name         |                                                      |
 |             | id           |                                                      |
 |             | principal_id | principal_id (object_id) of system assigned identity |
+|             | policy       | Backup Policy Disk outputs                           |
+|             | &nbsp;id     |                                                      |
 
 
 ## Example usage of outputs
