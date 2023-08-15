@@ -29,12 +29,6 @@ locals {
           retention_daily = {
             count = 10
           }
-
-          protected_vm = [
-            {
-              source_vm_id = join("/", [data.azurerm_subscription.primary.id, "resourceGroups", local.naming.rg, "providers/Microsoft.Compute/virtualMachines", "example-machine"])
-            }
-          ]
         }
       ]
 

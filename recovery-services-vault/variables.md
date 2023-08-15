@@ -70,17 +70,6 @@ variable "config" {  type = list(object({
         days              = optional(list(number))
         include_last_days = optional(bool)
       }))
-
-      # backup protected vm
-      protected_vm = optional(list(object({
-        resource_group_name = optional(string) # If not provided, inherited in module from parent resource
-        recovery_vault_name = optional(string) # Inherited in module from parent resource
-        source_vm_id        = optional(string)
-        backup_policy_id    = optional(string) # Inherited in module from parent resource
-        exclude_disk_luns   = optional(list(number))
-        include_disk_luns   = optional(list(number))
-        protection_state    = optional(string)
-      })), [])
     })), [])
 
     # private endpoint
@@ -188,14 +177,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;weeks | list(string) | Optional |  |  |
 |&nbsp;&nbsp;days | list(number) | Optional |  |  |
 |&nbsp;&nbsp;include_last_days | bool | Optional |  |  |
-|&nbsp;protected_vm | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;&nbsp;recovery_vault_name | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;&nbsp;source_vm_id | string | Optional |  |  |
-|&nbsp;&nbsp;backup_policy_id | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;&nbsp;exclude_disk_luns | list(number) | Optional |  |  |
-|&nbsp;&nbsp;include_disk_luns | list(number) | Optional |  |  |
-|&nbsp;&nbsp;protection_state | string | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

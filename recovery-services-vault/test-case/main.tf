@@ -14,13 +14,12 @@ provider "azurerm" {
 }
 
 # module deployment prerequisities
-data "azurerm_subscription" "primary" {}
-
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
 }
 
+# private endpoint prerequisities
 resource "azurerm_virtual_network" "vnet" {
   name                = "example-network"
   location            = local.location
@@ -42,50 +41,6 @@ resource "azurerm_subnet" "subnet" {
   ]
 }
 
-resource "azurerm_network_interface" "nic" {
-  name                = "example-nic"
-  location            = local.location
-  resource_group_name = local.naming.rg
-
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet.id
-    private_ip_address_allocation = "Dynamic"
-  }
-
-  depends_on = [
-    azurerm_subnet.subnet
-  ]
-}
-
-resource "azurerm_linux_virtual_machine" "vm" {
-  name                            = "example-machine"
-  resource_group_name             = local.naming.rg
-  location                        = local.location
-  size                            = "Standard_F2"
-  admin_username                  = "adminuser"
-  admin_password                  = "Password1234"
-  disable_password_authentication = false
-  network_interface_ids = [
-    azurerm_network_interface.nic.id
-  ]
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "20_04-lts"
-    version   = "latest"
-  }
-  os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
-
-  depends_on = [
-    azurerm_network_interface.nic
-  ]
-}
-
-# private endpoint prerequisities
 resource "azurerm_private_dns_zone" "dns" {
   name                = "test.private.dns"
   resource_group_name = local.naming.rg
@@ -122,13 +77,12 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.4.0"
   config = local.rsv
 
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link,
-    azurerm_log_analytics_workspace.la,
-    azurerm_linux_virtual_machine.vm
+    azurerm_log_analytics_workspace.la
   ]
 }
 

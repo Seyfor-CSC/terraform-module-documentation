@@ -2,7 +2,6 @@
 Recovery Services Vault module can deploy these resources:
 * azurerm_recovery_services_vault (required)
 * azurerm_backup_policy_vm (optional)
-* azurerm_backup_protected_vm (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -18,8 +17,6 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_policy_vm
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_protected_vm
-
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
@@ -32,8 +29,6 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_recovery_services_vault.recovery_services_vault["`<recovery-services-vault-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`'
 ### Backup Policy
 * terraform import '`<path-to-module>`.azurerm_backup_policy_vm.backup_policy_vm["`<recovery-services-vault-name>`_`<backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`/backupPolicies/`<backup-policy-name>`'
-### Backup Protected VM
-* terraform import '`<path-to-module>`.azurerm_backup_protected_vm.backup_protected_vm["`<backup-policy-name>`_`<protected-vm-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;`<resource-group-name>`;`<protected-vm-name>`/protectedItems/vm;iaasvmcontainerv2;`<resource-group-name>`;`<protected-vm-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<recovery-services-vault-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`|`<diag-name>`'
  ### Private Endpoint
@@ -51,6 +46,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name         |                                                      |
 |             | id           |                                                      |
 |             | principal_id | principal_id (object_id) of system assigned identity |
+|             | policy       | Backup Policy VM outputs                             |
+|             | &nbsp;id     |                                                      |
 
 
 ## Example usage of outputs
@@ -112,4 +109,5 @@ This table shows which log categories are associated with which variable:
 &nbsp;
 
 # Known Issues
+## Monitoring variable conflict
 Custom variable `monitoring_rsv` replacing official Terraform variable `monitoring` has been created to prevent conflict with our custom variable `monitoring` used for diag-settings.

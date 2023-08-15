@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.4.0
+
+### Removed
+- Removed `azurerm_backup_protected_vm` in https://github.com/Seyfor-CSC/mit.recovery-services-vault/pull/5
+### Added
+- `azurerm_backup_policy_vm` id to outputs in https://github.com/Seyfor-CSC/mit.recovery-services-vault/pull/5
+
+   
 ## Release v1.3.0
 
 ### Version upgrade
