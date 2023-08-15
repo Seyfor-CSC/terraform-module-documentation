@@ -51,15 +51,15 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_storage_management_policy.storage_management_policy["`<storage-management-policy-name`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/managementPolicies/`<storage-management-policy-name>`'
 ### Diagnostic Setting
 #### Storage
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`|`<diag-name>`'
 #### Blob
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/blobServices/default|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage_blob["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/blobServices/default|`<diag-name>`'
 #### File
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/fileServices/default|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage_file["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/fileServices/default|`<diag-name>`'
 #### Queue
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/queueServices/default|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage_queue["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/queueServices/default|`<diag-name>`'
 #### Table
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/tableServices/default|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage_table["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/tableServices/default|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.storage\_account_
 
