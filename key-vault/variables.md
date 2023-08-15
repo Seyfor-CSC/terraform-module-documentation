@@ -37,18 +37,6 @@ variable "config" {  type = list(object({
     })), [])
     tags = optional(map(any))
 
-    # key vault secret
-    secret = optional(list(object({
-      name            = string
-      value           = optional(string)     # If not provided, generated in module in random_password resource
-      key_vault_id    = optional(string)     # Inherited in module from parent resource
-      length          = optional(number, 12) # Custom variable setting the legth of the secret value
-      content_type    = optional(string)
-      not_before_date = optional(string)
-      expiration_date = optional(string)
-      tags            = optional(map(any))
-    })), [])
-
     # private endpoint
     private_endpoint = optional(list(object({
       name                = string
@@ -125,15 +113,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;name | string | Optional |  |  |
 |&nbsp;&nbsp;phone | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |
-|&nbsp;secret | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;value | string | Optional |  |  If not provided, generated in module in random_password resource |
-|&nbsp;&nbsp;key_vault_id | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;&nbsp;length | number | Optional |  12 |  Custom variable setting the legth of the secret value |
-|&nbsp;&nbsp;content_type | string | Optional |  |  |
-|&nbsp;&nbsp;not_before_date | string | Optional |  |  |
-|&nbsp;&nbsp;expiration_date | string | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

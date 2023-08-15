@@ -13,19 +13,6 @@ locals {
       location            = local.location
       resource_group_name = local.naming.rg
       sku_name            = "standard"
-      secret = [
-        {
-          name = "FirstSecret" # Generates random password 12 characters long
-        },
-        {
-          name   = "SecondSecret"
-          length = 16 # Generates random password 16 characters long
-        },
-        {
-          name  = "ThirdSecret"
-          value = "Password1234" # Sets the secret value to "Password1234"
-        }
-      ]
 
       private_endpoint = [
         {

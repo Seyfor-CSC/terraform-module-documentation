@@ -1,5 +1,10 @@
 # Changelog
 
+## Release v1.4.0
+
+### Removed
+- Resources `key_vault_secret` + `random_password` (removed seeding)
+   
 ## Release v1.3.0
 
 ### Version upgrade

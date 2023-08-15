@@ -26,7 +26,7 @@
 | [data collection rule](./data-collection-rule/README.md) | v1.1.0 |
 | [data factory](./data-factory/README.md) | v1.2.0 |
 | [event hub](./event-hub/README.md) | v1.3.0 |
-| [key vault](./key-vault/README.md) | v1.3.0 |
+| [key vault](./key-vault/README.md) | v1.4.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.2.1 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.3.1 |
 | [load balancer](./load-balancer/README.md) | v1.2.0 |
