@@ -48,7 +48,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Table
 * terraform import '`<path-to-module>`.azurerm_storage_table.storage_table["`<storage-account-name>`_`<storage-table-name>`"]' 'https://`<storage-account-name>`.table.core.windows.net/Tables(`'<storage-table-name>'`)'
 ### Management Policy
-* terraform import '`<path-to-module>`.azurerm_storage_management_policy.storage_management_policy["`<storage-management-policy-name`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/managementPolicies/`<storage-management-policy-name>`'
+* terraform import '`<path-to-module>`.azurerm_storage_management_policy.storage_management_policy["`<storage-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/managementPolicies/`<storage-management-policy-name>`'
 ### Diagnostic Setting
 #### Storage
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`|`<diag-name>`'

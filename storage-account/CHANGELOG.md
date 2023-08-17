@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.3.2
+
+## Enhancements
+
+- Update provisioner condition & dependency (#17)
+
+
+   
 ## Release v1.3.1
 
 ### Updated
