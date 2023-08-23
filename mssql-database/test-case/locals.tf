@@ -7,7 +7,7 @@ locals {
     sqlsrv_2 = "SEY-TERRAFORM-NE-SQLSRV02"
   }
 
-    sqlsrv = [
+  sqlsrv = [
     {
       name                         = local.naming.sqlsrv_1
       location                     = local.location
@@ -18,6 +18,29 @@ locals {
       identity = {
         type = "SystemAssigned"
       }
+      mssql_elasticpool = [
+        {
+          name = "MSSQLElasticPool01"
+          sku = {
+            name     = "GP_Gen5"
+            capacity = 4
+            tier     = "GeneralPurpose"
+            family   = "Gen5"
+          }
+          per_database_settings = {
+            min_capacity = 0
+            max_capacity = 4
+          }
+          max_size_gb = 500
+
+          monitoring = [
+            {
+              diag_name                  = "Monitoring"
+              log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+            }
+          ]
+        }
+      ]
       mssql_db = [
         {
           name = "MSSQLDB01"

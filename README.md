@@ -36,7 +36,7 @@
 | [logic app workflow](./logic-app-workflow/README.md) | v1.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v1.1.0 |
 | [monitor alert](./monitor-alert/README.md) | v1.1.0 |
-| [mssql database](./mssql-database/README.md) | v1.2.0 |
+| [mssql database](./mssql-database/README.md) | v1.3.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v1.1.0 |
 | [network security group](./network-security-group/README.md) | v1.2.0 |
 | [network watcher](./network-watcher/README.md) | v1.2.0 |
@@ -57,7 +57,7 @@
 | [storage account](./storage-account/README.md) | v1.3.2 |
 | [storage sync](./storage-sync/README.md) | v1.2.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v1.1.0 |
-| [virtual machine](./virtual-machine/README.md) | v1.0,0 |
+| [virtual machine](./virtual-machine/README.md) | v1.0.0 |
 | [virtual network](./virtual-network/README.md) | v1.2.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.2.0 |
 | [windows virtual machine](./windows-virtual-machine/README.md) | v1.3.1 |

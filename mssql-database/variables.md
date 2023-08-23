@@ -27,6 +27,38 @@ variable "config" {  type = list(object({
     primary_user_assigned_identity_id            = optional(string)
     tags                                         = optional(map(any))
 
+    # mssql elasticpool
+    mssql_elasticpool = optional(list(object({
+      name                = string
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      location            = optional(string) # Inherited in module from parent resource 
+      server_name         = optional(string) # Inherited in module from parent resource
+      sku = object({
+        name     = string
+        capacity = number
+        tier     = string
+        family   = optional(string)
+      })
+      per_database_settings = object({
+        min_capacity = number
+        max_capacity = number
+      })
+      maintenance_configuration_name = optional(string)
+      max_size_gb                    = optional(number)
+      max_size_bytes                 = optional(number)
+      zone_redundant                 = optional(bool)
+      license_type                   = optional(string)
+      tags                           = optional(map(any))
+
+      # monitoring
+      monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
+        diag_name                      = optional(string) # Name of the diagnostic setting
+        log_analytics_workspace_id     = optional(string)
+        eventhub_name                  = optional(string)
+        eventhub_authorization_rule_id = optional(string)
+      })), [])
+    })), [])
+
     # mssql database
     mssql_db = optional(list(object({
       name                        = string
@@ -44,7 +76,8 @@ variable "config" {  type = list(object({
       }))
       creation_source_database_id    = optional(string)
       collation                      = optional(string)
-      elastic_pool_id                = optional(string)
+      elastic_pool_id                = optional(string) # Do not use, is replaced by elastic_pool_name parameter
+      elastic_pool_name              = optional(string) # Custom variable replacing elastic_pool_id parameter. Elastic Pool name, which is being created in this module, is expected
       geo_backup_enabled             = optional(bool)
       maintenance_configuration_name = optional(string)
       ledger_enabled                 = optional(bool)
@@ -158,6 +191,30 @@ variable "config" {  type = list(object({
 |&nbsp;outbound_network_restriction_enabled | bool | Optional |  |  |
 |&nbsp;primary_user_assigned_identity_id | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;mssql_elasticpool | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;location | string | Optional |  |  Inherited in module from parent resource  |
+|&nbsp;&nbsp;server_name | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;sku | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;capacity | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;tier | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;family | string | Optional |  |  |
+|&nbsp;&nbsp;per_database_settings | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;min_capacity | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;max_capacity | number | Required |  |  |
+|&nbsp;&nbsp;maintenance_configuration_name | string | Optional |  |  |
+|&nbsp;&nbsp;max_size_gb | number | Optional |  |  |
+|&nbsp;&nbsp;max_size_bytes | number | Optional |  |  |
+|&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
+|&nbsp;&nbsp;license_type | string | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;mssql_db | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;server_id | string | Optional |  |  Inherited in module from parent resource |
@@ -173,7 +230,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;&nbsp;creation_source_database_id | string | Optional |  |  |
 |&nbsp;&nbsp;collation | string | Optional |  |  |
-|&nbsp;&nbsp;elastic_pool_id | string | Optional |  |  |
+|&nbsp;&nbsp;elastic_pool_id | string | Optional |  |  Do not use, is replaced by elastic_pool_name parameter |
+|&nbsp;&nbsp;elastic_pool_name | string | Optional |  |  Custom variable replacing elastic_pool_id parameter. Elastic Pool name, which is being created in this module, is expected |
 |&nbsp;&nbsp;geo_backup_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;maintenance_configuration_name | string | Optional |  |  |
 |&nbsp;&nbsp;ledger_enabled | bool | Optional |  |  |

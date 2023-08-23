@@ -3,6 +3,7 @@ MSSQL Database module can deploy these resources:
 * azurerm_mssql_server (required)
 * azurerm_mssql_database (optional)
 * azurerm_mssql_firewall_rule (optional)
+* azurerm_mssql_elasticpool (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -18,6 +19,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/mssql_database
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/mssql_elasticpool
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/mssql_firewall_rule
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
@@ -32,6 +35,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_mssql_server.mssql_server["`<mssql-server-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`'
 ### MSSQL Database
 * terraform import '`<path-to-module>`.azurerm_mssql_database.mssql_database["`<mssql-server-name>`_`<mssql-database-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/databases/`<mssql-database-name>`'
+### MSSQL Elastic Pool
+* terraform import '`<path-to-module>`.azurerm_mssql_elasticpool.mssql_elasticpool["`<mssql-server-name>`_`<mssql-elasticpool-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/elasticPools/`<mssql-elasticpool-name>`'
 ### MSSQL Firewall Rule
 * terraform import '`<path-to-module>`.azurerm_mssql_firewall_rule.mssql_firewall_rule["`<mssql-server-name>`_`<mssql-firewall-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/firewallRules/`<mssql-firewall-rule-name>`'
 ### Diagnostic Setting
@@ -53,6 +58,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | principal_id   | principal_id (object_id) of system assigned identity |
 |             | databases      | MSSQL Databas outputs                                |
 |             | &nbsp;name     |                                                      |
+|             | &nbsp;id       |                                                      |
+|             | elasticpools   | MSSQL Elastic Pool outputs                           |
 |             | &nbsp;id       |                                                      |
 |             | firewall_rules | MSSQL Firewall Rule outputs                          |
 |             | &nbsp;name     |                                                      |

@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.3.0
+
+## Enhancements
+
+- Add `azurerm_mssql_elasticpool` resource (#4)
+
+
+   
 ## Release v1.2.0
 
 ### Version upgrade

@@ -77,7 +77,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # mssql database
 module "mssql_database" {
-  source = "git@github.com:Seyfor-CSC/mit.mssql-database.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.mssql-database.git?ref=1.3.0"
   config = local.sqlsrv
 
   depends_on = [
