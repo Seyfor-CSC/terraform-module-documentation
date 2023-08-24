@@ -33,9 +33,9 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/azurerm_data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/azurerm_backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_protected_vm
 
 &nbsp;
 
