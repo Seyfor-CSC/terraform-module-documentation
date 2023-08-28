@@ -14,7 +14,6 @@ provider "azurerm" {
 }
 
 # module deployment prerequisities
-data "azurerm_subscription" "primary" {}
 
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
@@ -79,9 +78,8 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # storage account
 module "storage_account" {
-  source          = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v1.3.0"
+  source          = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v1.4.0"
   config          = local.sa
-  subscription_id = data.azurerm_subscription.primary.id
 
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link,

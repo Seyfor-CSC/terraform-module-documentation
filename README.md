@@ -55,7 +55,7 @@
 | [role definition](./role-definition/README.md) | v1.2.0 |
 | [route table](./route-table/README.md) | v1.2.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v1.1.0 |
-| [storage account](./storage-account/README.md) | v1.3.2 |
+| [storage account](./storage-account/README.md) | v1.4.0 |
 | [storage sync](./storage-sync/README.md) | v1.2.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v1.1.0 |
 | [virtual machine](./virtual-machine/README.md) | v1.0.0 |

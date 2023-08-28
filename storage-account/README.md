@@ -122,16 +122,12 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Public Network Access
 If you set `public_network_access_enabled` variable value to _false_, network access from all networks to this storage account will stay enabled unless private endpoint inside this module is also configured.
-## Subscription Id
-When using the module, subscription_id variable needs to be configured in the same place as source or the config variable. Set the value of this variable to the subscription you will deploy your resources into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
 
 &nbsp;
 
 # Known Issues
 ## Table acl block
 Acl for tables is currently not possible to be configured using terraform as it ends in an error. Therefore, we removed this feature from the module for now.
-## local-exec provisioner error
-Module run will result in an error if you run it locally. Resources will still be deployed, however, `public_network_access_enabled` variable value will be always set to _true_. This error is caused by a local-exec provisioner which uses a command that is not applicable locally. When you deploy the module by pipeline, this error will not appear and `public_network_access_enabled` variable will be set to the value you configure.
 ## Reported on GitHub
 [share_properties smb object produces changes for premium storage account.](https://github.com/hashicorp/terraform-provider-azurerm/issues/21182)
 
