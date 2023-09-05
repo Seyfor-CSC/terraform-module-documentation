@@ -27,6 +27,7 @@
 | [data factory](./data-factory/README.md) | v1.2.0 |
 | [event hub](./event-hub/README.md) | v1.3.0 |
 | [key vault](./key-vault/README.md) | v1.4.0 |
+| [key vault seeding](./key-vault-seeding/README.md) | v1.0.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.2.1 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.3.1 |
 | [load balancer](./load-balancer/README.md) | v1.2.0 |
@@ -58,7 +59,6 @@
 | [storage account](./storage-account/README.md) | v1.4.0 |
 | [storage sync](./storage-sync/README.md) | v1.2.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v1.1.0 |
-| [virtual machine](./virtual-machine/README.md) | v1.0.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.0.0 |
 | [virtual network](./virtual-network/README.md) | v1.2.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.2.0 |
