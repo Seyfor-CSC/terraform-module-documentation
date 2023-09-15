@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.4.1
+
+## Enhancements
+
+- Set default values of `monitoring_rsv` variables to false (#7)
+
+
+   
 ## Release v1.4.0
 
 ### Removed

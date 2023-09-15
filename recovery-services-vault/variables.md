@@ -24,8 +24,8 @@ variable "config" {  type = list(object({
     }))
     classic_vmware_replication_enabled = optional(bool)
     monitoring_rsv = optional(object({
-      alerts_for_all_job_failures_enabled            = optional(bool)
-      alerts_for_critical_operation_failures_enabled = optional(bool)
+      alerts_for_all_job_failures_enabled            = optional(bool, false)
+      alerts_for_critical_operation_failures_enabled = optional(bool, false)
     }))
     tags = optional(map(any))
 
@@ -140,8 +140,8 @@ variable "config" {  type = list(object({
 |&nbsp;use_system_assigned_identity | bool | Optional |  |  |
 |classic_vmware_replication_enabled | bool | Optional |  |  |
 |monitoring_rsv | object | Optional |  |  |
-|&nbsp;alerts_for_all_job_failures_enabled | bool | Optional |  |  |
-|&nbsp;alerts_for_critical_operation_failures_enabled | bool | Optional |  |  |
+|&nbsp;alerts_for_all_job_failures_enabled | bool | Optional |  false |  |
+|&nbsp;alerts_for_critical_operation_failures_enabled | bool | Optional |  false |  |
 |tags | map(any) | Optional |  |  |
 |backup_policy | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
