@@ -7,7 +7,7 @@ locals {
     rsv_1 = "SEY-TERRAFORM-NE-RSV01"
   }
 
-    pe = [
+  pe = [
     {
       name                = "${local.naming.aa_1}-PE01"
       location            = local.location

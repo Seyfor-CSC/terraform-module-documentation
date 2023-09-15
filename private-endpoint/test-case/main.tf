@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -85,7 +85,7 @@ resource "azurerm_recovery_services_vault" "rsv" {
 
 # private endpoint
 module "private_endpoint" {
-  source = "git@github.com:Seyfor-CSC/mit.private-endpoint.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.private-endpoint.git?ref=v1.2.0"
   config = local.pe
 
   depends_on = [

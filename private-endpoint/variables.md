@@ -7,11 +7,11 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     subnet_id           = string
-    resource_id         = string
+    resource_id         = string # Custom variable replacing private_connection_resource_id parameter
     private_service_connection = list(object({
       name                              = string
       is_manual_connection              = bool
-      private_connection_resource_id    = optional(string)
+      private_connection_resource_id    = optional(string) # Do not use, is replaced by resource_id parameter
       private_connection_resource_alias = optional(string)
       subresource_names                 = optional(list(string))
       request_message                   = optional(string)
@@ -43,11 +43,11 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |subnet_id | string | Required |  |  |
-|resource_id | string | Required |  |  |
+|resource_id | string | Required |  |  Custom variable replacing private_connection_resource_id parameter |
 |private_service_connection | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;is_manual_connection | bool | Required |  |  |
-|&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;private_connection_resource_id | string | Optional |  |  Do not use, is replaced by resource_id parameter |
 |&nbsp;private_connection_resource_alias | string | Optional |  |  |
 |&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;request_message | string | Optional |  |  |
