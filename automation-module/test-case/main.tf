@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -32,7 +32,7 @@ resource "azurerm_automation_account" "aa" {
 
 # automation module
 module "automation_module_parent" {
-  source = "git@github.com:Seyfor-CSC/mit.automation-module.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.automation-module.git?ref=v1.2.0"
   config = local.amp
 
   depends_on = [
@@ -41,7 +41,7 @@ module "automation_module_parent" {
 }
 
 module "automation_module_child" {
-  source = "git@github.com:Seyfor-CSC/mit.automation-module.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.automation-module.git?ref=v1.2.0"
   config = local.amd
 
   depends_on = [
