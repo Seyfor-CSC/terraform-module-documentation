@@ -4,7 +4,7 @@
 
 ## Provider & Terraform Upgrade
 - Azurerm provider: 3.73.0 (#9)
-- Terraform: 1.6.0 (#9)
+- Terraform: 1.5.7 (#9)
 
 
    
