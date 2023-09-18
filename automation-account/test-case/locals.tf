@@ -30,7 +30,7 @@ locals {
           publish_content_link = {
             uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/c4935ffb69246a6058eb24f54640f53f69d3ac9f/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"
           }
-          
+
           job_schedule = [
             {
               schedule_name = local.naming.as_1
