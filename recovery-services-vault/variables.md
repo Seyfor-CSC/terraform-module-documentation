@@ -11,11 +11,11 @@ variable "config" {  type = list(object({
       identity_ids = optional(list(string))
     }))
     sku                           = string
-    public_network_access_enabled = optional(string)
+    public_network_access_enabled = optional(bool)
     immutability                  = optional(string)
     storage_mode_type             = optional(string)
-    cross_region_restore_enabled  = optional(string)
-    soft_delete_enabled           = optional(string)
+    cross_region_restore_enabled  = optional(bool)
+    soft_delete_enabled           = optional(bool)
     encryption = optional(object({
       key_id                            = string
       infrastructure_encryption_enabled = bool
@@ -97,7 +97,7 @@ variable "config" {  type = list(object({
         subresource_name   = string
         member_name        = optional(string)
       })), [])
-      tags = optional(map(any))
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -128,11 +128,11 @@ variable "config" {  type = list(object({
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |sku | string | Required |  |  |
-|public_network_access_enabled | string | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  |  |
 |immutability | string | Optional |  |  |
 |storage_mode_type | string | Optional |  |  |
-|cross_region_restore_enabled | string | Optional |  |  |
-|soft_delete_enabled | string | Optional |  |  |
+|cross_region_restore_enabled | bool | Optional |  |  |
+|soft_delete_enabled | bool | Optional |  |  |
 |encryption | object | Optional |  |  |
 |&nbsp;key_id | string | Required |  |  |
 |&nbsp;infrastructure_encryption_enabled | bool | Required |  |  |
@@ -198,7 +198,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;private_ip_address | string | Required |  |  |
 |&nbsp;&nbsp;subresource_name | string | Required |  |  |
 |&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

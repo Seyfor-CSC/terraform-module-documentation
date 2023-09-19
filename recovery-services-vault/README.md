@@ -13,13 +13,13 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/recovery_services_vault
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/recovery_services_vault
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_policy_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_policy_vm
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -31,7 +31,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_backup_policy_vm.backup_policy_vm["`<recovery-services-vault-name>`_`<backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`/backupPolicies/`<backup-policy-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<recovery-services-vault-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`|`<diag-name>`'
- ### Private Endpoint
+### Private Endpoint
 * terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.recovery\_services\_vault_

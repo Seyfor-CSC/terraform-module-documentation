@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -77,7 +77,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.5.0"
   config = local.rsv
 
   depends_on = [
