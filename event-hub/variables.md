@@ -42,17 +42,17 @@ variable "config" {  type = list(object({
       partition_count     = number
       message_retention   = number
       capture_description = optional(object({
-        enabled             = bool
-        encoding            = string
-        interval_in_seconds = optional(number)
-        size_limit_in_bytes = optional(number)
-        skip_empty_archives = optional(bool)
+        enabled  = bool
+        encoding = string
         destination = object({
           name                = string
           archive_name_format = string
           blob_container_name = string
           storage_account_id  = string
         })
+        interval_in_seconds = optional(number)
+        size_limit_in_bytes = optional(number)
+        skip_empty_archives = optional(bool)
       }))
       status = optional(string)
 
@@ -102,7 +102,7 @@ variable "config" {  type = list(object({
         subresource_name   = string
         member_name        = optional(string)
       })), [])
-      tags = optional(map(any))
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -158,14 +158,14 @@ variable "config" {  type = list(object({
 |&nbsp;capture_description | object | Optional |  |  |
 |&nbsp;&nbsp;enabled | bool | Required |  |  |
 |&nbsp;&nbsp;encoding | string | Required |  |  |
-|&nbsp;&nbsp;interval_in_seconds | number | Optional |  |  |
-|&nbsp;&nbsp;size_limit_in_bytes | number | Optional |  |  |
-|&nbsp;&nbsp;skip_empty_archives | bool | Optional |  |  |
 |&nbsp;&nbsp;destination | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;archive_name_format | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;blob_container_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;storage_account_id | string | Required |  |  |
+|&nbsp;&nbsp;interval_in_seconds | number | Optional |  |  |
+|&nbsp;&nbsp;size_limit_in_bytes | number | Optional |  |  |
+|&nbsp;&nbsp;skip_empty_archives | bool | Optional |  |  |
 |&nbsp;status | string | Optional |  |  |
 |&nbsp;eventhub_consumer_group | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
@@ -202,7 +202,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;private_ip_address | string | Required |  |  |
 |&nbsp;&nbsp;subresource_name | string | Required |  |  |
 |&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
