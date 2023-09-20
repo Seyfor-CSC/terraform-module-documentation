@@ -44,6 +44,13 @@ locals {
         }
       ]
 
+      monitoring = [
+        {
+          diag_name                  = "Monitoring"
+          log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+        }
+      ]
+
       tags = {}
     },
     {

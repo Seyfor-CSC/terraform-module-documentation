@@ -28,6 +28,14 @@ variable "config" {  type = list(object({
         priority = number
       })), [])
     })), [])
+
+    # monitoring
+    monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
+      diag_name                      = optional(string) # Name of the diagnostic setting
+      log_analytics_workspace_id     = optional(string)
+      eventhub_name                  = optional(string)
+      eventhub_authorization_rule_id = optional(string)
+    })), [])
   }))
 }
 
@@ -58,5 +66,10 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;criteria | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;absolute_criteria | string | Optional |  |  |
 |&nbsp;&nbsp;priority | number | Required |  |  |
+|monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 
 

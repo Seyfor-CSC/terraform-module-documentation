@@ -2,6 +2,7 @@
 Backup Vault module can deploy these resources:
 * azurerm_data_protection_backup_vault (required)
 * azurerm_data_protection_backup_policy_disk (optional)
+* azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -11,9 +12,11 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/data_protection_backup_vault
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/data_protection_backup_vault
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/data_protection_backup_policy_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/data_protection_backup_policy_disk
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -23,6 +26,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_vault.data_protection_backup_vault["`<backup-vault-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`'
 ### Backup Policy Disk
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_policy_disk.data_protection_backup_policy_disk["`<backup-vault-name_backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
+
+### Diagnostic Setting
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<backup-vault-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`|`<diag-name>`'
+
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.backup\_vault_
 
