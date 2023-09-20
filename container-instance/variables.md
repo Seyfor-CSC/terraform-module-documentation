@@ -73,6 +73,7 @@ variable "config" {  type = list(object({
       }))
     }))
     os_type = string
+    sku     = optional(string)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -97,6 +98,9 @@ variable "config" {  type = list(object({
           revision  = optional(string)
         }))
         secret = optional(map(string))
+      }))
+      security = optional(object({
+        privilege_enabled = bool
       }))
       })
     )
@@ -202,6 +206,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;revision | string | Optional |  |  |
 |&nbsp;&nbsp;secret | map(string) | Optional |  |  |
 |os_type | string | Required |  |  |
+|sku | string | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
@@ -224,6 +229,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;directory | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;revision | string | Optional |  |  |
 |&nbsp;&nbsp;secret | map(string) | Optional |  |  |
+|&nbsp;security | object | Optional |  |  |
+|&nbsp;&nbsp;privilege_enabled | bool | Required |  |  |
 |dns_config | object | Optional |  |  |
 |&nbsp;nameservers | list(string) | Required |  |  |
 |&nbsp;search_domains | list(string) | Optional |  |  |

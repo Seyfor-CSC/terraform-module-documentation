@@ -21,7 +21,7 @@
 | [backup vault](./backup-vault/README.md) | v1.3.0 |
 | [bastion host](./bastion-host/README.md) | v1.3.0 |
 | [cognitive account](./cognitive-account/README.md) | v1.1.0 |
-| [container instance](./container-instance/README.md) | v1.2.0 |
+| [container instance](./container-instance/README.md) | v1.3.0 |
 | [container registry](./container-registry/README.md) | v1.2.0 |
 | [data collection rule](./data-collection-rule/README.md) | v1.1.0 |
 | [data factory](./data-factory/README.md) | v1.2.0 |
