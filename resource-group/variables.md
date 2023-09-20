@@ -3,9 +3,10 @@
 ```
 variable "config" {  type = list(object({
     # resource group
-    name     = string
-    location = string
-    tags     = optional(map(any))
+    name       = string
+    location   = string
+    managed_by = optional(string)
+    tags       = optional(map(any))
   }))
 }
 
@@ -19,6 +20,7 @@ variable "config" {  type = list(object({
 | ------- | --------- | ----------- | ------------- | ------- |
 |name | string | Required |  |  |
 |location | string | Required |  |  |
+|managed_by | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 
 
