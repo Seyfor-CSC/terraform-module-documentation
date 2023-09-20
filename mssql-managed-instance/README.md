@@ -11,9 +11,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/mssql_managed_instance
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/mssql_managed_instance
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -77,6 +77,16 @@ resource "azurerm_role_assignment" "role_assignment" {
 
 # Module Features
 No special features in module.
+## Lifecycle
+This module has a lifecycle block set up like this:
+```
+lifecycle {
+    ignore_changes = [
+      administrator_login,
+      administrator_login_password
+    ]
+  }
+```
 
 &nbsp;
 
