@@ -3,18 +3,21 @@
 ```
 variable "config" {  type = list(object({
     # virtual network
-    name                    = string
-    resource_group_name     = string
-    location                = string
-    address_space           = list(string)
-    bgp_community           = optional(string)
-    dns_servers             = optional(list(string), [])
-    edge_zone               = optional(string)
-    flow_timeout_in_minutes = optional(number)
+    name                = string
+    resource_group_name = string
+    location            = string
+    address_space       = list(string)
+    bgp_community       = optional(string)
     ddos_protection_plan = optional(object({
       id      = string
       enabled = bool
     }))
+    encryption = optional(object({
+      enforcement = string
+    }))
+    dns_servers             = optional(list(string), [])
+    edge_zone               = optional(string)
+    flow_timeout_in_minutes = optional(number)
     tags = optional(map(any))
 
     # subnet
@@ -66,12 +69,14 @@ variable "subscription_id" { # Custom variable whose value should be set to the 
 |location | string | Required |  |  |
 |address_space | list(string) | Required |  |  |
 |bgp_community | string | Optional |  |  |
-|dns_servers | list(string) | Optional | [] |  |
-|edge_zone | string | Optional |  |  |
-|flow_timeout_in_minutes | number | Optional |  |  |
 |ddos_protection_plan | object | Optional |  |  |
 |&nbsp;id | string | Required |  |  |
 |&nbsp;enabled | bool | Required |  |  |
+|encryption | object | Optional |  |  |
+|&nbsp;enforcement | string | Required |  |  |
+|dns_servers | list(string) | Optional | [] |  |
+|edge_zone | string | Optional |  |  |
+|flow_timeout_in_minutes | number | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |subnets | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
