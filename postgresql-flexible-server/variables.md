@@ -41,8 +41,9 @@ variable "config" {  type = list(object({
     replication_role                  = optional(string)
     sku_name                          = optional(string)
     source_server_id                  = optional(string)
+    auto_grow_enabled                 = optional(bool)
     storage_mb                        = optional(number)
-    version                           = optional(string)
+    version                           = optional(number)
     zone                              = optional(string)
     tags                              = optional(map(any))
 
@@ -122,8 +123,9 @@ variable "config" {  type = list(object({
 |replication_role | string | Optional |  |  |
 |sku_name | string | Optional |  |  |
 |source_server_id | string | Optional |  |  |
+|auto_grow_enabled | bool | Optional |  |  |
 |storage_mb | number | Optional |  |  |
-|version | string | Optional |  |  |
+|version | number | Optional |  |  |
 |zone | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |flexible_db | list(object) | Optional | [] |  |

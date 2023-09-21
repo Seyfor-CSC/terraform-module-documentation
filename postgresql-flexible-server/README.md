@@ -14,15 +14,15 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server_database
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server_configuration
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server_configuration
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/postgresql_flexible_server_active_directory_administrator
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server_active_directory_administrator
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -46,14 +46,14 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
-|             | fqdn         |                                                      |
-|             | databases    | PostgreSQL Flexible Database outputs                 |
-|             | &nbsp;name   |                                                      |
-|             | &nbsp;id     |                                                      |
+| Output Name | Value      | Comment                              |
+| ----------- | ---------- | ------------------------------------ |
+| outputs     | name       |                                      |
+|             | id         |                                      |
+|             | fqdn       |                                      |
+|             | databases  | PostgreSQL Flexible Database outputs |
+|             | &nbsp;name |                                      |
+|             | &nbsp;id   |                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed PostgreSQL Flexible Server module is used as a value for the _scope_ variable in Role Assignment resource.
@@ -87,6 +87,17 @@ resource "azurerm_role_assignment" "role_assignment" {
 
 # Module Features
 No special features in module.
+## Lifecycle
+This module has a lifecycle block set up like this:
+```
+lifecycle {
+  ignore_changes = [
+    administrator_login,
+    administrator_password,
+    zone
+  ]
+}
+```
 
 &nbsp;
 

@@ -43,7 +43,7 @@
 | [network watcher](./network-watcher/README.md) | v1.3.0 |
 | [policy assignment](./policy-assignment/README.md) | v1.3.0 |
 | [policy set definition](./policy-set-definition/README.md) | v1.3.0 |
-| [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.1.0 |
+| [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.2.0 |
 | [private dns resolver](./private-dns-resolver/README.md) | v1.1.1 |
 | [private dns zone](./private-dns-zone/README.md) | v1.2.0 |
 | [private endpoint](./private-endpoint/README.md) | v1.2.0 |
