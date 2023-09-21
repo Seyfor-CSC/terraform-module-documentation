@@ -40,7 +40,7 @@
 | [mssql database](./mssql-database/README.md) | v1.3.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v1.2.0 |
 | [network security group](./network-security-group/README.md) | v1.2.0 |
-| [network watcher](./network-watcher/README.md) | v1.2.0 |
+| [network watcher](./network-watcher/README.md) | v1.3.0 |
 | [policy assignment](./policy-assignment/README.md) | v1.2.0 |
 | [policy set definition](./policy-set-definition/README.md) | v1.2.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.1.0 |
