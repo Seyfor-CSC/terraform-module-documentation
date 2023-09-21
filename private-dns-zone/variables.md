@@ -12,9 +12,9 @@ variable "config" {  type = list(object({
       refresh_time = optional(number)
       retry_time   = optional(number)
       ttl          = optional(number)
-      tags         = optional(map(any))
+      tags         = optional(map(any)) # If not provided, inherited in module from parent resource
     }))
-    tags = optional(map(any))
+    tags = optional(map(any)) 
 
     # private dns zone virtual network link
     virtual_network_links = optional(list(object({
@@ -23,7 +23,7 @@ variable "config" {  type = list(object({
       private_dns_zone_name = optional(string) # Inherited in module from parent resource
       virtual_network_id    = string
       registration_enabled  = optional(bool)
-      tags                  = optional(map(any))
+      tags                  = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
   }))
 }
@@ -45,7 +45,7 @@ variable "config" {  type = list(object({
 |&nbsp;refresh_time | number | Optional |  |  |
 |&nbsp;retry_time | number | Optional |  |  |
 |&nbsp;ttl | number | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |tags | map(any) | Optional |  |  |
 |virtual_network_links | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
@@ -53,6 +53,6 @@ variable "config" {  type = list(object({
 |&nbsp;private_dns_zone_name | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;virtual_network_id | string | Required |  |  |
 |&nbsp;registration_enabled | bool | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 
 
