@@ -28,7 +28,7 @@ variable "config" {  type = list(object({
       max_count                    = optional(number)
       min_count                    = optional(number)
       node_count                   = optional(number)
-      tags                         = optional(map(any))
+      tags                         = optional(map(any)) # If not provided, inherited in module from parent resource
     })
     dns_prefix                 = optional(string)
     dns_prefix_private_cluster = optional(string)
@@ -113,7 +113,7 @@ variable "config" {  type = list(object({
       max_count                = optional(number)
       min_count                = optional(number)
       node_count               = optional(number)
-      tags                     = optional(map(any))
+      tags                     = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -159,7 +159,7 @@ variable "config" {  type = list(object({
 |&nbsp;max_count | number | Optional |  |  |
 |&nbsp;min_count | number | Optional |  |  |
 |&nbsp;node_count | number | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |dns_prefix | string | Optional |  |  |
 |dns_prefix_private_cluster | string | Optional |  |  |
 |automatic_channel_upgrade | string | Optional |  |  |
@@ -231,7 +231,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;max_count | number | Optional |  |  |
 |&nbsp;&nbsp;min_count | number | Optional |  |  |
 |&nbsp;&nbsp;node_count | number | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
