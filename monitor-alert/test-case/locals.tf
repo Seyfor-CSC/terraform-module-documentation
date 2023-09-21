@@ -53,6 +53,42 @@ locals {
           }
         }
       ]
+
+      metric_alerts = [
+        {
+          name   = "example-metricalert"
+          scopes = [azurerm_storage_account.sa.id]
+          criteria = [
+            {
+              metric_namespace = "Microsoft.Storage/storageAccounts"
+              metric_name      = "Transactions"
+              aggregation      = "Total"
+              operator         = "GreaterThan"
+              threshold        = 50
+
+              dimension = [
+                {
+                  name     = "ApiName"
+                  operator = "Include"
+                  values   = ["*"]
+                },
+                {
+                  name     = "GeoType"
+                  operator = "Include"
+                  values   = ["*"]
+                }
+              ]
+            }
+          ]
+          action = [
+            {
+              action_group_id = azurerm_monitor_action_group.ag.id
+            }
+          ]
+          target_resource_type     = "Microsoft.Storage/storageAccounts"
+          target_resource_location = local.location
+        }
+      ]
     }
   ]
 }

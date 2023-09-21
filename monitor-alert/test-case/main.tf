@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -42,13 +42,24 @@ resource "azurerm_storage_account" "sa" {
   ]
 }
 
+resource "azurerm_monitor_action_group" "ag" {
+  name                = "actiongroup01"
+  resource_group_name = local.naming.rg
+  short_name          = "exampleag"
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+
 # monitor alert
 module "monitor_alert" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-alert.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-alert.git?ref=v1.3.0"
   config = local.alerts
 
   depends_on = [
     azurerm_application_insights.ai,
-    azurerm_storage_account.sa
+    azurerm_storage_account.sa,
+    azurerm_monitor_action_group.ag
   ]
 }
