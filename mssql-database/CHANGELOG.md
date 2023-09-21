@@ -1,5 +1,17 @@
 # Changelog
 
+## Release v1.4.0
+
+## Provider & Terraform Upgrade
+
+- Upgrade Azurerm provider & Terraform version (#8)
+
+## Enhancements
+
+- Add `administrator_login` and `administrator_login_password` variables to a ignore_changes lifecycle (#7)
+
+
+   
 ## Release v1.3.0
 
 ## Enhancements

@@ -48,7 +48,7 @@ variable "config" {  type = list(object({
       max_size_bytes                 = optional(number)
       zone_redundant                 = optional(bool)
       license_type                   = optional(string)
-      tags                           = optional(map(any))
+      tags                           = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # monitoring
       monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -113,7 +113,7 @@ variable "config" {  type = list(object({
       }))
       transparent_data_encryption_enabled = optional(bool)
       zone_redundant                      = optional(bool)
-      tags                                = optional(map(any))
+      tags                                = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # monitoring
       monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -157,7 +157,7 @@ variable "config" {  type = list(object({
         subresource_name   = string
         member_name        = optional(string)
       })), [])
-      tags = optional(map(any))
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
   }))
 }
@@ -209,7 +209,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;max_size_bytes | number | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
 |&nbsp;&nbsp;license_type | string | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
@@ -264,7 +264,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;storage_endpoint | string | Optional |  |  |
 |&nbsp;&nbsp;transparent_data_encryption_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
@@ -296,6 +296,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;private_ip_address | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;subresource_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 
 
