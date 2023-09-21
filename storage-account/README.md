@@ -17,21 +17,21 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -60,6 +60,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage_queue["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/queueServices/default|`<diag-name>`'
 #### Table
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage_table["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/tableServices/default|`<diag-name>`'
+### Private Endpoint
+* terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.storage\_account_
 
@@ -120,8 +122,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-## Public Network Access
-If you set `public_network_access_enabled` variable value to _false_, network access from all networks to this storage account will stay enabled unless private endpoint inside this module is also configured.
+No special features in module.
 
 &nbsp;
 
