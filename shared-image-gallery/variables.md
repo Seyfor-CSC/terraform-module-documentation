@@ -7,7 +7,16 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     description         = optional(string)
-    tags                = optional(map(any))
+    sharing = optional(object({
+      permission = string
+      community_gallery = optional(object({
+        eula            = string
+        prefix          = string
+        publisher_email = string
+        publisher_uri   = string
+      }))
+    }))
+    tags = optional(map(any))
 
     # shared image
     image = optional(list(object({
@@ -43,7 +52,7 @@ variable "config" {  type = list(object({
       confidential_vm_supported           = optional(bool)
       confidential_vm_enabled             = optional(bool)
       accelerated_network_support_enabled = optional(bool)
-      tags                                = optional(map(any))
+      tags                                = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # shared image version
       image_version = optional(list(object({
@@ -65,7 +74,7 @@ variable "config" {  type = list(object({
         os_disk_snapshot_id = optional(string)
         replication_mode    = optional(string)
         storage_account_id  = optional(string)
-        tags                = optional(map(any))
+        tags                = optional(map(any)) # If not provided, inherited in module from parent resource
       })))
     })), [])
   }))
@@ -83,6 +92,13 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |description | string | Optional |  |  |
+|sharing | object | Optional |  |  |
+|&nbsp;permission | string | Required |  |  |
+|&nbsp;community_gallery | object | Optional |  |  |
+|&nbsp;&nbsp;eula | string | Required |  |  |
+|&nbsp;&nbsp;prefix | string | Required |  |  |
+|&nbsp;&nbsp;publisher_email | string | Required |  |  |
+|&nbsp;&nbsp;publisher_uri | string | Required |  |  |
 |tags | map(any) | Optional |  |  |
 |image | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
@@ -115,7 +131,7 @@ variable "config" {  type = list(object({
 |&nbsp;confidential_vm_supported | bool | Optional |  |  |
 |&nbsp;confidential_vm_enabled | bool | Optional |  |  |
 |&nbsp;accelerated_network_support_enabled | bool | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;image_version | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
@@ -134,6 +150,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;os_disk_snapshot_id | string | Optional |  |  |
 |&nbsp;&nbsp;replication_mode | string | Optional |  |  |
 |&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 
 
