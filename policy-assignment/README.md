@@ -12,9 +12,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/management_group_policy_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/management_group_policy_assignment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/subscription_policy_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/subscription_policy_assignment
 
 &nbsp;
 
@@ -53,5 +53,4 @@ Parameters are passed into policy assignment through a json file. See [test-case
 &nbsp;
 
 # Known Issues
-## Variables
-Not all available variables are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.
+We currently log no issues in this module.

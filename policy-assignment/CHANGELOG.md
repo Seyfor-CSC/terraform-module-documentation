@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.3.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 3.73.0 (#5)
+- Terraform: 1.5.7 (#5)
+
+## Enhancements
+- Add `overrides` and `resource_selectors` variables
+   
 ## Release v1.2.0
 
 ### Version upgrade

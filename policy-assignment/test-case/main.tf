@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -18,10 +18,9 @@ data "azurerm_subscription" "primary" {}
 
 # policy assignment
 module "policy_assignment" {
-  source = "git@github.com:Seyfor-CSC/mit.policy-assignment.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.policy-assignment.git?ref=v1.3.0"
   config = local.policy
 }
-
 output "policy_assignment_mg" {
   value = module.policy_assignment.outputs_mg
 }
