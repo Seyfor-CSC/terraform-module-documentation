@@ -49,7 +49,7 @@
 | [private endpoint](./private-endpoint/README.md) | v1.2.0 |
 | [public ip address](./public-ip-address/README.md) | v1.3.0 |
 | [public ip prefix](./public-ip-prefix/README.md) | v1.3.0 |
-| [purview account](./purview-account/README.md) | v1.0.0 |
+| [purview account](./purview-account/README.md) | v1.1.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.5.0 |
 | [resource group](./resource-group/README.md) | v1.3.0 |
 | [role assignment](./role-assignment/README.md) | v1.3.0 |
