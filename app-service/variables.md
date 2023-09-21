@@ -113,7 +113,7 @@ variable "config" {  type = list(object({
         }))
       }))
       virtual_network_subnet_id = optional(string)
-      tags = optional(map(any))
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # private endpoint
       private_endpoint = optional(list(object({
@@ -140,7 +140,7 @@ variable "config" {  type = list(object({
           subresource_name   = string
           member_name        = optional(string)
         })), [])
-        tags = optional(map(any))
+        tags = optional(map(any)) # If not provided, inherited in module from parent resource
       })), [])
 
       # monitoring
@@ -256,7 +256,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;&nbsp;retention_in_days | number | Required |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;retention_in_mb | number | Required |  |  |
 |&nbsp;virtual_network_subnet_id | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
@@ -278,7 +278,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;private_ip_address | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;subresource_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
