@@ -51,7 +51,7 @@ variable "config" {  type = list(object({
         interval_in_minutes   = optional(number)
       }))
       version = optional(number)
-      tags    = optional(map(any))
+      tags    = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -113,7 +113,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;workspace_resource_id | string | Required |  |  |
 |&nbsp;&nbsp;interval_in_minutes | number | Optional |  |  |
 |&nbsp;version | number | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

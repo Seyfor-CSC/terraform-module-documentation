@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -56,7 +56,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # network security group
 module "network_security_group" {
-  source = "git@github.com:Seyfor-CSC/mit.network-security-group.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.network-security-group.git?ref=v1.3.0"
   config = local.nsg
 
   depends_on = [
