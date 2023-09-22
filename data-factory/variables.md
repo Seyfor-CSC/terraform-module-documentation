@@ -62,7 +62,7 @@ variable "config" {  type = list(object({
         subresource_name   = string
         member_name        = optional(string)
       })), [])
-      tags = optional(map(any))
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -134,7 +134,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;private_ip_address | string | Required |  |  |
 |&nbsp;&nbsp;subresource_name | string | Required |  |  |
 |&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
