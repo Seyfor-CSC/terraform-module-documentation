@@ -1,5 +1,5 @@
 locals {
-  location = "norwayeast"
+  location = "northeurope"
 
   naming = {
     rg    = "SEY-TERRAFORM-NE-RG01"
@@ -19,7 +19,7 @@ locals {
         {
           name               = "${local.naming.lb_1}-frontend-ip"
           subnet_id          = azurerm_subnet.subnet.id
-          private_ip_address = "10.0.2.4"
+          private_ip_address = "10.0.2.5"
         }
       ]
 
@@ -88,7 +88,7 @@ locals {
           backend_port                   = 0
           frontend_ip_configuration_name = "${local.naming.lb_1}-frontend-ip"
           disable_outbound_snat          = true
-          backend_address_pool_names       = ["${local.naming.lb_1}-backend-pool"]
+          backend_address_pool_names     = ["${local.naming.lb_1}-backend-pool"]
         }
       ]
 
@@ -138,16 +138,26 @@ locals {
         }
       ]
 
-      rules = [
+      nat_rules = [
         {
-          name                           = "LBRule1"
-          protocol                       = "Tcp"
-          frontend_port                  = 339
-          backend_port                   = 339
+          name                           = "${local.naming.lb_2}-nat-rule"
           frontend_ip_configuration_name = "${local.naming.lb_2}-frontend-ip"
-          disable_outbound_snat          = true
-          probe_name                       = "ssh-probe"
-          backend_address_pool_names       = ["${local.naming.lb_2}-backend-pool"]
+          protocol                       = "Tcp"
+          frontend_port_start            = 3000
+          frontend_port_end              = 3389
+          backend_port                   = 3389
+          backend_address_pool_name      = "${local.naming.lb_2}-backend-pool"
+        }
+      ]
+
+      nat_pools = [
+        {
+          name                           = "${local.naming.lb_2}-nat-pool"
+          frontend_ip_configuration_name = "${local.naming.lb_2}-frontend-ip"
+          protocol                       = "Tcp"
+          frontend_port_start            = 587
+          frontend_port_end              = 588
+          backend_port                   = 589
         }
       ]
 

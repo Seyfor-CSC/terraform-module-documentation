@@ -1,5 +1,20 @@
 # Changelog
 
+## Release v1.3.0
+
+## Provider & Terraform Upgrade
+
+- Azurerm provider: 3.73.0 (#10)
+- Terraform: 1.5.7 (#10)
+
+## Enhancements
+
+- Add `azurerm_lb_nat_rule` and `azurerm_lb_nat_pool` resources (#7)
+- Change `azurerm_lb_backend_address_pool`, `azurerm_lb_rule`, and `azurerm_lb_probe` resource deployment requirement to `optional` (#7)
+- Add `probes` id and `backend_pools` id to outputs (#8)
+
+
+   
 ## Release v1.2.0
 
 ### Version upgrade

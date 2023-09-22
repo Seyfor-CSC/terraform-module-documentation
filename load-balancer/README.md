@@ -1,12 +1,14 @@
 # Introduction
 Load Balancer module can deploy these resources:
 * azurerm_lb (required)
-* azurerm_lb_backend_address_pool (required)
+* azurerm_lb_backend_address_pool (optional)
 * azurerm_lb_backend_address_pool_address (optional)
 * azurerm_network_interface_backend_address_pool_association (optional)
-* azurerm_lb_rule (required)
 * azurerm_lb_outbound_rule (optional)
-* azurerm_lb_probe (required)
+* azurerm_lb_probe (optional)
+* azurerm_lb_rule (optional)
+* azurerm_lb_nat_rule (optional)
+* azurerm_lb_nat_pool (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
@@ -17,21 +19,25 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_backend_address_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_backend_address_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_backend_address_pool_address
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_backend_address_pool_address
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/network_interface_backend_address_pool_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/network_interface_backend_address_pool_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_outbound_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_outbound_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_probe
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_probe
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/lb_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_nat_rule
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/lb_nat_pool
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -45,12 +51,16 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_lb_backend_address_pool_address.lb_backend_address_pool_address["`<lb-name>`_`<lb-backend-address-pool-address-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/backendAddressPools/`<lb-backend-address-pool-name>`/addresses/`<lb-backend-address-pool-address-name>`'
 ### Network Interface Backend Address Pool Association
 * terraform import '`<path-to-module>`.azurerm_network_interface_backend_address_pool_association.network_interface_backend_address_pool_association["`<lb-name>`_`<network-interface-backend-address-pool-association-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/backendAddressPools/`<lb-backend-address-pool-name>`'
-### Load Balancer Rule
-* terraform import '`<path-to-module>`.azurerm_lb_rule.lb_rule["`<lb-name>`_`<lb-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/loadBalancingRules/`<lb-rule-name>`'
 ### Load Balancer Outbound Rule
 * terraform import '`<path-to-module>`.azurerm_lb_outbound_rule.lb_outbound_rule["`<lb-name>`_`<lb-outbound-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/outboundRules/`<lb-outbound-rule-name>`'
 ### Load Balancer Probe
 * terraform import '`<path-to-module>`.azurerm_lb_probe.lb_probe["`<lb-name>`_`<lb-probe-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/probes/`<lb-probe-name>`'
+### Load Balancer Rule
+* terraform import '`<path-to-module>`.azurerm_lb_rule.lb_rule["`<lb-name>`_`<lb-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/loadBalancingRules/`<lb-rule-name>`'
+### Load Balancer NAT Rule
+* terraform import '`<path-to-module>`.azurerm_lb_nat_rule.lb_nat_rule["`<lb-name>`_`<lb-nat-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/inboundNatRules/`<lb-nat-rule-name>`'
+### Load Balancer NAT Pool
+* terraform import '`<path-to-module>`.azurerm_lb_nat_pool.lb_nat_pool["`<lb-name>`_`<lb-nat-pool-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`/inboundNatPools/`<lb-nat-pool-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<lb-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/loadBalancers/`<lb-name>`|`<diag-name>`'
 
@@ -61,10 +71,18 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value | Comment |
-| ----------- | ----- | ------- |
-| outputs     | name  |         |
-|             | id    |         |
+| Output Name | Value         | Comment                      |
+| ----------- | ------------- | ---------------------------- |
+| outputs     | name          |                              |
+|             | id            |                              |
+|             | backend_pools | Backend Address Pool outputs |
+|             | &nbsp;id      |                              |
+|             | probes        | Probe outputs                |
+|             | &nbsp;id      |                              |
+|             | nat_rules     | NAT Rule outputs             |
+|             | &nbsp;id      |                              |
+|             | nat_pools     | NAT Pool outputs             |
+|             | &nbsp;id      |                              |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Load Balancer module is used as a value for the _scope_ variable in Role Assignment resource.
@@ -99,7 +117,9 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Custom variables
 * `backend_address_pool_names` replaces the `backend_address_pool_ids` variable in the `rules` list of objects.
+* `backend_address_pool_name` replaces the `backend_address_pool_id` variable in the `nat_rules` list of objects.
 * `probe_name` replaces the `probe_id` variable in the `rules` list of objects.
+* `custom_name` used for looping through the `nic_association` list of objects.
 
 &nbsp;
 
