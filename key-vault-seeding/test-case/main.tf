@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.67.0"
+      version = "=3.73.0"
     }
   }
   backend "local" {}
@@ -59,7 +59,7 @@ resource "azurerm_role_assignment" "rbac" {
 
 # key vault seeding
 module "seeding" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v1.1.0"
   config = local.seeding
 
   depends_on = [
