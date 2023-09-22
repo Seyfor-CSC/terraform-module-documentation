@@ -7,9 +7,9 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     sku_name            = string
-    tenant_id           = optional(string) # Value is supplyed in module from data source "azurerm_client_config"
+    tenant_id           = optional(string) # Value is supplied in module from data source "azurerm_client_config"
     access_policy = optional(list(object({
-      tenant_id               = optional(string) # Value is supplyed in module from data source "azurerm_client_config"
+      tenant_id               = optional(string) # Value is supplied in module from data source "azurerm_client_config"
       object_id               = string
       application_id          = optional(string)
       certificate_permissions = optional(list(string))
@@ -62,7 +62,7 @@ variable "config" {  type = list(object({
         subresource_name   = string
         member_name        = optional(string)
       })), [])
-      tags = optional(map(any))
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -87,9 +87,9 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |sku_name | string | Required |  |  |
-|tenant_id | string | Optional |  |  Value is supplyed in module from data source "azurerm_client_config" |
+|tenant_id | string | Optional |  |  Value is supplied in module from data source "azurerm_client_config" |
 |access_policy | list(object) | Optional | [] |  |
-|&nbsp;tenant_id | string | Optional |  |  Value is supplyed in module from data source "azurerm_client_config" |
+|&nbsp;tenant_id | string | Optional |  |  Value is supplied in module from data source "azurerm_client_config" |
 |&nbsp;object_id | string | Required |  |  |
 |&nbsp;&nbsp;application_id | string | Optional |  |  |
 |&nbsp;&nbsp;certificate_permissions | list(string) | Optional |  |  |
@@ -134,7 +134,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;private_ip_address | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;subresource_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
