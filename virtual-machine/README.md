@@ -19,42 +19,42 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/windows_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/windows_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/linux_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/linux_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/virtual_machine_data_disk_attachment
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/virtual_machine_data_disk_attachment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_protected_vm
 
 &nbsp;
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Windows Virtual Machine
-* terraform import '`<path-to-module>`.azurerm_windows_virtual_machine.windows_virtual_machine[`<windows-virtual-machine-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`'
+* terraform import '`<path-to-module>`.azurerm_windows_virtual_machine.windows_virtual_machine["`<windows-virtual-machine-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`'
 ### Linux Virtual Machine
-* terraform import '`<path-to-module>`.azurerm_linux_virtual_machine.linux_virtual_machine[`<linux-virtual-machine-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<linux-virtual-machine-name>`'
+* terraform import '`<path-to-module>`.azurerm_linux_virtual_machine.linux_virtual_machine["`<linux-virtual-machine-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<linux-virtual-machine-name>`'
 ### Network Interface
-* terraform import '`<path-to-module>`.azurerm_network_interface.network_interface[`<network-interface-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/networkInterfaces/`<network-interface-name>`'
+* terraform import '`<path-to-module>`.azurerm_network_interface.network_interface["`<network-interface-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/networkInterfaces/`<network-interface-name>`'
 ### Managed Disk
-* terraform import '`<path-to-module>`.azurerm_managed_disk.managed_disk[`<managed-disk-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/disks/`<managed-disk-name>`'
+* terraform import '`<path-to-module>`.azurerm_managed_disk.managed_disk["`<managed-disk-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/disks/`<managed-disk-name>`'
 ### Virtual Machine Data Disk Attachment
-* terraform import '`<path-to-module>`.azurerm_virtual_machine_data_disk_attachment.virtual_machine_data_disk_attachment[`<managed-disk-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/dataDisks/`<managed-disk-name>`'
+* terraform import '`<path-to-module>`.azurerm_virtual_machine_data_disk_attachment.virtual_machine_data_disk_attachment["`<managed-disk-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/dataDisks/`<managed-disk-name>`'
 ### Data Collection Rule Association
-* terraform import '`<path-to-module>`.azurerm_monitor_data_collection_rule_association.monitor_data_collection_rule_association[`<windows-virtual-machine-name>`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/providers/Microsoft.Insights/dataCollectionRuleAssociations/`<data-collection-rule-association-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_data_collection_rule_association.monitor_data_collection_rule_association["`<windows-virtual-machine-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/providers/Microsoft.Insights/dataCollectionRuleAssociations/`<data-collection-rule-association-name>`'
 ### Virtual Machine Extension
-* terraform import '`<path-to-module>`.azurerm_virtual_machine_extension.virtual_machine_extension[`<virtual-machine-extension-name`]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/extensions/`<extensionName>`'
+* terraform import '`<path-to-module>`.azurerm_virtual_machine_extension.virtual_machine_extension["`<virtual-machine-extension-name`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<windows-virtual-machine-name>`/extensions/`<extensionName>`'
 ### Backup Policy Disk
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_policy_disk.data_protection_backup_policy_disk["`<backup-vault-name_backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
 ### Backup Protected VM

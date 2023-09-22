@@ -139,7 +139,7 @@ variable "config" {  type = list(object({
       enable_ip_forwarding          = optional(bool)
       enable_accelerated_networking = optional(bool)
       internal_dns_name_label       = optional(string)
-      tags                          = optional(map(any)) # Inherited in module from parent resource
+      tags                          = optional(map(any)) # If not provided, inherited in module from parent resource
     }))
 
     # managed disk
@@ -167,24 +167,26 @@ variable "config" {  type = list(object({
           source_vault_id = string
         }))
       }))
-      hyper_v_generation               = optional(string)
-      image_reference_id               = optional(string)
-      gallery_image_reference_id       = optional(string)
-      logical_sector_size              = optional(number)
-      os_type                          = optional(string)
-      source_resource_id               = optional(string)
-      source_uri                       = optional(string)
-      storage_account_id               = optional(string)
-      tier                             = optional(string)
-      max_shares                       = optional(number)
-      trusted_launch_enabled           = optional(bool)
-      security_type                    = optional(string)
-      secure_vm_disk_encryption_set_id = optional(string)
-      on_demand_bursting_enabled       = optional(bool)
-      zone                             = optional(string) # Inherited in module from parent resource
-      network_access_policy            = optional(string)
-      disk_access_id                   = optional(string)
-      public_network_access_enabled    = optional(bool, false)
+      hyper_v_generation                = optional(string)
+      image_reference_id                = optional(string)
+      gallery_image_reference_id        = optional(string)
+      logical_sector_size               = optional(number)
+      optimized_frequent_attach_enabled = optional(bool)
+      performance_plus_enabled          = optional(bool)
+      os_type                           = optional(string)
+      source_resource_id                = optional(string)
+      source_uri                        = optional(string)
+      storage_account_id                = optional(string)
+      tier                              = optional(string)
+      max_shares                        = optional(number)
+      trusted_launch_enabled            = optional(bool)
+      security_type                     = optional(string)
+      secure_vm_disk_encryption_set_id  = optional(string)
+      on_demand_bursting_enabled        = optional(bool)
+      zone                              = optional(string) # Inherited in module from parent resource
+      network_access_policy             = optional(string)
+      disk_access_id                    = optional(string)
+      public_network_access_enabled     = optional(bool, false)
 
       # data protection backup instance disk
       disk_backup = optional(list(object({
@@ -195,7 +197,7 @@ variable "config" {  type = list(object({
         snapshot_resource_group_name = optional(string) # If not provided, inherited in module from parent resource
         backup_policy_id             = string
       })), [])
-      tags = optional(map(any)) # Inherited in module from parent resource
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # virtual machine data disk attachment
       disk_attachment = optional(list(object({
@@ -244,7 +246,8 @@ variable "config" {  type = list(object({
         secret_url      = string
         source_vault_id = string
       }))
-      tags = optional(map(any)) # Inherited in module from parent resource
+      provision_after_extensions = optional(list(string))
+      tags                       = optional(map(any))     # If not provided, inherited in module from parent resource
     })), [])
   }))
 }
@@ -373,7 +376,7 @@ variable "config" {  type = list(object({
 |&nbsp;enable_ip_forwarding | bool | Optional |  |  |
 |&nbsp;enable_accelerated_networking | bool | Optional |  |  |
 |&nbsp;internal_dns_name_label | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  Inherited in module from parent resource |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |managed_disks | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
@@ -399,6 +402,8 @@ variable "config" {  type = list(object({
 |&nbsp;image_reference_id | string | Optional |  |  |
 |&nbsp;gallery_image_reference_id | string | Optional |  |  |
 |&nbsp;logical_sector_size | number | Optional |  |  |
+|&nbsp;optimized_frequent_attach_enabled | bool | Optional |  |  |
+|&nbsp;performance_plus_enabled | bool | Optional |  |  |
 |&nbsp;os_type | string | Optional |  |  |
 |&nbsp;source_resource_id | string | Optional |  |  |
 |&nbsp;source_uri | string | Optional |  |  |
@@ -420,7 +425,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;disk_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;snapshot_resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
-|&nbsp;tags | map(any) | Optional |  |  Inherited in module from parent resource |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;disk_attachment | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;virtual_machine_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;managed_disk_id | string | Optional |  |  Inherited in module from parent resource |
@@ -456,6 +461,7 @@ variable "config" {  type = list(object({
 |&nbsp;protected_settings_from_key_vault | object | Optional |  |  |
 |&nbsp;&nbsp;secret_url | string | Required |  |  |
 |&nbsp;&nbsp;source_vault_id | string | Required |  |  |
-|&nbsp;tags | map(any) | Optional |  |  Inherited in module from parent resource |
+|&nbsp;provision_after_extensions | list(string) | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 
 
