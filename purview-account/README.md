@@ -18,6 +18,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Purview account
 * terraform import '`<path-to-module>`.azurerm_purview_account.purview_account["`<purview-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Purview/accounts/`<purview-account-name>`'
+### Diagnostic Setting
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<purview-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Purview/accounts/`<purview-account-name>`|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.purview\_account_
 

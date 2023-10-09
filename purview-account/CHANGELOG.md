@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.2.0
+
+## Enhancements
+
+- Add `azurerm_monitor_diagnostic_setting` resource (#8)
+
+
+   
 ## Release v1.1.0
 
 ## Provider & Terraform Upgrade

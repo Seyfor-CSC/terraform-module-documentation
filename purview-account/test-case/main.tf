@@ -19,12 +19,26 @@ resource "azurerm_resource_group" "rg" {
   location = local.location
 }
 
-# purview account
-module "purview_account" {
-  source = "git@github.com:Seyfor-CSC/mit.purview-account.git?ref=v1.1.0"
-  config = local.purview_account
+# monitoring prerequisities
+resource "azurerm_log_analytics_workspace" "la" {
+  name                = "SEY-TERRAFORM-NE-LA01"
+  location            = local.location
+  resource_group_name = local.naming.rg
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+
   depends_on = [
     azurerm_resource_group.rg
+  ]
+}
+
+# purview account
+module "purview_account" {
+  source = "git@github.com:Seyfor-CSC/mit.purview-account.git?ref=v1.2.0"
+  config = local.purview_account
+  depends_on = [
+    azurerm_resource_group.rg,
+    azurerm_log_analytics_workspace.la
   ]
 }
 
