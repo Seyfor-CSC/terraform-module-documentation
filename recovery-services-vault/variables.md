@@ -24,9 +24,14 @@ variable "config" {  type = list(object({
     }))
     classic_vmware_replication_enabled = optional(bool)
     monitoring_rsv = optional(object({
-      alerts_for_all_job_failures_enabled            = optional(bool, false)
-      alerts_for_critical_operation_failures_enabled = optional(bool, false)
-    }))
+      alerts_for_all_job_failures_enabled            = optional(bool)
+      alerts_for_critical_operation_failures_enabled = optional(bool)
+      }),
+      {
+        alerts_for_all_job_failures_enabled            = false
+        alerts_for_critical_operation_failures_enabled = false
+      }
+    )
     tags = optional(map(any))
 
     # backup policy vm
@@ -140,72 +145,9 @@ variable "config" {  type = list(object({
 |&nbsp;use_system_assigned_identity | bool | Optional |  |  |
 |classic_vmware_replication_enabled | bool | Optional |  |  |
 |monitoring_rsv | object | Optional |  |  |
-|&nbsp;alerts_for_all_job_failures_enabled | bool | Optional |  false |  |
-|&nbsp;alerts_for_critical_operation_failures_enabled | bool | Optional |  false |  |
-|tags | map(any) | Optional |  |  |
-|backup_policy | list(object) | Optional | [] |  |
-|&nbsp;name | string | Required |  |  |
-|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;recovery_vault_name | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;backup | object | Required |  |  |
-|&nbsp;&nbsp;frequency | string | Required |  |  |
-|&nbsp;&nbsp;time | string | Required |  |  |
-|&nbsp;&nbsp;hour_interval | number | Optional |  |  |
-|&nbsp;&nbsp;hour_duration | number | Optional |  |  |
-|&nbsp;&nbsp;weekdays | list(string) | Optional |  |  |
-|&nbsp;policy_type | string | Optional |  |  |
-|&nbsp;timezone | string | Optional |  |  |
-|&nbsp;instant_restore_retention_days | number | Optional |  |  |
-|&nbsp;instant_restore_resource_group | object | Optional |  |  |
-|&nbsp;&nbsp;prefix | string | Required |  |  |
-|&nbsp;&nbsp;suffix | string | Optional |  |  |
-|&nbsp;retention_daily | object | Optional |  |  |
-|&nbsp;&nbsp;count | number | Required |  |  |
-|&nbsp;retention_weekly | object | Optional |  |  |
-|&nbsp;&nbsp;count | number | Required |  |  |
-|&nbsp;&nbsp;weekdays | list(string) | Required |  |  |
-|&nbsp;retention_monthly | object | Optional |  |  |
-|&nbsp;&nbsp;count | number | Required |  |  |
-|&nbsp;&nbsp;weekdays | list(string) | Optional |  |  |
-|&nbsp;&nbsp;weeks | list(string) | Optional |  |  |
-|&nbsp;&nbsp;days | list(number) | Optional |  |  |
-|&nbsp;&nbsp;include_last_days | bool | Optional |  |  |
-|&nbsp;retention_yearly | object | Optional |  |  |
-|&nbsp;&nbsp;count | number | Required |  |  |
-|&nbsp;&nbsp;months | list(string) | Required |  |  |
-|&nbsp;&nbsp;weekdays | list(string) | Optional |  |  |
-|&nbsp;&nbsp;weeks | list(string) | Optional |  |  |
-|&nbsp;&nbsp;days | list(number) | Optional |  |  |
-|&nbsp;&nbsp;include_last_days | bool | Optional |  |  |
-|private_endpoint | list(object) | Optional | [] |  |
-|&nbsp;name | string | Required |  |  |
-|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;subnet_id | string | Required |  |  |
-|&nbsp;private_service_connection | list(object) | Required |  |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
-|&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
-|&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
-|&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
-|&nbsp;&nbsp;request_message | string | Optional |  |  |
-|&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
-|&nbsp;ip_configuration | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_ip_address | string | Required |  |  |
-|&nbsp;&nbsp;subresource_name | string | Required |  |  |
-|&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
-|monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
-|&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
-|&nbsp;log_analytics_workspace_id | string | Optional |  |  |
-|&nbsp;eventhub_name | string | Optional |  |  |
-|&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
-|&nbsp;recovery | bool | Optional |  false |  Custom variable used to enable recovery logs |
-|&nbsp;backup | bool | Optional |  false |  Custom variable used to enable backup logs |
-|&nbsp;backup_report | bool | Optional |  false |  Custom variable used to enable backup report logs |
+|&nbsp;alerts_for_all_job_failures_enabled | bool | Optional |  |  |
+|&nbsp;alerts_for_critical_operation_failures_enabled | bool | Optional |  |  |
+|alerts_for_all_job_failures_enabled | false | Required |  |  |
+|alerts_for_critical_operation_failures_enabled | false | Required |  |  |
 
 

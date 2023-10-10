@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.5.1
+
+## Enhancements
+
+- Set `monitoring_rsv` variables default values to `false` (#11)
+
+
+   
 ## Release v1.5.0
 
 ## Provider & Terraform Upgrade
