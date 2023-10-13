@@ -2,6 +2,9 @@
 
 ## Release v1.0.0
 
-### Added
-- Initial code
+## Initial Code
+
+- Initial code (#2)
+
+
    
