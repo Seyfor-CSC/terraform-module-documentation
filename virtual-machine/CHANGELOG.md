@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.1.1
+
+## Bug Fixes
+
+- Remove Data Disk `os_type` value inheritance from Virtual Machine (#12)
+
+
+
+   
 ## Release v1.1.0
 
 ## Provider & Terraform Upgrade
