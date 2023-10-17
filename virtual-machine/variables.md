@@ -137,7 +137,7 @@ variable "config" {  type = list(object({
       dns_servers                   = optional(list(string))
       edge_zone                     = optional(string)
       enable_ip_forwarding          = optional(bool)
-      enable_accelerated_networking = optional(bool)
+      enable_accelerated_networking = optional(bool, true)
       internal_dns_name_label       = optional(string)
       tags                          = optional(map(any)) # If not provided, inherited in module from parent resource
     }))
@@ -247,7 +247,7 @@ variable "config" {  type = list(object({
         source_vault_id = string
       }))
       provision_after_extensions = optional(list(string))
-      tags                       = optional(map(any))     # If not provided, inherited in module from parent resource
+      tags                       = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
   }))
 }
@@ -374,7 +374,7 @@ variable "config" {  type = list(object({
 |&nbsp;dns_servers | list(string) | Optional |  |  |
 |&nbsp;edge_zone | string | Optional |  |  |
 |&nbsp;enable_ip_forwarding | bool | Optional |  |  |
-|&nbsp;enable_accelerated_networking | bool | Optional |  |  |
+|&nbsp;enable_accelerated_networking | bool | Optional |  true |  |
 |&nbsp;internal_dns_name_label | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |managed_disks | list(object) | Optional | [] |  |

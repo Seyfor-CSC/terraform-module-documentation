@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.1.2
+
+## Enhancements
+
+- Set `enable_accelerated_networking` variable default value to true (#14)
+
+
+   
 ## Release v1.1.1
 
 ## Bug Fixes
