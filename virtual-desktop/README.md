@@ -48,12 +48,12 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Workspace
 * terraform import '`<path-to-module>`.azurerm_virtual_desktop_workspace.virtual_desktop_workspace["`<workspace-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/workspaces/`<workspace-name>`'
 ### Workspace Application Group Association
-* terraform import '`<path-to-module>`.azurerm_virtual_desktop_workspace_application_group_association.virtual_desktop_workspace_application_group_association["`<workspace-name>`_`<host-pool-name>`_`<application-group-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/workspaces/`<workspace-name>`|/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`'
+* terraform import '`<path-to-module>`.azurerm_virtual_desktop_workspace_application_group_association.virtual_desktop_workspace_application_group_association["`<workspace-name>`\_`<host-pool-name>`\_`<application-group-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/workspaces/`<workspace-name>`|/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`'
 ### Diagnostic Setting
 #### Host Pool
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.host_pool["`<host-pool-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/hostPools/`<host-pool-name>`|`<diag-name>`'
 #### Application Group
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.application_group["`<host-pool-name>`_`<application-group-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.application_group["`<host-pool-name>`\_`<application-group-name>`\_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`|`<diag-name>`'
 #### Scaling Plan
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.scaling_plan["`<scaling-plan-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/scalingPlans/`<scaling-plan-name>`|`<diag-name>`'
 #### Workspace
