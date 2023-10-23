@@ -15,7 +15,7 @@
 | Name | Latest Version |
 | ---- | -------------- |
 | [app service](./app-service/README.md) | v1.2.0 |
-| [automation account](./automation-account/README.md) | v1.5.0 |
+| [automation account](./automation-account/README.md) | v1.5.1 |
 | [automation module](./automation-module/README.md) | v1.2.0 |
 | [availability set](./availability-set/README.md) | v1.2.0 |
 | [backup vault](./backup-vault/README.md) | v1.3.0 |

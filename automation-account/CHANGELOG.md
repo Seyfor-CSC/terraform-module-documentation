@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.5.1
+
+## Enhancements
+
+- Add automation schedule `start_time` variable to lifecycle ignore_changes (#13)
+
+
+   
 ## Release v1.5.0
 
 ## Provider & Terraform Upgrade
