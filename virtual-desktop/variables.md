@@ -3,7 +3,7 @@
 ```
 variable "config" {  type = object({
     # virtual desktop host pool
-    host_pools = list(object({
+    host_pools = optional(list(object({
       name                             = string
       resource_group_name              = string
       location                         = string
@@ -97,7 +97,7 @@ variable "config" {  type = object({
         })), [])
         tags = optional(map(any)) # If not provided, inherited in module from parent resource
       })), [])
-    }))
+    })), [])
 
     # virtual desktop scaling plan
     scaling_plans = optional(list(object({
@@ -201,7 +201,7 @@ variable "config" {  type = object({
 
 | Name | Data Type | Requirement | Default Value | Comment |
 | ------- | --------- | ----------- | ------------- | ------- |
-|host_pools | list(object) | Required |  |  |
+|host_pools | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Required |  |  |
 |&nbsp;location | string | Required |  |  |

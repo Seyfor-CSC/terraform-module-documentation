@@ -9,6 +9,14 @@
 
 
    
+## Release v1.0.2
+
+## Enhancements
+
+- Switch `azurerm_virtual_desktop_host_pool` resource to optional (#11)
+
+
+   
 ## Release v1.0.0
 
 ## Initial Code

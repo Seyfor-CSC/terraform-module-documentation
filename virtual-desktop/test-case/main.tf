@@ -129,7 +129,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual desktop
 module "virtual_desktop" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v1.0.1"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v1.0.2"
   config = local.virtual_desktop
 
   depends_on = [

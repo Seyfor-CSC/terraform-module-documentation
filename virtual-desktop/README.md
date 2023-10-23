@@ -1,6 +1,6 @@
 # Introduction
 Virtual desktop module can deploy these resources:
-* azurerm_virtual_desktop_host_pool (required)
+* azurerm_virtual_desktop_host_pool (optional)
 * azurerm_virtual_desktop_application_group (optional)
 * azurerm_virtual_desktop_host_pool_registration_info (optional)
 * azurerm_virtual_desktop_scaling_plan (optional)
@@ -8,6 +8,7 @@ Virtual desktop module can deploy these resources:
 * azurerm_virtual_desktop_workspace_application_group_association (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
+> **_NOTE:_** At least one of _azurerm_virtual_desktop_host_pool_, _azurerm_virtual_desktop_scaling_plan_, or _azurerm_virtual_desktop_workspace_ needs to be specified in module configuration
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -48,7 +49,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Workspace
 * terraform import '`<path-to-module>`.azurerm_virtual_desktop_workspace.virtual_desktop_workspace["`<workspace-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/workspaces/`<workspace-name>`'
 ### Workspace Application Group Association
-* terraform import '`<path-to-module>`.azurerm_virtual_desktop_workspace_application_group_association.virtual_desktop_workspace_application_group_association["`<workspace-name>`\_`<host-pool-name>`\_`<application-group-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/workspaces/`<workspace-name>`|/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`'
+* terraform import '`<path-to-module>`.azurerm_virtual_desktop_workspace_application_group_association.virtual_desktop_workspace_application_group_association["`<workspace-name>`_`<application-group-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/workspaces/`<workspace-name>`|/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`'
 ### Diagnostic Setting
 #### Host Pool
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.host_pool["`<host-pool-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/hostPools/`<host-pool-name>`|`<diag-name>`'

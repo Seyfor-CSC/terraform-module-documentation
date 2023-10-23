@@ -4,13 +4,10 @@ locals {
   naming = {
     rg          = "SEY-TERRAFORM-NE-RG01"
     pool_1      = "SEY-TERRAFORM-NE-POOL01"
-    pool_2      = "SEY-TERRAFORM-NE-POOL02"
     group_1     = "SEY-TERRAFORM-NE-GROUP01"
     group_2     = "SEY-TERRAFORM-NE-GROUP02"
     plan_1      = "SEY-TERRAFORM-NE-PLAN01"
-    plan_2      = "SEY-TERRAFORM-NE-PLAN02"
     workspace_1 = "SEY-TERRAFORM-NE-WORKSPACE01"
-    workspace_2 = "SEY-TERRAFORM-NE-WORKSPACE02"
   }
 
   virtual_desktop = {
