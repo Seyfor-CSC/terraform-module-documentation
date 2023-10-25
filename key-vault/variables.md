@@ -28,7 +28,7 @@ variable "config" {  type = list(object({
       virtual_network_subnet_ids = optional(list(string))
     }))
     purge_protection_enabled      = optional(bool)
-    public_network_access_enabled = optional(bool)
+    public_network_access_enabled = optional(bool, false)
     soft_delete_retention_days    = optional(number)
     contact = optional(list(object({
       email = string
@@ -106,7 +106,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;ip_rules | list(string) | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_ids | list(string) | Optional |  |  |
 |&nbsp;purge_protection_enabled | bool | Optional |  |  |
-|&nbsp;public_network_access_enabled | bool | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  false |  |
 |&nbsp;soft_delete_retention_days | number | Optional |  |  |
 |&nbsp;contact | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;email | string | Required |  |  |

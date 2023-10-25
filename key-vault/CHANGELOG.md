@@ -1,5 +1,18 @@
 # Changelog
 
+## Release v1.5.1
+
+## Bug Fixes
+
+- Change `azurerm_monitor_diagnostic_setting` resource reference name from `diagnostic_settings` to `diagnostic_setting` (#17)
+
+
+## Enhancements
+
+- Set default value for `public_network_access_enabled` to false (#19)
+
+
+   
 ## Release v1.5.0
 
 ## Provider & Terraform Upgrade
