@@ -22,7 +22,7 @@ variable "config" {  type = list(object({
     }))
     transparent_data_encryption_key_vault_key_id = optional(string)
     minimum_tls_version                          = optional(string)
-    public_network_access_enabled                = optional(bool)
+    public_network_access_enabled                = optional(bool, false)
     outbound_network_restriction_enabled         = optional(bool)
     primary_user_assigned_identity_id            = optional(string)
     tags                                         = optional(map(any))
@@ -187,7 +187,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
 |&nbsp;transparent_data_encryption_key_vault_key_id | string | Optional |  |  |
 |&nbsp;minimum_tls_version | string | Optional |  |  |
-|&nbsp;public_network_access_enabled | bool | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  false |  |
 |&nbsp;outbound_network_restriction_enabled | bool | Optional |  |  |
 |&nbsp;primary_user_assigned_identity_id | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |

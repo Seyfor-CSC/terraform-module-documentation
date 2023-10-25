@@ -40,7 +40,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### MSSQL Firewall Rule
 * terraform import '`<path-to-module>`.azurerm_mssql_firewall_rule.mssql_firewall_rule["`<mssql-server-name>`_`<mssql-firewall-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/firewallRules/`<mssql-firewall-rule-name>`'
 ### Diagnostic Setting
+#### MSSQL Database
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<mssql-database-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/databases/`<mssql-database-name>`|`<diag-name>`'
+#### MSSQL Elastic Pool
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.mssql_elasticpool["`<mssql-elasticpool-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/elasticPools/`<mssql-elasticpool-name>`|`<diag-name>`'
 ### Private Endpoint
 * terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
