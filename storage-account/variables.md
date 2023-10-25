@@ -16,7 +16,7 @@ variable "config" {  type = list(object({
     min_tls_version                  = optional(string, "TLS1_2")
     allow_nested_items_to_be_public  = optional(bool, false)
     shared_access_key_enabled        = optional(bool)
-    public_network_access_enabled    = optional(bool)
+    public_network_access_enabled    = optional(bool, false)
     default_to_oauth_authentication  = optional(bool)
     is_hns_enabled                   = optional(bool)
     nfsv3_enabled                    = optional(bool)
@@ -264,7 +264,7 @@ variable "config" {  type = list(object({
 |min_tls_version | string | Optional |  "TLS1_2" |  |
 |allow_nested_items_to_be_public | bool | Optional |  false |  |
 |shared_access_key_enabled | bool | Optional |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |default_to_oauth_authentication | bool | Optional |  |  |
 |is_hns_enabled | bool | Optional |  |  |
 |nfsv3_enabled | bool | Optional |  |  |

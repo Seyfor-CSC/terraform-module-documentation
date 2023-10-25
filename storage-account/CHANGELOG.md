@@ -1,10 +1,10 @@
 # Changelog
 
-## Release v1.4.0
+## Release v1.5.1
 
 ## Enhancements
 
-- Remove provisioner (#19)
+- Set default value for `public_network_access_enabled` to false (#27)
 
 
    
@@ -16,6 +16,14 @@
 
 ## Bug Fixes
  - Set `private_link_access` variable default value to `[]` (#25)
+
+   
+## Release v1.4.0
+
+## Enhancements
+
+- Remove provisioner (#19)
+
 
    
 ## Release v1.3.2
