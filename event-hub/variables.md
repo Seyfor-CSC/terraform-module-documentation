@@ -18,7 +18,7 @@ variable "config" {  type = list(object({
     zone_redundant           = optional(bool)
     network_rulesets = optional(object({
       default_action                 = string
-      public_network_access_enabled  = optional(bool)
+      public_network_access_enabled  = optional(bool, false)
       trusted_service_access_enabled = optional(bool)
       virtual_network_rule = optional(list(object({
         subnet_id                                       = string
@@ -30,7 +30,7 @@ variable "config" {  type = list(object({
       })), [])
     }))
     local_authentication_enabled  = optional(bool)
-    public_network_access_enabled = optional(bool)
+    public_network_access_enabled = optional(bool, false)
     minimum_tls_version           = optional(string)
     tags                          = optional(map(any))
 
@@ -137,7 +137,7 @@ variable "config" {  type = list(object({
 |zone_redundant | bool | Optional |  |  |
 |network_rulesets | object | Optional |  |  |
 |&nbsp;default_action | string | Required |  |  |
-|&nbsp;public_network_access_enabled | bool | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  false |  |
 |&nbsp;trusted_service_access_enabled | bool | Optional |  |  |
 |&nbsp;virtual_network_rule | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;subnet_id | string | Required |  |  |
@@ -146,7 +146,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;ip_mask | string | Required |  |  |
 |&nbsp;&nbsp;action | string | Optional |  |  |
 |local_authentication_enabled | bool | Optional |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |minimum_tls_version | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |eventhub | list(object) | Optional | [] |  |
