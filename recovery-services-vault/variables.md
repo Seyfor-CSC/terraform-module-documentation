@@ -11,7 +11,7 @@ variable "config" {  type = list(object({
       identity_ids = optional(list(string))
     }))
     sku                           = string
-    public_network_access_enabled = optional(bool)
+    public_network_access_enabled = optional(bool, false)
     immutability                  = optional(string)
     storage_mode_type             = optional(string)
     cross_region_restore_enabled  = optional(bool)
@@ -133,7 +133,7 @@ variable "config" {  type = list(object({
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |sku | string | Required |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |immutability | string | Optional |  |  |
 |storage_mode_type | string | Optional |  |  |
 |cross_region_restore_enabled | bool | Optional |  |  |

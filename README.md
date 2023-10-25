@@ -50,7 +50,7 @@
 | [public ip address](./public-ip-address/README.md) | v1.3.0 |
 | [public ip prefix](./public-ip-prefix/README.md) | v1.3.0 |
 | [purview account](./purview-account/README.md) | v1.2.0 |
-| [recovery services vault](./recovery-services-vault/README.md) | v1.5.1 |
+| [recovery services vault](./recovery-services-vault/README.md) | v1.5.2 |
 | [resource group](./resource-group/README.md) | v1.3.0 |
 | [role assignment](./role-assignment/README.md) | v1.3.0 |
 | [role definition](./role-definition/README.md) | v1.3.0 |
