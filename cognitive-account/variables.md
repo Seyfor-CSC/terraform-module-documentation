@@ -33,7 +33,7 @@ variable "config" {  type = list(object({
       })), [])
     }))
     outbound_network_access_restricted           = optional(bool)
-    public_network_access_enabled                = optional(bool)
+    public_network_access_enabled                = optional(bool, false)
     qna_runtime_endpoint                         = optional(string)
     custom_question_answering_search_service_id  = optional(string)
     custom_question_answering_search_service_key = optional(string)
@@ -115,7 +115,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;subnet_id | string | Required |  |  |
 |&nbsp;&nbsp;ignore_missing_vnet_service_endpoint | bool | Optional |  |  |
 |outbound_network_access_restricted | bool | Optional |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |qna_runtime_endpoint | string | Optional |  |  |
 |custom_question_answering_search_service_id | string | Optional |  |  |
 |custom_question_answering_search_service_key | string | Optional |  |  |
