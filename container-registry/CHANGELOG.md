@@ -7,6 +7,14 @@
 - Terraform: 1.5.7 (#8)
 
    
+## Release v1.3.1
+
+## Enhancements
+
+- Set default value for `public_network_access_enabled` to false (#10)
+
+
+   
 ## Release v1.2.0
 
 ### Version upgrade

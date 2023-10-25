@@ -25,7 +25,7 @@ variable "config" {  type = list(object({
         subnet_id = string
       })), [])
     }))
-    public_network_access_enabled = optional(bool)
+    public_network_access_enabled = optional(bool, false)
     quarantine_policy_enabled     = optional(bool)
     retention_policy = optional(object({
       days    = optional(number)
@@ -114,7 +114,7 @@ variable "config" {  type = list(object({
 |&nbsp;virtual_network | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;action | string | Required |  |  |
 |&nbsp;&nbsp;subnet_id | string | Required |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |quarantine_policy_enabled | bool | Optional |  |  |
 |retention_policy | object | Optional |  |  |
 |&nbsp;days | number | Optional |  |  |
