@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.2.1
+
+## Enhancements
+
+- Set default value for `public_network_access_enabled` to false (#16)
+
+
+   
 ## Release v1.2.0
 
 ## Provider & Terraform Upgrade

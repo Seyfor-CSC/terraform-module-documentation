@@ -84,7 +84,7 @@ variable "config" {  type = list(object({
         value = string
       })), [])
       https_only                    = optional(bool)
-      public_network_access_enabled = optional(bool)
+      public_network_access_enabled = optional(bool, false)
       identity = optional(object({
         type         = string
         identity_ids = optional(list(string))
@@ -234,7 +234,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;https_only | bool | Optional |  |  |
-|&nbsp;public_network_access_enabled | bool | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  false |  |
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
