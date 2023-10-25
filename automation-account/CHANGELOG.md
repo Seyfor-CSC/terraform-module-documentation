@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.5.2
+
+## Enhancements
+
+- Set default value for `public_network_access_enabled` to false (#11)
+
+
+   
 ## Release v1.5.1
 
 ## Enhancements

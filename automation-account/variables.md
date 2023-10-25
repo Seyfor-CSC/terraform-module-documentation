@@ -8,7 +8,7 @@ variable "config" {  type = list(object({
     location                      = string
     sku_name                      = string
     local_authentication_enabled  = optional(bool)
-    public_network_access_enabled = optional(bool)
+    public_network_access_enabled = optional(bool, false)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -141,7 +141,7 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |sku_name | string | Required |  |  |
 |local_authentication_enabled | bool | Optional |  |  |
-|public_network_access_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
