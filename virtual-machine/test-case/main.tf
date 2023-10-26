@@ -133,7 +133,7 @@ resource "azurerm_backup_policy_vm" "bp" {
 
 # virtual machine
 module "virtual_machine" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.1.3"
   config = local.vm
 
   depends_on = [

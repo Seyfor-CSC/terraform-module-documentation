@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.1.3
+
+## Bug Fixes
+
+- Fix `azurerm_virtual_machine_extension` resource looping key to support extensions with identical names in different virtual machines (#16)
+
+
+
+   
 ## Release v1.1.2
 
 ## Enhancements
