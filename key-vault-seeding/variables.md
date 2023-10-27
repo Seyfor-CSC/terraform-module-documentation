@@ -2,6 +2,7 @@
 
 ```
 variable "config" {  type = object({
+    # key vault secret
     secret = optional(list(object({
       name            = string
       value           = optional(string) # If not provided, generated in module in 'random_password' resource
