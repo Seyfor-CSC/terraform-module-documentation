@@ -17,7 +17,7 @@ locals {
       location            = local.location
       subnets = [
         {
-          name             = "sey-terraform-ne-subnet"
+          name             = "sey-terraform-ne-10.0.0.0-25"
           address_prefixes = ["10.0.0.0/25"]
           nsg_name         = local.naming.nsg # deploys subnet network security group association
           route_table_name = local.naming.rt  # deploys subnet route table association
@@ -40,7 +40,7 @@ locals {
       location            = local.location
       subnets = [
         {
-          name             = "sey-terraform-ne-subnet"
+          name             = "sey-terraform-ne-10.0.1.0-25"
           address_prefixes = ["10.0.1.0/25"]
         }
       ]

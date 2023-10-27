@@ -52,10 +52,6 @@ variable "config" {  type = list(object({
   }))
 }
 
-variable "subscription_id" { # Custom variable whose value should be set to the deployment subscription id
-  type = string
-}
-
 
 ```
 
