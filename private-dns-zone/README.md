@@ -69,7 +69,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
+## Private DNS Zone outputs: replacement of dots with hyphens
+Private DNS zone has dots in its name. However, dots are not allowed in the output names. Therefore, these dots are replaced with hyphens in the outputs. For example, if you have a private DNS zone named `sey.terraform.ne.dns` in your configuration, the output will be `sey-terraform-ne-dns`. Reference the Example usage of outputs (section above) to see how to use the private DNS zone output.
 
 &nbsp;
 
