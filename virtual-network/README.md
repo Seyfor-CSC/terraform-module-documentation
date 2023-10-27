@@ -105,6 +105,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 When using the module, subscription_id variable needs to be configured in the same place as source or the config variable. Set the value of this variable to the subscription you will deploy your resources into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
 ## Custom variables
 You need to configure the `nsg_name`, `route_table_name`, or `nat_gateway_name` variables depending on which subnet associations you want to deploy. Values of these variables should be the names of the associated resource. Go to [test-case/locals.tf](test-case/locals.tf) to see how to deploy these resources.
+## Subnet outputs: replacement of dots with hyphens
+It is common to have dots in the subnet name. However, dots are not allowed in the output names. Therefore, dots in subnet names are replaced with hyphens in the output names. For example, if you have subnet named `subnet-10.0.1.0-24` in your configuration, the output name will be `subnet-10-0-1-0-24`. Reference the Example usage of outputs (section above) to see how to use the subnet output.
 
 &nbsp;
 
