@@ -43,7 +43,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Application Group
 * terraform import '`<path-to-module>`.azurerm_virtual_desktop_application_group.virtual_desktop_application_group["`<host-pool-name>`_`<application-group-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/applicationGroups/`<application-group-name>`'
 ### Host Pool Registration Info
-* terraform import '`<path-to-module>`.azurerm_virtual_desktop_host_pool_registration_info.virtual_desktop_host_pool_registration_info["`<host-pool-name>`_`<registration-expiration-date>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/hostPools/`<host-pool-name>`/registrationInfo/defaul'
+* terraform import '`<path-to-module>`.azurerm_virtual_desktop_host_pool_registration_info.virtual_desktop_host_pool_registration_info["`<host-pool-name>`_`<registration-expiration-date>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/hostPools/`<host-pool-name>`/registrationInfo/default'
 ### Scaling Plan
 * terraform import '`<path-to-module>`.azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plan["`<scaling-plan-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DesktopVirtualization/scalingPlans/`<scaling-plan-name>`'
 ### Workspace
