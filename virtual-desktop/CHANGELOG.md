@@ -9,6 +9,14 @@
 
 
    
+## Release v1.0.3
+
+## Enhancements
+
+- Change registration token output default value from _{}_ to _null_ (#15)
+
+
+   
 ## Release v1.0.2
 
 ## Enhancements
