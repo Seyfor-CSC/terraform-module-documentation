@@ -5,7 +5,7 @@
 ## Enhancements
 
 - Rename `backup_policy` variable to `backup_policy_disk` (#14)
-
+- Rename `policy` output to `disk_policy` (#14)
 
    
 ## Release v1.3.0
