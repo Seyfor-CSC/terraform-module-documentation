@@ -19,6 +19,30 @@ resource "azurerm_resource_group" "rg" {
   location = local.location
 }
 
+resource "azurerm_service_plan" "windows_plan" {
+  name                = "SEY-WINDOWS-NE-ASP01"
+  location            = local.location
+  resource_group_name = local.naming.rg
+  os_type             = "Windows"
+  sku_name            = "P1v2"
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+
+resource "azurerm_service_plan" "linux_plan" {
+  name                = "SEY-LINUX-NE-ASP01"
+  location            = local.location
+  resource_group_name = local.naming.rg
+  os_type             = "Linux"
+  sku_name            = "P1v2"
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+
 # private endpoint prerequisities
 resource "azurerm_virtual_network" "vnet" {
   name                = "example-network"
@@ -77,12 +101,14 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # app service
 module "app_service" {
-  source = "git@github.com:Seyfor-CSC/mit.app-service.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.app-service.git?ref=v1.3.0"
   config = local.app
 
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link,
-    azurerm_log_analytics_workspace.la
+    azurerm_log_analytics_workspace.la,
+    azurerm_service_plan.windows_plan,
+    azurerm_service_plan.linux_plan
   ]
 }
 

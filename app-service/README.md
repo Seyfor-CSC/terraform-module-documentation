@@ -1,6 +1,5 @@
 # Introduction
 App Service module can deploy these resources:
-* azurerm_service_plan (required)
 * azurerm_linux_web_app (optional)
 * azurerm_windows_web_app (optional)
 * azurerm_monitor_diagnostic_setting (optional)
@@ -14,8 +13,6 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/service_plan
-
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/linux_web_app
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/windows_web_app
@@ -28,8 +25,6 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
-### App Service Plan
-* terraform import '`<path-to-module>`.azurerm_service_plan.service_plan["`<app-service-plan-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/serverfarms/`<app-service-plan-name>`'
 ### Linux Web App
 * terraform import '`<path-to-module>`.azurerm_linux_web_app.linux_web_app["`<app-service-plan-name>`_`<web-app-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<web-app-name>`'
 ### Windows Web App
@@ -46,18 +41,11 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value               | Comment                                              |
-| ----------- | ------------------- | ---------------------------------------------------- |
-| outputs     | name                | App Service Plan name                                |
-|             | id                  | App Service Plan id                                  |
-|             | linux_web_app       | Linux Web App outputs                                |
-|             | &nbsp; name         |                                                      |
-|             | &nbsp; id           |                                                      |
-|             | &nbsp; principal_id | principal_id (object_id) of system assigned identity |
-|             | windows_web_app     | Windows Web App outputs                              |
-|             | &nbsp; name         |                                                      |
-|             | &nbsp; id           |                                                      |
-|             | &nbsp; principal_id | principal_id (object_id) of system assigned identity |
+| Output Name | Value        | Comment                                              |
+| ----------- | ------------ | ---------------------------------------------------- |
+| outputs     | name         |                                                      |
+|             | id           |                                                      |
+|             | principal_id | principal_id (object_id) of system assigned identity |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed App Service module is used as a value for the _scope_ variable in Role Assignment resource.
@@ -66,18 +54,12 @@ module "app" {
     source = "git@github.com:seyfor-csc/mit.app-service.git?ref=v1.0.0"
     config = [
         {
-            name                = "SEY-TERRAFORM-NE-ASP01"
-            location            = "northeurope"
-            resource_group_name = "SEY-TERRAFORM-NE-RG01"
             os_type             = "Windows"
-            sku_name            = "P1v2"
-            web_app = [
-                {
-                    name        = "SEY-TERRAFORM-NE-APP01"
-                    location    = "northeurope"
-                    site_config = {}
-                }
-            ]
+            name                = "SEY-TERRAFORM-NE-APP01"
+            resource_group_name = "SEY-TERRAFORM-NE-RG01"
+            location            = "northeurope"
+            service_plan_id     = azurerm_service_plan.service_plan.id
+            site_config         = {}
         }
     ]
 }
@@ -100,7 +82,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 
 # Module Features
 ## Linux or Windows Web App?
-This module can deploy Linux or Windows Web Apps. You can specify which one you want to deploy by setting the _os\_type_ variable for the App Service Plan resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
+This module can deploy Linux or Windows Web Apps. You can specify which one you want to deploy by setting the _os\_type_ variable for the App Service resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
 
 &nbsp;
 

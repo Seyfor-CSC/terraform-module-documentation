@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.3.0
+
+## Enhancements
+
+- Separate `azurerm_service_plan` resource into its dedicated module (#17)
+- Merge `linux_web_app` and `windows_web_app` outputs (#17)
+
+
+   
 ## Release v1.2.1
 
 ## Enhancements
