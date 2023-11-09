@@ -18,7 +18,7 @@ locals {
         type = "SystemAssigned"
       }
 
-      backup_policy = [
+      backup_policy_disk = [
         {
           name                            = "DailyBackupPolicy"
           backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT4H"]

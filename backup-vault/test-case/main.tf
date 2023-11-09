@@ -34,7 +34,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # backup vault
 module "backup_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.backup-vault.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.backup-vault.git?ref=v1.3.1"
   config = local.bv
 
   depends_on = [

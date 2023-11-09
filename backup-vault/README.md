@@ -26,10 +26,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_vault.data_protection_backup_vault["`<backup-vault-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`'
 ### Backup Policy Disk
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_policy_disk.data_protection_backup_policy_disk["`<backup-vault-name_backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
-
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<backup-vault-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`|`<diag-name>`'
-
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.backup\_vault_
 
@@ -43,7 +41,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name         |                                                      |
 |             | id           |                                                      |
 |             | principal_id | principal_id (object_id) of system assigned identity |
-|             | policy       | Backup Policy Disk outputs                           |
+|             | disk_policy  | Backup Policy Disk outputs                           |
 |             | &nbsp;id     |                                                      |
 
 

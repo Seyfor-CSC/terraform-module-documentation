@@ -14,7 +14,7 @@ variable "config" {  type = list(object({
     tags = optional(map(any))
 
     # data_protection_backup_policy_disk
-    backup_policy = optional(list(object({
+    backup_policy_disk = optional(list(object({
       name                            = string
       vault_id                        = optional(string) # Inherited in module from parent resource
       backup_repeating_time_intervals = list(string)
@@ -55,7 +55,7 @@ variable "config" {  type = list(object({
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |tags | map(any) | Optional |  |  |
-|backup_policy | list(object) | Optional | [] |  |
+|backup_policy_disk | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;vault_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;backup_repeating_time_intervals | list(string) | Required |  |  |

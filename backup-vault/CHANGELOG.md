@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.3.1
+
+## Enhancements
+
+- Rename `backup_policy` variable to `backup_policy_disk` (#14)
+
+
+   
 ## Release v1.3.0
 
 ## Provider & Terraform Upgrade
