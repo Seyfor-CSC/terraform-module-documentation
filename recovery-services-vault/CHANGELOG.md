@@ -1,5 +1,15 @@
 # Changelog
 
+## Release v1.6.0
+
+## Enhancements
+
+- Add `azurerm_backup_policy_file_share` resource (#15)
+- Rename `backup_policy` variable to `backup_policy_vm` (#15)
+- Rename `policy` output to `vm_policy`
+
+
+   
 ## Release v1.5.2
 
 ## Enhancements

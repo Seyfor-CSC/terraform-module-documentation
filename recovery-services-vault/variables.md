@@ -35,7 +35,7 @@ variable "config" {  type = list(object({
     tags = optional(map(any))
 
     # backup policy vm
-    backup_policy = optional(list(object({
+    backup_policy_vm = optional(list(object({
       name                = string
       resource_group_name = optional(string) # If not provided, inherited in module from parent resource
       recovery_vault_name = optional(string) # Inherited in module from parent resource
@@ -72,6 +72,45 @@ variable "config" {  type = list(object({
         months            = list(string)
         weekdays          = optional(list(string))
         weeks             = optional(list(string))
+        days              = optional(list(number))
+        include_last_days = optional(bool)
+      }))
+    })), [])
+
+    # backup policy file share
+    backup_policy_file_share = optional(list(object({
+      name                = string
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      recovery_vault_name = optional(string) # Inherited in module from parent resource
+      backup = object({
+        frequency = string
+        time      = optional(string)
+        hourly = optional(object({
+          interval        = optional(number)
+          start_time      = optional(string)
+          window_duration = optional(number)
+        }))
+      })
+      retention_daily = object({
+        count = number
+      })
+      timezone = optional(string)
+      retention_weekly = optional(object({
+        count    = number
+        weekdays = list(string)
+      }))
+      retention_monthly = optional(object({
+        count             = number
+        weekdays          = optional(list(string))
+        weeks             = optional(list(string))
+        days              = optional(list(number))
+        include_last_days = optional(bool)
+      }))
+      retention_yearly = optional(object({
+        count             = number
+        months            = list(string)
+        weeks             = optional(list(string))
+        weekdays          = optional(list(string))
         days              = optional(list(number))
         include_last_days = optional(bool)
       }))

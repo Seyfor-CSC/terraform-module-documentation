@@ -77,7 +77,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.6.0"
   config = local.rsv
 
   depends_on = [

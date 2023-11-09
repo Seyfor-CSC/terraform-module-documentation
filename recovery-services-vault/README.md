@@ -2,6 +2,7 @@
 Recovery Services Vault module can deploy these resources:
 * azurerm_recovery_services_vault (required)
 * azurerm_backup_policy_vm (optional)
+* azurerm_backup_policy_file_share (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -17,6 +18,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_policy_vm
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_policy_file_share
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/private_endpoint
@@ -27,8 +30,10 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Recovery Services Vault
 * terraform import '`<path-to-module>`.azurerm_recovery_services_vault.recovery_services_vault["`<recovery-services-vault-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`'
-### Backup Policy
+### Backup Policy VM
 * terraform import '`<path-to-module>`.azurerm_backup_policy_vm.backup_policy_vm["`<recovery-services-vault-name>`_`<backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`/backupPolicies/`<backup-policy-name>`'
+### Backup Policy File Share
+* terraform import '`<path-to-module>`.azurerm_backup_policy_file_share.backup_policy_file_share["`<recovery-services-vault-name>`_`<backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`/backupPolicies/`<backup-policy-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<recovery-services-vault-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`|`<diag-name>`'
 ### Private Endpoint
@@ -46,7 +51,9 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name         |                                                      |
 |             | id           |                                                      |
 |             | principal_id | principal_id (object_id) of system assigned identity |
-|             | policy       | Backup Policy VM outputs                             |
+|             | vm_policy    | Backup Policy VM outputs                             |
+|             | &nbsp;id     |                                                      |
+|             | share_policy | Backup Policy File Share outputs                     |
 |             | &nbsp;id     |                                                      |
 
 

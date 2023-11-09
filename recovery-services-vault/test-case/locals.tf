@@ -17,15 +17,28 @@ locals {
         type = "SystemAssigned"
       }
 
-      backup_policy = [
+      backup_policy_vm = [
         {
-          name     = "DailyBackupPolicy"
+          name     = "VMDailyBackupPolicy"
           timezone = "UTC"
           backup = {
             frequency = "Daily"
             time      = "23:00"
           }
 
+          retention_daily = {
+            count = 10
+          }
+        }
+      ]
+
+      backup_policy_file_share = [
+        {
+          name = "FileShareDailyBackupPolicy"
+          backup = {
+            frequency = "Daily"
+            time      = "23:00"
+          }
           retention_daily = {
             count = 10
           }
