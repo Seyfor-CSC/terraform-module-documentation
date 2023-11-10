@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.1.1
+
+## Bug Fixes
+
+- Set variable `key_vault_id` as required (#10)
+
+
+
+   
 ## Release v1.1.0
 
 ## Provider & Terraform Upgrade

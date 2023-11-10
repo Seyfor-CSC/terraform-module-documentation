@@ -6,7 +6,7 @@ variable "config" {  type = object({
     secret = optional(list(object({
       name            = string
       value           = optional(string) # If not provided, generated in module in 'random_password' resource
-      key_vault_id    = optional(string)
+      key_vault_id    = string
       length          = optional(number, 12) # Custom variable setting the legth of the secret value
       content_type    = optional(string)
       not_before_date = optional(string)
@@ -15,6 +15,7 @@ variable "config" {  type = object({
     })), [])
   })
 }
+
 
 ```
 
@@ -26,7 +27,7 @@ variable "config" {  type = object({
 |secret | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;value | string | Optional |  |  If not provided, generated in module in 'random_password' resource |
-|&nbsp;key_vault_id | string | Optional |  |  |
+|&nbsp;key_vault_id | string | Required |  |  |
 |&nbsp;length | number | Optional |  12 |  Custom variable setting the legth of the secret value |
 |&nbsp;content_type | string | Optional |  |  |
 |&nbsp;not_before_date | string | Optional |  |  |
