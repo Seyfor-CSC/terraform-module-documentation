@@ -173,6 +173,15 @@ variable "config" {  type = list(object({
       })), [])
       enabled_protocol = optional(string)
       metadata         = optional(map(string))
+
+      # backup protected file share
+      share_backup = optional(object({
+        resource_group_name       = optional(string) # If not provided, inherited in module from storage account
+        recovery_vault_name       = string
+        source_storage_account_id = optional(string) # Inherited in module from parent resource
+        source_file_share_name    = optional(string) # Inherited in module from parent resource
+        backup_policy_id          = string
+      }))
     })), [])
 
     # storage queue
@@ -203,6 +212,13 @@ variable "config" {  type = list(object({
           }))
         })
       })), [])
+    }))
+
+    # backup container storage account
+    backup_container = optional(object({     # Required if you want to backup file shares
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      recovery_vault_name = string
+      storage_account_id  = optional(string) # Inherited in module from parent resource
     }))
 
     # private endpoint
@@ -389,6 +405,12 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;expiry | string | Optional |  |  |
 |&nbsp;enabled_protocol | string | Optional |  |  |
 |&nbsp;metadata | map(string) | Optional |  |  |
+|&nbsp;share_backup | object | Optional |  |  |
+|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from storage account |
+|&nbsp;&nbsp;recovery_vault_name | string | Required |  |  |
+|&nbsp;&nbsp;source_storage_account_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;source_file_share_name | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
 |queues | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |
@@ -406,6 +428,10 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;actions | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;version | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;delete_after_days_since_creation | number | Optional |  |  |
+|backup_container | object | Optional |  |  Required if you want to backup file shares |
+|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;recovery_vault_name | string | Required |  |  |
+|&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

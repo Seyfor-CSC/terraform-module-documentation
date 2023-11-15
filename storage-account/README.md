@@ -6,6 +6,8 @@ Storage Account module can deploy these resources:
 * azurerm_storage_queue (optional)
 * azurerm_storage_table (optional)
 * azurerm_storage_management_policy (optional)
+* azurerm_backup_container_storage_account (optional)
+* azurerm_backup_protected_file_share (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -29,6 +31,10 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_management_policy
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_container_storage_account
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_protected_file_share
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/private_endpoint
@@ -49,6 +55,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_storage_table.storage_table["`<storage-account-name>`_`<storage-table-name>`"]' 'https://`<storage-account-name>`.table.core.windows.net/Tables(`'<storage-table-name>'`)'
 ### Management Policy
 * terraform import '`<path-to-module>`.azurerm_storage_management_policy.storage_management_policy["`<storage-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/managementPolicies/`<storage-management-policy-name>`'
+### Backup Container Storage Account
+* terraform import '`<path-to-module>`.azurerm_backup_container_storage_account.backup_container_storage_account["`<storage-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-vault-name>`/backupFabrics/Azure/protectionContainers/StorageContainer;storage;`<resource-group-name>`;`<storage-account-name>`'
+### Backup Protected File Share
+* terraform import '`<path-to-module>`.azurerm_backup_protected_file_share.backup_protected_file_share["`<storage-account-name>`_`<storage-share-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-vault-name>`/backupFabrics/Azure/protectionContainers/StorageContainer;storage;`<resource-group-name>`;`<storage-account-name>`;protectedItems/azurefileshare;`<GUID>`'
 ### Diagnostic Setting
 #### Storage
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.storage["`<storage-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`|`<diag-name>`'

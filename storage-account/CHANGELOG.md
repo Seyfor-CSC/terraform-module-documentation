@@ -1,5 +1,21 @@
 # Changelog
 
+## Release v1.4.0
+
+## Enhancements
+
+- Remove provisioner (#19)
+
+
+   
+## Release v1.6.0
+
+## Enhancements
+
+- Add `azurerm_backup_container_storage_account` and `azurerm_backup_protected_file_share` resources for File Share backups (#29)
+
+
+   
 ## Release v1.5.1
 
 ## Enhancements
@@ -16,14 +32,6 @@
 
 ## Bug Fixes
  - Set `private_link_access` variable default value to `[]` (#25)
-
-   
-## Release v1.4.0
-
-## Enhancements
-
-- Remove provisioner (#19)
-
 
    
 ## Release v1.3.2

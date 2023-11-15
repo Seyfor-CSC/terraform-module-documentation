@@ -14,7 +14,11 @@ locals {
       resource_group_name          = local.naming.rg
       account_tier                 = "Standard"
       account_replication_type     = "LRS"
-      public_network_acces_enabled = false
+      public_network_access_enabled = true
+      enable_https_traffic_only    = false
+      network_rules = {
+        default_action = "Allow"
+      }
       identity = {
         type = "SystemAssigned"
       }
@@ -32,6 +36,10 @@ locals {
         }
       }
 
+      backup_container = {
+        recovery_vault_name = azurerm_recovery_services_vault.rsv.name
+      }
+
       containers = [
         {
           name = "container1"
@@ -45,6 +53,11 @@ locals {
         {
           name  = "fileshare1"
           quota = 50
+
+          share_backup = {
+            recovery_vault_name = azurerm_recovery_services_vault.rsv.name
+            backup_policy_id    = azurerm_backup_policy_file_share.example.id
+          }
         },
         {
           name  = "fileshare2"
@@ -82,7 +95,7 @@ locals {
           }
         ]
       }
-      
+
       private_endpoint = [
         {
           name                          = "${local.naming.sa_1}-PE01"
@@ -116,11 +129,12 @@ locals {
       tags = {}
     },
     {
-      name                     = local.naming.sa_2
-      location                 = local.location
-      resource_group_name      = local.naming.rg
-      account_tier             = "Standard"
-      account_replication_type = "LRS"
+      name                         = local.naming.sa_2
+      location                     = local.location
+      resource_group_name          = local.naming.rg
+      account_tier                 = "Standard"
+      account_replication_type     = "LRS"
+      public_network_access_enabled = true
 
       tags = {}
     }
