@@ -11,6 +11,7 @@ locals {
       {
         name         = "FirstSecret" # Generates random password 12 characters long
         key_vault_id = azurerm_key_vault.kv.id
+        special      = false
       },
       {
         name         = "SecondSecret"

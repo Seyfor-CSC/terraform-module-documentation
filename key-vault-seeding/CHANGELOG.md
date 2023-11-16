@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.1.2
+
+## Enhancements
+
+- Add `special` bool variable to enable/disable special characters in secret (#12)
+
+
+   
 ## Release v1.1.1
 
 ## Bug Fixes

@@ -59,7 +59,7 @@ resource "azurerm_role_assignment" "rbac" {
 
 # key vault seeding
 module "seeding" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v1.1.2"
   config = local.seeding
 
   depends_on = [

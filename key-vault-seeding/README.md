@@ -42,7 +42,9 @@ There are a few things you need to do to import resources into .tfstate. In the 
 
 # Module Features
 ## Random Secret Generator
-This module has a resource called "random_password" which is used to generate random secret values. This way we can avoid hardcoding secrets in the code. For this purpose, we created a variable called `length` of data type number, which is used to define the length of the secret. The default value is 12 characters. You can change the length of the secret by passing a different number to the `length` variable in the key vault secret configuration. If you still decide to hardcode the secret into the code, you can do so by setting the variable called `value` to your desired value. This will override the random secret generator. Go to [test-case/locals.tf](test-case/locals.tf) to see an example of how to use this feature.
+This module has a resource called "random_password" which is used to generate random secret values. This way we can avoid hardcoding secrets in the code. For this purpose, we created a variable called `length` of data type number, which is used to define the length of the secret. The default value is 12 characters. You can change the length of the secret by passing a different number to the `length` variable in the key vault secret configuration. If you still decide to hardcode the secret into the code, you can do so by setting the variable called `value` to your desired value. This will override the random secret generator. 
+Some secrets are not allowed to have special characters in them. For this purpose, we created a variable called `special` of data type bool, which is used to define whether the secret should contain special characters or not. The default value is true. You can change this by passing a different value to the `special` variable in the key vault secret configuration.
+Go to [test-case/locals.tf](test-case/locals.tf) to see an example of how to use this feature.
 
 &nbsp;
 
