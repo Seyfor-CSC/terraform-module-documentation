@@ -1,13 +1,5 @@
 # Changelog
 
-## Release v1.4.0
-
-## Enhancements
-
-- Remove provisioner (#19)
-
-
-   
 ## Release v1.6.0
 
 ## Enhancements
@@ -32,6 +24,14 @@
 
 ## Bug Fixes
  - Set `private_link_access` variable default value to `[]` (#25)
+
+   
+## Release v1.4.0
+
+## Enhancements
+
+- Remove provisioner (#19)
+
 
    
 ## Release v1.3.2
