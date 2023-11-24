@@ -54,7 +54,7 @@
 | [recovery services vault](./recovery-services-vault/README.md) | v1.6.0 |
 | [redis cache](./redis-cache/README.md) | v1.0.0 |
 | [resource group](./resource-group/README.md) | v1.3.0 |
-| [role assignment](./role-assignment/README.md) | v1.3.0 |
+| [role assignment](./role-assignment/README.md) | v1.3.1 |
 | [role definition](./role-definition/README.md) | v1.3.0 |
 | [route table](./route-table/README.md) | v1.3.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v1.2.0 |

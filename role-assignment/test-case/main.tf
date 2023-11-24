@@ -33,7 +33,7 @@ resource "azurerm_automation_account" "aa" {
 
 # role assignment
 module "role_assignment" {
-  source = "git@github.com:Seyfor-CSC/mit.role-assignment.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.role-assignment.git?ref=v1.3.1"
   config = local.rbac
 
   depends_on = [

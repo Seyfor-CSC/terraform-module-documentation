@@ -39,7 +39,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 &nbsp;
 
 # Module Features
-We created a custom required variable named `custom_name` which is used as a unique value for looping through all instances of the resource. Go to [test-case/locals.tf](test-case/locals.tf) to see how to use it correctly.
+We created a custom required variable named `custom_name` which is used as a unique value for looping through all instances of the resource. This variable is also used to access the module outputs. Go to [test-case/locals.tf](test-case/locals.tf) to see how to use it correctly.
 
 &nbsp;
 
