@@ -36,7 +36,7 @@ variable "config" {  type = list(object({
       ftps_state = optional(string)
       http2_enabled = optional(bool)
       ip_restriction = optional(list(object({
-        name   = string # Is required for looping purposes. Has to be a unique value per web app
+        name   = optional(string)
         action = optional(string)
         headers = optional(object({
           x_azure_fdid      = optional(list(string))
@@ -180,7 +180,7 @@ variable "config" {  type = list(object({
 |&nbsp;ftps_state | string | Optional |  |  |
 |&nbsp;http2_enabled | bool | Optional |  |  |
 |&nbsp;ip_restriction | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  Is required for looping purposes. Has to be a unique value per web app |
+|&nbsp;&nbsp;name | string | Optional |  |  |
 |&nbsp;&nbsp;action | string | Optional |  |  |
 |&nbsp;&nbsp;headers | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_azure_fdid | list(string) | Optional |  |  |

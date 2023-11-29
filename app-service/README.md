@@ -26,9 +26,9 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Linux Web App
-* terraform import '`<path-to-module>`.azurerm_linux_web_app.linux_web_app["`<app-service-plan-name>`_`<web-app-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<web-app-name>`'
+* terraform import '`<path-to-module>`.azurerm_linux_web_app.linux_web_app["`<web-app-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<web-app-name>`'
 ### Windows Web App
-* terraform import '`<path-to-module>`.azurerm_windows_web_app.windows_web_app["`<app-service-plan-name>`_`<web-app-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<web-app-name>`'
+* terraform import '`<path-to-module>`.azurerm_windows_web_app.windows_web_app["`<web-app-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/sites/`<web-app-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<web-app-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/providers/Microsoft.Web/sites/`<web-app-name>`|`<diag-name>`'
  ### Private Endpoint
@@ -68,7 +68,7 @@ data "azurerm_client_config" "azurerm_client_config" {
 }
 
 resource "azurerm_role_assignment" "role_assignment" {
-    scope                = module.app.outputs.sey-terraform-ne-asp01.windows_web_app.sey-terraform-ne-app01.id # This is how to use output values
+    scope                = module.app.outputs.sey-terraform-ne-app01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
 

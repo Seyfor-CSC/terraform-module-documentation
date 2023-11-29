@@ -4,7 +4,7 @@
 
 ## Enhancements
 
-- Separate `azurerm_service_plan` resource into its dedicated module (#17)
+- Separate `azurerm_service_plan` resource into its own dedicated module (#17)
 - Merge `linux_web_app` and `windows_web_app` outputs (#17)
 
 
