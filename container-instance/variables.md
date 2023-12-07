@@ -114,7 +114,7 @@ variable "config" {  type = list(object({
         workspace_id  = string
         workspace_key = string
         log_type      = optional(string)
-        metadata      = optional(string)
+        metadata      = optional(map(string))
       })
     }))
     dns_name_label              = optional(string)
@@ -240,7 +240,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;workspace_id | string | Required |  |  |
 |&nbsp;&nbsp;workspace_key | string | Required |  |  |
 |&nbsp;&nbsp;log_type | string | Optional |  |  |
-|&nbsp;&nbsp;metadata | string | Optional |  |  |
+|&nbsp;&nbsp;metadata | map(string) | Optional |  |  |
 |dns_name_label | string | Optional |  |  |
 |dns_name_label_reuse_policy | string | Optional |  |  |
 |exposed_port | list(object) | Optional | [] |  |

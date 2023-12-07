@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # container instance
 module "container_instance" {
-  source = "git@github.com:Seyfor-CSC/mit.container-instance.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-instance.git?ref=v1.3.1"
   config = local.cg
 
   depends_on = [
