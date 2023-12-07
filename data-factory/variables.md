@@ -31,7 +31,7 @@ variable "config" {  type = list(object({
       tenant_id       = string
     }))
     managed_virtual_network_enabled  = optional(bool)
-    public_network_enabled           = optional(bool)
+    public_network_enabled           = optional(bool, false)
     customer_managed_key_id          = optional(string)
     customer_managed_key_identity_id = optional(string)
     purview_id                       = optional(string)
@@ -108,7 +108,7 @@ variable "config" {  type = list(object({
 |&nbsp;root_folder | string | Required |  |  |
 |&nbsp;tenant_id | string | Required |  |  |
 |managed_virtual_network_enabled | bool | Optional |  |  |
-|public_network_enabled | bool | Optional |  |  |
+|public_network_enabled | bool | Optional |  false |  |
 |customer_managed_key_id | string | Optional |  |  |
 |customer_managed_key_identity_id | string | Optional |  |  |
 |purview_id | string | Optional |  |  |

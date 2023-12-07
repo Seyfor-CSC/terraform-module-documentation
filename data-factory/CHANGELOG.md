@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.3.1
+
+## Enhancements
+
+- Set `public_network_enabled` variable default value to `false` (#14)
+
+
+   
 ## Release v1.3.0
 
 ## Provider & Terraform Upgrade

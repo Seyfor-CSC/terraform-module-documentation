@@ -25,7 +25,7 @@
 | [container instance](./container-instance/README.md) | v1.3.0 |
 | [container registry](./container-registry/README.md) | v1.3.1 |
 | [data collection rule](./data-collection-rule/README.md) | v1.2.0 |
-| [data factory](./data-factory/README.md) | v1.3.0 |
+| [data factory](./data-factory/README.md) | v1.3.1 |
 | [dns zone](./dns-zone/README.md) | v1.0.0 |
 | [event hub](./event-hub/README.md) | v1.4.1 |
 | [function app](./function-app/README.md) | v1.0.0 |
