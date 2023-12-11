@@ -21,14 +21,12 @@ locals {
           subresource_names    = ["Webhook"]
         }
       ]
-      private_dns_zone_group = [
-        {
-          name = azurerm_private_dns_zone.dns.name
-          private_dns_zone_ids = [
-            azurerm_private_dns_zone.dns.id
-          ]
-        }
-      ]
+      private_dns_zone_group = {
+        name = azurerm_private_dns_zone.dns.name
+        private_dns_zone_ids = [
+          azurerm_private_dns_zone.dns.id
+        ]
+      }
       ip_configuration = [
         {
           name               = "privateEndpointIpConfig01"
@@ -52,14 +50,12 @@ locals {
           subresource_names    = ["AzureBackup"]
         }
       ]
-      private_dns_zone_group = [
-        {
-          name = azurerm_private_dns_zone.dns.name
-          private_dns_zone_ids = [
-            azurerm_private_dns_zone.dns.id
-          ]
-        }
-      ]
+      private_dns_zone_group = {
+        name = azurerm_private_dns_zone.dns.name
+        private_dns_zone_ids = [
+          azurerm_private_dns_zone.dns.id
+        ]
+      }
 
       tags = {}
     }
