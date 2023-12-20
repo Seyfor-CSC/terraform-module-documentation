@@ -1,5 +1,11 @@
 # Changelog
 
+## Release v1.4.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 3.84.0 (#8)
+- Terraform: 1.6.5 (#8)
+   
 ## Release v1.3.1
 
 ## Enhancements
