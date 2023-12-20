@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.73.0"
+      version = "=3.84.0"
     }
   }
   backend "local" {}
@@ -16,12 +16,12 @@ provider "azurerm" {
 # module deployment prerequisities
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
-  location = local.location
+  location = local.location1
 }
 
 # network watcher
 module "network_watcher" {
-  source = "git@github.com:Seyfor-CSC/mit.network-watcher.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.network-watcher.git?ref=v1.4.0"
   config = local.nw
 
   depends_on = [
