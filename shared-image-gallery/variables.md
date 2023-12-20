@@ -48,6 +48,7 @@ variable "config" {  type = list(object({
       min_recommended_memory_in_gb        = optional(number)
       privacy_statement_uri               = optional(string)
       release_note_uri                    = optional(string)
+      trusted_launch_supported            = optional(bool)
       trusted_launch_enabled              = optional(bool)
       confidential_vm_supported           = optional(bool)
       confidential_vm_enabled             = optional(bool)
@@ -62,19 +63,21 @@ variable "config" {  type = list(object({
         gallery_name        = optional(string) # Inherited in module from parent resource
         image_name          = optional(string) # Inherited in module from parent resource
         target_region = list(object({
-          name                   = string
-          regional_replica_count = number
-          disk_encryption_set_id = optional(string)
-          storage_account_type   = optional(string)
+          name                        = string
+          regional_replica_count      = number
+          disk_encryption_set_id      = optional(string)
+          exclude_from_latest_enabled = optional(bool)
+          storage_account_type        = optional(string)
         }))
-        blob_uri            = optional(string)
-        end_of_life_date    = optional(string)
-        exclude_from_latest = optional(bool)
-        managed_image_id    = optional(string)
-        os_disk_snapshot_id = optional(string)
-        replication_mode    = optional(string)
-        storage_account_id  = optional(string)
-        tags                = optional(map(any)) # If not provided, inherited in module from parent resource
+        blob_uri                                 = optional(string)
+        end_of_life_date                         = optional(string)
+        exclude_from_latest                      = optional(bool)
+        managed_image_id                         = optional(string)
+        os_disk_snapshot_id                      = optional(string)
+        deletion_of_replicated_locations_enabled = optional(bool)
+        replication_mode                         = optional(string)
+        storage_account_id                       = optional(string)
+        tags                                     = optional(map(any)) # If not provided, inherited in module from parent resource
       })))
     })), [])
   }))
@@ -127,6 +130,7 @@ variable "config" {  type = list(object({
 |&nbsp;min_recommended_memory_in_gb | number | Optional |  |  |
 |&nbsp;privacy_statement_uri | string | Optional |  |  |
 |&nbsp;release_note_uri | string | Optional |  |  |
+|&nbsp;trusted_launch_supported | bool | Optional |  |  |
 |&nbsp;trusted_launch_enabled | bool | Optional |  |  |
 |&nbsp;confidential_vm_supported | bool | Optional |  |  |
 |&nbsp;confidential_vm_enabled | bool | Optional |  |  |
@@ -142,12 +146,14 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;regional_replica_count | number | Required |  |  |
 |&nbsp;&nbsp;&nbsp;disk_encryption_set_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;exclude_from_latest_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;storage_account_type | string | Optional |  |  |
 |&nbsp;&nbsp;blob_uri | string | Optional |  |  |
 |&nbsp;&nbsp;end_of_life_date | string | Optional |  |  |
 |&nbsp;&nbsp;exclude_from_latest | bool | Optional |  |  |
 |&nbsp;&nbsp;managed_image_id | string | Optional |  |  |
 |&nbsp;&nbsp;os_disk_snapshot_id | string | Optional |  |  |
+|&nbsp;&nbsp;deletion_of_replicated_locations_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;replication_mode | string | Optional |  |  |
 |&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
