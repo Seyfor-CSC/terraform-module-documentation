@@ -10,7 +10,7 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/dns_zone
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/dns_zone
 
 &nbsp;
 
