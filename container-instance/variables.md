@@ -71,6 +71,9 @@ variable "config" {  type = list(object({
         }))
         secret = optional(map(string))
       }))
+      security = optional(object({
+        privilege_enabled = bool
+      }))
     }))
     os_type = string
     sku     = optional(string)
@@ -123,9 +126,10 @@ variable "config" {  type = list(object({
       port     = optional(number)
       protocol = optional(string)
     })), [])
-    ip_address_type  = optional(string)
-    key_vault_key_id = optional(string)
-    subnet_ids       = optional(set(string))
+    ip_address_type                     = optional(string)
+    key_vault_key_id                    = optional(string)
+    key_vault_user_assigned_identity_id = optional(string)
+    subnet_ids                          = optional(set(string))
     image_registry_credential = optional(object({
       server                    = string
       user_assigned_identity_id = optional(string)
@@ -205,6 +209,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;directory | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;revision | string | Optional |  |  |
 |&nbsp;&nbsp;secret | map(string) | Optional |  |  |
+|&nbsp;security | object | Optional |  |  |
+|&nbsp;&nbsp;privilege_enabled | bool | Required |  |  |
 |os_type | string | Required |  |  |
 |sku | string | Optional |  |  |
 |identity | object | Optional |  |  |
@@ -248,6 +254,7 @@ variable "config" {  type = list(object({
 |&nbsp;protocol | string | Optional |  |  |
 |ip_address_type | string | Optional |  |  |
 |key_vault_key_id | string | Optional |  |  |
+|key_vault_user_assigned_identity_id | string | Optional |  |  |
 |subnet_ids | set(string) | Optional |  |  |
 |image_registry_credential | object | Optional |  |  |
 |&nbsp;server | string | Required |  |  |
