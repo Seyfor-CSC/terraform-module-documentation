@@ -20,7 +20,7 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Private DNS Zone
-- terraform import '`<path-to-module>`.azurerm_private_dns_zone.private-dns-zone["`<private-dns-zone-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateDnsZones/`<private-dns-zone-name>`'    
+- terraform import '`<path-to-module>`.azurerm_private_dns_zone.private_dns_zone["`<private-dns-zone-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateDnsZones/`<private-dns-zone-name>`'    
 ### Private DNS Zone Virtual Network Link
 * terraform import '`<path-to-module>`.azurerm_private_dns_zone_virtual_network_link.private_dns_zone_virtual_network_link["`<private-dns-zone-name>`_`<private-dns-zone-virtual-network-link-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateDnsZones/`<private-dns-zone-name>`/virtualNetworkLinks/`<private-dns-zone-virtual-network-link-name>`'    
 
