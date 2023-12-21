@@ -7,6 +7,12 @@
 - Terraform: 1.5.7 (#8)
 
    
+## Release v1.4.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 3.84.0 (#12)
+- Terraform: 1.6.5 (#12)
+   
 ## Release v1.3.1
 
 ## Enhancements

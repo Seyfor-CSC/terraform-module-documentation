@@ -7,7 +7,7 @@ locals {
     cr_2 = "SEYTERRAFORMNECR02"
   }
 
-    cr = [
+  cr = [
     {
       name                = local.naming.cr_1
       location            = local.location
@@ -29,14 +29,12 @@ locals {
               subresource_names    = ["registry"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 
@@ -50,10 +48,11 @@ locals {
       tags = {}
     },
     {
-      name                = local.naming.cr_2
-      location            = local.location
-      resource_group_name = local.naming.rg
-      sku                 = "Basic"
+      name                          = local.naming.cr_2
+      location                      = local.location
+      resource_group_name           = local.naming.rg
+      sku                           = "Basic"
+      public_network_access_enabled = true
 
       tags = {}
     }
