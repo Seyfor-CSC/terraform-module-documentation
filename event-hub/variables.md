@@ -73,7 +73,7 @@ variable "config" {  type = list(object({
         resource_group_name = optional(string) # If not provided, inherited in module from parent resource
         listen              = optional(bool)
         send                = optional(bool)
-        manage              = optional(bool)
+        manage              = optional(bool) # If set to true, listen and send are automatically set to true
       })), [])
     })), [])
 
@@ -92,10 +92,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -180,7 +180,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;listen | bool | Optional |  |  |
 |&nbsp;&nbsp;send | bool | Optional |  |  |
-|&nbsp;&nbsp;manage | bool | Optional |  |  |
+|&nbsp;&nbsp;manage | bool | Optional |  |  If set to true, listen and send are automatically set to true |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
@@ -194,7 +194,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;ip_configuration | list(object) | Optional | [] |  |
