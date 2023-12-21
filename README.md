@@ -20,7 +20,7 @@
 | [automation module](./automation-module/README.md) | v1.2.0 |
 | [availability set](./availability-set/README.md) | v1.2.0 |
 | [backup vault](./backup-vault/README.md) | v1.4.0 |
-| [bastion host](./bastion-host/README.md) | v1.3.0 |
+| [bastion host](./bastion-host/README.md) | v1.4.0 |
 | [cognitive account](./cognitive-account/README.md) | v1.2.1 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v1.3.1 |
