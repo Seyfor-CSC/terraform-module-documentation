@@ -7,11 +7,12 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     github_configuration = optional(object({
-      account_name    = string
-      branch_name     = string
-      git_url         = string
-      repository_name = string
-      root_folder     = string
+      account_name       = string
+      branch_name        = string
+      git_url            = string
+      repository_name    = string
+      root_folder        = string
+      publishing_enabled = optional(bool)
     }))
     global_parameter = optional(list(object({
       name  = string
@@ -23,12 +24,13 @@ variable "config" {  type = list(object({
       identity_ids = optional(list(string))
     }))
     vsts_configuration = optional(object({
-      account_name    = string
-      branch_name     = string
-      project_name    = string
-      repository_name = string
-      root_folder     = string
-      tenant_id       = string
+      account_name       = string
+      branch_name        = string
+      project_name       = string
+      repository_name    = string
+      root_folder        = string
+      tenant_id          = string
+      publishing_enabled = optional(bool)
     }))
     managed_virtual_network_enabled  = optional(bool)
     public_network_enabled           = optional(bool, false)
@@ -52,10 +54,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -93,6 +95,7 @@ variable "config" {  type = list(object({
 |&nbsp;git_url | string | Required |  |  |
 |&nbsp;repository_name | string | Required |  |  |
 |&nbsp;root_folder | string | Required |  |  |
+|&nbsp;publishing_enabled | bool | Optional |  |  |
 |global_parameter | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;type | string | Required |  |  |
@@ -107,6 +110,7 @@ variable "config" {  type = list(object({
 |&nbsp;repository_name | string | Required |  |  |
 |&nbsp;root_folder | string | Required |  |  |
 |&nbsp;tenant_id | string | Required |  |  |
+|&nbsp;publishing_enabled | bool | Optional |  |  |
 |managed_virtual_network_enabled | bool | Optional |  |  |
 |public_network_enabled | bool | Optional |  false |  |
 |customer_managed_key_id | string | Optional |  |  |
@@ -126,7 +130,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;ip_configuration | list(object) | Optional | [] |  |

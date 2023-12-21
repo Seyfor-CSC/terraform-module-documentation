@@ -7,7 +7,7 @@ locals {
     df_2 = "SEY-TERRAFORM-NE-DF02"
   }
 
-    df = [
+  df = [
     {
       name                = local.naming.df_1
       location            = local.location
@@ -28,14 +28,12 @@ locals {
               subresource_names    = ["dataFactory"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 
