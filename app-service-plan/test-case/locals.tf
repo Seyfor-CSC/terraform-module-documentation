@@ -14,7 +14,7 @@ locals {
       location                     = local.location
       os_type                      = "Windows"
       sku_name                     = "P1v2"
-      worker_count                 = 2
+      worker_count                 = 3
       per_site_scaling_enabled     = true
       zone_balancing_enabled       = true
 
