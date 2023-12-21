@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.5.1
+
+## Enhancements
+
+- Remove lifecycle block from diag settings (#15)
+
+
+   
 ## Release v1.5.0
 
 ## Provider & Terraform Upgrade
