@@ -14,15 +14,15 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/postgresql_flexible_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server_database
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/postgresql_flexible_server_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server_configuration
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/postgresql_flexible_server_configuration
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/postgresql_flexible_server_active_directory_administrator
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/postgresql_flexible_server_active_directory_administrator
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
