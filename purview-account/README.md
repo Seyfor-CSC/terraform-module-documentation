@@ -1,6 +1,7 @@
 # Introduction
 Purview Account module can deploy these resources:
 * azurerm_purview_account (required)
+* azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -10,7 +11,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/purview_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/purview_account
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 

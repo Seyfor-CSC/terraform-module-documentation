@@ -10,7 +10,7 @@ variable "config" {  type = list(object({
       type         = string
       identity_ids = optional(list(string))
     })
-    public_network_enabled      = optional(bool)
+    public_network_enabled      = optional(bool, false)
     managed_resource_group_name = optional(string)
     tags = optional(map(any))
 
@@ -38,7 +38,7 @@ variable "config" {  type = list(object({
 |identity | object | Required |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
-|public_network_enabled | bool | Optional |  |  |
+|public_network_enabled | bool | Optional |  false |  |
 |managed_resource_group_name | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |

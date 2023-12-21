@@ -16,7 +16,6 @@ locals {
       identity = {
         type = "SystemAssigned"
       }
-      public_network_enabled      = true
       managed_resource_group_name = "SEY-PURVIEW-WE-RG02"
 
       monitoring = [
