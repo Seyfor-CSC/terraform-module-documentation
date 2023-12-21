@@ -33,8 +33,8 @@ variable "config" {  type = list(object({
     # network watcher flow log
     nsg_flow_log = optional(list(object({
       name                      = string
-      network_watcher_name      = string
       resource_group_name       = string
+      network_watcher_name      = string
       network_security_group_id = optional(string) # Inherited in module from parent resource
       storage_account_id        = string
       enabled                   = bool
@@ -97,8 +97,8 @@ variable "config" {  type = list(object({
 |&nbsp;destination_application_security_group_ids | list(string) | Optional |  |  |
 |nsg_flow_log | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;network_watcher_name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Required |  |  |
+|&nbsp;network_watcher_name | string | Required |  |  |
 |&nbsp;network_security_group_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;storage_account_id | string | Required |  |  |
 |&nbsp;enabled | bool | Required |  |  |
