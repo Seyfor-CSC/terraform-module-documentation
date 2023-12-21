@@ -37,7 +37,7 @@ variable "config" {  type = list(object({
     workflow_parameters                = optional(map(string))
     workflow_schema                    = optional(string)
     workflow_version                   = optional(string)
-    parameters                         = optional(map(any))
+    parameters                         = optional(map(string))
     tags                               = optional(map(any))
 
     # monitoring
@@ -84,7 +84,7 @@ variable "config" {  type = list(object({
 |workflow_parameters | map(string) | Optional |  |  |
 |workflow_schema | string | Optional |  |  |
 |workflow_version | string | Optional |  |  |
-|parameters | map(any) | Optional |  |  |
+|parameters | map(string) | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
