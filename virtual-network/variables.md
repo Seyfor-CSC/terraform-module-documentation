@@ -9,8 +9,8 @@ variable "config" {  type = list(object({
     address_space       = list(string)
     bgp_community       = optional(string)
     ddos_protection_plan = optional(object({
-      id      = string
-      enabled = bool
+      id     = string
+      enable = bool
     }))
     encryption = optional(object({
       enforcement = string
@@ -18,7 +18,7 @@ variable "config" {  type = list(object({
     dns_servers             = optional(list(string), [])
     edge_zone               = optional(string)
     flow_timeout_in_minutes = optional(number)
-    tags = optional(map(any))
+    tags                    = optional(map(any))
 
     # subnet
     subnets = list(object({
@@ -67,7 +67,7 @@ variable "config" {  type = list(object({
 |bgp_community | string | Optional |  |  |
 |ddos_protection_plan | object | Optional |  |  |
 |&nbsp;id | string | Required |  |  |
-|&nbsp;enabled | bool | Required |  |  |
+|&nbsp;enable | bool | Required |  |  |
 |encryption | object | Optional |  |  |
 |&nbsp;enforcement | string | Required |  |  |
 |dns_servers | list(string) | Optional | [] |  |

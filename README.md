@@ -67,6 +67,6 @@
 | [virtual desktop](./virtual-desktop/README.md) | v1.0.3 |
 | [virtual machine](./virtual-machine/README.md) | v1.1.3 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.1.0 |
-| [virtual network](./virtual-network/README.md) | v1.4.0 |
+| [virtual network](./virtual-network/README.md) | v1.5.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.4.0 |
 | [windows virtual machine](./windows-virtual-machine/README.md) | v1.3.1 |
