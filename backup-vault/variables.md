@@ -13,7 +13,7 @@ variable "config" {  type = list(object({
     }))
     tags = optional(map(any))
 
-    # data_protection_backup_policy_disk
+    # data protection backup policy disk
     backup_policy_disk = optional(list(object({
       name                            = string
       vault_id                        = optional(string) # Inherited in module from parent resource

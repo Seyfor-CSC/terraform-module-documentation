@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.73.0"
+      version = "=3.84.0"
     }
   }
   backend "local" {}
@@ -34,7 +34,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # backup vault
 module "backup_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.backup-vault.git?ref=v1.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.backup-vault.git?ref=v1.4.0"
   config = local.bv
 
   depends_on = [
