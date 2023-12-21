@@ -29,7 +29,7 @@
 | [dns zone](./dns-zone/README.md) | v1.1.0 |
 | [event hub](./event-hub/README.md) | v1.5.0 |
 | [function app](./function-app/README.md) | v1.0.0 |
-| [key vault](./key-vault/README.md) | v1.5.1 |
+| [key vault](./key-vault/README.md) | v1.6.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v1.1.2 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.4.0 |
 | [linux virtual machine](./linux-virtual-machine/README.md) | v1.3.1 |

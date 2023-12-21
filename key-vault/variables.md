@@ -52,10 +52,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -126,7 +126,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
