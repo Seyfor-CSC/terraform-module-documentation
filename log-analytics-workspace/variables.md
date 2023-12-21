@@ -3,18 +3,23 @@
 ```
 variable "config" {  type = list(object({
     # log analytics workspace
-    name                               = string
-    resource_group_name                = string
-    location                           = string
-    allow_resource_only_permissions    = optional(bool)
-    local_authentication_disabled      = optional(bool)
-    sku                                = optional(string)
-    retention_in_days                  = optional(number, 90)
-    daily_quota_gb                     = optional(number)
-    cmk_for_query_forced               = optional(bool)
+    name                            = string
+    resource_group_name             = string
+    location                        = string
+    allow_resource_only_permissions = optional(bool)
+    local_authentication_disabled   = optional(bool)
+    sku                             = optional(string)
+    retention_in_days               = optional(number, 90)
+    daily_quota_gb                  = optional(number)
+    cmk_for_query_forced            = optional(bool)
+    identity = optional(object({
+      type         = string
+      identity_ids = optional(list(string))
+    }))
     internet_ingestion_enabled         = optional(bool)
     internet_query_enabled             = optional(bool)
     reservation_capacity_in_gb_per_day = optional(number)
+    data_collection_rule_id            = optional(string)
     tags                               = optional(map(any))
 
     # monitoring
@@ -44,9 +49,13 @@ variable "config" {  type = list(object({
 |retention_in_days | number | Optional |  90 |  |
 |daily_quota_gb | number | Optional |  |  |
 |cmk_for_query_forced | bool | Optional |  |  |
+|identity | object | Optional |  |  |
+|&nbsp;type | string | Required |  |  |
+|&nbsp;identity_ids | list(string) | Optional |  |  |
 |internet_ingestion_enabled | bool | Optional |  |  |
 |internet_query_enabled | bool | Optional |  |  |
 |reservation_capacity_in_gb_per_day | number | Optional |  |  |
+|data_collection_rule_id | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
