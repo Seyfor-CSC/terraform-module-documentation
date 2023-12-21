@@ -27,7 +27,7 @@ variable "config" {  type = list(object({
       })
       evaluation_frequency = string
       scopes               = list(string)
-      severity             = string
+      severity             = number
       window_duration      = string
       action = optional(object({
         action_groups     = optional(list(string))
@@ -110,7 +110,7 @@ variable "config" {  type = list(object({
         metric_name       = string
         aggregation       = string
         operator          = string
-        alert_sensitivity = optional(string)
+        alert_sensitivity = string
         dimension = optional(list(object({
           name     = string
           operator = string
@@ -172,7 +172,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;resource_id_column | string | Optional |  |  |
 |&nbsp;evaluation_frequency | string | Required |  |  |
 |&nbsp;scopes | list(string) | Required |  |  |
-|&nbsp;severity | string | Required |  |  |
+|&nbsp;severity | number | Required |  |  |
 |&nbsp;window_duration | string | Required |  |  |
 |&nbsp;action | object | Optional |  |  |
 |&nbsp;&nbsp;action_groups | list(string) | Optional |  |  |
@@ -242,7 +242,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;metric_name | string | Required |  |  |
 |&nbsp;&nbsp;aggregation | string | Required |  |  |
 |&nbsp;&nbsp;operator | string | Required |  |  |
-|&nbsp;&nbsp;alert_sensitivity | string | Optional |  |  |
+|&nbsp;&nbsp;alert_sensitivity | string | Required |  |  |
 |&nbsp;&nbsp;dimension | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;operator | string | Required |  |  |
