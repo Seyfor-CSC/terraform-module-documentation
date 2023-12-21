@@ -22,7 +22,7 @@ locals {
         "FUNCTIONS_WORKER_RUNTIME"     = "node"
         "WEBSITE_NODE_DEFAULT_VERSION" = "~18"
       }
-
+      
       monitoring = [
         {
           diag_name                  = "Monitoring"

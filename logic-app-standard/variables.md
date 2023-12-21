@@ -9,7 +9,7 @@ variable "config" {  type = list(object({
     app_service_plan_id        = string
     storage_account_name       = string
     storage_account_access_key = string
-    app_settings               = optional(map(any))
+    app_settings               = optional(map(string))
     use_extension_bundle       = optional(bool)
     bundle_version             = optional(string)
     connection_string = optional(object({
@@ -50,7 +50,7 @@ variable "config" {  type = list(object({
           x_forwarded_for   = optional(list(string))
           x_forwarded_host  = optional(list(string))
         }))
-      })))
+      })), [])
       scm_ip_restriction = optional(list(object({
         ip_address                = optional(string)
         service_tag               = optional(string)
@@ -64,7 +64,7 @@ variable "config" {  type = list(object({
           x_forwarded_for   = optional(list(string))
           x_forwarded_host  = optional(list(string))
         }))
-      })))
+      })), [])
       scm_use_main_ip_restriction      = optional(bool)
       scm_min_tls_version              = optional(string)
       scm_type                         = optional(string)
@@ -105,7 +105,7 @@ variable "config" {  type = list(object({
 |app_service_plan_id | string | Required |  |  |
 |storage_account_name | string | Required |  |  |
 |storage_account_access_key | string | Required |  |  |
-|app_settings | map(any) | Optional |  |  |
+|app_settings | map(string) | Optional |  |  |
 |use_extension_bundle | bool | Optional |  |  |
 |bundle_version | string | Optional |  |  |
 |connection_string | object | Optional |  |  |
