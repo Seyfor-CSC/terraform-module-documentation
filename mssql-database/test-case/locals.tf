@@ -30,9 +30,9 @@ locals {
           per_database_settings = {
             min_capacity = 0
             max_capacity = 4
-          }
+          }          
           max_size_gb = 500
-
+          
           monitoring = [
             {
               diag_name                  = "Monitoring"
@@ -66,14 +66,12 @@ locals {
               subresource_names    = ["sqlServer"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 

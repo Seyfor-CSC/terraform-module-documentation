@@ -15,17 +15,17 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/mssql_server
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/mssql_database
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/mssql_elasticpool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_elasticpool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/mssql_firewall_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_firewall_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_endpoint
 
 &nbsp;
 

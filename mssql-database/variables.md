@@ -46,6 +46,7 @@ variable "config" {  type = list(object({
       maintenance_configuration_name = optional(string)
       max_size_gb                    = optional(number)
       max_size_bytes                 = optional(number)
+      enclave_type                   = optional(string)
       zone_redundant                 = optional(bool)
       license_type                   = optional(string)
       tags                           = optional(map(any)) # If not provided, inherited in module from parent resource
@@ -78,6 +79,7 @@ variable "config" {  type = list(object({
       collation                      = optional(string)
       elastic_pool_id                = optional(string) # Do not use, is replaced by elastic_pool_name parameter
       elastic_pool_name              = optional(string) # Custom variable replacing elastic_pool_id parameter. Elastic Pool name, which is being created in this module, is expected
+      enclave_type                   = optional(string)
       geo_backup_enabled             = optional(bool)
       maintenance_configuration_name = optional(string)
       ledger_enabled                 = optional(bool)
@@ -147,10 +149,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -207,6 +209,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;maintenance_configuration_name | string | Optional |  |  |
 |&nbsp;&nbsp;max_size_gb | number | Optional |  |  |
 |&nbsp;&nbsp;max_size_bytes | number | Optional |  |  |
+|&nbsp;&nbsp;enclave_type | string | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
 |&nbsp;&nbsp;license_type | string | Optional |  |  |
 |&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
@@ -232,6 +235,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;collation | string | Optional |  |  |
 |&nbsp;&nbsp;elastic_pool_id | string | Optional |  |  Do not use, is replaced by elastic_pool_name parameter |
 |&nbsp;&nbsp;elastic_pool_name | string | Optional |  |  Custom variable replacing elastic_pool_id parameter. Elastic Pool name, which is being created in this module, is expected |
+|&nbsp;&nbsp;enclave_type | string | Optional |  |  |
 |&nbsp;&nbsp;geo_backup_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;maintenance_configuration_name | string | Optional |  |  |
 |&nbsp;&nbsp;ledger_enabled | bool | Optional |  |  |
@@ -288,7 +292,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
