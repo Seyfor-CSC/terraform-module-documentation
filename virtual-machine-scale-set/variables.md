@@ -2,12 +2,13 @@
 
 ```
 variable "config" {  type = list(object({
+    # virtual machine scale set
     name                = string
     resource_group_name = string
     location            = string
     autoscale           = optional(bool, false) # Custom variable to enable autoscaling
     os_type             = string                # "Linux" or "Windows"
-    admin_password      = optional(string) # Required for windows
+    admin_password      = optional(string)      # Required for windows
     admin_username      = string
     instances           = optional(number, 0)
     sku                 = string
