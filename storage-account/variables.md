@@ -120,12 +120,12 @@ variable "config" {  type = list(object({
     azure_files_authentication = optional(object({
       directory_type = string
       active_directory = optional(object({
-        storage_sid         = string
         domain_name         = string
-        domain_sid          = string
         domain_guid         = string
-        forest_name         = string
-        netbios_domain_name = string
+        domain_sid          = optional(string)
+        storage_sid         = optional(string)
+        forest_name         = optional(string)
+        netbios_domain_name = optional(string)
       }))
     }))
     routing = optional(object({
@@ -195,6 +195,14 @@ variable "config" {  type = list(object({
     tables = optional(list(object({
       name                 = string
       storage_account_name = optional(string) # Inherited in module from parent resource
+      acl = optional(list(object({
+        id = string
+        access_policy = optional(object({
+          expiry      = string
+          permissions = string
+          start       = string
+        }))
+      })), [])
     })), [])
 
     # storage management policy
@@ -236,10 +244,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -364,12 +372,12 @@ variable "config" {  type = list(object({
 |azure_files_authentication | object | Optional |  |  |
 |&nbsp;directory_type | string | Required |  |  |
 |&nbsp;active_directory | object | Optional |  |  |
-|&nbsp;&nbsp;storage_sid | string | Required |  |  |
 |&nbsp;&nbsp;domain_name | string | Required |  |  |
-|&nbsp;&nbsp;domain_sid | string | Required |  |  |
 |&nbsp;&nbsp;domain_guid | string | Required |  |  |
-|&nbsp;&nbsp;forest_name | string | Required |  |  |
-|&nbsp;&nbsp;netbios_domain_name | string | Required |  |  |
+|&nbsp;&nbsp;domain_sid | string | Optional |  |  |
+|&nbsp;&nbsp;storage_sid | string | Optional |  |  |
+|&nbsp;&nbsp;forest_name | string | Optional |  |  |
+|&nbsp;&nbsp;netbios_domain_name | string | Optional |  |  |
 |routing | object | Optional |  |  |
 |&nbsp;publish_internet_endpoints | bool | Optional |  |  |
 |&nbsp;publish_microsoft_endpoints | bool | Optional |  |  |
@@ -418,6 +426,12 @@ variable "config" {  type = list(object({
 |tables | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;acl | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;id | string | Required |  |  |
+|&nbsp;&nbsp;access_policy | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;expiry | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;permissions | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
 |management_policy | object | Optional |  |  |
 |&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;rule | list(object) | Optional | [] |  |
@@ -445,7 +459,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;ip_configuration | list(object) | Optional | [] |  |

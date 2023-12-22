@@ -19,25 +19,25 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -137,8 +137,6 @@ No special features in module.
 &nbsp;
 
 # Known Issues
-## Table acl block
-Acl for tables is currently not possible to be configured using terraform as it ends in an error. Therefore, we removed this feature from the module for now.
 ## Reported on GitHub
 [share_properties smb object produces changes for premium storage account.](https://github.com/hashicorp/terraform-provider-azurerm/issues/21182)
 

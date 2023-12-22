@@ -9,13 +9,13 @@ locals {
 
   sa = [
     {
-      name                         = local.naming.sa_1
-      location                     = local.location
-      resource_group_name          = local.naming.rg
-      account_tier                 = "Standard"
-      account_replication_type     = "LRS"
+      name                          = local.naming.sa_1
+      location                      = local.location
+      resource_group_name           = local.naming.rg
+      account_tier                  = "Standard"
+      account_replication_type      = "LRS"
       public_network_access_enabled = true
-      enable_https_traffic_only    = false
+      enable_https_traffic_only     = false
       network_rules = {
         default_action = "Allow"
       }
@@ -108,14 +108,12 @@ locals {
               subresource_names    = ["blob"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 
@@ -129,11 +127,11 @@ locals {
       tags = {}
     },
     {
-      name                         = local.naming.sa_2
-      location                     = local.location
-      resource_group_name          = local.naming.rg
-      account_tier                 = "Standard"
-      account_replication_type     = "LRS"
+      name                          = local.naming.sa_2
+      location                      = local.location
+      resource_group_name           = local.naming.rg
+      account_tier                  = "Standard"
+      account_replication_type      = "LRS"
       public_network_access_enabled = true
 
       tags = {}

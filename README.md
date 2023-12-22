@@ -17,7 +17,6 @@
 | [app service](./app-service/README.md) | v1.4.0 |
 | [app service plan](./app-service-plan/README.md) | v1.1.0 |
 | [automation account](./automation-account/README.md) | v1.6.0 |
-| [automation module](./automation-module/README.md) | v1.2.0 |
 | [availability set](./availability-set/README.md) | v1.2.0 |
 | [backup vault](./backup-vault/README.md) | v1.4.0 |
 | [bastion host](./bastion-host/README.md) | v1.4.0 |
@@ -32,7 +31,6 @@
 | [key vault](./key-vault/README.md) | v1.6.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v1.2.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.4.0 |
-| [linux virtual machine](./linux-virtual-machine/README.md) | v1.3.1 |
 | [load balancer](./load-balancer/README.md) | v1.3.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v1.4.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v1.2.0 |
@@ -61,7 +59,7 @@
 | [role definition](./role-definition/README.md) | v1.4.0 |
 | [route table](./route-table/README.md) | v1.4.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v1.3.0 |
-| [storage account](./storage-account/README.md) | v1.6.0 |
+| [storage account](./storage-account/README.md) | v1.7.0 |
 | [storage sync](./storage-sync/README.md) | v1.4.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v1.3.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v1.0.3 |
@@ -69,4 +67,3 @@
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.1.0 |
 | [virtual network](./virtual-network/README.md) | v1.5.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.4.0 |
-| [windows virtual machine](./windows-virtual-machine/README.md) | v1.3.1 |
