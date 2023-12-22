@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.73.0"
+      version = "=3.84.0"
     }
   }
   backend "local" {}
@@ -103,7 +103,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # load balancer
 module "load_balancer" {
-  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.4.0"
   config = local.lb
 
   depends_on = [

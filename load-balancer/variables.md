@@ -30,7 +30,7 @@ variable "config" {  type = list(object({
         identifier = string
         type       = string
         protocol   = string
-        port       = string
+        port       = number
       })), [])
       virtual_network_id = optional(string)
 
@@ -87,7 +87,7 @@ variable "config" {  type = list(object({
       frontend_port                  = number
       backend_port                   = number
       backend_address_pool_ids       = optional(list(string)) # Do not use, is replaced by backend_address_pool_names parameter
-      backend_address_pool_names     = list(string)           # Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are required
+      backend_address_pool_names     = optional(list(string)) # Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are expected
       probe_id                       = optional(string)       # Do not use, is replaced by probe_name parameter
       probe_name                     = optional(string)       # Custom variable replacing probe_id parameter. Probe name, which is being created in this load balancer, is expected
       enable_floating_ip             = optional(bool)
@@ -172,7 +172,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;identifier | string | Required |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;protocol | string | Required |  |  |
-|&nbsp;&nbsp;port | string | Required |  |  |
+|&nbsp;&nbsp;port | number | Required |  |  |
 |&nbsp;virtual_network_id | string | Optional |  |  |
 |&nbsp;nic_association | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;custom_name | string | Required |  |  Custom variable used as a unique value for terraform. Has to be a unique value for each nic association |
@@ -212,7 +212,7 @@ variable "config" {  type = list(object({
 |&nbsp;frontend_port | number | Required |  |  |
 |&nbsp;backend_port | number | Required |  |  |
 |&nbsp;backend_address_pool_ids | list(string) | Optional |  |  Do not use, is replaced by backend_address_pool_names parameter |
-|&nbsp;backend_address_pool_names | list(string) | Required |  |  Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are required |
+|&nbsp;backend_address_pool_names | list(string) | Optional |  |  Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are expected |
 |&nbsp;probe_id | string | Optional |  |  Do not use, is replaced by probe_name parameter |
 |&nbsp;probe_name | string | Optional |  |  Custom variable replacing probe_id parameter. Probe name, which is being created in this load balancer, is expected |
 |&nbsp;enable_floating_ip | bool | Optional |  |  |
