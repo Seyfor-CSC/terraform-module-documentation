@@ -9,7 +9,7 @@ locals {
     group_2 = "SEY-TERRAFORM-NE-GROUP02"
   }
 
-    sync = [
+  sync = [
     {
       name                = local.naming.sync_1
       location            = local.location
@@ -39,14 +39,12 @@ locals {
               subresource_names    = ["Afs"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 
