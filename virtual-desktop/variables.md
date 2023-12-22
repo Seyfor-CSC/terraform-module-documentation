@@ -22,8 +22,8 @@ variable "config" {  type = object({
         timezone                  = optional(string)
         use_session_host_timezone = optional(bool)
         schedule = optional(list(object({
-          day_of_week = optional(string)
-          hour_of_day = optional(number)
+          day_of_week = string
+          hour_of_day = number
         })), [])
       }))
       tags = optional(map(any))
@@ -85,10 +85,10 @@ variable "config" {  type = object({
           request_message                   = optional(string)
         }))
         custom_network_interface_name = optional(string)
-        private_dns_zone_group = optional(list(object({
+        private_dns_zone_group = optional(object({
           name                 = string
           private_dns_zone_ids = list(string)
-        })), [])
+        }))
         ip_configuration = optional(list(object({
           name               = string
           private_ip_address = string
@@ -124,15 +124,15 @@ variable "config" {  type = object({
         ramp_up_capacity_threshold_percent   = optional(number)
         ramp_up_minimum_hosts_percent        = optional(number)
       }))
+      time_zone     = string
+      description   = optional(string)
+      exclusion_tag = optional(string)
+      friendly_name = optional(string)
       host_pool = optional(list(object({
         hostpool_id          = optional(string) # Do not use, is replaced by hostpool_name parameter
         hostpool_name        = string           # Custom variable replacing hostpool_id parameter. Hostpool name, which is being created in this virtual desktop host pool, is required
         scaling_plan_enabled = bool
       })), [])
-      time_zone     = string
-      description   = optional(string)
-      exclusion_tag = optional(string)
-      friendly_name = optional(string)
       tags          = optional(map(any))
 
       # monitoring
@@ -177,10 +177,10 @@ variable "config" {  type = object({
           request_message                   = optional(string)
         }))
         custom_network_interface_name = optional(string)
-        private_dns_zone_group = optional(list(object({
+        private_dns_zone_group = optional(object({
           name                 = string
           private_dns_zone_ids = list(string)
-        })), [])
+        }))
         ip_configuration = optional(list(object({
           name               = string
           private_ip_address = string
@@ -220,8 +220,8 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;timezone | string | Optional |  |  |
 |&nbsp;&nbsp;use_session_host_timezone | bool | Optional |  |  |
 |&nbsp;&nbsp;schedule | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;&nbsp;day_of_week | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;hour_of_day | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;day_of_week | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;hour_of_day | number | Required |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |
 |&nbsp;application_groups | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
@@ -263,7 +263,7 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
@@ -295,14 +295,14 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;ramp_up_start_time | string | Required |  |  |
 |&nbsp;&nbsp;ramp_up_capacity_threshold_percent | number | Optional |  |  |
 |&nbsp;&nbsp;ramp_up_minimum_hosts_percent | number | Optional |  |  |
-|&nbsp;host_pool | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;hostpool_id | string | Optional |  |  Do not use, is replaced by hostpool_name parameter |
-|&nbsp;&nbsp;hostpool_name | string | Required |  |  Custom variable replacing hostpool_id parameter. Hostpool name, which is being created in this virtual desktop host pool, is required |
-|&nbsp;&nbsp;scaling_plan_enabled | bool | Required |  |  |
 |&nbsp;time_zone | string | Required |  |  |
 |&nbsp;description | string | Optional |  |  |
 |&nbsp;exclusion_tag | string | Optional |  |  |
 |&nbsp;friendly_name | string | Optional |  |  |
+|&nbsp;host_pool | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;hostpool_id | string | Optional |  |  Do not use, is replaced by hostpool_name parameter |
+|&nbsp;&nbsp;hostpool_name | string | Required |  |  Custom variable replacing hostpool_id parameter. Hostpool name, which is being created in this virtual desktop host pool, is required |
+|&nbsp;&nbsp;scaling_plan_enabled | bool | Required |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |
 |&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
@@ -335,7 +335,7 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
