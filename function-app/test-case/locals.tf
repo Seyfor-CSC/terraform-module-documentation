@@ -35,14 +35,12 @@ locals {
               subresource_names    = ["sites"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 

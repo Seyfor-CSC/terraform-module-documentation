@@ -112,24 +112,26 @@ variable "config" {  type = list(object({
       type  = string
       value = string
     })), [])
-    daily_memory_time_quota       = optional(number)
-    enabled                       = optional(bool)
-    content_share_force_disabled  = optional(bool)
-    functions_extension_version   = optional(string)
-    https_only                    = optional(bool)
-    public_network_access_enabled = optional(bool, false)
+    daily_memory_time_quota                  = optional(number)
+    enabled                                  = optional(bool)
+    content_share_force_disabled             = optional(bool)
+    functions_extension_version              = optional(string)
+    ftp_publish_basic_authentication_enabled = optional(bool)
+    https_only                               = optional(bool)
+    public_network_access_enabled            = optional(bool, false)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
     }))
     key_vault_reference_identity_id = optional(string)
-    storage_account_access_key    = optional(string)
-    storage_account_name          = optional(string)
-    storage_uses_managed_identity = optional(bool)
-    storage_key_vault_secret_id   = optional(string)
-    virtual_network_subnet_id     = optional(string)
-    zip_deploy_file               = optional(string)
-    tags                          = optional(map(any))
+    storage_account_access_key                     = optional(string)
+    storage_account_name                           = optional(string)
+    storage_uses_managed_identity                  = optional(bool)
+    storage_key_vault_secret_id                    = optional(string)
+    virtual_network_subnet_id                      = optional(string)
+    webdeploy_publish_basic_authentication_enabled = optional(bool)
+    zip_deploy_file                                = optional(string)
+    tags                                           = optional(map(any))
 
     # private endpoint
     private_endpoint = optional(list(object({
@@ -145,11 +147,11 @@ variable "config" {  type = list(object({
         subresource_names                 = optional(list(string))
         request_message                   = optional(string)
       }))
-      custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      custom_network_intserface_name = optional(string)
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -278,6 +280,7 @@ variable "config" {  type = list(object({
 |enabled | bool | Optional |  |  |
 |content_share_force_disabled | bool | Optional |  |  |
 |functions_extension_version | string | Optional |  |  |
+|ftp_publish_basic_authentication_enabled | bool | Optional |  |  |
 |https_only | bool | Optional |  |  |
 |public_network_access_enabled | bool | Optional |  false |  |
 |identity | object | Optional |  |  |
@@ -289,6 +292,7 @@ variable "config" {  type = list(object({
 |storage_uses_managed_identity | bool | Optional |  |  |
 |storage_key_vault_secret_id | string | Optional |  |  |
 |virtual_network_subnet_id | string | Optional |  |  |
+|webdeploy_publish_basic_authentication_enabled | bool | Optional |  |  |
 |zip_deploy_file | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
@@ -303,8 +307,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
 |&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;request_message | string | Optional |  |  |
-|&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;custom_network_intserface_name | string | Optional |  |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;ip_configuration | list(object) | Optional | [] |  |
