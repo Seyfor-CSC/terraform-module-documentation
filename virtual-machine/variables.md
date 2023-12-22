@@ -8,7 +8,7 @@ variable "config" {  type = list(object({
     resource_group_name   = string
     location              = string
     admin_username        = string
-    admin_password        = optional(string)
+    admin_password        = optional(string)       # Required for windows
     network_interface_ids = optional(list(string)) # Inherited in module from network interface resource
     size                  = string
     os_disk = object({
@@ -27,7 +27,7 @@ variable "config" {  type = list(object({
 
       # data protection backup instance disk
       disk_backup = optional(list(object({
-        name                         = optional(string) # If not provided, inherited in module from parent resource
+        name                         = optional(string) # If not provided, inherited in module from disk name
         location                     = optional(string) # Inherited in module from parent resource
         vault_id                     = string
         disk_id                      = optional(string) # Inherited in module from parent resource
@@ -35,15 +35,14 @@ variable "config" {  type = list(object({
         backup_policy_id             = string
       })), [])
     })
-    license_type = optional(string) # linux specific
     additional_capabilities = optional(object({
       ultra_ssd_enabled = optional(bool)
     }))
-    admin_ssh_key = optional(list(object({ # linux specific
+    admin_ssh_key = optional(list(object({ # linux only
       public_key = string
       username   = string
     })), [])
-    additional_unattend_content = optional(list(object({ # windows specific
+    additional_unattend_content = optional(list(object({ # windows only
       content = string
       setting = string
     })), [])
@@ -58,9 +57,9 @@ variable "config" {  type = list(object({
     custom_data                                            = optional(string)
     dedicated_host_id                                      = optional(string)
     dedicated_host_group_id                                = optional(string)
-    disable_password_authentication                        = optional(bool) # linux specific
+    disable_password_authentication                        = optional(bool) # linux only
     edge_zone                                              = optional(string)
-    enable_automatic_updates                               = optional(bool) # windows specific
+    enable_automatic_updates                               = optional(bool) # windows only
     encryption_at_host_enabled                             = optional(bool)
     eviction_policy                                        = optional(string)
     extensions_time_budget                                 = optional(string)
@@ -70,12 +69,12 @@ variable "config" {  type = list(object({
       order                  = optional(number)
       tag                    = optional(string)
     })), [])
-    hotpatching_enabled = optional(bool) # windows specific
+    hotpatching_enabled = optional(bool) # windows only
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
     }))
-    license_type          = optional(string) # windows specific
+    license_type          = optional(string)
     max_bid_price         = optional(number)
     patch_assessment_mode = optional(string)
     patch_mode            = optional(string)
@@ -108,11 +107,11 @@ variable "config" {  type = list(object({
       enabled = bool
       timeout = optional(string)
     }))
-    timezone                     = optional(string) # windows specific
+    timezone                     = optional(string) # windows only
     user_data                    = optional(string)
     virtual_machine_scale_set_id = optional(string)
     vtpm_enabled                 = optional(bool)
-    winrm_listener = optional(list(object({ # windows specific
+    winrm_listener = optional(list(object({ # windows only
       protocol        = optional(string, "Https")
       certificate_url = optional(string)
     })), [])
@@ -126,10 +125,10 @@ variable "config" {  type = list(object({
       location            = optional(string) # Inherited in module from parent resource
       ip_configuration = list(object({
         name                                               = string
-        private_ip_address_allocation                      = optional(string, "Dynamic")
         gateway_load_balancer_frontend_ip_configuration_id = optional(string)
         subnet_id                                          = optional(string)
         private_ip_address_version                         = optional(string, "IPv4")
+        private_ip_address_allocation                      = optional(string, "Dynamic")
         public_ip_address_id                               = optional(string)
         primary                                            = optional(bool)
         private_ip_address                                 = optional(string)
@@ -183,10 +182,11 @@ variable "config" {  type = list(object({
       security_type                     = optional(string)
       secure_vm_disk_encryption_set_id  = optional(string)
       on_demand_bursting_enabled        = optional(bool)
-      zone                              = optional(string) # Inherited in module from parent resource
+      zone                              = optional(string) # If not provided, inherited in module from parent resource
       network_access_policy             = optional(string)
       disk_access_id                    = optional(string)
       public_network_access_enabled     = optional(bool, false)
+      tags                              = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # data protection backup instance disk
       disk_backup = optional(list(object({
@@ -197,7 +197,6 @@ variable "config" {  type = list(object({
         snapshot_resource_group_name = optional(string) # If not provided, inherited in module from parent resource
         backup_policy_id             = string
       })), [])
-      tags = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # virtual machine data disk attachment
       disk_attachment = optional(list(object({
@@ -223,8 +222,8 @@ variable "config" {  type = list(object({
     vm_backup = optional(list(object({
       resource_group_name = string
       recovery_vault_name = string
-      backup_policy_id    = optional(string)
       source_vm_id        = optional(string) # Inherited in module from parent resource
+      backup_policy_id    = optional(string)
       exclude_disk_luns   = optional(list(number))
       include_disk_luns   = optional(list(number))
       protection_state    = optional(string)
@@ -265,7 +264,7 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |admin_username | string | Required |  |  |
-|admin_password | string | Optional |  |  |
+|admin_password | string | Optional |  |  Required for windows |
 |network_interface_ids | list(string) | Optional |  |  Inherited in module from network interface resource |
 |size | string | Required |  |  |
 |os_disk | object | Required |  |  |
@@ -281,19 +280,18 @@ variable "config" {  type = list(object({
 |&nbsp;security_encryption_type | string | Optional |  |  |
 |&nbsp;write_accelerator_enabled | bool | Optional |  |  |
 |&nbsp;disk_backup | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;name | string | Optional |  |  If not provided, inherited in module from disk name |
 |&nbsp;&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;vault_id | string | Required |  |  |
 |&nbsp;&nbsp;disk_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;snapshot_resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
-|license_type | string | Optional |  |  linux specific |
 |additional_capabilities | object | Optional |  |  |
 |&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
-|admin_ssh_key | list(object) | Optional | [] |  linux specific |
+|admin_ssh_key | list(object) | Optional | [] |  linux only |
 |&nbsp;public_key | string | Required |  |  |
 |&nbsp;username | string | Required |  |  |
-|additional_unattend_content | list(object) | Optional | [] |  windows specific |
+|additional_unattend_content | list(object) | Optional | [] |  windows only |
 |&nbsp;content | string | Required |  |  |
 |&nbsp;setting | string | Required |  |  |
 |allow_extension_operations | bool | Optional |  |  |
@@ -306,9 +304,9 @@ variable "config" {  type = list(object({
 |custom_data | string | Optional |  |  |
 |dedicated_host_id | string | Optional |  |  |
 |dedicated_host_group_id | string | Optional |  |  |
-|disable_password_authentication | bool | Optional |  |  linux specific |
+|disable_password_authentication | bool | Optional |  |  linux only |
 |edge_zone | string | Optional |  |  |
-|enable_automatic_updates | bool | Optional |  |  windows specific |
+|enable_automatic_updates | bool | Optional |  |  windows only |
 |encryption_at_host_enabled | bool | Optional |  |  |
 |eviction_policy | string | Optional |  |  |
 |extensions_time_budget | string | Optional |  |  |
@@ -317,11 +315,11 @@ variable "config" {  type = list(object({
 |&nbsp;configuration_blob_uri | string | Optional |  |  |
 |&nbsp;order | number | Optional |  |  |
 |&nbsp;tag | string | Optional |  |  |
-|hotpatching_enabled | bool | Optional |  |  windows specific |
+|hotpatching_enabled | bool | Optional |  |  windows only |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
-|license_type | string | Optional |  |  windows specific |
+|license_type | string | Optional |  |  |
 |max_bid_price | number | Optional |  |  |
 |patch_assessment_mode | string | Optional |  |  |
 |patch_mode | string | Optional |  |  |
@@ -349,11 +347,11 @@ variable "config" {  type = list(object({
 |termination_notification | object | Optional |  |  |
 |&nbsp;enabled | bool | Required |  |  |
 |&nbsp;timeout | string | Optional |  |  |
-|timezone | string | Optional |  |  windows specific |
+|timezone | string | Optional |  |  windows only |
 |user_data | string | Optional |  |  |
 |virtual_machine_scale_set_id | string | Optional |  |  |
 |vtpm_enabled | bool | Optional |  |  |
-|winrm_listener | list(object) | Optional | [] |  windows specific |
+|winrm_listener | list(object) | Optional | [] |  windows only |
 |&nbsp;protocol | string | Optional |  "Https" |  |
 |&nbsp;certificate_url | string | Optional |  |  |
 |zone | string | Optional |  |  |
@@ -364,10 +362,10 @@ variable "config" {  type = list(object({
 |&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;ip_configuration | list(object) | Required |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_ip_address_allocation | string | Optional |  "Dynamic" |  |
 |&nbsp;&nbsp;gateway_load_balancer_frontend_ip_configuration_id | string | Optional |  |  |
 |&nbsp;&nbsp;subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;private_ip_address_version | string | Optional |  "IPv4" |  |
+|&nbsp;&nbsp;private_ip_address_allocation | string | Optional |  "Dynamic" |  |
 |&nbsp;&nbsp;public_ip_address_id | string | Optional |  |  |
 |&nbsp;&nbsp;primary | bool | Optional |  |  |
 |&nbsp;&nbsp;private_ip_address | string | Optional |  |  |
@@ -414,10 +412,11 @@ variable "config" {  type = list(object({
 |&nbsp;security_type | string | Optional |  |  |
 |&nbsp;secure_vm_disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;on_demand_bursting_enabled | bool | Optional |  |  |
-|&nbsp;zone | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;zone | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;network_access_policy | string | Optional |  |  |
 |&nbsp;disk_access_id | string | Optional |  |  |
 |&nbsp;public_network_access_enabled | bool | Optional |  false |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;disk_backup | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
@@ -425,7 +424,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;disk_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;snapshot_resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
-|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;disk_attachment | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;virtual_machine_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;managed_disk_id | string | Optional |  |  Inherited in module from parent resource |
@@ -442,8 +440,8 @@ variable "config" {  type = list(object({
 |vm_backup | list(object) | Optional | [] |  |
 |&nbsp;resource_group_name | string | Required |  |  |
 |&nbsp;recovery_vault_name | string | Required |  |  |
-|&nbsp;backup_policy_id | string | Optional |  |  |
 |&nbsp;source_vm_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;backup_policy_id | string | Optional |  |  |
 |&nbsp;exclude_disk_luns | list(number) | Optional |  |  |
 |&nbsp;include_disk_luns | list(number) | Optional |  |  |
 |&nbsp;protection_state | string | Optional |  |  |

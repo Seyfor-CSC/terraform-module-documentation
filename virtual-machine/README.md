@@ -19,23 +19,23 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/windows_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/windows_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/linux_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/linux_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/virtual_machine_data_disk_attachment
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_machine_data_disk_attachment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.73.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/backup_protected_vm
 
 &nbsp;
 
