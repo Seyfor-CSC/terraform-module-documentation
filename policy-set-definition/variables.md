@@ -10,7 +10,7 @@ variable "config" {  type = list(object({
       policy_definition_id = string
       parameter_values     = optional(string)
       reference_id         = optional(string)
-      policy_group_names   = optional(list(string), [])
+      policy_group_names   = optional(list(string))
     }))
     policy_definition_group = optional(list(object({
       name                            = string
@@ -41,7 +41,7 @@ variable "config" {  type = list(object({
 |&nbsp;policy_definition_id | string | Required |  |  |
 |&nbsp;parameter_values | string | Optional |  |  |
 |&nbsp;reference_id | string | Optional |  |  |
-|&nbsp;policy_group_names | list(string) | Optional | [] |  |
+|&nbsp;policy_group_names | list(string) | Optional |  |  |
 |policy_definition_group | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;display_name | string | Optional |  |  |
