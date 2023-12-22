@@ -7,7 +7,7 @@ locals {
     cog_2 = "SEY-TERRAFORM-NE-COG02"
   }
 
-    cog = [
+  cog = [
     {
       name                  = local.naming.cog_1
       location              = local.location
@@ -31,14 +31,12 @@ locals {
               subresource_names    = ["account"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 
