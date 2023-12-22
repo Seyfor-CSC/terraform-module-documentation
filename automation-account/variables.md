@@ -78,7 +78,7 @@ variable "config" {  type = list(object({
       automation_account_name = optional(string) # Inherited in module from parent resource
       frequency               = string
       description             = optional(string)
-      interval                = optional(string)
+      interval                = optional(number)
       start_time              = optional(string)
       expiry_time             = optional(string)
       timezone                = optional(string)
@@ -105,10 +105,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -195,7 +195,7 @@ variable "config" {  type = list(object({
 |&nbsp;automation_account_name | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;frequency | string | Required |  |  |
 |&nbsp;description | string | Optional |  |  |
-|&nbsp;interval | string | Optional |  |  |
+|&nbsp;interval | number | Optional |  |  |
 |&nbsp;start_time | string | Optional |  |  |
 |&nbsp;expiry_time | string | Optional |  |  |
 |&nbsp;timezone | string | Optional |  |  |
@@ -217,7 +217,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;request_message | string | Optional |  |  |
 |&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | list(object) | Optional | [] |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
 |&nbsp;ip_configuration | list(object) | Optional | [] |  |
