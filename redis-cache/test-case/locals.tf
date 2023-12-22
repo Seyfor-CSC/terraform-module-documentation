@@ -53,14 +53,12 @@ locals {
               subresource_names    = ["redisCache"]
             }
           ]
-          private_dns_zone_group = [
-            {
-              name = azurerm_private_dns_zone.dns.name
-              private_dns_zone_ids = [
-                azurerm_private_dns_zone.dns.id
-              ]
-            }
-          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
         }
       ]
 
