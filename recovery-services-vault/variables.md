@@ -6,11 +6,11 @@ variable "config" {  type = list(object({
     name                = string
     resource_group_name = string
     location            = string
+    sku                 = string
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
     }))
-    sku                           = string
     public_network_access_enabled = optional(bool, false)
     immutability                  = optional(string)
     storage_mode_type             = optional(string)
@@ -131,10 +131,10 @@ variable "config" {  type = list(object({
         request_message                   = optional(string)
       }))
       custom_network_interface_name = optional(string)
-      private_dns_zone_group = optional(list(object({
+      private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
-      })), [])
+      }))
       ip_configuration = optional(list(object({
         name               = string
         private_ip_address = string
@@ -168,10 +168,10 @@ variable "config" {  type = list(object({
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
+|sku | string | Required |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
-|sku | string | Required |  |  |
 |public_network_access_enabled | bool | Optional |  false |  |
 |immutability | string | Optional |  |  |
 |storage_mode_type | string | Optional |  |  |

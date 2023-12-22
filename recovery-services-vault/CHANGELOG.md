@@ -1,12 +1,18 @@
 # Changelog
 
+## Release v1.7.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 3.84.0 (#18)
+- Terraform: 1.6.5 (#18)
+   
 ## Release v1.6.0
 
 ## Enhancements
 
 - Add `azurerm_backup_policy_file_share` resource (#15)
 - Rename `backup_policy` variable to `backup_policy_vm` (#15)
-- Rename `policy` output to `vm_policy`
+- Rename `policy` output to `vm_policy` (#15)
 
 
    
