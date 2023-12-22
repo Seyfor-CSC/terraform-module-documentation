@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.73.0"
+      version = "=3.84.0"
     }
   }
   backend "local" {}
@@ -68,7 +68,7 @@ resource "azurerm_monitor_data_collection_endpoint" "example" {
 
 # data collection rule
 module "data_collection_rule" {
-  source = "git@github.com:Seyfor-CSC/mit.data-collection-rule.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.data-collection-rule.git?ref=v1.3.0"
   config = local.dcr
 
   depends_on = [
