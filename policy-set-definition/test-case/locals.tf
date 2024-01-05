@@ -15,24 +15,8 @@ locals {
       metadata = jsonencode({
         category = "Tags"
       })
-      parameters = <<PARAMETERS
-      {
-        "RequiredRGTagServiceOwner": {
-            "type": "String",
-            "metadata": {
-            "displayName": "RequiredRGTagServiceOwner"
-            },
-            "defaultValue": "ServiceOwner"
-        },
-        "RequiredRGTagAPMID": {
-            "type": "String",
-            "metadata": {
-            "displayName": "RequiredRGTagAPMID"
-            },
-            "defaultValue": "APMID"
-        }
-      }
-      PARAMETERS
+      parameters = "${path.module}/parameters/MIT-Tags-Base.json"
+      
       policy_definition_reference = [
         {
           reference_id : "RequiredRGTagServiceOwner",

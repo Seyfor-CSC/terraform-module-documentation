@@ -1,0 +1,16 @@
+{
+    "RequiredRGTagServiceOwner": {
+        "type": "String",
+        "metadata": {
+            "displayName": "RequiredRGTagServiceOwner"
+        },
+        "defaultValue": "ServiceOwner"
+    },
+    "RequiredRGTagAPMID": {
+        "type": "String",
+        "metadata": {
+            "displayName": "RequiredRGTagAPMID"
+        },
+        "defaultValue": "APMID"
+    }
+}

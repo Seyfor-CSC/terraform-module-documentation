@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.5.0
+
+## Enhancements
+
+- Change `parameters` variable expected value to a file (#8)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade
