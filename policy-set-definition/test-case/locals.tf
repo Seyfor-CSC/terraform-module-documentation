@@ -15,7 +15,7 @@ locals {
       metadata = jsonencode({
         category = "Tags"
       })
-      parameters = "${path.module}/parameters/MIT-Tags-Base.json"
+      parameters = "${path.module}/parameters/SEY-TERRAFORM-POLICY01.json"
       
       policy_definition_reference = [
         {
