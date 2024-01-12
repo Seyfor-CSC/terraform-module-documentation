@@ -1,0 +1,23 @@
+{
+  "listOfResourceTypesNotAllowed": {
+    "type": "Array",
+    "metadata": {
+      "description": "The list of resource types that cannot be deployed.",
+      "displayName": "Not allowed resource types",
+      "strongType": "resourceTypes"
+    }
+  },
+  "effect": {
+    "type": "String",
+    "metadata": {
+      "displayName": "Effect",
+      "description": "Enable or disable the execution of the policy"
+    },
+    "allowedValues": [
+      "Audit",
+      "Deny",
+      "Disabled"
+    ],
+    "defaultValue": "Deny"
+  }
+}
