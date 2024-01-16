@@ -50,6 +50,38 @@ variable "config" {  type = list(object({
       eventhub_authorization_rule_id = optional(string)
     })), [])
   }))
+
+  default = null
+}
+
+variable "subnets" {
+  type = list(object({
+    # subnet
+    name                 = string
+    resource_group_name  = string
+    virtual_network_name = string
+    address_prefixes     = list(string)
+    delegation = optional(object({
+      name = string
+      service_delegation = object({
+        name    = string
+        actions = optional(list(string))
+      })
+    }))
+    private_endpoint_network_policies_enabled     = optional(bool)
+    private_link_service_network_policies_enabled = optional(bool)
+    service_endpoints                             = optional(list(string))
+    service_endpoint_policy_ids                   = optional(list(string))
+    nsg_name                                      = optional(string)
+    route_table_name                              = optional(string)
+    nat_gateway_name                              = optional(string)
+  }))
+
+  default = null
+}
+
+variable "subscription_id" {
+  type = string
 }
 
 

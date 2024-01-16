@@ -50,6 +50,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 
 # Outputs
 ## Structure
+### Virtual Network outputs
 
 | Output Name | Value                  | Comment        |
 | ----------- | ---------------------- | -------------- |
@@ -60,11 +61,21 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | &nbsp;name             |                |
 |             | &nbsp;id               |                |
 |             | &nbsp;address_prefixes |                |
+### Subnet only outputs
+
+| Output Name | Value            | Comment |
+| ----------- | ---------------- | ------- |
+| outputs     | name             |         |
+|             | id               |         |
+|             | address_prefixes |         |
 
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Virtual Network module is used as a value for the _scope_ variable in Role Assignment resource.
 ```
+data "azurerm_client_config" "azurerm_client_config" {
+}
+
 module "vnet" {
     source = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.0.0"
     config = [
@@ -82,9 +93,7 @@ module "vnet" {
             ] 
         }
     ]
-}
-
-data "azurerm_client_config" "azurerm_client_config" {
+    subscription_id = data.azurerm_client_config.current.subscription_id
 }
 
 resource "azurerm_role_assignment" "role_assignment" {
@@ -101,10 +110,14 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
+## Subscription Id
+When using the module, subscription_id variable needs to be configured in the module call (in the same place as source or the config variable). Set the value of this variable to the subscription id you will deploy this module into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
 ## Custom variables
 You need to configure the `nsg_name`, `route_table_name`, or `nat_gateway_name` variables depending on which subnet associations you want to deploy. Values of these variables should be the names of the associated resources. Go to [test-case/locals.tf](test-case/locals.tf) to see how to deploy these resources.
 ## Subnet outputs: replacement of dots with hyphens
 It is common to have dots in the subnet name. However, dots are not allowed in the output names. Therefore, dots in subnet names are replaced with hyphens in the output names. For example, if you have subnet named `subnet-10.0.1.0-24` in your configuration, the output name will be `subnet-10-0-1-0-24`. Reference the Example usage of outputs (section above) to see how to use the subnet output.
+## Subnet only deployment without Virtual Network
+If you want to deploy a subnet without the virtual network, you can do so by setting the `subnets` variable instead of the `config` variable. You can't use one module call to deploy a `subnets` variable and a `config` variable at the same time. Each module call can only deploy one of these variables. Go to [test-case](test-case) to see how to deploy each scenario.
 
 &nbsp;
 

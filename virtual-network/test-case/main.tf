@@ -42,6 +42,13 @@ resource "azurerm_route_table" "rt" {
   ]
 }
 
+resource "azurerm_virtual_network" "vnet" {
+  name                = "example-network"
+  location            = local.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = ["10.0.2.0/24"]
+}
+
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
@@ -57,8 +64,9 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual network
 module "virtual_network" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.5.0"
-  config = local.vnet
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.6.0"
+  config          = local.vnet
+  subscription_id = data.azurerm_subscription.primary.id
 
   depends_on = [
     azurerm_log_analytics_workspace.la,
@@ -66,7 +74,22 @@ module "virtual_network" {
     azurerm_route_table.rt
   ]
 }
+module "subnets" {
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.6.0"
+  subnets         = local.subnets
+  subscription_id = data.azurerm_subscription.primary.id
+
+  depends_on = [
+    azurerm_virtual_network.vnet,
+    azurerm_network_security_group.nsg,
+    azurerm_route_table.rt
+  ]
+}
 
 output "virtual_network" {
   value = module.virtual_network.outputs
+}
+
+output "subnets" {
+  value = module.subnets.outputs
 }

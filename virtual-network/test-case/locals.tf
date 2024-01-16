@@ -55,4 +55,21 @@ locals {
       tags = {}
     }
   ]
+
+  subnets = [
+    {
+      name                 = "sey-terraform-ne-10.0.2.0-25"
+      address_prefixes     = ["10.0.2.0/25"]
+      resource_group_name  = local.naming.rg
+      virtual_network_name = azurerm_virtual_network.vnet.name
+      nsg_name             = local.naming.nsg
+      route_table_name     = local.naming.rt
+    },
+    {
+      name                 = "sey-terraform-ne-10.0.2.128-25"
+      address_prefixes     = ["10.0.2.128/25"]
+      resource_group_name  = local.naming.rg
+      virtual_network_name = azurerm_virtual_network.vnet.name
+    }
+  ]
 }

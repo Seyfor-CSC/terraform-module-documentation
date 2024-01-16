@@ -1,5 +1,18 @@
 # Changelog
 
+## Release v1.6.0
+
+## Bug Fixes
+
+- Add `subscription_id` variable for subnet association purposes (#15)
+
+
+## Enhancements
+
+- Add option to make a subnet only deployment (#16)
+
+
+   
 ## Release v1.5.0
 
 ## Provider & Terraform Upgrade
