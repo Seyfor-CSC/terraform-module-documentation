@@ -52,6 +52,7 @@ module "kv" {
             location            = "northeurope"
             resource_group_name = "SEY-TERRAFORM-NE-RG01"
             sku_name            = "standard"
+            tenant_id           = data.azurerm_client_config.azurerm_client_config.tenant_id
         }
     ]
 }

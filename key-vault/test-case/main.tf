@@ -14,6 +14,8 @@ provider "azurerm" {
 }
 
 # module deployment prerequisities
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -77,7 +79,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # key vault
 module "key_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v1.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v1.7.0"
   config = local.kv
 
   depends_on = [

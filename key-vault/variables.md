@@ -7,9 +7,9 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     sku_name            = string
-    tenant_id           = optional(string) # Value is supplied in module from data source "azurerm_client_config"
+    tenant_id           = string
     access_policy = optional(list(object({
-      tenant_id               = optional(string) # Value is supplied in module from data source "azurerm_client_config"
+      tenant_id               = optional(string) # If not provided, inherited in module from tenant_id variable
       object_id               = string
       application_id          = optional(string)
       certificate_permissions = optional(list(string))
@@ -87,9 +87,9 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |sku_name | string | Required |  |  |
-|tenant_id | string | Optional |  |  Value is supplied in module from data source "azurerm_client_config" |
+|tenant_id | string | Required |  |  |
 |access_policy | list(object) | Optional | [] |  |
-|&nbsp;tenant_id | string | Optional |  |  Value is supplied in module from data source "azurerm_client_config" |
+|&nbsp;tenant_id | string | Optional |  |  If not provided, inherited in module from tenant_id variable |
 |&nbsp;object_id | string | Required |  |  |
 |&nbsp;&nbsp;application_id | string | Optional |  |  |
 |&nbsp;&nbsp;certificate_permissions | list(string) | Optional |  |  |

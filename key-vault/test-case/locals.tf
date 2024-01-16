@@ -13,6 +13,7 @@ locals {
       location            = local.location
       resource_group_name = local.naming.rg
       sku_name            = "standard"
+      tenant_id           = data.azurerm_client_config.current.tenant_id
 
       private_endpoint = [
         {
@@ -49,6 +50,7 @@ locals {
       location            = local.location
       resource_group_name = local.naming.rg
       sku_name            = "standard"
+      tenant_id           = data.azurerm_client_config.current.tenant_id
 
       tags = {}
     }

@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.7.0
+
+## Bug Fixes
+
+- `tenant_id` variable is now required after removing the `azurerm_client_config` data block that provided its value (#23)
+
+
+
+   
 ## Release v1.6.0
 
 ## Provider & Terraform Upgrade
