@@ -40,9 +40,9 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Private DNS Resolver DNS Forwarding Ruleset
 * terraform import '`<path-to-module>`.azurerm_private_dns_resolver_dns_forwarding_ruleset.private_dns_resolver_dns_forwarding_ruleset["`<private_dns_resolver-name>`_`<forwarding-ruleset-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/dnsForwardingRulesets/`<forwarding-ruleset-name>`'
 ### Private DNS Resolver Forwarding Rule
-* terraform import '`<path-to-module>`..azurerm_private_dns_resolver_forwarding_rule.private_dns_resolver_forwarding_rule["`<private_dns_resolver-name>`_`<forwarding-ruleset-name>`_`<forwarding-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/dnsForwardingRulesets/`<forwarding-ruleset-name>`/forwardingRules/`<forwarding-rule-name>`'
+* terraform import '`<path-to-module>`.azurerm_private_dns_resolver_forwarding_rule.private_dns_resolver_forwarding_rule["`<private_dns_resolver-name>`\_`<forwarding-ruleset-name>`\_`<forwarding-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/dnsForwardingRulesets/`<forwarding-ruleset-name>`/forwardingRules/`<forwarding-rule-name>`'
 ### Private DNS Resolver Virtual Network Link
-* terraform import '`<path-to-module>`.azurerm_private_dns_resolver_virtual_network_link.private_dns_resolver_virtual_network_link["`<private_dns_resolver-name>`_`<forwarding-ruleset-name>`_`<virtual-network-link-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/dnsForwardingRulesets/`<forwarding-ruleset-name>`/virtualNetworkLinks/`<virtual-network-link-name>`'
+* terraform import '`<path-to-module>`.azurerm_private_dns_resolver_virtual_network_link.private_dns_resolver_virtual_network_link["`<private_dns_resolver-name>`\_`<forwarding-ruleset-name>`\_`<virtual-network-link-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/dnsForwardingRulesets/`<forwarding-ruleset-name>`/virtualNetworkLinks/`<virtual-network-link-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.private\_dns\_resolver_
 
