@@ -34,10 +34,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 
 | Output Name | Value        | Comment                                              |
 | ----------- | ------------ | ---------------------------------------------------- |
-| outputs_mg  | name         |                                                      |
-|             | id           |                                                      |
-|             | principal_id | principal_id (object_id) of system assigned identity |
-| outputs_sub | name         |                                                      |
+| outputs     | name         |                                                      |
 |             | id           |                                                      |
 |             | principal_id | principal_id (object_id) of system assigned identity |
 

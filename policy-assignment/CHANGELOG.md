@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.4.1
+
+## Enhancements
+
+- Merge `outputs_mg` and `outputs_sub` to `outputs` (#9)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade
