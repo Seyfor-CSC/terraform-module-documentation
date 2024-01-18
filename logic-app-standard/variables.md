@@ -81,6 +81,34 @@ variable "config" {  type = list(object({
     virtual_network_subnet_id  = optional(string)
     tags                       = optional(map(any))
 
+    # private endpoint
+    private_endpoint = optional(list(object({
+      name                = string
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      location            = optional(string) # If not provided, inherited in module from parent resource
+      subnet_id           = string
+      private_service_connection = list(object({
+        name                              = string
+        is_manual_connection              = bool
+        private_connection_resource_id    = optional(string)
+        private_connection_resource_alias = optional(string)
+        subresource_names                 = optional(list(string))
+        request_message                   = optional(string)
+      }))
+      custom_network_interface_name = optional(string)
+      private_dns_zone_group = optional(object({
+        name                 = string
+        private_dns_zone_ids = list(string)
+      }))
+      ip_configuration = optional(list(object({
+        name               = string
+        private_ip_address = string
+        subresource_name   = string
+        member_name        = optional(string)
+      })), [])
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
+    })), [])
+
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
       diag_name                      = optional(string) # Name of the diagnostic setting
@@ -168,6 +196,28 @@ variable "config" {  type = list(object({
 |version | string | Optional |  |  |
 |virtual_network_subnet_id | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
+|private_endpoint | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;private_service_connection | list(object) | Required |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
+|&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
+|&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
+|&nbsp;&nbsp;request_message | string | Optional |  |  |
+|&nbsp;custom_network_interface_name | string | Optional |  |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
+|&nbsp;ip_configuration | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;private_ip_address | string | Required |  |  |
+|&nbsp;&nbsp;subresource_name | string | Required |  |  |
+|&nbsp;&nbsp;member_name | string | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

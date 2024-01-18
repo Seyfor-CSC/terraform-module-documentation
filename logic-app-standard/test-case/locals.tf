@@ -22,7 +22,28 @@ locals {
         "FUNCTIONS_WORKER_RUNTIME"     = "node"
         "WEBSITE_NODE_DEFAULT_VERSION" = "~18"
       }
-      
+
+      private_endpoint = [
+        {
+          name                          = "${local.naming.logic_1}-PE01"
+          subnet_id                     = azurerm_subnet.subnet.id
+          custom_network_interface_name = "${local.naming.logic_1}-PE01.nic"
+          private_service_connection = [
+            {
+              name                 = "${local.naming.logic_1}-PE01-connection"
+              is_manual_connection = false
+              subresource_names    = ["sites"]
+            }
+          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
+        }
+      ]
+
       monitoring = [
         {
           diag_name                  = "Monitoring"

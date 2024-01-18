@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.4.0
+
+## Enhancements
+
+- Added private endpoint resource (#8)
+
+
+   
 ## Release v1.3.0
 
 ## Provider & Terraform Upgrade
