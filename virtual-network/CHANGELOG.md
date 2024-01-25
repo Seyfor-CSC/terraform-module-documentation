@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.6.1
+
+## Bug Fixes
+
+- Fix outputs condition (#21)
+
+
+
+   
 ## Release v1.6.0
 
 ## Bug Fixes
