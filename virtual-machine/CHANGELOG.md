@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.3.0
+
+## Bug Fixes
+
+- Replace data blocks used for disk backup with a `subscription_id` variable (#20)
+
+
+
+   
 ## Release v1.2.0
 
 ## Provider & Terraform Upgrade

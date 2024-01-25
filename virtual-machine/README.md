@@ -89,6 +89,7 @@ module "vm" {
     source = "git@github.com:seyfor-csc/mit.virtual-machine.git?ref=v1.0.0"
     config = [
         {
+            os_type                         = "Windows"
             name                            = "SEY-TERRAFORM-NE-VM01"
             location                        = "northeurope"
             resource_group_name             = "SEY-TERRAFORM-NE-RG01"
@@ -139,7 +140,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 
 # Module Features
 ## Linux or Windows VM?
-This module can deploy Linux or Windows Virtual Machines. You need to specify which one you want to deploy by setting the _os\_type_ custom variable to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
+This module can deploy Linux or Windows Virtual Machines. You need to specify which one you want to deploy by setting the `os_type` custom variable to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
 ## Lifecycle
 This module has a lifecycle block set up like this:
 ```
@@ -150,6 +151,8 @@ lifecycle {
     ]
 }
 ```
+## Subscription Id
+When using the module, subscription_id variable needs to be configured in the module call (in the same place as source or the config variable) if you want to turn on backup of disks or backup of virtual machines. Set the value of this variable to the subscription id you will deploy this module into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
 
 &nbsp;
 

@@ -14,6 +14,8 @@ provider "azurerm" {
 }
 
 # module deployment prerequisities
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -133,8 +135,9 @@ resource "azurerm_backup_policy_vm" "bp" {
 
 # virtual machine
 module "virtual_machine" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.2.0"
-  config = local.vm
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.3.0"
+  config          = local.vm
+  subscription_id = data.azurerm_client_config.current.subscription_id
 
   depends_on = [
     azurerm_subnet.subnet,
