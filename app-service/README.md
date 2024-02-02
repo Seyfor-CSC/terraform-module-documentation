@@ -83,6 +83,17 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Linux or Windows Web App?
 This module can deploy Linux or Windows Web Apps. You can specify which one you want to deploy by setting the _os\_type_ variable for the App Service resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
+## Lifecycle
+This module has a lifecycle block set up like this:
+```
+lifecycle {
+    ignore_changes = [
+        connection_string,
+        app_settings,
+        sticky_settings
+    ]
+}
+```
 
 &nbsp;
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.4.1
+
+## Enhancements
+
+- Add `connection_string`, `app_settings`, and `sticky_settings` to lifecycle `ignore_changes` (#29)
+- Add `use_32_bit_worker` and `sticky_settings` variables (#29)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade

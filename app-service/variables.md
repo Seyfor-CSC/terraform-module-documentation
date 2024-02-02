@@ -49,6 +49,7 @@ variable "config" {  type = list(object({
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
       })), [])
+      use_32_bit_worker = optional(bool)
       vnet_route_all_enabled = optional(bool)
     })
     app_settings = optional(map(any))
@@ -98,6 +99,10 @@ variable "config" {  type = list(object({
           retention_in_mb   = number
         }))
       }))
+    }))
+    sticky_settings = optional(object({
+      app_setting_names       = optional(list(string))
+      connection_string_names = optional(list(string))
     }))
     virtual_network_subnet_id = optional(string)
     tags = optional(map(any))
@@ -191,6 +196,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;priority | number | Optional |  |  |
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
+|&nbsp;use_32_bit_worker | bool | Optional |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
 |app_settings | map(any) | Optional |  |  |
 |backup | object | Optional |  |  |
@@ -230,6 +236,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;file_system | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;retention_in_days | number | Required |  |  |
 |&nbsp;&nbsp;&nbsp;retention_in_mb | number | Required |  |  |
+|sticky_settings | object | Optional |  |  |
+|&nbsp;app_setting_names | list(string) | Optional |  |  |
+|&nbsp;connection_string_names | list(string) | Optional |  |  |
 |virtual_network_subnet_id | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
