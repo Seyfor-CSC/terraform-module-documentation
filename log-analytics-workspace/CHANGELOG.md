@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.4.1
+
+## Enhancements
+
+- Add custom variable `self_logging` (#15)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade

@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
-  name                = "SEY-TERRAFORM-NE-LA03"
+  name                = "SEY-TERRAFORM-NE-LA04"
   location            = local.location
   resource_group_name = local.naming.rg
   sku                 = "PerGB2018"
@@ -33,7 +33,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 }
 # log analytics workspace
 module "log_analytics_workspace" {
-  source = "git@github.com:Seyfor-CSC/mit.log-analytics-workspace.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.log-analytics-workspace.git?ref=v1.4.1"
   config = local.la
 
   depends_on = [

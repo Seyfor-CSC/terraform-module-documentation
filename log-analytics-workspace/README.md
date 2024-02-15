@@ -31,10 +31,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
+| Output Name | Value | Comment |
+| ----------- | ----- | ------- |
+| outputs     | name  |         |
+|             | id    |         |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Log Analytics Workspace module is used as a value for the _scope_ variable in Role Assignment resource.
@@ -67,8 +67,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
-
+In the `monitoring` variable object is a variable called `self_logging`, which is used to determine which Log Analytics Workspace should be used for diagnostic settings logging. If set to `true`, the diagnostic settings will be sent to itself. If set to `false`, the diagnostic settings will be sent to the Log Analytics Workspace provided in the `log_analytics_workspace_id` variable. Default value is `false`.
 &nbsp;
 
 # Known Issues
