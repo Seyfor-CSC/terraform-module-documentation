@@ -64,7 +64,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual network
 module "virtual_network" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.6.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.6.2"
   config          = local.vnet
   subscription_id = data.azurerm_subscription.primary.id
 
@@ -75,7 +75,7 @@ module "virtual_network" {
   ]
 }
 module "subnets" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.6.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.6.2"
   subnets         = local.subnets
   subscription_id = data.azurerm_subscription.primary.id
 

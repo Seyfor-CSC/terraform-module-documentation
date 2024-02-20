@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.6.2
+
+## Bug Fixes
+- Replace try function in outputs (#24)
+
+
+
+   
 ## Release v1.6.1
 
 ## Bug Fixes
