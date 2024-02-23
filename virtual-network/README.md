@@ -122,4 +122,9 @@ If you want to deploy a subnet without the virtual network, you can do so by set
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+## Diagnostic Setting enabled log can't be deleted
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
+### Possible workarounds: 
+1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
+2. Delete the whole diagnostic setting and deploy it again with your desired configuration.

@@ -1,9 +1,17 @@
 # Changelog
 
+## Release v1.6.3
+
+## Enhancements
+
+- Make diagnostic settings categories optional (#22)
+
+
+   
 ## Release v1.6.2
 
 ## Bug Fixes
-- Replace try function in outputs (#24)
+- Replace try function in outputs with ternary operator (#24)
 
 
 
