@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v1.4.1
+
+## Enhancements
+- Add variables configured in studio to ignore_changes (#21)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade

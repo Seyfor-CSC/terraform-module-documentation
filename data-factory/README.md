@@ -74,7 +74,17 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
+## Lifecycle
+This module has a lifecycle block set up like this:
+```
+lifecycle {
+    ignore_changes = [
+        global_parameter,
+        vsts_configuration,
+        github_configuration
+    ]
+}
+```
 
 &nbsp;
 
