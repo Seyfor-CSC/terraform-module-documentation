@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.6.1
+
+## Bug Fixes
+- Update `monthly_occurrence` variable data type to optional object (#22)
+
+
+
+   
 ## Release v1.6.0
 
 ## Provider & Terraform Upgrade

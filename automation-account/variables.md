@@ -84,10 +84,10 @@ variable "config" {  type = list(object({
       timezone                = optional(string)
       week_days               = optional(list(string))
       month_days              = optional(list(number))
-      monthly_occurrence = optional(list(object({
+      monthly_occurrence = optional(object({
         day        = string
         occurrence = number
-      })), [])
+      }))
     })), [])
 
     # private endpoint
@@ -201,7 +201,7 @@ variable "config" {  type = list(object({
 |&nbsp;timezone | string | Optional |  |  |
 |&nbsp;week_days | list(string) | Optional |  |  |
 |&nbsp;month_days | list(number) | Optional |  |  |
-|&nbsp;monthly_occurrence | list(object) | Optional | [] |  |
+|&nbsp;monthly_occurrence | object | Optional |  |  |
 |&nbsp;&nbsp;day | string | Required |  |  |
 |&nbsp;&nbsp;occurrence | number | Required |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
