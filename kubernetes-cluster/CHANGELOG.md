@@ -8,6 +8,14 @@
 
 
    
+## Release v1.4.1
+
+## Enhancements
+
+- Add maintenance variables and the oidc_issuer_url output (#21)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade

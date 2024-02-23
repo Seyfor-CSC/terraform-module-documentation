@@ -63,6 +63,46 @@ variable "config" {  type = list(object({
       })
     }))
     local_account_disabled = optional(bool)
+    maintenance_window = optional(object({
+      allowed = optional(list(object({
+        day   = string
+        hours = list(number)
+      })), [])
+      not_allowed = optional(list(object({
+        end   = string
+        start = string
+      })), [])
+    }))
+    maintenance_window_auto_upgrade = optional(object({
+      frequency    = string
+      interval     = number
+      duration     = number
+      day_of_week  = optional(string)
+      day_of_month = optional(number)
+      week_index   = optional(string)
+      start_time   = optional(string)
+      utc_offset   = optional(string)
+      start_date   = optional(string)
+      not_allowed = optional(list(object({
+        end   = string
+        start = string
+      })), [])
+    }))
+    maintenance_window_node_os = optional(object({
+      frequency    = string
+      interval     = number
+      duration     = number
+      day_of_week  = optional(string)
+      day_of_month = optional(number)
+      week_index   = optional(string)
+      start_time   = optional(string)
+      utc_offset   = optional(string)
+      start_date   = optional(string)
+      not_allowed = optional(list(object({
+        end   = string
+        start = string
+      })), [])
+    }))
     microsoft_defender = optional(object({
       log_analytics_workspace_id = string
     }))
@@ -199,6 +239,39 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;ssh_key | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;key_data | string | Required |  |  |
 |&nbsp;local_account_disabled | bool | Optional |  |  |
+|&nbsp;maintenance_window | object | Optional |  |  |
+|&nbsp;&nbsp;allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;day | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;hours | list(number) | Required |  |  |
+|&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
+|&nbsp;maintenance_window_auto_upgrade | object | Optional |  |  |
+|&nbsp;&nbsp;frequency | string | Required |  |  |
+|&nbsp;&nbsp;interval | number | Required |  |  |
+|&nbsp;&nbsp;duration | number | Required |  |  |
+|&nbsp;&nbsp;day_of_week | string | Optional |  |  |
+|&nbsp;&nbsp;day_of_month | number | Optional |  |  |
+|&nbsp;&nbsp;week_index | string | Optional |  |  |
+|&nbsp;&nbsp;start_time | string | Optional |  |  |
+|&nbsp;&nbsp;utc_offset | string | Optional |  |  |
+|&nbsp;&nbsp;start_date | string | Optional |  |  |
+|&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
+|&nbsp;maintenance_window_node_os | object | Optional |  |  |
+|&nbsp;&nbsp;frequency | string | Required |  |  |
+|&nbsp;&nbsp;interval | number | Required |  |  |
+|&nbsp;&nbsp;duration | number | Required |  |  |
+|&nbsp;&nbsp;day_of_week | string | Optional |  |  |
+|&nbsp;&nbsp;day_of_month | number | Optional |  |  |
+|&nbsp;&nbsp;week_index | string | Optional |  |  |
+|&nbsp;&nbsp;start_time | string | Optional |  |  |
+|&nbsp;&nbsp;utc_offset | string | Optional |  |  |
+|&nbsp;&nbsp;start_date | string | Optional |  |  |
+|&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
 |&nbsp;microsoft_defender | object | Optional |  |  |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
 |&nbsp;network_profile | object | Optional |  |  |

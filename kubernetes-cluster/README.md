@@ -47,6 +47,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | keyvault_secret_provider_uai | object_id of key vault secrets provider secret identity |
 |             | fqdn                         | FQDN of the Azure Kubernetes Managed Cluster            |
 |             | private_fqdn                 | FQDN for the AKS when private link has been enabled     |
+|             | oidc_issuer_url              | OIDC issuer URL associated with the cluster             |
 
 
 ## Example usage of outputs
