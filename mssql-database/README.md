@@ -2,6 +2,7 @@
 MSSQL Database module can deploy these resources:
 * azurerm_mssql_server (required)
 * azurerm_mssql_database (optional)
+* azurerm_mssql_database_extended_auditing_policy (optional)
 * azurerm_mssql_firewall_rule (optional)
 * azurerm_mssql_elasticpool (optional)
 * azurerm_monitor_diagnostic_setting (optional)
@@ -19,6 +20,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_database
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_database_extended_auditing_policy
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_elasticpool
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_firewall_rule
@@ -35,15 +38,17 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_mssql_server.mssql_server["`<mssql-server-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`'
 ### MSSQL Database
 * terraform import '`<path-to-module>`.azurerm_mssql_database.mssql_database["`<mssql-server-name>`_`<mssql-database-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/databases/`<mssql-database-name>`'
+### MSSQL Database Extended Auditing Policy
+* terraform import '`<path-to-module>`.azurerm_mssql_database_extended_auditing_policy.mssql_database_extended_auditing_policy["`<mssql-server-name>`_`<mssql-database-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/databases/`<mssql-database-name>`/extendedAuditingSettings/default'
 ### MSSQL Elastic Pool
 * terraform import '`<path-to-module>`.azurerm_mssql_elasticpool.mssql_elasticpool["`<mssql-server-name>`_`<mssql-elasticpool-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/elasticPools/`<mssql-elasticpool-name>`'
 ### MSSQL Firewall Rule
 * terraform import '`<path-to-module>`.azurerm_mssql_firewall_rule.mssql_firewall_rule["`<mssql-server-name>`_`<mssql-firewall-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/firewallRules/`<mssql-firewall-rule-name>`'
 ### Diagnostic Setting
 #### MSSQL Database
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<mssql-database-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/databases/`<mssql-database-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<mssql-server-name>`_`<mssql-database-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/databases/`<mssql-database-name>`|`<diag-name>`'
 #### MSSQL Elastic Pool
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.mssql_elasticpool["`<mssql-elasticpool-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/elasticPools/`<mssql-elasticpool-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.mssql_elasticpool["`<mssql-server-name>`_`<mssql-elasticpool-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/servers/`<mssql-server-name>`/elasticPools/`<mssql-elasticpool-name>`|`<diag-name>`'
 ### Private Endpoint
 * terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
@@ -59,7 +64,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name           |                                                      |
 |             | id             |                                                      |
 |             | principal_id   | principal_id (object_id) of system assigned identity |
-|             | databases      | MSSQL Databas outputs                                |
+|             | databases      | MSSQL Database outputs                                |
 |             | &nbsp;name     |                                                      |
 |             | &nbsp;id       |                                                      |
 |             | elasticpools   | MSSQL Elastic Pool outputs                           |

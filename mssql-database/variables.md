@@ -117,6 +117,17 @@ variable "config" {  type = list(object({
       zone_redundant                      = optional(bool)
       tags                                = optional(map(any)) # If not provided, inherited in module from parent resource
 
+      # mssql database extended auditing policy
+      db_auditing_policy = optional(object({
+        database_id                             = optional(string) # Inherited in module from parent resource
+        enabled                                 = optional(bool)
+        storage_endpoint                        = optional(string)
+        retention_in_days                       = optional(number)
+        storage_account_access_key              = optional(string)
+        storage_account_access_key_is_secondary = optional(bool)
+        log_monitoring_enabled                  = optional(bool)
+      }))
+
       # monitoring
       monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
         diag_name                      = optional(string) # Name of the diagnostic setting
@@ -269,6 +280,14 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;transparent_data_encryption_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
 |&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;db_auditing_policy | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;database_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;&nbsp;enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_endpoint | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;retention_in_days | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_account_access_key | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_account_access_key_is_secondary | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;log_monitoring_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |

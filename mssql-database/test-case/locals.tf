@@ -9,12 +9,13 @@ locals {
 
   sqlsrv = [
     {
-      name                         = local.naming.sqlsrv_1
-      location                     = local.location
-      resource_group_name          = local.naming.rg
-      administrator_login          = "useradmin"
-      administrator_login_password = "Password1234"
-      version                      = "12.0"
+      name                          = local.naming.sqlsrv_1
+      location                      = local.location
+      resource_group_name           = local.naming.rg
+      administrator_login           = "useradmin"
+      administrator_login_password  = "Password1234"
+      public_network_access_enabled = true
+      version                       = "12.0"
       identity = {
         type = "SystemAssigned"
       }
@@ -30,9 +31,9 @@ locals {
           per_database_settings = {
             min_capacity = 0
             max_capacity = 4
-          }          
+          }
           max_size_gb = 500
-          
+
           monitoring = [
             {
               diag_name                  = "Monitoring"
@@ -44,6 +45,18 @@ locals {
       mssql_db = [
         {
           name = "MSSQLDB01"
+
+          db_auditing_policy = {
+            enabled                = true
+            log_monitoring_enabled = true
+          }
+
+          monitoring = [
+            {
+              diag_name                  = "Monitoring"
+              log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+            }
+          ]
         }
       ]
       firewall_rule = [

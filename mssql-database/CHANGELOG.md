@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v1.6.0
+
+## Enhancements
+- Add `azurerm_mssql_database_extended_auditing_policy` resource (#20)
+
+
+   
 ## Release v1.5.1
 
 ## Enhancements
