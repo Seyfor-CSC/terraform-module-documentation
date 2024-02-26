@@ -1,6 +1,7 @@
 # Introduction
 Cognitive Account module can deploy these resources:
 * azurerm_cognitive_account (required)
+* azurerm_cognitive_deployment (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -14,6 +15,8 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/cognitive_account
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/cognitive_deployment
+
 https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_endpoint
@@ -24,6 +27,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Cognitive Account
 * terraform import '`<path-to-module>`.azurerm_cognitive_account.cognitive_account["`<cognitive-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.CognitiveServices/accounts/`<cognitive-account-name>`'
+### Cognitive Deployment
+* terraform import '`<path-to-module>`.azurerm_cognitive_deployment.cognitive_deployment["`<cognitive-account-name>`_`cognitive-deployment-name`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.CognitiveServices/accounts/`<cognitive-account-name>`/deployments/`<cognitive-deployment-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<cognitive-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.CognitiveServices/accounts/`<cognitive-account-name>`|`<diag-name>`'
  ### Private Endpoint
@@ -41,6 +46,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name         |                                                      |
 |             | id           |                                                      |
 |             | principal_id | principal_id (object_id) of system assigned identity |
+|             | deployment   | Cognitive Deployment resource outputs                |
+|             | &nbsp;id     |                                                      |
 
 
 ## Example usage of outputs

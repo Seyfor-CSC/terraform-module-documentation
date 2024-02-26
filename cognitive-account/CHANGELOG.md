@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v1.4.0
+
+## Enhancements
+- Add `azurerm_cognitive_deployment` resource (#17)
+
+
+   
 ## Release v1.3.0
 
 ## Provider & Terraform Upgrade

@@ -43,6 +43,26 @@ variable "config" {  type = list(object({
     }))
     tags = optional(map(any))
 
+    # cognitive deployment
+    cognitive_deployment = optional(list(object({
+      name                 = string
+      cognitive_account_id = optional(string) # Inherited in module from parent resource
+      model = object({
+        format  = string
+        name    = string
+        version = string
+      })
+      scale = object({
+        type     = string
+        tier     = optional(string)
+        size     = optional(string)
+        family   = optional(string)
+        capacity = optional(number)
+      })
+      rai_policy_name        = optional(string)
+      version_upgrade_option = optional(string)
+    })), [])
+
     # private endpoint
     private_endpoint = optional(list(object({
       name                = string
@@ -123,6 +143,21 @@ variable "config" {  type = list(object({
 |&nbsp;storage_account_id | string | Required |  |  |
 |&nbsp;identity_client_id | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
+|cognitive_deployment | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;cognitive_account_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;model | object | Required |  |  |
+|&nbsp;&nbsp;format | string | Required |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;version | string | Required |  |  |
+|&nbsp;scale | object | Required |  |  |
+|&nbsp;&nbsp;type | string | Required |  |  |
+|&nbsp;&nbsp;tier | string | Optional |  |  |
+|&nbsp;&nbsp;size | string | Optional |  |  |
+|&nbsp;&nbsp;family | string | Optional |  |  |
+|&nbsp;&nbsp;capacity | number | Optional |  |  |
+|&nbsp;rai_policy_name | string | Optional |  |  |
+|&nbsp;version_upgrade_option | string | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

@@ -77,7 +77,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # cognitive account
 module "cognitive_account" {
-  source = "git@github.com:Seyfor-CSC/mit.cognitive-account.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.cognitive-account.git?ref=v1.4.0"
   config = local.cog
 
   depends_on = [
