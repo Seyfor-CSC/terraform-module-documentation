@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.3.1
+
+## Enhancements
+
+- Change NIC deployment to optional (#24)
+
+
+   
 ## Release v1.3.0
 
 ## Bug Fixes

@@ -9,7 +9,7 @@ variable "config" {  type = list(object({
     location              = string
     admin_username        = string
     admin_password        = optional(string)       # Required for windows
-    network_interface_ids = optional(list(string)) # Inherited in module from network interface resource
+    network_interface_ids = optional(list(string)) # If not provided, inherited in module from network interface resource
     size                  = string
     os_disk = object({
       caching              = optional(string, "ReadWrite")
@@ -119,7 +119,7 @@ variable "config" {  type = list(object({
     tags = optional(map(any))
 
     # network interface
-    network_interfaces = list(object({
+    network_interfaces = optional(list(object({ # Required if network_interface_ids is not provided
       name                = string
       resource_group_name = optional(string) # If not provided, inherited in module from parent resource
       location            = optional(string) # Inherited in module from parent resource
@@ -139,7 +139,7 @@ variable "config" {  type = list(object({
       enable_accelerated_networking = optional(bool, true)
       internal_dns_name_label       = optional(string)
       tags                          = optional(map(any)) # If not provided, inherited in module from parent resource
-    }))
+    })), [])
 
     # managed disk
     managed_disks = optional(list(object({
@@ -270,7 +270,7 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |location | string | Required |  |  |
 |admin_username | string | Required |  |  |
 |admin_password | string | Optional |  |  Required for windows |
-|network_interface_ids | list(string) | Optional |  |  Inherited in module from network interface resource |
+|network_interface_ids | list(string) | Optional |  |  If not provided, inherited in module from network interface resource |
 |size | string | Required |  |  |
 |os_disk | object | Required |  |  |
 |&nbsp;caching | string | Optional |  "ReadWrite" |  |
@@ -361,7 +361,7 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |&nbsp;certificate_url | string | Optional |  |  |
 |zone | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
-|network_interfaces | list(object) | Required |  |  |
+|network_interfaces | list(object) | Optional | [] |  Required if network_interface_ids is not provided |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
