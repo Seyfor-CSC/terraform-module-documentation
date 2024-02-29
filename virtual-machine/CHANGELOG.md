@@ -4,7 +4,7 @@
 
 ## Enhancements
 
-- Change NIC deployment to optional (#24)
+- Allow attachment of network interface IDs to a virtual machine (#24)
 
 
    
