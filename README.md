@@ -16,7 +16,7 @@
 | ---- | -------------- |
 | [app service](./app-service/README.md) | v1.4.1 |
 | [app service plan](./app-service-plan/README.md) | v1.1.0 |
-| [automation account](./automation-account/README.md) | v1.6.1 |
+| [automation account](./automation-account/README.md) | v1.6.2 |
 | [availability set](./availability-set/README.md) | v1.2.0 |
 | [backup vault](./backup-vault/README.md) | v1.4.0 |
 | [bastion host](./bastion-host/README.md) | v1.4.0 |

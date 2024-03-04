@@ -77,7 +77,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # automation account
 module "automation_account" {
-  source = "git@github.com:Seyfor-CSC/mit.automation-account.git?ref=v1.6.1"
+  source = "git@github.com:Seyfor-CSC/mit.automation-account.git?ref=v1.6.2"
   config = local.aa
 
   depends_on = [
