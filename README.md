@@ -40,7 +40,7 @@
 | [monitor alert](./monitor-alert/README.md) | v1.3.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v1.0.0 |
 | [mssql database](./mssql-database/README.md) | v1.6.0 |
-| [mssql managed instance](./mssql-managed-instance/README.md) | v1.3.0 |
+| [mssql managed instance](./mssql-managed-instance/README.md) | v1.3.1 |
 | [network security group](./network-security-group/README.md) | v1.4.0 |
 | [network watcher](./network-watcher/README.md) | v1.4.0 |
 | [policy assignment](./policy-assignment/README.md) | v1.4.1 |

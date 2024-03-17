@@ -33,6 +33,11 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        sql_security_audit_events = optional(bool, true)
+        devops_operations_audit   = optional(bool, true)
+        resource_usage_stats      = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -72,5 +77,9 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;sql_security_audit_events | bool | Optional |  true |  |
+|&nbsp;&nbsp;devops_operations_audit | bool | Optional |  true |  |
+|&nbsp;&nbsp;resource_usage_stats | bool | Optional |  true |  |
 
 

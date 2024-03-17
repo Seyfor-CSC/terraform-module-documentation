@@ -254,7 +254,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # mssql managed instance
 module "mssql_managed_instance" {
-  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.3.1"
   config = local.mi
 
   depends_on = [

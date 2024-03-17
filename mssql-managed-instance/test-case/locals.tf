@@ -6,7 +6,7 @@ locals {
     mi_1 = "SEY-TERRAFORM-NE-MI01"
   }
 
-    mi = [
+  mi = [
     {
       name                         = local.naming.mi_1
       location                     = local.location
@@ -26,6 +26,9 @@ locals {
         {
           diag_name                  = "Monitoring"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            devops_operations_audit = false
+          }
         }
       ]
 
