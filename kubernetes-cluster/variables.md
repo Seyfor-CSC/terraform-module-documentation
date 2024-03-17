@@ -174,6 +174,20 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        kube_controller_manager  = optional(bool, true)
+        cloud_controller_manager = optional(bool, true)
+        csi_azuredisk_controller = optional(bool, true)
+        csi_azurefile_controller = optional(bool, true)
+        csi_snapshot_controller  = optional(bool, true)
+        guard                    = optional(bool, true)
+        cluster_autoscaler       = optional(bool, true)
+        kube_apiserver           = optional(bool, true)
+        kube_scheduler           = optional(bool, true)
+        kube_audit               = optional(bool, false)
+        kube_audit_admin         = optional(bool, false)
+        all_metrics              = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -332,5 +346,18 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;kube_controller_manager | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;cloud_controller_manager | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;csi_azuredisk_controller | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;csi_azurefile_controller | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;csi_snapshot_controller | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;guard | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;cluster_autoscaler | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;kube_apiserver | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;kube_scheduler | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;kube_audit | bool | Optional |  false |  |
+|&nbsp;&nbsp;&nbsp;kube_audit_admin | bool | Optional |  false |  |
+|&nbsp;&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 

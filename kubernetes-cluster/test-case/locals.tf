@@ -14,15 +14,15 @@ locals {
       resource_group_name = local.naming.rg
       dns_prefix          = local.naming.aks_1
       default_node_pool = {
-        name    = "systemnp"
-        vm_size = "Standard_D2_v2"
+        name       = "systemnp"
+        vm_size    = "Standard_D2_v2"
         node_count = 1
       }
       cluster_node_pool = [
         {
-          name                  = "examplenp"
-          vm_size               = "Standard_D2_v2"
-          node_count            = 1
+          name       = "examplenp"
+          vm_size    = "Standard_D2_v2"
+          node_count = 1
         }
       ]
       identity = {
@@ -33,6 +33,9 @@ locals {
         {
           diag_name                  = "Monitoring"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            kube_audit = true
+          }
         }
       ]
 
@@ -44,8 +47,8 @@ locals {
       resource_group_name = local.naming.rg
       dns_prefix          = local.naming.aks_2
       default_node_pool = {
-        name    = "systemnp"
-        vm_size = "Standard_D2_v2"
+        name       = "systemnp"
+        vm_size    = "Standard_D2_v2"
         node_count = 1
       }
       identity = {

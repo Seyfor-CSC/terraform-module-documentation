@@ -34,7 +34,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # kubernetes cluster
 module "kubernetes_cluster" {
-  source = "git@github.com:Seyfor-CSC/mit.kubernetes-cluster.git?ref=v1.4.1"
+  source = "git@github.com:Seyfor-CSC/mit.kubernetes-cluster.git?ref=v1.4.2"
   config = local.aks
 
   depends_on = [
