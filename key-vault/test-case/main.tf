@@ -79,7 +79,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # key vault
 module "key_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v1.7.0"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v1.7.1"
   config = local.kv
 
   depends_on = [

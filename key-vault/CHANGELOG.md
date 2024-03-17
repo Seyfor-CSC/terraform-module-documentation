@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.7.1
+
+## Enhancements
+
+- Make diagnostic settings categories optional (#27)
+
+
+   
 ## Release v1.7.0
 
 ## Bug Fixes
