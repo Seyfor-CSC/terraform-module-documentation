@@ -64,7 +64,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name           |                                                      |
 |             | id             |                                                      |
 |             | principal_id   | principal_id (object_id) of system assigned identity |
-|             | databases      | MSSQL Database outputs                                |
+|             | databases      | MSSQL Database outputs                               |
 |             | &nbsp;name     |                                                      |
 |             | &nbsp;id       |                                                      |
 |             | elasticpools   | MSSQL Elastic Pool outputs                           |
@@ -108,7 +108,6 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
 ## Lifecycle
 This module has a lifecycle block set up like this:
 ```
@@ -119,6 +118,13 @@ lifecycle {
   ]
 }
 ```
+## Diagnostic Setting enabled log can't be deleted
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
+### Possible workarounds: 
+1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
+2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
+
 
 &nbsp;
 

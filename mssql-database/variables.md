@@ -57,6 +57,10 @@ variable "config" {  type = list(object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        categories = optional(object({
+          basic                     = optional(bool, true)
+          instance_and_app_advanced = optional(bool, true)
+        }))
       })), [])
     })), [])
 
@@ -134,6 +138,20 @@ variable "config" {  type = list(object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        categories = optional(object({
+          sql_insights                   = optional(bool, true)
+          automatic_tuning               = optional(bool, true)
+          query_store_runtime_statistics = optional(bool, true)
+          query_store_wait_statistics    = optional(bool, true)
+          errors                         = optional(bool, true)
+          database_wait_statistics       = optional(bool, true)
+          timeouts                       = optional(bool, true)
+          blocks                         = optional(bool, true)
+          deadlocks                      = optional(bool, true)
+          basic                          = optional(bool, true)
+          instance_and_app_advanced      = optional(bool, true)
+          workload_management            = optional(bool, true)
+        }))
       })), [])
     })), [])
 
@@ -229,6 +247,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;basic | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;instance_and_app_advanced | bool | Optional |  true |  |
 |&nbsp;mssql_db | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;server_id | string | Optional |  |  Inherited in module from parent resource |
@@ -293,6 +314,19 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;sql_insights | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;automatic_tuning | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;query_store_runtime_statistics | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;query_store_wait_statistics | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;errors | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;database_wait_statistics | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;timeouts | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;blocks | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;deadlocks | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;basic | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;instance_and_app_advanced | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;workload_management | bool | Optional |  true |  |
 |&nbsp;firewall_rule | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;server_id | string | Optional |  |  Inherited in module from parent resource |

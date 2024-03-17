@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.6.1
+
+## Enhancements
+
+- Make diagnostic settings categories optional (#21)
+
+
+   
 ## Release v1.6.0
 
 ## Enhancements
