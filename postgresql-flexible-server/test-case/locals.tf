@@ -9,9 +9,9 @@ locals {
 
   pgsql = [
     {
-      name                = local.naming.pgsql_1
-      location            = local.location
-      resource_group_name = local.naming.rg
+      name                   = local.naming.pgsql_1
+      location               = local.location
+      resource_group_name    = local.naming.rg
       version                = "14"
       sku_name               = "GP_Standard_D4s_v3"
       administrator_login    = "useradmin"
@@ -41,15 +41,18 @@ locals {
         {
           diag_name                  = "Monitoring"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            postgre_sql_logs = false
+          }
         }
       ]
 
       tags = {}
     },
     {
-      name                = local.naming.pgsql_2
-      location            = local.location
-      resource_group_name = local.naming.rg
+      name                   = local.naming.pgsql_2
+      location               = local.location
+      resource_group_name    = local.naming.rg
       version                = "14"
       sku_name               = "GP_Standard_D4s_v3"
       administrator_login    = "useradmin"

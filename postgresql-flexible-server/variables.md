@@ -78,6 +78,15 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        postgre_sql_logs                        = optional(bool, true)
+        postgre_sql_flex_sessions               = optional(bool, true)
+        postgre_sql_flex_query_store_runtime    = optional(bool, true)
+        postgre_sql_flex_query_store_wait_stats = optional(bool, true)
+        postgre_sql_flex_table_stats            = optional(bool, true)
+        postgre_sql_flex_database_xacts         = optional(bool, true)
+        all_metrics                             = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -149,5 +158,13 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;postgre_sql_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;postgre_sql_flex_sessions | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;postgre_sql_flex_query_store_runtime | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;postgre_sql_flex_query_store_wait_stats | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;postgre_sql_flex_table_stats | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;postgre_sql_flex_database_xacts | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
