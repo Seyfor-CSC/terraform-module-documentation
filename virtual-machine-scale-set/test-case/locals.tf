@@ -257,6 +257,10 @@ locals {
           {
             log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
             diag_name                  = "Monitoring"
+            categories = {
+              autoscale_evaluations   = false
+              autoscale_scale_actions = false
+            }
           }
         ]
       }

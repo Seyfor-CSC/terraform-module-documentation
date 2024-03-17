@@ -65,6 +65,6 @@
 | [user assigned identity](./user-assigned-identity/README.md) | v1.3.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v1.1.1 |
 | [virtual machine](./virtual-machine/README.md) | v1.3.1 |
-| [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.2.0 |
+| [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.2.1 |
 | [virtual network](./virtual-network/README.md) | v1.6.3 |
 | [virtual network peering](./virtual-network-peering/README.md) | v1.4.0 |
