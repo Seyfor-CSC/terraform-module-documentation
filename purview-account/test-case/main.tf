@@ -34,7 +34,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # purview account
 module "purview_account" {
-  source = "git@github.com:Seyfor-CSC/mit.purview-account.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.purview-account.git?ref=v1.3.1"
   config = local.purview_account
   depends_on = [
     azurerm_resource_group.rg,
