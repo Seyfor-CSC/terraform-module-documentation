@@ -73,6 +73,25 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        activity_runs                           = optional(bool, true)
+        pipeline_runs                           = optional(bool, true)
+        trigger_runs                            = optional(bool, true)
+        sandbox_pipeline_runs                   = optional(bool, true)
+        sandbox_activity_runs                   = optional(bool, true)
+        ssis_package_event_messages             = optional(bool, true)
+        ssis_package_executable_statistics      = optional(bool, true)
+        ssis_package_event_message_context      = optional(bool, true)
+        ssis_package_execution_component_phases = optional(bool, true)
+        ssis_package_execution_data_statistics  = optional(bool, true)
+        ssis_integration_runtime_logs           = optional(bool, true)
+        airflow_task_logs                       = optional(bool, true)
+        airflow_worker_logs                     = optional(bool, true)
+        air_flow_dag_processing_logs            = optional(bool, true)
+        air_flow_scheduler_logs                 = optional(bool, true)
+        air_flow_web_logs                       = optional(bool, true)
+        all_metrics                             = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -144,5 +163,23 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;activity_runs | bool | Optional |  true |  |
+|&nbsp;&nbsp;pipeline_runs | bool | Optional |  true |  |
+|&nbsp;&nbsp;trigger_runs | bool | Optional |  true |  |
+|&nbsp;&nbsp;sandbox_pipeline_runs | bool | Optional |  true |  |
+|&nbsp;&nbsp;sandbox_activity_runs | bool | Optional |  true |  |
+|&nbsp;&nbsp;ssis_package_event_messages | bool | Optional |  true |  |
+|&nbsp;&nbsp;ssis_package_executable_statistics | bool | Optional |  true |  |
+|&nbsp;&nbsp;ssis_package_event_message_context | bool | Optional |  true |  |
+|&nbsp;&nbsp;ssis_package_execution_component_phases | bool | Optional |  true |  |
+|&nbsp;&nbsp;ssis_package_execution_data_statistics | bool | Optional |  true |  |
+|&nbsp;&nbsp;ssis_integration_runtime_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;airflow_task_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;airflow_worker_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;air_flow_dag_processing_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;air_flow_scheduler_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;air_flow_web_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
