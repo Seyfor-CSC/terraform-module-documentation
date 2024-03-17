@@ -48,6 +48,10 @@ locals {
         {
           diag_name                  = "Monitoring"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            core_azure_backup       = false
+            addon_azure_backup_jobs = false
+          }
         }
       ]
 

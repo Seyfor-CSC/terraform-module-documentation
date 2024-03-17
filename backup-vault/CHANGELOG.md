@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.4.1
+
+## Enhancements
+
+- Make diagnostic settings categories optional (#20)
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade
