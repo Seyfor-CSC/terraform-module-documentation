@@ -103,7 +103,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # load balancer
 module "load_balancer" {
-  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.4.1"
   config = local.lb
 
   depends_on = [
