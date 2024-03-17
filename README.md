@@ -54,7 +54,7 @@
 | [public ip prefix](./public-ip-prefix/README.md) | v1.4.0 |
 | [purview account](./purview-account/README.md) | v1.3.1 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.7.0 |
-| [redis cache](./redis-cache/README.md) | v1.1.0 |
+| [redis cache](./redis-cache/README.md) | v1.1.1 |
 | [resource group](./resource-group/README.md) | v1.4.0 |
 | [role assignment](./role-assignment/README.md) | v1.4.0 |
 | [role definition](./role-definition/README.md) | v1.4.0 |
