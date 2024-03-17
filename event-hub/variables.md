@@ -111,6 +111,18 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        application_metrics_logs        = optional(bool, true)
+        customer_managed_key_user_logs  = optional(bool, true)
+        kafka_coordinator_logs          = optional(bool, true)
+        auto_scale_logs                 = optional(bool, true)
+        kafka_user_error_logs           = optional(bool, true)
+        archive_logs                    = optional(bool, true)
+        operational_logs                = optional(bool, true)
+        event_hub_vnet_connection_event = optional(bool, false)
+        runtime_audit_logs              = optional(bool, false)
+        all_metrics                     = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -208,5 +220,16 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;application_metrics_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;customer_managed_key_user_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;kafka_coordinator_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;auto_scale_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;kafka_user_error_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;archive_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;operational_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;event_hub_vnet_connection_event | bool | Optional |  false |  |
+|&nbsp;&nbsp;runtime_audit_logs | bool | Optional |  false |  |
+|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
