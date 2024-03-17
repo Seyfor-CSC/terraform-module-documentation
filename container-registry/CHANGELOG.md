@@ -1,10 +1,11 @@
 # Changelog
 
-## Release v1.3.0
+## Release v1.4.1
 
-## Provider & Terraform Upgrade
-- Azurerm provider: 3.73.0 (#8)
-- Terraform: 1.5.7 (#8)
+## Enhancements
+
+- Make diagnostic settings categories optional (#16)
+
 
    
 ## Release v1.4.0
@@ -19,6 +20,13 @@
 
 - Set default value for `public_network_access_enabled` to false (#10)
 
+
+   
+## Release v1.3.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 3.73.0 (#8)
+- Terraform: 1.5.7 (#8)
 
    
 ## Release v1.2.0
