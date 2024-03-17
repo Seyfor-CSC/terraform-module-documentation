@@ -141,6 +141,17 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        app_service_http_logs                 = optional(bool, true)
+        app_service_console_logs              = optional(bool, true)
+        app_service_app_logs                  = optional(bool, true)
+        app_service_audit_logs                = optional(bool, true)
+        app_service_ip_sec_audit_logs         = optional(bool, true)
+        app_service_platform_logs             = optional(bool, true)
+        app_service_antivirus_scan_audit_logs = optional(bool, true)
+        app_service_file_audit_logs           = optional(bool, true)
+        all_metrics                           = optional(bool, true)
+      }))
     })), [])
     })
   )
@@ -268,5 +279,15 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;app_service_http_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_console_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_app_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_audit_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_ip_sec_audit_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_platform_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_antivirus_scan_audit_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_file_audit_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 

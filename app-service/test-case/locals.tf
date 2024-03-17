@@ -48,6 +48,10 @@ locals {
         {
           diag_name                  = "Monitoring"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            app_service_http_logs    = false
+            app_service_console_logs = false
+          }
         }
       ]
     },

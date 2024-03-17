@@ -101,7 +101,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # app service
 module "app_service" {
-  source = "git@github.com:Seyfor-CSC/mit.app-service.git?ref=v1.4.1"
+  source = "git@github.com:Seyfor-CSC/mit.app-service.git?ref=v1.4.2"
   config = local.app
 
   depends_on = [
