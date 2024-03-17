@@ -29,6 +29,11 @@ variable "config" {  type = list(object({
       self_logging                   = optional(bool, false)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        audit        = optional(bool, true)
+        summary_logs = optional(bool, true)
+        all_metrics  = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -64,5 +69,9 @@ variable "config" {  type = list(object({
 |&nbsp;self_logging | bool | Optional |  false |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;audit | bool | Optional |  true |  |
+|&nbsp;&nbsp;summary_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 

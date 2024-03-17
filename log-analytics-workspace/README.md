@@ -67,7 +67,14 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
+## Custom variables
 In the `monitoring` variable object is a variable called `self_logging`, which is used to determine which Log Analytics Workspace should be used for diagnostic settings logging. If set to `true`, the diagnostic settings will be sent to itself. If set to `false`, the diagnostic settings will be sent to the Log Analytics Workspace provided in the `log_analytics_workspace_id` variable. Default value is `false`.
+## Diagnostic Setting enabled log can't be deleted
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
+### Possible workarounds: 
+1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
+2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
 &nbsp;
 
 # Known Issues
