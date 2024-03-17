@@ -53,6 +53,11 @@ variable "config" {  type = object({
           log_analytics_workspace_id     = optional(string)
           eventhub_name                  = optional(string)
           eventhub_authorization_rule_id = optional(string)
+          categories = optional(object({
+            checkpoint = optional(bool, true)
+            management = optional(bool, true)
+            error      = optional(bool, true)
+          }))
         })), [])
       })), [])
 
@@ -68,6 +73,18 @@ variable "config" {  type = object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        categories = optional(object({
+          checkpoint                  = optional(bool, true)
+          connection_graphics_data    = optional(bool, true)
+          host_registration           = optional(bool, true)
+          agent_health_status         = optional(bool, true)
+          session_host_management     = optional(bool, true)
+          network_data                = optional(bool, true)
+          connection                  = optional(bool, true)
+          management                  = optional(bool, true)
+          error                       = optional(bool, true)
+          autoscale_evaluation_pooled = optional(bool, true)
+        }))
       })), [])
 
       # private endpoint
@@ -133,7 +150,7 @@ variable "config" {  type = object({
         hostpool_name        = string           # Custom variable replacing hostpool_id parameter. Hostpool name, which is being created in this virtual desktop host pool, is required
         scaling_plan_enabled = bool
       })), [])
-      tags          = optional(map(any))
+      tags = optional(map(any))
 
       # monitoring
       monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -141,6 +158,9 @@ variable "config" {  type = object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        categories = optional(object({
+          autoscale = optional(bool, true)
+        }))
       })), [])
     })), [])
 
@@ -160,6 +180,12 @@ variable "config" {  type = object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        categories = optional(object({
+          checkpoint = optional(bool, true)
+          management = optional(bool, true)
+          error      = optional(bool, true)
+          feed       = optional(bool, true)
+        }))
       })), [])
 
       # private endpoint
@@ -242,6 +268,10 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;checkpoint | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
 |&nbsp;registration_info | object | Optional |  |  |
 |&nbsp;&nbsp;expiration_date | string | Required |  |  |
 |&nbsp;&nbsp;hostpool_id | string | Optional |  |  Inherited in module from parent resource |
@@ -250,6 +280,17 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;checkpoint | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;connection_graphics_data | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;host_registration | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;agent_health_status | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;session_host_management | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;network_data | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;connection | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;autoscale_evaluation_pooled | bool | Optional |  true |  |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
@@ -309,6 +350,8 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;autoscale | bool | Optional |  true |  |
 |workspaces | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Required |  |  |
@@ -322,6 +365,11 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;checkpoint | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;feed | bool | Optional |  true |  |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

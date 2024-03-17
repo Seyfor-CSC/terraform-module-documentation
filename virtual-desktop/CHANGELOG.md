@@ -1,11 +1,10 @@
 # Changelog
 
-## Release v1.0.1
+## Release v1.1.1
 
-## Bug Fixes
+## Enhancements
 
-- Fix `azurerm_virtual_desktop_host_pool_registration_info` looping condition causing error when resource is not configured (#5)
-
+- Make diagnostic settings categories optional (#21)
 
 
    
@@ -28,6 +27,15 @@
 ## Enhancements
 
 - Switch `azurerm_virtual_desktop_host_pool` resource to optional (#11)
+
+
+   
+## Release v1.0.1
+
+## Bug Fixes
+
+- Fix `azurerm_virtual_desktop_host_pool_registration_info` looping condition causing error when resource is not configured (#5)
+
 
 
    

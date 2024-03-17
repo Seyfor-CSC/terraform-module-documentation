@@ -51,6 +51,10 @@ locals {
           {
             diag_name                  = "Monitoring"
             log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+            categories = {
+              checkpoint               = false
+              connection_graphics_data = false
+            }
           }
         ]
 
