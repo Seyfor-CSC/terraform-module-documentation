@@ -24,7 +24,7 @@ variable "config" {  type = list(object({
     ip_configuration = optional(list(object({
       name               = string
       private_ip_address = string
-      subresource_name   = string 
+      subresource_name   = string
       member_name        = optional(string)
     })), [])
     tags = optional(map(any))

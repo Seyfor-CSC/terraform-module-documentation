@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg    = "SEY-TERRAFORM-NE-RG01"
+    rg    = "SEY-PE-NE-RG01"
     aa_1  = "SEY-TERRAFROM-NE-AA01"
     rsv_1 = "SEY-TERRAFORM-NE-RSV01"
   }
@@ -11,7 +11,7 @@ locals {
     {
       name                = "${local.naming.aa_1}-PE01"
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       subnet_id           = azurerm_subnet.subnet.id
       resource_id         = azurerm_automation_account.aa.id
       private_service_connection = [
@@ -32,6 +32,19 @@ locals {
           name               = "privateEndpointIpConfig01"
           private_ip_address = "10.0.1.10"
           subresource_name   = "webhook"
+          member_name        = "webhook"
+        },
+        {
+          name               = "privateEndpointIpConfig02"
+          private_ip_address = "10.0.1.11"
+          subresource_name   = "webhook"
+          member_name        = "sync"
+        },
+        {
+          name               = "privateEndpointIpConfig03"
+          private_ip_address = "10.0.1.12"
+          subresource_name   = "webhook"
+          member_name        = "ops"
         }
       ]
 
@@ -40,7 +53,7 @@ locals {
     {
       name                = "${local.naming.rsv_1}-PE01"
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       subnet_id           = azurerm_subnet.subnet.id
       resource_id         = azurerm_recovery_services_vault.rsv.id
       private_service_connection = [
