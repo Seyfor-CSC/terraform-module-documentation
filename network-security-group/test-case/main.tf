@@ -56,7 +56,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # network security group
 module "network_security_group" {
-  source = "git@github.com:Seyfor-CSC/mit.network-security-group.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.network-security-group.git?ref=v1.4.1"
   config = local.nsg
 
   depends_on = [
