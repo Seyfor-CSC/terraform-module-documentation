@@ -167,6 +167,10 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        function_app_logs = optional(bool, true)
+        all_metrics       = optional(bool, true)
+      }))
     })), [])
   }))
 }
@@ -322,5 +326,8 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;function_app_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 

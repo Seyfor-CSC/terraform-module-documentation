@@ -101,7 +101,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # function app
 module "function_app" {
-  source = "git@github.com:Seyfor-CSC/mit.function-app.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.function-app.git?ref=v1.1.1"
   config = local.func_app
 
   depends_on = [

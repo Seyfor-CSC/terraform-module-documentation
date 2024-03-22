@@ -85,6 +85,12 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Linux or Windows Function App?
 This module can deploy Linux or Windows Function Apps. You can specify which one you want to deploy by setting the _os\_type_ variable for the Function App resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
+## Diagnostic Setting enabled log can't be deleted
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
+### Possible workarounds: 
+1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
+2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
 
 &nbsp;
 
