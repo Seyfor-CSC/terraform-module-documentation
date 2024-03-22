@@ -151,8 +151,32 @@ variable "config" {  type = list(object({
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
       recovery                       = optional(bool, false) # Custom variable used to enable recovery logs
-      backup                         = optional(bool, false) # Custom variable used to enable backup logs
-      backup_report                  = optional(bool, false) # Custom variable used to enable backup report logs
+      backup                         = optional(bool, false) # Custom variable used to enable new backup logs
+      backup_report                  = optional(bool, false) # Custom variable used to enable backup legacy logs
+      categories = optional(object({
+        # backup report - legacy event
+        azure_backup_report = optional(bool, false) # to be depraced
+        # backup - new events (replacemment for legacy event)
+        core_azure_backup                     = optional(bool, true)
+        addon_azure_backup_protected_instance = optional(bool, true)
+        addon_azure_backup_jobs               = optional(bool, true)
+        addon_azure_backup_policy             = optional(bool, true)
+        addon_azure_backup_storage            = optional(bool, true)
+        addon_azure_backup_alerts             = optional(bool, false) # to be deprecated
+        # recovery
+        azure_site_recovery_jobs                         = optional(bool, true)
+        azure_site_recovery_replicated_items             = optional(bool, true)
+        azure_site_recovery_events                       = optional(bool, true)
+        azure_site_recovery_replication_stats            = optional(bool, true)
+        azure_site_recovery_replication_data_upload_rate = optional(bool, true)
+        azure_site_recovery_protected_disk_data_churn    = optional(bool, true)
+        azure_site_recovery_recovery_points              = optional(bool, true)
+        # others
+        asr_jobs                = optional(bool, true)
+        asr_replicated_items    = optional(bool, true)
+        azure_backup_operations = optional(bool, true)
+        health                  = optional(bool, true)
+      }))
     })), [])
   }))
 }

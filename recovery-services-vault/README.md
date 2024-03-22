@@ -90,7 +90,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 
 # Module Features
 ## Monitoring
-When setting up diagnostic settings to Log Analytics Workspace, there are 3 special variables of type bool which should be taken into account. Set value to _true_ for those variables which enable your needed log categories. Navigate to [test-case/locals.tf](test-case/locals.tf) to see how we set this up.
+When setting up diagnostic settings to Log Analytics Workspace, there are 3 special variables of type bool which should be taken into account. Set value to _true_ for those variables which enable your needed log categories.
 
 This table shows which log categories are associated with which variable:
 
@@ -105,16 +105,25 @@ This table shows which log categories are associated with which variable:
 |               | AzureSiteRecoveryProtectedDiskDataChurn    |
 | backup        | CoreAzureBackup                            |
 |               | AddonAzureBackupJobs                       |
-|               | AddonAzureBackupAlerts                     |
 |               | AddonAzureBackupPolicy                     |
 |               | AddonAzureBackupStorage                    |
 |               | AddonAzureBackupProtectedInstance          |
 | backup_report | AzureBackupReport                          |
 
- > **NOTE:** This feature is only for Log Analytics Workspace. If you send your diagnostic settings to Event Hub, all of these log categories are enabled by default.
+You can also create a custom combination of log categories by setting the `categories` object variable and switching values to `true` or `false` for the variables inside.
+
+Navigate to [test-case/locals.tf](test-case/locals.tf) to see how we set this all up.
+
+ > **NOTE:** Refer to [Microsoft documentation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults) for more details about log categories in Recovery Services Vaults.
+## Diagnostic Setting enabled log can't be deleted
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
+### Possible workarounds: 
+1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
+2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
 
 &nbsp;
 
 # Known Issues
 ## Monitoring variable conflict
-Custom variable `monitoring_rsv` replacing official Terraform variable `monitoring` has been created to prevent conflict with our custom variable `monitoring` used for diag-settings.
+Custom variable `monitoring_rsv` replacing official Terraform variable `monitoring` has been created to prevent conflict with our custom variable `monitoring` used for diagnostic settings.

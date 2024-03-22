@@ -69,19 +69,44 @@ locals {
 
       monitoring = [
         {
-          diag_name                  = "Monitoring - Recovery"
+          diag_name                  = "Monitoring - backupreport"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
-          recovery                   = true
+          backup_report              = true
         },
         {
-          diag_name                  = "Monitoring - Backup"
+          diag_name                  = "Monitoring - backup"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
           backup                     = true
         },
         {
-          diag_name                  = "Monitoring - BackupReport"
+          diag_name                  = "Monitoring - recovery"
           log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
-          backup_report              = true
+          recovery                   = true
+        },
+        {
+          diag_name                  = "Monitoring - others"
+          log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            azure_backup_report                              = false
+            core_azure_backup                                = false
+            addon_azure_backup_protected_instance            = false
+            addon_azure_backup_jobs                          = false
+            addon_azure_backup_policy                        = false
+            addon_azure_backup_storage                       = false
+            addon_azure_backup_alerts                        = false
+            azure_site_recovery_jobs                         = false
+            azure_site_recovery_replicated_items             = false
+            azure_site_recovery_events                       = false
+            azure_site_recovery_replication_stats            = false
+            azure_site_recovery_replication_data_upload_rate = false
+            azure_site_recovery_protected_disk_data_churn    = false
+            azure_site_recovery_recovery_points              = false
+          }
+        },
+        {
+          diag_name                      = "SecurityMonitoring - all"
+          eventhub_name                  = azurerm_eventhub.eventhub.name
+          eventhub_authorization_rule_id = "${azurerm_eventhub_namespace.eventhub_namespace.id}/authorizationRules/RootManageSharedAccessKey"
         }
       ]
 

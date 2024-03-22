@@ -75,14 +75,39 @@ resource "azurerm_log_analytics_workspace" "la" {
   ]
 }
 
+resource "azurerm_eventhub_namespace" "eventhub_namespace" {
+  name                = "SEY-TERRAFORM-NE-EVHNS01"
+  location            = local.location
+  resource_group_name = local.naming.rg
+  sku                 = "Basic"
+  capacity            = 2
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+
+resource "azurerm_eventhub" "eventhub" {
+  name                = "SEY-TERRAFORM-NE-EVH01"
+  namespace_name      = azurerm_eventhub_namespace.eventhub_namespace.name
+  resource_group_name = local.naming.rg
+  partition_count     = 2
+  message_retention   = 1
+
+  depends_on = [
+    azurerm_eventhub_namespace.eventhub_namespace
+  ]
+}
+
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.7.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v1.7.1"
   config = local.rsv
 
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link,
-    azurerm_log_analytics_workspace.la
+    azurerm_log_analytics_workspace.la.
+    azurerm_eventhub.eventhub
   ]
 }
 
