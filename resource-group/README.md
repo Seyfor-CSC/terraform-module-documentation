@@ -10,7 +10,7 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/resource_group
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/resource_group
 
 &nbsp;
 
@@ -51,10 +51,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.rg.outputs.sey-terraform-ne-rg01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.rg
-    ]
 }
 ```
 
