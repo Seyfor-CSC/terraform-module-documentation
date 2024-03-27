@@ -13,14 +13,14 @@ locals {
     {
       name                = local.naming.vnet_1
       address_space       = ["10.0.0.0/24"]
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       subnets = [
         {
           name             = "sey-terraform-ne-10.0.0.0-25"
           address_prefixes = ["10.0.0.0/25"]
-          nsg_name         = local.naming.nsg # deploys subnet network security group association
-          route_table_name = local.naming.rt  # deploys subnet route table association
+          nsg_name         = azurerm_network_security_group.nsg.name # deploys subnet network security group association
+          route_table_name = azurerm_route_table.rt.name  # deploys subnet route table association
           delegation = {
             name = "aks-delegation"
             service_delegation = {
@@ -46,7 +46,7 @@ locals {
     {
       name                = local.naming.vnet_2
       address_space       = ["10.0.1.0/24"]
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       subnets = [
         {
@@ -63,15 +63,15 @@ locals {
     {
       name                 = "sey-terraform-ne-10.0.2.0-25"
       address_prefixes     = ["10.0.2.0/25"]
-      resource_group_name  = local.naming.rg
+      resource_group_name  = azurerm_resource_group.rg.name
       virtual_network_name = azurerm_virtual_network.vnet.name
-      nsg_name             = local.naming.nsg
-      route_table_name     = local.naming.rt
+      nsg_name             = azurerm_network_security_group.nsg.name
+      route_table_name     = azurerm_route_table.rt.name
     },
     {
       name                 = "sey-terraform-ne-10.0.2.128-25"
       address_prefixes     = ["10.0.2.128/25"]
-      resource_group_name  = local.naming.rg
+      resource_group_name  = azurerm_resource_group.rg.name
       virtual_network_name = azurerm_virtual_network.vnet.name
     }
   ]
