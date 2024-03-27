@@ -11,7 +11,7 @@ locals {
     {
       name                = local.naming.dnsres_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       virtual_network_id  = azurerm_virtual_network.vnet1.id
 
       inbound_endpoints = [
@@ -61,7 +61,7 @@ locals {
     {
       name                = local.naming.dnsres_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       virtual_network_id  = azurerm_virtual_network.vnet2.id
     }
   ]

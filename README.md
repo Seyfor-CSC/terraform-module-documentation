@@ -47,7 +47,7 @@
 | [policy definition](./policy-definition/README.md) | v1.0.0 |
 | [policy set definition](./policy-set-definition/README.md) | v1.5.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.3.1 |
-| [private dns resolver](./private-dns-resolver/README.md) | v1.3.0 |
+| [private dns resolver](./private-dns-resolver/README.md) | v1.4.0 |
 | [private dns zone](./private-dns-zone/README.md) | v1.4.0 |
 | [private endpoint](./private-endpoint/README.md) | v1.4.0 |
 | [public ip address](./public-ip-address/README.md) | v1.4.1 |
