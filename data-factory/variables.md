@@ -9,7 +9,7 @@ variable "config" {  type = list(object({
     github_configuration = optional(object({
       account_name       = string
       branch_name        = string
-      git_url            = string
+      git_url            = optional(string)
       repository_name    = string
       root_folder        = string
       publishing_enabled = optional(bool)
@@ -111,7 +111,7 @@ variable "config" {  type = list(object({
 |github_configuration | object | Optional |  |  |
 |&nbsp;account_name | string | Required |  |  |
 |&nbsp;branch_name | string | Required |  |  |
-|&nbsp;git_url | string | Required |  |  |
+|&nbsp;git_url | string | Optional |  |  |
 |&nbsp;repository_name | string | Required |  |  |
 |&nbsp;root_folder | string | Required |  |  |
 |&nbsp;publishing_enabled | bool | Optional |  |  |
