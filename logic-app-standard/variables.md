@@ -71,11 +71,14 @@ variable "config" {  type = list(object({
       linux_fx_version                 = optional(string)
       min_tls_version                  = optional(string)
       pre_warmed_instance_count        = optional(number)
+      public_network_access_enabled    = optional(bool, false)
       runtime_scale_monitoring_enabled = optional(bool)
       use_32_bit_worker_process        = optional(bool)
       vnet_route_all_enabled           = optional(bool)
       websockets_enabled               = optional(bool)
-    }))
+      }), {
+      public_network_access_enabled = false
+    })
     storage_account_share_name = optional(string)
     version                    = optional(string)
     virtual_network_subnet_id  = optional(string)
@@ -193,44 +196,11 @@ variable "config" {  type = list(object({
 |&nbsp;linux_fx_version | string | Optional |  |  |
 |&nbsp;min_tls_version | string | Optional |  |  |
 |&nbsp;pre_warmed_instance_count | number | Optional |  |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  false |  |
 |&nbsp;runtime_scale_monitoring_enabled | bool | Optional |  |  |
 |&nbsp;use_32_bit_worker_process | bool | Optional |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
 |&nbsp;websockets_enabled | bool | Optional |  |  |
-|storage_account_share_name | string | Optional |  |  |
-|version | string | Optional |  |  |
-|virtual_network_subnet_id | string | Optional |  |  |
-|tags | map(any) | Optional |  |  |
-|private_endpoint | list(object) | Optional | [] |  |
-|&nbsp;name | string | Required |  |  |
-|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;subnet_id | string | Required |  |  |
-|&nbsp;private_service_connection | list(object) | Required |  |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
-|&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
-|&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
-|&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
-|&nbsp;&nbsp;request_message | string | Optional |  |  |
-|&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | object | Optional |  |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
-|&nbsp;ip_configuration | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_ip_address | string | Required |  |  |
-|&nbsp;&nbsp;subresource_name | string | Required |  |  |
-|&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
-|monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
-|&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
-|&nbsp;log_analytics_workspace_id | string | Optional |  |  |
-|&nbsp;eventhub_name | string | Optional |  |  |
-|&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
-|&nbsp;categories | object | Optional |  |  |
-|&nbsp;&nbsp;workflow_runtime | bool | Optional |  true |  |
-|&nbsp;&nbsp;function_app_logs | bool | Optional |  true |  |
-|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
+|public_network_access_enabled | false | Required |  |  |
 
 
