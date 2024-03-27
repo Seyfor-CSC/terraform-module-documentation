@@ -11,7 +11,7 @@ locals {
     {
       name                = local.naming.aks_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       dns_prefix          = local.naming.aks_1
       default_node_pool = {
         name       = "systemnp"
@@ -44,7 +44,7 @@ locals {
     {
       name                = local.naming.aks_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       dns_prefix          = local.naming.aks_2
       default_node_pool = {
         name       = "systemnp"

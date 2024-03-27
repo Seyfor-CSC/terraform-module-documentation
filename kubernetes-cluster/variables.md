@@ -16,7 +16,6 @@ variable "config" {  type = list(object({
       max_pods                      = optional(number)
       node_public_ip_prefix_id      = optional(string)
       node_labels                   = optional(map(any))
-      node_taints                   = optional(list(string))
       only_critical_addons_enabled  = optional(bool)
       os_disk_size_gb               = optional(string)
       os_disk_type                  = optional(string)
@@ -24,12 +23,15 @@ variable "config" {  type = list(object({
       temporary_name_for_rotation   = optional(string)
       type                          = optional(string)
       ultra_ssd_enabled             = optional(string)
-      vnet_subnet_id                = optional(string)
-      zones                         = optional(list(string))
-      max_count                     = optional(number)
-      min_count                     = optional(number)
-      node_count                    = optional(number)
-      tags                          = optional(map(any)) # If not provided, inherited in module from parent resource
+      upgrade_settings = optional(object({
+        max_surge = string
+      }))
+      vnet_subnet_id = optional(string)
+      zones          = optional(list(string))
+      max_count      = optional(number)
+      min_count      = optional(number)
+      node_count     = optional(number)
+      tags           = optional(map(any)) # If not provided, inherited in module from parent resource
     })
     dns_prefix                 = optional(string)
     dns_prefix_private_cluster = optional(string)
@@ -122,7 +124,7 @@ variable "config" {  type = list(object({
     oms_agent = optional(object({
       log_analytics_workspace_id = string
     }))
-    private_cluster_enabled             = optional(bool)
+    private_cluster_enabled             = optional(bool, true)
     private_dns_zone_id                 = optional(string)
     private_cluster_public_fqdn_enabled = optional(string)
     workload_autoscaler_profile = optional(object({
@@ -131,7 +133,14 @@ variable "config" {  type = list(object({
     workload_identity_enabled         = optional(bool)
     role_based_access_control_enabled = optional(bool)
     sku_tier                          = optional(string)
-    support_plan                      = optional(string)
+    storage_profile = optional(object({
+      blob_driver_enabled         = optional(bool)
+      disk_driver_enabled         = optional(bool)
+      disk_driver_version         = optional(string)
+      file_driver_enabled         = optional(bool)
+      snapshot_controller_enabled = optional(bool)
+    }))
+    support_plan = optional(string)
     windows_profile = optional(object({
       admin_username = string
       admin_password = optional(string)
@@ -160,12 +169,15 @@ variable "config" {  type = list(object({
       os_disk_type                  = optional(string)
       pod_subnet_id                 = optional(string)
       ultra_ssd_enabled             = optional(string)
-      vnet_subnet_id                = optional(string)
-      zones                         = optional(list(string))
-      max_count                     = optional(number)
-      min_count                     = optional(number)
-      node_count                    = optional(number)
-      tags                          = optional(map(any)) # If not provided, inherited in module from parent resource
+      upgrade_settings = optional(object({
+        max_surge = string
+      }))
+      vnet_subnet_id = optional(string)
+      zones          = optional(list(string))
+      max_count      = optional(number)
+      min_count      = optional(number)
+      node_count     = optional(number)
+      tags           = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -213,7 +225,6 @@ variable "config" {  type = list(object({
 |&nbsp;max_pods | number | Optional |  |  |
 |&nbsp;node_public_ip_prefix_id | string | Optional |  |  |
 |&nbsp;node_labels | map(any) | Optional |  |  |
-|&nbsp;node_taints | list(string) | Optional |  |  |
 |&nbsp;only_critical_addons_enabled | bool | Optional |  |  |
 |&nbsp;os_disk_size_gb | string | Optional |  |  |
 |&nbsp;os_disk_type | string | Optional |  |  |
@@ -221,6 +232,8 @@ variable "config" {  type = list(object({
 |&nbsp;temporary_name_for_rotation | string | Optional |  |  |
 |&nbsp;type | string | Optional |  |  |
 |&nbsp;ultra_ssd_enabled | string | Optional |  |  |
+|&nbsp;upgrade_settings | object | Optional |  |  |
+|&nbsp;&nbsp;max_surge | string | Required |  |  |
 |&nbsp;vnet_subnet_id | string | Optional |  |  |
 |&nbsp;zones | list(string) | Optional |  |  |
 |&nbsp;max_count | number | Optional |  |  |
@@ -302,7 +315,7 @@ variable "config" {  type = list(object({
 |&nbsp;oidc_issuer_enabled | bool | Optional |  |  |
 |&nbsp;oms_agent | object | Optional |  |  |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
-|&nbsp;private_cluster_enabled | bool | Optional |  |  |
+|&nbsp;private_cluster_enabled | bool | Optional |  true |  |
 |&nbsp;private_dns_zone_id | string | Optional |  |  |
 |&nbsp;private_cluster_public_fqdn_enabled | string | Optional |  |  |
 |&nbsp;workload_autoscaler_profile | object | Optional |  |  |
@@ -310,6 +323,12 @@ variable "config" {  type = list(object({
 |&nbsp;workload_identity_enabled | bool | Optional |  |  |
 |&nbsp;role_based_access_control_enabled | bool | Optional |  |  |
 |&nbsp;sku_tier | string | Optional |  |  |
+|&nbsp;storage_profile | object | Optional |  |  |
+|&nbsp;&nbsp;blob_driver_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;disk_driver_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;disk_driver_version | string | Optional |  |  |
+|&nbsp;&nbsp;file_driver_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;snapshot_controller_enabled | bool | Optional |  |  |
 |&nbsp;support_plan | string | Optional |  |  |
 |&nbsp;windows_profile | object | Optional |  |  |
 |&nbsp;&nbsp;admin_username | string | Required |  |  |
@@ -335,6 +354,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;os_disk_type | string | Optional |  |  |
 |&nbsp;&nbsp;pod_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;ultra_ssd_enabled | string | Optional |  |  |
+|&nbsp;&nbsp;upgrade_settings | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;max_surge | string | Required |  |  |
 |&nbsp;&nbsp;vnet_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;zones | list(string) | Optional |  |  |
 |&nbsp;&nbsp;max_count | number | Optional |  |  |
