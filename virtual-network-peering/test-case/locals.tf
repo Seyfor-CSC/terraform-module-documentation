@@ -9,9 +9,9 @@ locals {
 
   peering = [
     {
-      name                      = local.naming.vnet_2
-      virtual_network_name      = local.naming.vnet_1
-      resource_group_name       = local.naming.rg
+      name                      = azurerm_virtual_network.vnet_2.name
+      virtual_network_name      = azurerm_virtual_network.vnet_1.name
+      resource_group_name       = azurerm_resource_group.rg.name
       remote_virtual_network_id = azurerm_virtual_network.vnet_2.id
       hub_spoke                 = true
       triggers = {
@@ -19,9 +19,9 @@ locals {
       }
     },
     {
-      name                      = local.naming.vnet_1
-      virtual_network_name      = local.naming.vnet_2
-      resource_group_name       = local.naming.rg
+      name                      = azurerm_virtual_network.vnet_1.name
+      virtual_network_name      = azurerm_virtual_network.vnet_2.name
+      resource_group_name       = azurerm_resource_group.rg.name
       remote_virtual_network_id = azurerm_virtual_network.vnet_1.id
       spoke_hub                 = true
     }

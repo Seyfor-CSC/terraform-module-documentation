@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -22,34 +22,21 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "vnet_1" {
   name                = local.naming.vnet_1
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/24"]
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_virtual_network" "vnet_2" {
   name                = local.naming.vnet_2
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.1.0/24"]
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 # vnet peering
 module "vnet_peering" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-network-peering.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-network-peering.git?ref=v1.5.0"
   config = local.peering
-
-  depends_on = [
-    azurerm_virtual_network.vnet_1,
-    azurerm_virtual_network.vnet_2
-  ]
 }
 
 output "vnet_peering" {
