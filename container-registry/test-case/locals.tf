@@ -11,7 +11,7 @@ locals {
     {
       name                = local.naming.cr_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       sku                 = "Premium"
       identity = {
         type = "SystemAssigned"
@@ -53,7 +53,7 @@ locals {
     {
       name                          = local.naming.cr_2
       location                      = local.location
-      resource_group_name           = local.naming.rg
+      resource_group_name           = azurerm_resource_group.rg.name
       sku                           = "Basic"
       public_network_access_enabled = true
 

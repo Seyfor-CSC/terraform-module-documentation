@@ -20,10 +20,6 @@ variable "config" {  type = list(object({
         action   = string
         ip_range = string
       })), [])
-      virtual_network = optional(list(object({
-        action    = string
-        subnet_id = string
-      })), [])
     }))
     public_network_access_enabled = optional(bool, false)
     quarantine_policy_enabled     = optional(bool)
@@ -116,9 +112,6 @@ variable "config" {  type = list(object({
 |&nbsp;ip_rule | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;action | string | Required |  |  |
 |&nbsp;&nbsp;ip_range | string | Required |  |  |
-|&nbsp;virtual_network | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;action | string | Required |  |  |
-|&nbsp;&nbsp;subnet_id | string | Required |  |  |
 |public_network_access_enabled | bool | Optional |  false |  |
 |quarantine_policy_enabled | bool | Optional |  |  |
 |retention_policy | object | Optional |  |  |
