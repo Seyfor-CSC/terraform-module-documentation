@@ -8,6 +8,7 @@
 
 ## Enhancements
 - Add private endpoint (#15)
+- Replace explicit dependencies with implicit (#15)
    
 ## Release v1.3.1
 
