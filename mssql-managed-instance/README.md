@@ -2,6 +2,7 @@
 MSSQL Managed Instance module can deploy these resources:
 * azurerm_mssql_managed_instance (required)
 * azurerm_monitor_diagnostic_setting (optional)
+* azurerm_private_endpoint (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -11,9 +12,11 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/mssql_managed_instance
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/mssql_managed_instance
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -23,6 +26,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_mssql_managed_instance.mssql_managed_instance["`<mssql-managed-instance-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/managedInstances/`<mssql-managed-instance-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<mssql-managed-instance-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Sql/managedInstances/`<mssql-managed-instance-name>`|`<diag-name>`'
+### Private Endpoint
+* terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.mssql\_managed\_instance_
 
@@ -66,10 +71,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.mi.outputs.sey-terraform-ne-mi01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.mi
-    ]
 }
 ```
 
@@ -86,16 +87,15 @@ lifecycle {
     ]
   }
 ```
+
+&nbsp;
+
+# Known Issues
+## Deployment duration
+Deployment of Managed Instance may take several hours, usually between 3-5h.
 ## Diagnostic Setting enabled log can't be deleted
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ### Possible workarounds: 
 1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
 2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
-
-
-&nbsp;
-
-# Known Issues
-## Deployment duration
-Deployment of Managed Instance takes several hours, usually between 3-5h.

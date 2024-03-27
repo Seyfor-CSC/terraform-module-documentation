@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -22,11 +22,7 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_network_security_group" "example" {
   name                = "mi-security-group"
   location            = local.location
-  resource_group_name = local.naming.rg
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_network_security_rule" "allow_management_inbound" {
@@ -39,12 +35,8 @@ resource "azurerm_network_security_rule" "allow_management_inbound" {
   destination_port_ranges     = ["9000", "9003", "1438", "1440", "1452"]
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "allow_misubnet_inbound" {
@@ -57,12 +49,8 @@ resource "azurerm_network_security_rule" "allow_misubnet_inbound" {
   destination_port_range      = "*"
   source_address_prefix       = "10.0.0.0/24"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "allow_health_probe_inbound" {
@@ -75,12 +63,8 @@ resource "azurerm_network_security_rule" "allow_health_probe_inbound" {
   destination_port_range      = "*"
   source_address_prefix       = "AzureLoadBalancer"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "allow_tds_inbound" {
@@ -93,12 +77,8 @@ resource "azurerm_network_security_rule" "allow_tds_inbound" {
   destination_port_range      = "1433"
   source_address_prefix       = "VirtualNetwork"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "deny_all_inbound" {
@@ -111,12 +91,8 @@ resource "azurerm_network_security_rule" "deny_all_inbound" {
   destination_port_range      = "*"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "allow_management_outbound" {
@@ -129,12 +105,8 @@ resource "azurerm_network_security_rule" "allow_management_outbound" {
   destination_port_ranges     = ["80", "443", "12000"]
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "allow_misubnet_outbound" {
@@ -147,12 +119,8 @@ resource "azurerm_network_security_rule" "allow_misubnet_outbound" {
   destination_port_range      = "*"
   source_address_prefix       = "10.0.0.0/24"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_network_security_rule" "deny_all_outbound" {
@@ -165,28 +133,20 @@ resource "azurerm_network_security_rule" "deny_all_outbound" {
   destination_port_range      = "*"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = local.naming.rg
+  resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.example.name
-
-  depends_on = [
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_virtual_network" "example" {
   name                = "vnet-mi"
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
   location            = local.location
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_subnet" "example" {
   name                 = "subnet-mi"
-  resource_group_name  = local.naming.rg
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.0.0.0/24"]
   delegation {
@@ -196,72 +156,65 @@ resource "azurerm_subnet" "example" {
       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
     }
   }
-
-  depends_on = [
-    azurerm_virtual_network.example
-  ]
-}
-
-data "azurerm_subnet" "example" {
-  resource_group_name  = local.naming.rg
-  virtual_network_name = azurerm_virtual_network.example.name
-  name                 = azurerm_subnet.example.name
 }
 
 resource "azurerm_subnet_network_security_group_association" "example" {
   subnet_id                 = azurerm_subnet.example.id
   network_security_group_id = azurerm_network_security_group.example.id
-
-  depends_on = [
-    azurerm_subnet.example,
-    azurerm_network_security_group.example
-  ]
 }
 
 resource "azurerm_route_table" "example" {
   name                          = "routetable-mi"
   location                      = local.location
-  resource_group_name           = local.naming.rg
+  resource_group_name           = azurerm_resource_group.rg.name
   disable_bgp_route_propagation = false
-
-  depends_on = [
-    azurerm_subnet.example
-  ]
 }
 
 resource "azurerm_subnet_route_table_association" "example" {
   subnet_id      = azurerm_subnet.example.id
   route_table_id = azurerm_route_table.example.id
+}
 
-  depends_on = [
-    azurerm_subnet.example,
-    azurerm_route_table.example
-  ]
+# private endpoint prerequisities
+resource "azurerm_virtual_network" "vnet" {
+  name                = "example-network"
+  location            = local.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = ["10.0.0.0/16"]
+}
+
+resource "azurerm_subnet" "subnet" {
+  name                 = "example-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+resource "azurerm_private_dns_zone" "dns" {
+  name                = "test.private.dns"
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
+  name                  = "test"
+  resource_group_name   = azurerm_resource_group.rg.name
+  private_dns_zone_name = azurerm_private_dns_zone.dns.name
+  virtual_network_id    = azurerm_virtual_network.vnet.id
 }
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 # mssql managed instance
 module "mssql_managed_instance" {
-  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.4.0"
   config = local.mi
-
-  depends_on = [
-    azurerm_log_analytics_workspace.la,
-    azurerm_subnet_network_security_group_association.example,
-    azurerm_subnet_route_table_association.example
-  ]
 }
 
 output "mssql_managed_instance" {
