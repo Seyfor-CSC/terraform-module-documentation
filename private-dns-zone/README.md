@@ -11,9 +11,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_dns_zone
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_dns_zone
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_dns_zone_virtual_network_link
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_dns_zone_virtual_network_link
 
 &nbsp;
 
@@ -59,10 +59,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.dns.outputs.sey-terraform-ne-dns.id # This is how to use output values. Dots are replaced with hyphens.
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.dns
-    ]
 }
 ```
 

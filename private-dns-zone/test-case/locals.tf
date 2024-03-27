@@ -10,7 +10,7 @@ locals {
     dns = [
     {
       name                = local.naming.dns_1
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       virtual_network_links = [
         {
           name = "sey-infra-ne-vnet01-link"
@@ -26,7 +26,7 @@ locals {
     },
     {
       name                = local.naming.dns_2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
 
       tags = {}
     }
