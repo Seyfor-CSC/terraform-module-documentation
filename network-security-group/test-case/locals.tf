@@ -9,11 +9,11 @@ locals {
     sa    = "seyterraformnesa01"
   }
 
-    nsg = [
+  nsg = [
     {
       name                = local.naming.nsg_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       nsg_rule = [
         {
           name                       = "AllowAllInbound"
@@ -41,8 +41,8 @@ locals {
       nsg_flow_log = [
         {
           name                 = "flowlog"
-          network_watcher_name = local.naming.nw
-          resource_group_name  = local.naming.rg
+          network_watcher_name = azurerm_network_watcher.nw.name
+          resource_group_name  = azurerm_resource_group.rg.name
           storage_account_id   = azurerm_storage_account.sa.id
           enabled              = true
           retention_policy = {
@@ -64,7 +64,7 @@ locals {
     {
       name                = local.naming.nsg_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
 
       tags = {}
     }
