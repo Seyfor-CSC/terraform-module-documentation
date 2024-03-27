@@ -7,11 +7,11 @@ locals {
     bh_2 = "SEY-TERRAFORM-NE-BH02"
   }
 
-    bh = [
+  bh = [
     {
       name                = local.naming.bh_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       ip_configuration = {
         name                 = "ipconfig"
         subnet_id            = azurerm_subnet.subnet1.id
@@ -33,7 +33,7 @@ locals {
     {
       name                = local.naming.bh_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       ip_configuration = {
         name                 = "ipconfig"
         subnet_id            = azurerm_subnet.subnet2.id

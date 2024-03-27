@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -22,65 +22,43 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "vnet1" {
   name                = "example-network1"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/24"]
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 resource "azurerm_virtual_network" "vnet2" {
   name                = "example-network2"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.1.0/24"]
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_subnet" "subnet1" {
   name                 = "AzureBastionSubnet"
-  resource_group_name  = local.naming.rg
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet1.name
   address_prefixes     = ["10.0.0.0/28"]
-  depends_on = [
-    azurerm_virtual_network.vnet1
-  ]
 }
 resource "azurerm_subnet" "subnet2" {
   name                 = "AzureBastionSubnet"
-  resource_group_name  = local.naming.rg
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet2.name
   address_prefixes     = ["10.0.1.0/28"]
-  depends_on = [
-    azurerm_virtual_network.vnet2
-  ]
 }
 
 resource "azurerm_public_ip" "pip1" {
   name                = "example-pip1"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_public_ip" "pip2" {
   name                = "example-pip2"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 
@@ -88,27 +66,15 @@ resource "azurerm_public_ip" "pip2" {
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 # bastion host
 module "bastion_host" {
-  source = "git@github.com:Seyfor-CSC/mit.bastion-host.git?ref=v1.4.1"
+  source = "git@github.com:Seyfor-CSC/mit.bastion-host.git?ref=v1.5.0"
   config = local.bh
-
-  depends_on = [
-    azurerm_public_ip.pip1,
-    azurerm_public_ip.pip2,
-    azurerm_subnet.subnet1,
-    azurerm_subnet.subnet2,
-    azurerm_log_analytics_workspace.la
-  ]
 }
 
 output "bastion_host" {
