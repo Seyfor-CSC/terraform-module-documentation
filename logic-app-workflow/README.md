@@ -11,9 +11,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/logic_app_workflow
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/logic_app_workflow
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -22,7 +22,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Logic App Workflow
 * terraform import '`<path-to-module>`.azurerm_logic_app_workflow.logic_app_workflow["`<logic-app-workflow-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Logic/workflows/`<logic-app-workflow-name>`'
 ### Diagnostic Setting
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<public-ip-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Logic/workflows/`<public-ip-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<logic-app-workflow-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Logic/workflows/`<logic-app-workflow-name>`|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.logic\_app\_workflow_
 
@@ -60,10 +60,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.logic.outputs.sey-terraform-ne-logic01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.logic
-    ]
 }
 ```
 
@@ -80,16 +76,14 @@ lifecycle {
     ]
 }
 ```
-This means you can't manage _workflow\_parameters_ and _parameters_ (the inside configuration of Logic App Workflow) variables by Terraform.
+This means you can't manage _workflow\_parameters_ and _parameters_ (the inside configuration of Logic App Workflow) variables by Terraform
+
+&nbsp;
+
+# Known Issues
 ## Diagnostic Setting enabled log can't be deleted
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ### Possible workarounds: 
 1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
 2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
-
-
-&nbsp;
-
-# Known Issues
-We currently log no issues in this module.
