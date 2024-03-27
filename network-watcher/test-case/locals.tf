@@ -11,14 +11,14 @@ locals {
   nw = [
     {
       name                = local.naming.nw1
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location1
 
       tags = {}
     },
     {
       name                = local.naming.nw2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location2
 
       tags = {}
