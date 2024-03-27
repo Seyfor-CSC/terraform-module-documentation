@@ -11,7 +11,7 @@ locals {
     {
       name                = local.naming.bv_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       datastore_type      = "VaultStore"
       redundancy          = "LocallyRedundant"
       identity = {
@@ -60,7 +60,7 @@ locals {
     {
       name                = local.naming.bv_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       datastore_type      = "VaultStore"
       redundancy          = "LocallyRedundant"
 

@@ -11,7 +11,9 @@ variable "config" {  type = list(object({
     identity = optional(object({
       type = string
     }))
-    tags = optional(map(any))
+    retention_duration_in_days = optional(number)
+    soft_delete                = optional(string)
+    tags                       = optional(map(any))
 
     # data protection backup policy disk
     backup_policy_disk = optional(list(object({
@@ -27,6 +29,7 @@ variable "config" {  type = list(object({
         })
         priority = number
       })), [])
+      time_zone = optional(string)
     })), [])
 
     # monitoring
@@ -61,6 +64,8 @@ variable "config" {  type = list(object({
 |redundancy | string | Required |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
+|retention_duration_in_days | number | Optional |  |  |
+|soft_delete | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |backup_policy_disk | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
@@ -73,6 +78,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;criteria | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;absolute_criteria | string | Optional |  |  |
 |&nbsp;&nbsp;priority | number | Required |  |  |
+|&nbsp;time_zone | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
