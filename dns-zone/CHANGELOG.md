@@ -1,5 +1,16 @@
 # Changelog
 
+## Release v1.2.0
+
+## Provider & Terraform Upgrade
+
+- Azurerm provider: 3.96.0 (#8)
+- Terraform: 1.7.5 (#8)
+
+## Enhancements
+
+- Replace explicit dependencies with implicit (#8)
+   
 ## Release v1.1.0
 
 ## Provider & Terraform Upgrade

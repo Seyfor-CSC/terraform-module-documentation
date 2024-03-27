@@ -10,7 +10,7 @@ locals {
   dns = [
     {
       name                = local.naming.dns_1
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       soa_record = {
         email         = "random.com"
         host_name     = "ns1"
@@ -25,7 +25,7 @@ locals {
     },
     {
       name                = local.naming.dns_2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
 
       tags = {}
     }
