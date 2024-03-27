@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -25,67 +25,42 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "vnet" {
   name                = "example-network"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_subnet" "subnet" {
   name                 = "example-subnet"
-  resource_group_name  = local.naming.rg
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
-  depends_on = [
-    azurerm_virtual_network.vnet
-  ]
 }
 
 resource "azurerm_private_dns_zone" "dns" {
   name                = "test.private.dns"
-  resource_group_name = local.naming.rg
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
   name                  = "test"
-  resource_group_name   = local.naming.rg
+  resource_group_name   = azurerm_resource_group.rg.name
   private_dns_zone_name = azurerm_private_dns_zone.dns.name
   virtual_network_id    = azurerm_virtual_network.vnet.id
-
-  depends_on = [
-    azurerm_private_dns_zone.dns,
-    azurerm_virtual_network.vnet
-  ]
 }
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 # key vault
 module "key_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v1.7.1"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v1.8.0"
   config = local.kv
-
-  depends_on = [
-    azurerm_private_dns_zone_virtual_network_link.dns_link,
-    azurerm_log_analytics_workspace.la
-  ]
 }
 
 output "key_vault" {
