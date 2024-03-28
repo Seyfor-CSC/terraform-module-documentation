@@ -54,7 +54,7 @@ variable "config" {  type = list(object({
       data_import = optional(object({
         event_hub_data_source = object({
           name           = string
-          stream         = list(string)
+          stream         = string
           consumer_group = optional(string)
         })
       }))
@@ -129,6 +129,18 @@ variable "config" {  type = list(object({
       }))
     }))
     tags = optional(map(any))
+
+    # monitoring
+    monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
+      diag_name                      = optional(string) # Name of the diagnostic setting
+      log_analytics_workspace_id     = optional(string)
+      eventhub_name                  = optional(string)
+      eventhub_authorization_rule_id = optional(string)
+      categories = optional(object({
+        log_errors  = optional(bool, true)
+        all_metrics = optional(bool, true)
+      }))
+    })), [])
   }))
 }
 
@@ -181,7 +193,7 @@ variable "config" {  type = list(object({
 |&nbsp;data_import | object | Optional |  |  |
 |&nbsp;&nbsp;event_hub_data_source | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;&nbsp;stream | list(string) | Required |  |  |
+|&nbsp;&nbsp;&nbsp;stream | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;consumer_group | string | Optional |  |  |
 |&nbsp;extension | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;extension_name | string | Required |  |  |
@@ -238,5 +250,13 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |tags | map(any) | Optional |  |  |
+|monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;log_errors | bool | Optional |  true |  |
+|&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 

@@ -23,7 +23,7 @@
 | [cognitive account](./cognitive-account/README.md) | v1.5.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v1.5.0 |
-| [data collection rule](./data-collection-rule/README.md) | v1.3.0 |
+| [data collection rule](./data-collection-rule/README.md) | v1.4.0 |
 | [data factory](./data-factory/README.md) | v1.5.0 |
 | [dns zone](./dns-zone/README.md) | v1.2.0 |
 | [event hub](./event-hub/README.md) | v1.5.1 |

@@ -2,9 +2,6 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg    = "SEY-TERRAFORM-NE-RG01"
-    la    = "SEY-TERRAFORM-NE-LA01"
-    sa    = "seyterraformdcrnesa01"
     dcr_1 = "SEY-TERRAFORM-NE-DCR01"
     dcr_2 = "SEY-TERRAFORM-NE-DCR02"
   }
@@ -12,7 +9,7 @@ locals {
   dcr = [
     {
       name                        = local.naming.dcr_1
-      resource_group_name         = local.naming.rg
+      resource_group_name         = azurerm_resource_group.rg.name
       location                    = local.location
       data_collection_endpoint_id = azurerm_monitor_data_collection_endpoint.example.id
       identity = {
@@ -22,7 +19,7 @@ locals {
         log_analytics = [
           {
             workspace_resource_id = azurerm_log_analytics_workspace.la.id
-            name                  = local.naming.la
+            name                  = azurerm_log_analytics_workspace.la.name
           }
         ]
         storage_blob = [
@@ -39,21 +36,31 @@ locals {
       data_flow = [
         {
           streams      = ["Microsoft-InsightsMetrics", "Microsoft-Syslog", "Microsoft-Perf"]
-          destinations = [local.naming.la]
+          destinations = [azurerm_log_analytics_workspace.la.name]
         }
       ]
 
       tags = {}
+
+      monitoring = [
+        {
+          diag_name                  = "Monitoring"
+          log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            log_errors = false
+          }
+        }
+      ]
     },
     {
       name                = local.naming.dcr_2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       destinations = {
         log_analytics = [
           {
             workspace_resource_id = azurerm_log_analytics_workspace.la.id
-            name                  = local.naming.la
+            name                  = azurerm_log_analytics_workspace.la.name
           }
         ]
         azure_monitor_metrics = {
@@ -63,7 +70,7 @@ locals {
       data_flow = [
         {
           streams      = ["Microsoft-InsightsMetrics", "Microsoft-Syslog", "Microsoft-Perf"]
-          destinations = [local.naming.la]
+          destinations = [azurerm_log_analytics_workspace.la.name]
         }
       ]
 
