@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -24,27 +24,20 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "vnet" {
   name                = "example-network"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_subnet" "subnet" {
   name                 = "example-subnet"
-  resource_group_name  = local.naming.rg
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
-  depends_on = [
-    azurerm_virtual_network.vnet
-  ]
 }
 
 resource "azurerm_monitor_data_collection_rule" "dcr" {
   name                = "dcr"
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   destinations {
     azure_monitor_metrics {
@@ -55,37 +48,30 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
     streams      = ["Microsoft-InsightsMetrics"]
     destinations = ["example-destination-metrics"]
   }
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_data_protection_backup_vault" "bv" {
   name                = "sey-terraform-bv01"
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   datastore_type      = "VaultStore"
   redundancy          = "LocallyRedundant"
+  soft_delete         = "Off"
   identity {
     type = "SystemAssigned"
   }
-
-  depends_on = [azurerm_resource_group.rg]
 }
 
 resource "azurerm_role_assignment" "rbac1" {
   scope                = azurerm_resource_group.rg.id
   role_definition_name = "Disk Snapshot Contributor"
   principal_id         = azurerm_data_protection_backup_vault.bv.identity[0].principal_id
-  depends_on           = [azurerm_data_protection_backup_vault.bv]
 }
 
 resource "azurerm_role_assignment" "rbac2" {
   scope                = azurerm_resource_group.rg.id
   role_definition_name = "Disk Backup Reader"
   principal_id         = azurerm_data_protection_backup_vault.bv.identity[0].principal_id
-  depends_on           = [azurerm_data_protection_backup_vault.bv]
 }
 
 resource "azurerm_data_protection_backup_policy_disk" "bp" {
@@ -103,24 +89,20 @@ resource "azurerm_data_protection_backup_policy_disk" "bp" {
       absolute_criteria = "FirstOfDay"
     }
   }
-
-  depends_on = [azurerm_data_protection_backup_vault.bv]
 }
 
 resource "azurerm_recovery_services_vault" "rsv" {
   name                = "sey-terraform-rsv01"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
   soft_delete_enabled = false
-
-  depends_on = [azurerm_resource_group.rg]
 }
 
 resource "azurerm_backup_policy_vm" "bp" {
   name                = "recovery-vault-policy"
-  resource_group_name = local.naming.rg
-  recovery_vault_name = "sey-terraform-rsv01"
+  resource_group_name = azurerm_resource_group.rg.name
+  recovery_vault_name = azurerm_recovery_services_vault.rsv.name
 
   backup {
     frequency = "Daily"
@@ -129,23 +111,13 @@ resource "azurerm_backup_policy_vm" "bp" {
   retention_daily {
     count = 10
   }
-
-  depends_on = [azurerm_recovery_services_vault.rsv]
 }
 
 # virtual machine
 module "virtual_machine" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.3.1"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.4.0"
   config          = local.vm
   subscription_id = data.azurerm_client_config.current.subscription_id
-
-  depends_on = [
-    azurerm_subnet.subnet,
-    azurerm_monitor_data_collection_rule.dcr,
-    azurerm_resource_group.rg,
-    azurerm_data_protection_backup_policy_disk.bp,
-    azurerm_backup_policy_vm.bp
-  ]
 }
 
 output "virtual_machine" {

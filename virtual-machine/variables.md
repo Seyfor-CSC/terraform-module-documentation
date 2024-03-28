@@ -58,16 +58,19 @@ variable "config" {  type = list(object({
     dedicated_host_id                                      = optional(string)
     dedicated_host_group_id                                = optional(string)
     disable_password_authentication                        = optional(bool) # linux only
+    disk_controller_type                                   = optional(string)
     edge_zone                                              = optional(string)
     enable_automatic_updates                               = optional(bool) # windows only
     encryption_at_host_enabled                             = optional(bool)
     eviction_policy                                        = optional(string)
     extensions_time_budget                                 = optional(string)
     gallery_application = optional(list(object({
-      version_id             = string
-      configuration_blob_uri = optional(string)
-      order                  = optional(number)
-      tag                    = optional(string)
+      version_id                                  = string
+      automatic_upgrade_enabled                   = optional(bool)
+      configuration_blob_uri                      = optional(string)
+      order                                       = optional(number)
+      treat_failure_as_deployment_failure_enabled = optional(bool)
+      tag                                         = optional(string)
     })), [])
     hotpatching_enabled = optional(bool) # windows only
     identity = optional(object({
@@ -103,14 +106,18 @@ variable "config" {  type = list(object({
       sku       = string
       version   = string
     }))
+    os_image_notification = optional(object({
+      timeout = optional(string)
+    }))
     termination_notification = optional(object({
       enabled = bool
       timeout = optional(string)
     }))
-    timezone                     = optional(string) # windows only
-    user_data                    = optional(string)
-    virtual_machine_scale_set_id = optional(string)
-    vtpm_enabled                 = optional(bool)
+    timezone                          = optional(string) # windows only
+    user_data                         = optional(string)
+    vm_agent_platform_updates_enabled = optional(bool)
+    virtual_machine_scale_set_id      = optional(string)
+    vtpm_enabled                      = optional(bool)
     winrm_listener = optional(list(object({ # windows only
       protocol        = optional(string, "Https")
       certificate_url = optional(string)
@@ -310,6 +317,7 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |dedicated_host_id | string | Optional |  |  |
 |dedicated_host_group_id | string | Optional |  |  |
 |disable_password_authentication | bool | Optional |  |  linux only |
+|disk_controller_type | string | Optional |  |  |
 |edge_zone | string | Optional |  |  |
 |enable_automatic_updates | bool | Optional |  |  windows only |
 |encryption_at_host_enabled | bool | Optional |  |  |
@@ -317,8 +325,10 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |extensions_time_budget | string | Optional |  |  |
 |gallery_application | list(object) | Optional | [] |  |
 |&nbsp;version_id | string | Required |  |  |
+|&nbsp;automatic_upgrade_enabled | bool | Optional |  |  |
 |&nbsp;configuration_blob_uri | string | Optional |  |  |
 |&nbsp;order | number | Optional |  |  |
+|&nbsp;treat_failure_as_deployment_failure_enabled | bool | Optional |  |  |
 |&nbsp;tag | string | Optional |  |  |
 |hotpatching_enabled | bool | Optional |  |  windows only |
 |identity | object | Optional |  |  |
@@ -349,11 +359,14 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |&nbsp;offer | string | Required |  |  |
 |&nbsp;sku | string | Required |  |  |
 |&nbsp;version | string | Required |  |  |
+|os_image_notification | object | Optional |  |  |
+|&nbsp;timeout | string | Optional |  |  |
 |termination_notification | object | Optional |  |  |
 |&nbsp;enabled | bool | Required |  |  |
 |&nbsp;timeout | string | Optional |  |  |
 |timezone | string | Optional |  |  windows only |
 |user_data | string | Optional |  |  |
+|vm_agent_platform_updates_enabled | bool | Optional |  |  |
 |virtual_machine_scale_set_id | string | Optional |  |  |
 |vtpm_enabled | bool | Optional |  |  |
 |winrm_listener | list(object) | Optional | [] |  windows only |

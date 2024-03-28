@@ -14,7 +14,7 @@ locals {
       os_type                         = "Windows"
       name                            = local.naming.vm_1
       location                        = local.location
-      resource_group_name             = local.naming.rg
+      resource_group_name             = azurerm_resource_group.rg.name
       size                            = "Standard_F2"
       admin_username                  = "adminuser"
       admin_password                  = "Password1234"
@@ -81,10 +81,12 @@ locals {
           disk_size_gb         = 128
           storage_account_type = "StandardSSD_LRS"
           zone                 = "2"
-          disk_attachment = [{
-            lun     = 2
-            caching = "None"
-          }]
+          disk_attachment = [
+            {
+              lun     = 2
+              caching = "None"
+            }
+          ]
 
           disk_backup = [
             {
@@ -126,7 +128,7 @@ locals {
       vm_backup = [
         {
           custom_name         = "${local.naming.vm_1}-backup"
-          resource_group_name = local.naming.rg
+          resource_group_name = azurerm_resource_group.rg.name
           recovery_vault_name = azurerm_recovery_services_vault.rsv.name
           backup_policy_id    = azurerm_backup_policy_vm.bp.id
         }
@@ -138,7 +140,7 @@ locals {
       os_type                         = "Windows"
       name                            = local.naming.vm_2
       location                        = local.location
-      resource_group_name             = local.naming.rg
+      resource_group_name             = azurerm_resource_group.rg.name
       size                            = "Standard_F2"
       admin_username                  = "adminuser"
       admin_password                  = "Password1234"
@@ -175,7 +177,7 @@ locals {
       os_type                         = "Linux"
       name                            = local.naming.vm_3
       location                        = local.location
-      resource_group_name             = local.naming.rg
+      resource_group_name             = azurerm_resource_group.rg.name
       size                            = "Standard_F2"
       admin_username                  = "adminuser"
       admin_password                  = "Password1234"
@@ -240,10 +242,12 @@ locals {
           disk_size_gb         = 128
           storage_account_type = "StandardSSD_LRS"
           zone                 = "2"
-          disk_attachment = [{
-            lun     = 2
-            caching = "None"
-          }]
+          disk_attachment = [
+            {
+              lun     = 2
+              caching = "None"
+            }
+          ]
 
           disk_backup = [
             {
@@ -258,10 +262,12 @@ locals {
           disk_size_gb         = 128
           storage_account_type = "StandardSSD_LRS"
           zone                 = "2"
-          disk_attachment = [{
-            lun     = 3
-            caching = "None"
-          }]
+          disk_attachment = [
+            {
+              lun     = 3
+              caching = "None"
+            }
+          ]
         }
       ]
 
@@ -289,7 +295,7 @@ locals {
       vm_backup = [
         {
           custom_name         = "${local.naming.vm_3}-backup"
-          resource_group_name = local.naming.rg
+          resource_group_name = azurerm_resource_group.rg.name
           recovery_vault_name = azurerm_recovery_services_vault.rsv.name
           backup_policy_id    = azurerm_backup_policy_vm.bp.id
         }
@@ -301,7 +307,7 @@ locals {
       os_type                         = "Linux"
       name                            = local.naming.vm_4
       location                        = local.location
-      resource_group_name             = local.naming.rg
+      resource_group_name             = azurerm_resource_group.rg.name
       size                            = "Standard_F2"
       admin_username                  = "adminuser"
       admin_password                  = "Password1234"
