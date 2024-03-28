@@ -9,17 +9,10 @@ locals {
     ags_2 = "SEYAG02"
   }
 
-  rg = [
-    {
-      name     = local.naming.rg
-      location = local.location
-    }
-  ]
-
   ag = [
     {
       name                = local.naming.ag_1
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       short_name          = local.naming.ags_1
       location            = local.location
       azure_app_push_receiver = [
@@ -34,7 +27,7 @@ locals {
     },
     {
       name                = local.naming.ag_2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       short_name          = local.naming.ags_2
       webhook_receiver = [
         {
