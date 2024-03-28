@@ -13,7 +13,7 @@ locals {
     {
       name                = local.naming.evhns_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       sku                 = "Standard"
       identity = {
         type = "SystemAssigned"
@@ -83,7 +83,7 @@ locals {
     {
       name                = local.naming.evhns_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       sku                 = "Standard"
 
       tags = {}
