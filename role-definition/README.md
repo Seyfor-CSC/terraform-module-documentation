@@ -10,7 +10,7 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/role_definition
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/role_definition
 
 &nbsp;
 
@@ -51,7 +51,7 @@ module "rd" {
                     "Microsoft.Authorization/*/Write"
                 ]
             }
-            }
+        }
     ]
 }
 
