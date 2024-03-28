@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -23,23 +23,14 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_automation_account" "aa" {
   name                = local.naming.aa
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   sku_name            = "Free"
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 # role assignment
 module "role_assignment" {
-  source = "git@github.com:Seyfor-CSC/mit.role-assignment.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.role-assignment.git?ref=v1.5.0"
   config = local.rbac
-
-  depends_on = [
-    azurerm_resource_group.rg,
-    azurerm_automation_account.aa
-  ]
 }
 
 output "role_assignment" {
