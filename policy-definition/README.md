@@ -10,7 +10,7 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/policy_definition
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/policy_definition
 
 &nbsp;
 
@@ -82,10 +82,6 @@ resource "azurerm_policy_assignment" "policy_assignment" {
             }
         }
     PARAMETERS
-
-    depends_on = [
-        module.policy_definition
-    ]
 }
 ```
 

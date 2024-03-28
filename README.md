@@ -44,7 +44,7 @@
 | [network security group](./network-security-group/README.md) | v1.5.0 |
 | [network watcher](./network-watcher/README.md) | v1.5.0 |
 | [policy assignment](./policy-assignment/README.md) | v1.5.0 |
-| [policy definition](./policy-definition/README.md) | v1.0.0 |
+| [policy definition](./policy-definition/README.md) | v1.1.0 |
 | [policy set definition](./policy-set-definition/README.md) | v1.5.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v1.3.1 |
 | [private dns resolver](./private-dns-resolver/README.md) | v1.4.0 |
