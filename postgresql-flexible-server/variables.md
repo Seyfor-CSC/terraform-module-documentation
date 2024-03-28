@@ -15,7 +15,7 @@ variable "config" {  type = list(object({
     }))
     backup_retention_days = optional(number)
     customer_managed_key = optional(object({
-      key_vault_key_id                     = optional(string)
+      key_vault_key_id                     = string
       primary_user_assigned_identity_id    = optional(string)
       geo_backup_key_vault_key_id          = optional(string)
       geo_backup_user_assigned_identity_id = optional(string)
@@ -43,6 +43,7 @@ variable "config" {  type = list(object({
     source_server_id                  = optional(string)
     auto_grow_enabled                 = optional(bool)
     storage_mb                        = optional(number)
+    storage_tier                      = optional(string)
     version                           = optional(number)
     zone                              = optional(string)
     tags                              = optional(map(any))
@@ -110,7 +111,7 @@ variable "config" {  type = list(object({
 |&nbsp;tenant_id | string | Optional |  |  |
 |backup_retention_days | number | Optional |  |  |
 |customer_managed_key | object | Optional |  |  |
-|&nbsp;key_vault_key_id | string | Optional |  |  |
+|&nbsp;key_vault_key_id | string | Required |  |  |
 |&nbsp;primary_user_assigned_identity_id | string | Optional |  |  |
 |&nbsp;geo_backup_key_vault_key_id | string | Optional |  |  |
 |&nbsp;geo_backup_user_assigned_identity_id | string | Optional |  |  |
@@ -134,6 +135,7 @@ variable "config" {  type = list(object({
 |source_server_id | string | Optional |  |  |
 |auto_grow_enabled | bool | Optional |  |  |
 |storage_mb | number | Optional |  |  |
+|storage_tier | string | Optional |  |  |
 |version | number | Optional |  |  |
 |zone | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
