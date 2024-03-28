@@ -11,7 +11,7 @@ locals {
     {
       name                  = local.naming.cog_1
       location              = local.location
-      resource_group_name   = local.naming.rg
+      resource_group_name   = azurerm_resource_group.rg.name
       kind                  = "FormRecognizer"
       sku_name              = "F0"
       custom_subdomain_name = lower(local.naming.cog_1)
@@ -55,7 +55,7 @@ locals {
     {
       name                = local.naming.cog_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       kind                = "Face"
       sku_name            = "S0"
 
