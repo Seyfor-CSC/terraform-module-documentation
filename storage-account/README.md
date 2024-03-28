@@ -19,25 +19,25 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -122,10 +122,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.sa.outputs.seyterraformnesa01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.sa
-    ]
 }
 ```
 

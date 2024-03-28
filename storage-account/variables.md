@@ -117,6 +117,7 @@ variable "config" {  type = list(object({
       })), [])
     }))
     large_file_share_enabled = optional(bool)
+    local_user_enabled       = optional(bool)
     azure_files_authentication = optional(object({
       directory_type = string
       active_directory = optional(object({
@@ -147,6 +148,7 @@ variable "config" {  type = list(object({
     }))
     allowed_copy_scope = optional(string)
     sftp_enabled       = optional(bool)
+    dns_endpoint_type  = optional(string)
     tags               = optional(map(any))
 
     # storage container
@@ -396,6 +398,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;endpoint_resource_id | string | Required |  |  |
 |&nbsp;&nbsp;endpoint_tenant_id | string | Optional |  |  |
 |large_file_share_enabled | bool | Optional |  |  |
+|local_user_enabled | bool | Optional |  |  |
 |azure_files_authentication | object | Optional |  |  |
 |&nbsp;directory_type | string | Required |  |  |
 |&nbsp;active_directory | object | Optional |  |  |
@@ -421,6 +424,7 @@ variable "config" {  type = list(object({
 |&nbsp;expiration_action | string | Optional |  |  |
 |allowed_copy_scope | string | Optional |  |  |
 |sftp_enabled | bool | Optional |  |  |
+|dns_endpoint_type | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |containers | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
