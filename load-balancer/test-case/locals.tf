@@ -13,7 +13,7 @@ locals {
     {
       name                = local.naming.lb_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       sku                 = "Standard"
       frontend_ip_configuration = [
         {
@@ -104,7 +104,7 @@ locals {
     {
       name                = local.naming.lb_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       sku                 = "Standard"
       frontend_ip_configuration = [
         {

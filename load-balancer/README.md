@@ -19,25 +19,25 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_backend_address_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_backend_address_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_backend_address_pool_address
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_backend_address_pool_address
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/network_interface_backend_address_pool_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/network_interface_backend_address_pool_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_outbound_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_outbound_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_probe
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_probe
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_nat_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_nat_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/lb_nat_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_nat_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -105,10 +105,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.lb.outputs.sey-terraform-ne-lb01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.lb
-    ]
 }
 ```
 
