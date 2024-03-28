@@ -16,11 +16,12 @@ variable "config" {  type = list(object({
       type         = string
       identity_ids = optional(list(string))
     }))
-    internet_ingestion_enabled         = optional(bool)
-    internet_query_enabled             = optional(bool)
-    reservation_capacity_in_gb_per_day = optional(number)
-    data_collection_rule_id            = optional(string)
-    tags                               = optional(map(any))
+    internet_ingestion_enabled              = optional(bool)
+    internet_query_enabled                  = optional(bool)
+    reservation_capacity_in_gb_per_day      = optional(number)
+    data_collection_rule_id                 = optional(string)
+    immediate_data_purge_on_30_days_enabled = optional(bool)
+    tags                                    = optional(map(any))
 
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -62,6 +63,7 @@ variable "config" {  type = list(object({
 |internet_query_enabled | bool | Optional |  |  |
 |reservation_capacity_in_gb_per_day | number | Optional |  |  |
 |data_collection_rule_id | string | Optional |  |  |
+|immediate_data_purge_on_30_days_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |

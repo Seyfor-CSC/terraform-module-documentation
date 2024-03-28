@@ -12,7 +12,7 @@ locals {
     {
       name                = local.naming.la_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
 
       monitoring = [
         {
@@ -29,7 +29,7 @@ locals {
     {
       name                = local.naming.la_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
 
       tags = {}
 
@@ -43,7 +43,7 @@ locals {
     {
       name                = local.naming.la_3
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
 
       tags = {}
     }
