@@ -10,7 +10,7 @@ locals {
   apr = [
     {
       name                 = local.naming.apr_1
-      resource_group_name  = local.naming.rg
+      resource_group_name  = azurerm_resource_group.rg.name
       add_action_group_ids = [azurerm_monitor_action_group.ag1.id, azurerm_monitor_action_group.ag2.id]
       scopes               = [azurerm_storage_account.sa.id]
       condition = {
@@ -74,7 +74,7 @@ locals {
     },
     {
       name                = local.naming.apr_2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       scopes              = [azurerm_storage_account.sa.id]
 
       tags = {}

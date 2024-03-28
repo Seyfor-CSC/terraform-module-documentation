@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -66,14 +66,6 @@ resource "azurerm_monitor_metric_alert" "alert" {
 
 # monitor alert processing rule
 module "apr" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-alert-processing-rule.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-alert-processing-rule.git?ref=v1.1.0"
   config = local.apr
-
-  depends_on = [
-    azurerm_resource_group.rg,
-    azurerm_monitor_action_group.ag1,
-    azurerm_monitor_action_group.ag2,
-    azurerm_storage_account.sa,
-    azurerm_monitor_metric_alert.alert
-  ]
 }

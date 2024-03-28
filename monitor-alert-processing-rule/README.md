@@ -11,9 +11,9 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_alert_processing_rule_action_group
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_alert_processing_rule_action_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_alert_processing_rule_suppression
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_alert_processing_rule_suppression
 
 &nbsp;
 
