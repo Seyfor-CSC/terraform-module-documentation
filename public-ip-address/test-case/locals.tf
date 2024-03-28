@@ -7,11 +7,11 @@ locals {
     pip_2 = "SEY-TERRAFORM-NE-PIP02"
   }
 
-    pip = [
+  pip = [
     {
       name                = local.naming.pip_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       allocation_method   = "Static"
 
       monitoring = [
@@ -29,7 +29,7 @@ locals {
     {
       name                = local.naming.pip_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       allocation_method   = "Static"
 
       tags = {}
