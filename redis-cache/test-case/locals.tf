@@ -11,7 +11,7 @@ locals {
     {
       name                = local.naming.rc_1
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       capacity            = 2
       family              = "P"
       sku_name            = "Premium"
@@ -70,7 +70,7 @@ locals {
     {
       name                = local.naming.rc_2
       location            = local.location
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       capacity            = 2
       family              = "C"
       sku_name            = "Standard"

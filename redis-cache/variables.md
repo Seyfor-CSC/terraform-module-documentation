@@ -31,11 +31,13 @@ variable "config" {  type = list(object({
       maxmemory_reserved                      = optional(number)
       maxmemory_delta                         = optional(number)
       maxmemory_policy                        = optional(string)
+      data_persistence_authentication_method  = optional(string)
       maxfragmentationmemory_reserved         = optional(number)
       rdb_backup_enabled                      = optional(bool)
       rdb_backup_frequency                    = optional(number)
       rdb_backup_max_snapshot_count           = optional(number)
       rdb_storage_connection_string           = optional(string)
+      storage_account_subscription_id         = optional(string)
       notify_keyspace_events                  = optional(string)
     }))
     replicas_per_master  = optional(number)
@@ -124,11 +126,13 @@ variable "config" {  type = list(object({
 |&nbsp;maxmemory_reserved | number | Optional |  |  |
 |&nbsp;maxmemory_delta | number | Optional |  |  |
 |&nbsp;maxmemory_policy | string | Optional |  |  |
+|&nbsp;data_persistence_authentication_method | string | Optional |  |  |
 |&nbsp;maxfragmentationmemory_reserved | number | Optional |  |  |
 |&nbsp;rdb_backup_enabled | bool | Optional |  |  |
 |&nbsp;rdb_backup_frequency | number | Optional |  |  |
 |&nbsp;rdb_backup_max_snapshot_count | number | Optional |  |  |
 |&nbsp;rdb_storage_connection_string | string | Optional |  |  |
+|&nbsp;storage_account_subscription_id | string | Optional |  |  |
 |&nbsp;notify_keyspace_events | string | Optional |  |  |
 |replicas_per_master | number | Optional |  |  |
 |replicas_per_primary | number | Optional |  |  |
