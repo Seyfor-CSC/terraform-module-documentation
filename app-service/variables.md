@@ -48,7 +48,9 @@ variable "config" {  type = list(object({
         priority                  = optional(number)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
+        description               = optional(string)
       })), [])
+      ip_restriction_default_action = optional(string)
       use_32_bit_worker = optional(bool)
       vnet_route_all_enabled = optional(bool)
     })
@@ -207,6 +209,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;priority | number | Optional |  |  |
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;description | string | Optional |  |  |
+|&nbsp;ip_restriction_default_action | string | Optional |  |  |
 |&nbsp;use_32_bit_worker | bool | Optional |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
 |app_settings | map(any) | Optional |  |  |

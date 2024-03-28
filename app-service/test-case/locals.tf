@@ -11,7 +11,7 @@ locals {
     {
       os_type             = "Windows"
       name                = local.naming.app_1
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       service_plan_id     = azurerm_service_plan.windows_plan.id
       site_config         = {}
@@ -58,7 +58,7 @@ locals {
     {
       os_type             = "Linux"
       name                = local.naming.app_2
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       service_plan_id     = azurerm_service_plan.linux_plan.id
       site_config         = {}
