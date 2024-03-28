@@ -4,18 +4,18 @@ locals {
   naming = {
     rg             = "SEY-TERRAFORM-SCALESET-RG01"
     vmss_windows01 = "SEY-TERRAFORM-SCALESET-WINDOWS01"
-    vmss_windows02 = "SEY-TERRAFORM-SCALESET-WINDOWS02"
     vmss_linux01   = "SEY-TERRAFORM-SCALESET-LINUX01"
   }
 
   vmss = [
     {
       os_type              = "Windows"
+      autoscale            = true
       name                 = local.naming.vmss_windows01
-      resource_group_name  = local.naming.rg
+      resource_group_name  = azurerm_resource_group.rg.name
       location             = local.location
       sku                  = "Standard_DS3_v2"
-      instances            = 3
+      instances            = 1
       admin_username       = "adminuser"
       admin_password       = "P@ssw0rd1234!"
       computer_name_prefix = "sey"
@@ -42,26 +42,6 @@ locals {
               name      = "internal"
               primary   = true
               subnet_id = azurerm_subnet.subnet.id
-            }
-          ]
-        },
-        {
-          name = "secondary"
-
-          ip_configuration = [
-            {
-              name      = "internal"
-              primary   = true
-              subnet_id = azurerm_subnet.subnet.id
-            },
-            {
-              name      = "external"
-              subnet_id = azurerm_subnet.subnet.id
-
-              public_ip_address = {
-                name                = "first"
-                public_ip_prefix_id = azurerm_public_ip_prefix.prefix.id
-              }
             }
           ]
         }
@@ -107,58 +87,15 @@ locals {
         }
       ]
 
-      tags = {}
-    },
-    {
-      os_type              = "Windows"
-      name                 = local.naming.vmss_windows02
-      autoscale            = true
-      resource_group_name  = local.naming.rg
-      location             = local.location
-      sku                  = "Standard_F2"
-      instances            = 2
-      admin_username       = "adminuser"
-      admin_password       = "P@ssw0rd1234!"
-      computer_name_prefix = "sey"
-      identity = {
-        type = "SystemAssigned"
-      }
-      os_disk = {
-        storage_account_type = "Standard_LRS"
-        caching              = "ReadWrite"
-      }
-      source_image_reference = {
-        publisher = "MicrosoftWindowsServer"
-        offer     = "WindowsServer"
-        sku       = "2019-Datacenter"
-        version   = "latest"
-      }
-      network_interface = [
-        {
-          name    = "primary"
-          primary = true
-
-          ip_configuration = [
-            {
-              name      = "internal"
-              primary   = true
-              subnet_id = azurerm_subnet.subnet.id
-            }
-          ]
-        }
-      ]
-
-      tags = {}
-
       autoscale_settings = {
         name = "autoscale-config"
         profile = [
           {
             name = "AutoScale"
             capacity = {
-              default = 3
+              default = 1
               minimum = 1
-              maximum = 5
+              maximum = 2
             }
             rule = [
               {
@@ -264,11 +201,13 @@ locals {
           }
         ]
       }
+
+      tags = {}
     },
     {
       os_type                         = "Linux"
       name                            = local.naming.vmss_linux01
-      resource_group_name             = local.naming.rg
+      resource_group_name             = azurerm_resource_group.rg.name
       location                        = local.location
       sku                             = "Standard_F2"
       instances                       = 2
