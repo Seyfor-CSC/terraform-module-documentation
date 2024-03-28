@@ -7,7 +7,7 @@ locals {
 
   alerts = [
     {
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       logv2_alerts = [
         {

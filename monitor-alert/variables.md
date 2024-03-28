@@ -132,7 +132,7 @@ variable "config" {  type = list(object({
       })), [])
       enabled                  = optional(bool)
       auto_mitigate            = optional(bool)
-      description               = optional(string)
+      description              = optional(string)
       frequency                = optional(string)
       severity                 = optional(number)
       target_resource_type     = optional(string)
