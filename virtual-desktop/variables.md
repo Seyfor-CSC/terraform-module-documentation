@@ -26,6 +26,7 @@ variable "config" {  type = object({
           hour_of_day = number
         })), [])
       }))
+      vm_template = optional(string)
       tags = optional(map(any))
 
       # virtual desktop application group
@@ -248,6 +249,7 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;schedule | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;&nbsp;day_of_week | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;hour_of_day | number | Required |  |  |
+|&nbsp;vm_template | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  |
 |&nbsp;application_groups | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |

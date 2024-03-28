@@ -18,21 +18,21 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_desktop_host_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_desktop_host_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_desktop_application_group
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_desktop_application_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_desktop_host_pool_registration_info
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_desktop_host_pool_registration_info
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_desktop_scaling_plan
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_desktop_scaling_plan
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_desktop_workspace
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_desktop_workspace
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/virtual_desktop_workspace_application_group_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_desktop_workspace_application_group_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -110,10 +110,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.vd.outputs.host_pools.sey-terraform-ne-pool01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.vd
-    ]
 }
 ```
 

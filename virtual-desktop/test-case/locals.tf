@@ -14,7 +14,7 @@ locals {
     host_pools = [
       {
         name                = local.naming.pool_1
-        resource_group_name = local.naming.rg
+        resource_group_name = azurerm_resource_group.rg.name
         location            = local.location
         type                = "Pooled"
         load_balancer_type  = "DepthFirst"
@@ -44,7 +44,7 @@ locals {
         ]
 
         registration_info = {
-          expiration_date = "2023-12-31T23:59:59Z"
+          expiration_date = "2024-03-30T23:59:59Z"
         }
 
         monitoring = [
@@ -86,7 +86,7 @@ locals {
     scaling_plans = [
       {
         name                = local.naming.plan_1
-        resource_group_name = local.naming.rg
+        resource_group_name = azurerm_resource_group.rg.name
         location            = local.location
         time_zone           = "GMT Standard Time"
         schedule = [
@@ -132,7 +132,7 @@ locals {
     workspaces = [
       {
         name                = local.naming.workspace_1
-        resource_group_name = local.naming.rg
+        resource_group_name = azurerm_resource_group.rg.name
         location            = local.location
 
         monitoring = [
