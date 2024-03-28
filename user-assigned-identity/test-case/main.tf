@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -21,12 +21,8 @@ resource "azurerm_resource_group" "rg" {
 
 # user assigned identity
 module "user_assigned_identity" {
-  source = "git@github.com:Seyfor-CSC/mit.user-assigned-identity.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.user-assigned-identity.git?ref=v1.4.0"
   config = local.uai
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 output "user_assigned_identity" {
