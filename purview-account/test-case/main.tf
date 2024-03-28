@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -23,23 +23,15 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
   location            = local.location
-  resource_group_name = local.naming.rg
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 # purview account
 module "purview_account" {
-  source = "git@github.com:Seyfor-CSC/mit.purview-account.git?ref=v1.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.purview-account.git?ref=v1.4.0"
   config = local.purview_account
-  depends_on = [
-    azurerm_resource_group.rg,
-    azurerm_log_analytics_workspace.la
-  ]
 }
 
 output "outputs" {

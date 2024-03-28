@@ -11,7 +11,7 @@ locals {
   purview_account = [
     {
       name                = local.naming.pa_1
-      resource_group_name = local.naming.rg
+      resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       identity = {
         type = "SystemAssigned"
