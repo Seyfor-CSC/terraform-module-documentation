@@ -13,13 +13,13 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/linux_function_app
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/linux_function_app
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/windows_function_app
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/windows_function_app
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -73,10 +73,6 @@ resource "azurerm_role_assignment" "role_assignment" {
     scope                = module.fa.outputs.sey-terraform-ne-fa01.id # This is how to use output values
     role_definition_name = "Contributor"
     principal_id         = data.azurerm_client_config.azurerm_client_config.object_id
-
-    depends_on = [
-        module.fa
-    ]
 }
 ```
 
@@ -85,6 +81,17 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Linux or Windows Function App?
 This module can deploy Linux or Windows Function Apps. You can specify which one you want to deploy by setting the _os\_type_ variable for the Function App resource to either _Linux_ or _Windows_. See [test-case/locals.tf](test-case/locals.tf) for a deployment example.
+## Lifecycle
+This module has a lifecycle block set up like this:
+```
+lifecycle {
+    ignore_changes = [
+        connection_string,
+        app_settings,
+        sticky_settings
+    ]
+}
+```
 ## Diagnostic Setting enabled log can't be deleted
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/23267

@@ -61,7 +61,9 @@ variable "config" {  type = list(object({
         priority                  = optional(number)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
+        description               = optional(string)
       })), [])
+      ip_restriction_default_action    = optional(string)
       load_balancing_mode              = optional(string)
       managed_pipeline_mode            = optional(string)
       minimum_tls_version              = optional(string)
@@ -82,13 +84,15 @@ variable "config" {  type = list(object({
         priority                  = optional(number)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
+        description               = optional(string)
       })), [])
-      scm_minimum_tls_version     = optional(string)
-      scm_use_main_ip_restriction = optional(bool)
-      use_32_bit_worker           = optional(bool)
-      vnet_route_all_enabled      = optional(bool)
-      websockets_enabled          = optional(bool)
-      worker_count                = optional(number)
+      scm_ip_restriction_default_action = optional(string)
+      scm_minimum_tls_version           = optional(string)
+      scm_use_main_ip_restriction       = optional(bool)
+      use_32_bit_worker                 = optional(bool)
+      vnet_route_all_enabled            = optional(bool)
+      websockets_enabled                = optional(bool)
+      worker_count                      = optional(number)
     })
     app_settings = optional(map(string))
     backup = optional(object({
@@ -236,6 +240,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;priority | number | Optional |  |  |
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;description | string | Optional |  |  |
+|&nbsp;ip_restriction_default_action | string | Optional |  |  |
 |&nbsp;load_balancing_mode | string | Optional |  |  |
 |&nbsp;managed_pipeline_mode | string | Optional |  |  |
 |&nbsp;minimum_tls_version | string | Optional |  |  |
@@ -255,6 +261,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;priority | number | Optional |  |  |
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;description | string | Optional |  |  |
+|&nbsp;scm_ip_restriction_default_action | string | Optional |  |  |
 |&nbsp;scm_minimum_tls_version | string | Optional |  |  |
 |&nbsp;scm_use_main_ip_restriction | bool | Optional |  |  |
 |&nbsp;use_32_bit_worker | bool | Optional |  |  |
