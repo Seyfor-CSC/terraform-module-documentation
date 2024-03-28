@@ -155,7 +155,7 @@ variable "config" {  type = list(object({
       backup_report                  = optional(bool, false) # Custom variable used to enable backup legacy logs
       categories = optional(object({
         # backup report - legacy event
-        azure_backup_report = optional(bool, false) # to be depraced
+        azure_backup_report = optional(bool, false) # to be deprecated
         # backup - new events (replacemment for legacy event)
         core_azure_backup                     = optional(bool, true)
         addon_azure_backup_protected_instance = optional(bool, true)
