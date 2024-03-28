@@ -10,7 +10,7 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.84.0/docs/resources/policy_set_definition
+https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/policy_set_definition
 
 &nbsp;
 
@@ -28,10 +28,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
+| Output Name | Value | Comment |
+| ----------- | ----- | ------- |
+| outputs     | name  |         |
+|             | id    |         |
 
 
 ## Example usage of outputs
@@ -76,10 +76,6 @@ resource "azurerm_policy_assignment" "policy_assignment" {
             }
         }
     PARAMETERS
-
-    depends_on = [
-        module.policy_set_definition
-    ]
 }
 ```
 
