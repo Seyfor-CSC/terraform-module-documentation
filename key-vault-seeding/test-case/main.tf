@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.84.0"
+      version = "=3.96.0"
     }
   }
   backend "local" {}
@@ -40,10 +40,6 @@ resource "azurerm_key_vault" "kv" {
       "Recover"
     ]
   }
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 
@@ -51,22 +47,12 @@ resource "azurerm_role_assignment" "rbac" {
   role_definition_name = "Key Vault Secrets Officer"
   scope                = azurerm_key_vault.kv.id
   principal_id         = data.azurerm_client_config.current.object_id
-
-  depends_on = [
-    azurerm_key_vault.kv
-  ]
 }
 
 # key vault seeding
 module "seeding" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v1.3.0"
   config = local.seeding
-
-  depends_on = [
-    azurerm_resource_group.rg,
-    azurerm_role_assignment.rbac,
-    azurerm_key_vault.kv
-  ]
 }
 
 output "seeding" {
