@@ -11,7 +11,7 @@ locals {
     {
       name                          = local.naming.sqlsrv_1
       location                      = local.location
-      resource_group_name           = local.naming.rg
+      resource_group_name           = azurerm_resource_group.rg.name
       administrator_login           = "useradmin"
       administrator_login_password  = "Password1234"
       public_network_access_enabled = true
@@ -105,7 +105,7 @@ locals {
     {
       name                         = local.naming.sqlsrv_2
       location                     = local.location
-      resource_group_name          = local.naming.rg
+      resource_group_name          = azurerm_resource_group.rg.name
       administrator_login          = "seyadmin"
       administrator_login_password = "sqladm123+"
       version                      = "12.0"

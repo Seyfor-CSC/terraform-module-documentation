@@ -89,19 +89,22 @@ variable "config" {  type = list(object({
       ledger_enabled                 = optional(bool)
       license_type                   = optional(string)
       long_term_retention_policy = optional(object({
-        weekly_retention  = optional(string)
-        monthly_retention = optional(string)
-        yearly_retention  = optional(string)
-        week_of_year      = optional(number)
+        weekly_retention          = optional(string)
+        monthly_retention         = optional(string)
+        yearly_retention          = optional(string)
+        week_of_year              = optional(number)
+        immutable_backups_enabled = optional(bool)
       }))
-      max_size_gb                 = optional(number)
-      min_capacity                = optional(number)
-      restore_point_in_time       = optional(string)
-      recover_database_id         = optional(string)
-      restore_dropped_database_id = optional(string)
-      read_replica_count          = optional(number)
-      read_scale                  = optional(bool)
-      sample_name                 = optional(string)
+      max_size_gb                           = optional(number)
+      min_capacity                          = optional(number)
+      restore_point_in_time                 = optional(string)
+      recover_database_id                   = optional(string)
+      recovery_point_id                     = optional(string)
+      restore_dropped_database_id           = optional(string)
+      restore_long_term_retention_backup_id = optional(string)
+      read_replica_count                    = optional(number)
+      read_scale                            = optional(bool)
+      sample_name                           = optional(string)
       short_term_retention_policy = optional(object({
         retention_days           = number
         backup_interval_in_hours = optional(number)
@@ -117,9 +120,15 @@ variable "config" {  type = list(object({
         storage_account_access_key = optional(string)
         storage_endpoint           = optional(string)
       }))
-      transparent_data_encryption_enabled = optional(bool)
-      zone_redundant                      = optional(bool)
-      tags                                = optional(map(any)) # If not provided, inherited in module from parent resource
+      identity = optional(object({
+        type         = string
+        identity_ids = list(string)
+      }))
+      transparent_data_encryption_enabled                        = optional(bool)
+      transparent_data_encryption_key_vault_key_id               = optional(string)
+      transparent_data_encryption_key_automatic_rotation_enabled = optional(bool)
+      zone_redundant                                             = optional(bool)
+      tags                                                       = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # mssql database extended auditing policy
       db_auditing_policy = optional(object({
@@ -277,11 +286,14 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;monthly_retention | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;yearly_retention | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;week_of_year | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;immutable_backups_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;max_size_gb | number | Optional |  |  |
 |&nbsp;&nbsp;min_capacity | number | Optional |  |  |
 |&nbsp;&nbsp;restore_point_in_time | string | Optional |  |  |
 |&nbsp;&nbsp;recover_database_id | string | Optional |  |  |
+|&nbsp;&nbsp;recovery_point_id | string | Optional |  |  |
 |&nbsp;&nbsp;restore_dropped_database_id | string | Optional |  |  |
+|&nbsp;&nbsp;restore_long_term_retention_backup_id | string | Optional |  |  |
 |&nbsp;&nbsp;read_replica_count | number | Optional |  |  |
 |&nbsp;&nbsp;read_scale | bool | Optional |  |  |
 |&nbsp;&nbsp;sample_name | string | Optional |  |  |
@@ -298,7 +310,12 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;retention_days | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;storage_account_access_key | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;storage_endpoint | string | Optional |  |  |
+|&nbsp;&nbsp;identity | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;identity_ids | list(string) | Required |  |  |
 |&nbsp;&nbsp;transparent_data_encryption_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;transparent_data_encryption_key_vault_key_id | string | Optional |  |  |
+|&nbsp;&nbsp;transparent_data_encryption_key_automatic_rotation_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
 |&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;db_auditing_policy | object | Optional |  |  |
