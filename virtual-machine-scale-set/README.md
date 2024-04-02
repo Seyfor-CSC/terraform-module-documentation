@@ -116,14 +116,13 @@ resource "azurerm_role_assignment" "role_assignment" {
 ## Custom variables
 * `os_type` variable must be configured to either _Window_ or _Linux_ value. This variable is used to determine which virtual machine scale set will be deployed.
 * `autoscale` variable must be defined if you want autoscaling to be enabled. It is important this variable is set otherwise autoscale will not work. When you set the value to _true_, lifecycle with ignore_changes block for the variable `instances` is turned on. This is because the number of instances in that case is managed by autoscale and not by terraform.
+
+&nbsp;
+
+# Known Issues
 ## Diagnostic Setting enabled log can't be deleted
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ### Possible workarounds: 
 1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
 2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
-
-&nbsp;
-
-# Known Issues
-We currently log no issues in this module.
