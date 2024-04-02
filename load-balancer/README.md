@@ -116,14 +116,13 @@ resource "azurerm_role_assignment" "role_assignment" {
 * `backend_address_pool_name` replaces the `backend_address_pool_id` variable in the `nat_rules` list of objects.
 * `probe_name` replaces the `probe_id` variable in the `rules` list of objects.
 * `custom_name` used for looping through the `nic_association` list of objects.
+
+&nbsp;
+
+# Known Issues
 ## Diagnostic Setting enabled log can't be deleted
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ### Possible workarounds: 
 1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
 2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
-
-&nbsp;
-
-# Known Issues
-We currently log no issues in this module.
