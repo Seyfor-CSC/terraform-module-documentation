@@ -78,12 +78,7 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-## Diagnostic Setting enabled log can't be deleted
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
-### Possible workarounds: 
-1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
-2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
+No special features in module.
 
 &nbsp;
 
@@ -94,3 +89,9 @@ https://github.com/Azure/azure-rest-api-specs/issues/3037
 ## Can't add rdb_storage_connection_string variable into ignore_changes
 [Terraform documentation for redis cache](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache#rdb_storage_connection_string) suggests to put the `rdb_storage_connection_string` into an ignore_changes block. However, that also ends in an error. Because of this, no ignore_changes block is implemented. See the following link for more details:
 https://github.com/Azure/azure-rest-api-specs/issues/3037#issuecomment-1398971779
+## Diagnostic Setting enabled log can't be deleted
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
+### Possible workarounds: 
+1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
+2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
