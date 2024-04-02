@@ -10,7 +10,7 @@
 ## Enhancements
 
 - Replace explicit dependencies with implicit (#10)
-- Add linux and windows function app `connection_string`, `app_settings`, `sticky_settings` variables to lifecycle ignore_changes
+- Add linux and windows function app `connection_string`, `app_settings`, `sticky_settings` variables to lifecycle ignore_changes (#10)
    
 ## Release v1.1.1
 
