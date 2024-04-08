@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.3.1
+
+## Enhancements
+
+- Add parameters for password generation (#22)
+
+
+   
 ## Release v1.3.0
 
 ## Provider & Terraform Upgrade
