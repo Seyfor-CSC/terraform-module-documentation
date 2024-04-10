@@ -18,9 +18,17 @@ locals {
       workload_profile = {
         name                  = "Consumption"
         workload_profile_type = "Consumption"
-        maximum_count         = 1
-        minimum_count         = 1
       }
+
+      monitoring = [
+        {
+          diag_name                  = "Monitoring"
+          log_analytics_workspace_id = azurerm_log_analytics_workspace.la.id
+          categories = {
+            container_app_system_logs = false
+          }
+        }
+      ]
 
       tags = {}
     },

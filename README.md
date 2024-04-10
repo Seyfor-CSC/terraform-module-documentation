@@ -21,7 +21,7 @@
 | [backup vault](./backup-vault/README.md) | v1.5.0 |
 | [bastion host](./bastion-host/README.md) | v1.5.0 |
 | [cognitive account](./cognitive-account/README.md) | v1.5.0 |
-| [container app environment](./container-app-environment/README.md) | v1.0.0 |
+| [container app environment](./container-app-environment/README.md) | v1.1.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v1.5.0 |
 | [data collection rule](./data-collection-rule/README.md) | v1.4.0 |

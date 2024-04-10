@@ -1,6 +1,7 @@
 # Introduction
 Container App Environment module can deploy these resources:
 * azurerm_container_app_environment (required)
+* azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -12,12 +13,16 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/container_app_environment
 
+https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/monitor_diagnostic_setting
+
 &nbsp;
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Container App Environment
 * terraform import '`<path-to-module>`.azurerm_container_app_environment.container_app_environment["`<container-app-environment-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`'
+### Diagnostic Setting
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<container-app-environment-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.container\_app\_environment_
 
@@ -65,4 +70,5 @@ No special features in module.
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+## workload_profile variables requirement
+`maximum_count` and `minimum_count` variables in the `workload_profile` object variable are optional as they can't be set to any value when `workload_profile_type = "Consumption"`.

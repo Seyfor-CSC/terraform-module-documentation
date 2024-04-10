@@ -34,11 +34,13 @@ resource "azurerm_subnet" "subnet" {
   delegation {
     name = "managedInstanceDelegation"
     service_delegation {
-      name = "Microsoft.App/environments"
+      name    = "Microsoft.App/environments"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     }
   }
 }
 
+# monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
   location            = local.location
@@ -49,7 +51,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container app environment
 module "container_app_environment" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v1.1.0"
   config = local.cae
 }
 
