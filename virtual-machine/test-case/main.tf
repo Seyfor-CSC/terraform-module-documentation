@@ -115,7 +115,7 @@ resource "azurerm_backup_policy_vm" "bp" {
 
 # virtual machine
 module "virtual_machine" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.4.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.4.1"
   config          = local.vm
   subscription_id = data.azurerm_client_config.current.subscription_id
 }

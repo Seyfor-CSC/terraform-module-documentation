@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.4.1
+
+## Bug Fixes
+
+- Fix typo in the `admin_ssh_key` dynamic block (#28)
+
+
+
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade
