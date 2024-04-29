@@ -145,3 +145,10 @@ https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ### Possible workarounds: 
 1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
 2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
+## Diagnostic Setting metric always updating in place
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
+## dns_endpoint_type redeploying storage account
+Storage Account will want to redeploy itself when you upgrade the azurerm provider version to 3.97.0 from a previous version because of the `dns_endpoint_type` parameter. This issues is resolved in the 3.97.1 azurerm provider version.
+### GitHub issue
+https://github.com/hashicorp/terraform-provider-azurerm/issues/25364
