@@ -96,16 +96,16 @@ variable "config" {  type = list(object({
     replica_timeout_in_seconds = number
     workload_profile_name      = optional(string)
     replica_retry_limit        = optional(number)
-    secrets = optional(object({
+    secrets = optional(list(object({
       name  = string
       value = string
-    }))
-    registries = optional(object({
+    })), [])
+    registries = optional(list(object({
       identity             = optional(string)
       username             = optional(string)
       password_secret_name = optional(string)
       server               = optional(string)
-    }))
+    })), [])
     manual_trigger_config = optional(object({
       parallelism              = optional(number)
       replica_completion_count = optional(number)
@@ -228,10 +228,10 @@ variable "config" {  type = list(object({
 |replica_timeout_in_seconds | number | Required |  |  |
 |workload_profile_name | string | Optional |  |  |
 |replica_retry_limit | number | Optional |  |  |
-|secrets | object | Optional |  |  |
+|secrets | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;value | string | Required |  |  |
-|registries | object | Optional |  |  |
+|registries | list(object) | Optional | [] |  |
 |&nbsp;identity | string | Optional |  |  |
 |&nbsp;username | string | Optional |  |  |
 |&nbsp;password_secret_name | string | Optional |  |  |
