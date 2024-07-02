@@ -6,7 +6,7 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example vuse case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can see also see [changelog](changelog.md)
+You can see also see [changelog](CHANGELOG.md)
 
 Terraform documentation: 
 
