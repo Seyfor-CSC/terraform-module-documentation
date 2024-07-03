@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.96.0"
+      version = "=3.108.0"
     }
   }
   backend "local" {}
@@ -213,7 +213,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # mssql managed instance
 module "mssql_managed_instance" {
-  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.5.0"
   config = local.mi
 }
 
