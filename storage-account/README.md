@@ -15,29 +15,29 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.97.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -148,7 +148,3 @@ https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ## Diagnostic Setting metric always updating in place
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
-## dns_endpoint_type redeploying storage account
-Storage Account will want to redeploy itself when you upgrade the azurerm provider version to 3.97.0 from a previous version because of the `dns_endpoint_type` parameter. This issues is resolved in the 3.97.1 azurerm provider version.
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/25364

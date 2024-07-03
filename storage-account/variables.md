@@ -26,6 +26,7 @@ variable "config" {  type = list(object({
     }))
     customer_managed_key = optional(object({
       key_vault_key_id          = string
+      managed_hsm_key_id        = optional(string)
       user_assigned_identity_id = string
     }))
     identity = optional(object({
@@ -41,7 +42,8 @@ variable "config" {  type = list(object({
         max_age_in_seconds = number
       }))
       delete_retention_policy = optional(object({
-        days = optional(number)
+        days                     = optional(number)
+        permanent_delete_enabled = optional(bool)
       }))
       restore_policy = optional(object({
         days = optional(number)
@@ -153,10 +155,12 @@ variable "config" {  type = list(object({
 
     # storage container
     containers = optional(list(object({
-      name                  = string
-      storage_account_name  = optional(string) # Inherited in module from parent resource
-      container_access_type = optional(string)
-      metadata              = optional(map(string))
+      name                              = string
+      storage_account_name              = optional(string) # Inherited in module from parent resource
+      container_access_type             = optional(string)
+      default_encryption_scope          = optional(string)
+      encryption_scope_override_enabled = optional(bool)
+      metadata                          = optional(map(string))
     })), [])
 
     # storage share
@@ -326,6 +330,7 @@ variable "config" {  type = list(object({
 |&nbsp;use_subdomain | bool | Optional |  |  |
 |customer_managed_key | object | Optional |  |  |
 |&nbsp;key_vault_key_id | string | Required |  |  |
+|&nbsp;managed_hsm_key_id | string | Optional |  |  |
 |&nbsp;user_assigned_identity_id | string | Required |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
@@ -339,6 +344,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;max_age_in_seconds | number | Required |  |  |
 |&nbsp;delete_retention_policy | object | Optional |  |  |
 |&nbsp;&nbsp;days | number | Optional |  |  |
+|&nbsp;&nbsp;permanent_delete_enabled | bool | Optional |  |  |
 |&nbsp;restore_policy | object | Optional |  |  |
 |&nbsp;&nbsp;days | number | Optional |  |  |
 |&nbsp;versioning_enabled | bool | Optional |  |  |
@@ -430,6 +436,8 @@ variable "config" {  type = list(object({
 |&nbsp;name | string | Required |  |  |
 |&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;container_access_type | string | Optional |  |  |
+|&nbsp;default_encryption_scope | string | Optional |  |  |
+|&nbsp;encryption_scope_override_enabled | bool | Optional |  |  |
 |&nbsp;metadata | map(string) | Optional |  |  |
 |file_shares | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
