@@ -11,21 +11,21 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/eventhub_namespace
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub_namespace
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/eventhub
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/eventhub_consumer_group
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub_consumer_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/eventhub_authorization_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub_authorization_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -36,12 +36,12 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Event Hub
 * terraform import '`<path-to-module>`.azurerm_eventhub.eventhub["`<eventhub-namespace-name>`_`<eventhub-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.EventHub/namespaces/`<eventhub-namespace-name>`/eventhubs/`<eventhub-name>`'
 ### Event Hub Consumer Group
-* terraform import '`<path-to-module>`.azurerm_eventhub_consumer_group.eventhub_consumer_group["`<eventhub-namespace-name>`_`<eventhub-name>`_`<consumger_group_name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.EventHub/namespaces/`<eventhub-namespace-name>`/eventhubs/`<eventhub-name>`/consumerGroups/`<consumger_group_name>`'
+* terraform import '`<path-to-module>`.azurerm_eventhub_consumer_group.eventhub_consumer_group["`<eventhub-namespace-name>`\_`<eventhub-name>`\_`<consumger_group_name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.EventHub/namespaces/`<eventhub-namespace-name>`/eventhubs/`<eventhub-name>`/consumerGroups/`<consumger_group_name>`'
 ### Event Hub Authorization Rule
-* terraform import '`<path-to-module>`.azurerm_eventhub_authorization_rule.eventhub_authorization_rule["`<eventhub-namespace-name>`_`<eventhub-name>`_`<eventhub-authorization-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.EventHub/namespaces/`<eventhub-namespace-name>`/eventhubs/`<eventhub-name>`/authorizationRules/`<eventhub-authorization-rule-name>`'
+* terraform import '`<path-to-module>`.azurerm_eventhub_authorization_rule.eventhub_authorization_rule["`<eventhub-namespace-name>`\_`<eventhub-name>`\_`<eventhub-authorization-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.EventHub/namespaces/`<eventhub-namespace-name>`/eventhubs/`<eventhub-name>`/authorizationRules/`<eventhub-authorization-rule-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<eventhub-namespace-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.EventHub/namespaces/`<eventhub-namespace-name>`|`<diag-name>`'
- ### Private Endpoint
+### Private Endpoint
 * terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.event\_hub_
