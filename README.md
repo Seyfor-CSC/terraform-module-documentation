@@ -25,7 +25,7 @@
 | [container app environment](./container-app-environment/README.md) | v1.2.0 |
 | [container app job](./container-app-job/README.md) | v1.1.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
-| [container registry](./container-registry/README.md) | v1.5.0 |
+| [container registry](./container-registry/README.md) | v1.6.0 |
 | [data collection rule](./data-collection-rule/README.md) | v1.5.0 |
 | [data factory](./data-factory/README.md) | v1.6.0 |
 | [dns zone](./dns-zone/README.md) | v1.3.0 |

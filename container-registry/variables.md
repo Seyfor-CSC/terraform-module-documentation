@@ -39,7 +39,6 @@ variable "config" {  type = list(object({
     encryption = optional(object({
       key_vault_key_id   = string
       identity_client_id = string
-      enabled            = optional(bool)
     }))
     anonymous_pull_enabled     = optional(bool)
     data_endpoint_enabled      = optional(bool)
@@ -127,7 +126,6 @@ variable "config" {  type = list(object({
 |encryption | object | Optional |  |  |
 |&nbsp;key_vault_key_id | string | Required |  |  |
 |&nbsp;identity_client_id | string | Required |  |  |
-|&nbsp;enabled | bool | Optional |  |  |
 |anonymous_pull_enabled | bool | Optional |  |  |
 |data_endpoint_enabled | bool | Optional |  |  |
 |network_rule_bypass_option | string | Optional |  |  |
