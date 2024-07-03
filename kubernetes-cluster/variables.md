@@ -22,7 +22,7 @@ variable "config" {  type = list(object({
       pod_subnet_id                 = optional(string)
       temporary_name_for_rotation   = optional(string)
       type                          = optional(string)
-      ultra_ssd_enabled             = optional(string)
+      ultra_ssd_enabled             = optional(bool)
       upgrade_settings = optional(object({
         max_surge = string
       }))
@@ -41,7 +41,8 @@ variable "config" {  type = list(object({
       admin_group_object_ids = optional(list(string))
       azure_rbac_enabled     = optional(bool)
     }))
-    azure_policy_enabled = optional(bool)
+    azure_policy_enabled  = optional(bool)
+    cost_analysis_enabled = optional(bool)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -126,7 +127,7 @@ variable "config" {  type = list(object({
     }))
     private_cluster_enabled             = optional(bool, true)
     private_dns_zone_id                 = optional(string)
-    private_cluster_public_fqdn_enabled = optional(string)
+    private_cluster_public_fqdn_enabled = optional(bool)
     workload_autoscaler_profile = optional(object({
       keda_enabled = optional(bool)
     }))
@@ -168,7 +169,7 @@ variable "config" {  type = list(object({
       os_disk_size_gb               = optional(string)
       os_disk_type                  = optional(string)
       pod_subnet_id                 = optional(string)
-      ultra_ssd_enabled             = optional(string)
+      ultra_ssd_enabled             = optional(bool)
       upgrade_settings = optional(object({
         max_surge = string
       }))
@@ -231,7 +232,7 @@ variable "config" {  type = list(object({
 |&nbsp;pod_subnet_id | string | Optional |  |  |
 |&nbsp;temporary_name_for_rotation | string | Optional |  |  |
 |&nbsp;type | string | Optional |  |  |
-|&nbsp;ultra_ssd_enabled | string | Optional |  |  |
+|&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
 |&nbsp;upgrade_settings | object | Optional |  |  |
 |&nbsp;&nbsp;max_surge | string | Required |  |  |
 |&nbsp;vnet_subnet_id | string | Optional |  |  |
@@ -248,6 +249,7 @@ variable "config" {  type = list(object({
 |&nbsp;admin_group_object_ids | list(string) | Optional |  |  |
 |&nbsp;&nbsp;azure_rbac_enabled | bool | Optional |  |  |
 |&nbsp;azure_policy_enabled | bool | Optional |  |  |
+|&nbsp;cost_analysis_enabled | bool | Optional |  |  |
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
@@ -317,7 +319,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
 |&nbsp;private_cluster_enabled | bool | Optional |  true |  |
 |&nbsp;private_dns_zone_id | string | Optional |  |  |
-|&nbsp;private_cluster_public_fqdn_enabled | string | Optional |  |  |
+|&nbsp;private_cluster_public_fqdn_enabled | bool | Optional |  |  |
 |&nbsp;workload_autoscaler_profile | object | Optional |  |  |
 |&nbsp;&nbsp;keda_enabled | bool | Optional |  |  |
 |&nbsp;workload_identity_enabled | bool | Optional |  |  |
@@ -353,7 +355,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;os_disk_size_gb | string | Optional |  |  |
 |&nbsp;&nbsp;os_disk_type | string | Optional |  |  |
 |&nbsp;&nbsp;pod_subnet_id | string | Optional |  |  |
-|&nbsp;&nbsp;ultra_ssd_enabled | string | Optional |  |  |
+|&nbsp;&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;upgrade_settings | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;max_surge | string | Required |  |  |
 |&nbsp;&nbsp;vnet_subnet_id | string | Optional |  |  |

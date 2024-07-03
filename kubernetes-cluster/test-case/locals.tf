@@ -9,10 +9,12 @@ locals {
 
   aks = [
     {
-      name                = local.naming.aks_1
-      location            = local.location
-      resource_group_name = azurerm_resource_group.rg.name
-      dns_prefix          = local.naming.aks_1
+      name                  = local.naming.aks_1
+      location              = local.location
+      resource_group_name   = azurerm_resource_group.rg.name
+      cost_analysis_enabled = true
+      sku_tier              = "Standard"
+      dns_prefix            = local.naming.aks_1
       default_node_pool = {
         name       = "systemnp"
         vm_size    = "Standard_D2_v2"
