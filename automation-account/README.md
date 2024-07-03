@@ -11,21 +11,21 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/automation_account
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/automation_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/automation_runbook
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/automation_runbook
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/automation_job_schedule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/automation_job_schedule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/automation_schedule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/automation_schedule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -34,11 +34,11 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Automation Account
 * terraform import '`<path-to-module>`.azurerm_automation_account.automation_account["`<automation-account-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`'
 ### Automation Runbook
-* terraform import '`<path-to-module>`.azurerm_automation_runbook.automation_runbook["`<automation-runbook-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/automationAccounts/`<automation-account-name>`/runbooks/`<automation-runbook-name>`'
+* terraform import '`<path-to-module>`.azurerm_automation_runbook.automation_runbook["`<automation-account-name>`_`<automation-runbook-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/automationAccounts/`<automation-account-name>`/runbooks/`<automation-runbook-name>`'
 ### Automation Job Schedule
-* terraform import '`<path-to-module>`.azurerm_automation_job_schedule.automation_job_schedule["`<automation-account-name>`_`<automation-runbook-name>`_`<automation-job-schedule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`/jobSchedules/`<automation-job-schedule-UUID>`'
+* terraform import '`<path-to-module>`.azurerm_automation_job_schedule.automation_job_schedule["`<automation-account-name>`\_`<automation-runbook-name>`\_`<automation-job-schedule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`/jobSchedules/`<automation-job-schedule-UUID>`'
 ### Automation Schedule
-* terraform import '`<path-to-module>`.azurerm_automation_runbook.automation_runbook["`<automation-account-name>`_`<automation-schedule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/automationAccounts/`<automation-account-name>`/schedules/`<automation-schedule-name>`'
+* terraform import '`<path-to-module>`.azurerm_automation_schedule.automation_schedule["`<automation-account-name>`_`<automation-schedule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/automationAccounts/`<automation-account-name>`/schedules/`<automation-schedule-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<automation-account-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Automation/automationAccounts/`<automation-account-name>`|`<diag-name>`'
  ### Private Endpoint
@@ -107,7 +107,6 @@ lifecycle {
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
 ## Diagnostic Setting enabled log can't be deleted
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
