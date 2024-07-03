@@ -33,7 +33,8 @@ variable "config" {  type = list(object({
           actions = optional(list(string))
         })
       }))
-      private_endpoint_network_policies_enabled     = optional(bool)
+      default_outbound_access_enabled               = optional(bool)
+      private_endpoint_network_policies             = optional(string)
       private_link_service_network_policies_enabled = optional(bool)
       service_endpoints                             = optional(list(string))
       service_endpoint_policy_ids                   = optional(list(string))
@@ -72,7 +73,8 @@ variable "subnets" {
         actions = optional(list(string))
       })
     }))
-    private_endpoint_network_policies_enabled     = optional(bool)
+    default_outbound_access_enabled               = optional(bool)
+    private_endpoint_network_policies             = optional(string)
     private_link_service_network_policies_enabled = optional(bool)
     service_endpoints                             = optional(list(string))
     service_endpoint_policy_ids                   = optional(list(string))
@@ -120,7 +122,8 @@ variable "subscription_id" {
 |&nbsp;&nbsp;service_delegation | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;actions | list(string) | Optional |  |  |
-|&nbsp;private_endpoint_network_policies_enabled | bool | Optional |  |  |
+|&nbsp;default_outbound_access_enabled | bool | Optional |  |  |
+|&nbsp;private_endpoint_network_policies | string | Optional |  |  |
 |&nbsp;private_link_service_network_policies_enabled | bool | Optional |  |  |
 |&nbsp;service_endpoints | list(string) | Optional |  |  |
 |&nbsp;service_endpoint_policy_ids | list(string) | Optional |  |  |
