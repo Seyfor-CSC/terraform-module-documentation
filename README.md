@@ -27,7 +27,7 @@
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v1.5.0 |
 | [data collection rule](./data-collection-rule/README.md) | v1.5.0 |
-| [data factory](./data-factory/README.md) | v1.5.0 |
+| [data factory](./data-factory/README.md) | v1.6.0 |
 | [dns zone](./dns-zone/README.md) | v1.2.0 |
 | [event hub](./event-hub/README.md) | v1.7.0 |
 | [function app](./function-app/README.md) | v1.3.0 |
@@ -65,7 +65,7 @@
 | [shared image gallery](./shared-image-gallery/README.md) | v1.5.0 |
 | [storage account](./storage-account/README.md) | v1.9.0 |
 | [storage sync](./storage-sync/README.md) | v1.6.0 |
-| [user assigned identity](./user-assigned-identity/README.md) | v1.4.0 |
+| [user assigned identity](./user-assigned-identity/README.md) | v1.5.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v1.3.0 |
 | [virtual machine](./virtual-machine/README.md) | v1.5.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.4.0 |
