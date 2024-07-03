@@ -36,7 +36,8 @@ variable "config" {  type = list(object({
       })), [])
     })
     additional_capabilities = optional(object({
-      ultra_ssd_enabled = optional(bool)
+      ultra_ssd_enabled   = optional(bool)
+      hibernation_enabled = optional(bool)
     }))
     admin_ssh_key = optional(list(object({ # linux only
       public_key = string
@@ -140,12 +141,12 @@ variable "config" {  type = list(object({
         primary                                            = optional(bool)
         private_ip_address                                 = optional(string)
       }))
-      dns_servers                   = optional(list(string))
-      edge_zone                     = optional(string)
-      enable_ip_forwarding          = optional(bool)
-      enable_accelerated_networking = optional(bool, true)
-      internal_dns_name_label       = optional(string)
-      tags                          = optional(map(any)) # If not provided, inherited in module from parent resource
+      dns_servers                    = optional(list(string))
+      edge_zone                      = optional(string)
+      ip_forwarding_enabled          = optional(bool)
+      accelerated_networking_enabled = optional(bool, true)
+      internal_dns_name_label        = optional(string)
+      tags                           = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # managed disk
@@ -300,6 +301,7 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
 |additional_capabilities | object | Optional |  |  |
 |&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
+|&nbsp;hibernation_enabled | bool | Optional |  |  |
 |admin_ssh_key | list(object) | Optional | [] |  linux only |
 |&nbsp;public_key | string | Required |  |  |
 |&nbsp;username | string | Required |  |  |
@@ -389,8 +391,8 @@ variable "subscription_id" { # Custom variable that needs to be provided when us
 |&nbsp;&nbsp;private_ip_address | string | Optional |  |  |
 |&nbsp;dns_servers | list(string) | Optional |  |  |
 |&nbsp;edge_zone | string | Optional |  |  |
-|&nbsp;enable_ip_forwarding | bool | Optional |  |  |
-|&nbsp;enable_accelerated_networking | bool | Optional |  true |  |
+|&nbsp;ip_forwarding_enabled | bool | Optional |  |  |
+|&nbsp;accelerated_networking_enabled | bool | Optional |  true |  |
 |&nbsp;internal_dns_name_label | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |managed_disks | list(object) | Optional | [] |  |

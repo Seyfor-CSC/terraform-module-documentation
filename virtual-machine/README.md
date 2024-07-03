@@ -2,7 +2,7 @@
 Virtual Machine module can deploy these resources:
 * azurerm_windows_virtual_machine (optional)
 * azurerm_linux_virtual_machine (optional)
-* azurerm_network_interface (required)
+* azurerm_network_interface (optional)
 * azurerm_managed_disk (optional)
 * azurerm_virtual_machine_data_disk_attachment (optional)
 * azurerm_monitor_data_collection_rule_association (optional)
@@ -15,27 +15,27 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/windows_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/windows_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/linux_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/linux_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_machine_data_disk_attachment
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/virtual_machine_data_disk_attachment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/backup_protected_vm
 
 &nbsp;
 
