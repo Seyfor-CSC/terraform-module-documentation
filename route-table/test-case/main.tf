@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.96.0"
+      version = "=3.108.0"
     }
   }
   backend "local" {}
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # route table
 module "route_table" {
-  source = "git@github.com:Seyfor-CSC/mit.route-table.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.route-table.git?ref=v1.6.0"
   config = local.rt
 }
 

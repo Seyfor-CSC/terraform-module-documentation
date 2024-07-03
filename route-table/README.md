@@ -7,13 +7,13 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/route_table
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/route_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/route
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/route
 
 &nbsp;
 
