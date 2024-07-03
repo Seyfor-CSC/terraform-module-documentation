@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.96.0"
+      version = "=3.108.0"
     }
   }
   backend "local" {}
@@ -15,7 +15,7 @@ provider "azurerm" {
 
 # policy definition
 module "policy_definition" {
-  source = "git@github.com:Seyfor-CSC/mit.policy-definition.git?ref=v1.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.policy-definition.git?ref=v1.2.0"
   config = local.policy_definition
 }
 
