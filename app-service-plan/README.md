@@ -7,20 +7,20 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/service_plan
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/service_plan
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### App Service Plan
-* terraform import '`<path-to-module>`.azurerm_service_plan.service_plan["`<app-service-plan-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/serverfarms/`<app-service-plan-name>`'
+* terraform import '`<path-to-module>`.azurerm_service_plan.service_plan["`<app-service-plan-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/serverFarms/`<app-service-plan-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<app-service-plan-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Web/serverFarms/`<app-service-plan-name>`|`<diag-name>`'
 
