@@ -128,6 +128,7 @@ variable "config" {  type = list(object({
       transparent_data_encryption_key_vault_key_id               = optional(string)
       transparent_data_encryption_key_automatic_rotation_enabled = optional(bool)
       zone_redundant                                             = optional(bool)
+      secondary_type                                             = optional(string)
       tags                                                       = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # mssql database extended auditing policy
@@ -317,6 +318,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;transparent_data_encryption_key_vault_key_id | string | Optional |  |  |
 |&nbsp;&nbsp;transparent_data_encryption_key_automatic_rotation_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
+|&nbsp;&nbsp;secondary_type | string | Optional |  |  |
 |&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;db_auditing_policy | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;database_id | string | Optional |  |  Inherited in module from parent resource |

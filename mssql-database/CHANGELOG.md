@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.8.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 3.108.0 (#25)
+- Terraform: 1.8.5 (#25)
+## Enhancements
+- Remove firewall rules from outputs (#25)
+   
 ## Release v1.7.0
 
 ## Provider & Terraform Upgrade
@@ -52,7 +60,8 @@
 
 ## Provider & Terraform Upgrade
 
-- Upgrade Azurerm provider & Terraform version (#8)
+- Azurerm provider: 3.73.0 (#8)
+- Terraform: 1.5.7  (#8)
 
 ## Enhancements
 

@@ -12,23 +12,23 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/mssql_server
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/mssql_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/mssql_database
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/mssql_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/mssql_database_extended_auditing_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/mssql_database_extended_auditing_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/mssql_elasticpool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/mssql_elasticpool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/mssql_firewall_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/mssql_firewall_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -68,9 +68,6 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | &nbsp;name     |                                                      |
 |             | &nbsp;id       |                                                      |
 |             | elasticpools   | MSSQL Elastic Pool outputs                           |
-|             | &nbsp;id       |                                                      |
-|             | firewall_rules | MSSQL Firewall Rule outputs                          |
-|             | &nbsp;name     |                                                      |
 |             | &nbsp;id       |                                                      |
 
 
