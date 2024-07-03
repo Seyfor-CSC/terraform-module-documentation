@@ -7,13 +7,13 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation: 
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/bastion_host
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/bastion_host
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -22,7 +22,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Bastion host
 * terraform import '`<path-to-module>`.azurerm_bastion_host.bastion_host["`<bastion-host-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/bastionHosts/`<bastion-host-name>`'
 ### Diagnostic Setting
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<bastion-host-name>>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/bastionHosts/`<bastion-host-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<bastion-host-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/bastionHosts/`<bastion-host-name>`|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.bastion\_host_
 
