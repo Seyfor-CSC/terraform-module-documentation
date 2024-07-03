@@ -8,6 +8,7 @@ variable "config" {  type = list(object({
     # monitor scheduled query rules alert v2
     logv2_alerts = optional(list(object({
       name = string
+      location = optional(string) # Overrides the config.location variable
       criteria = object({
         operator                = string
         query                   = string
@@ -42,11 +43,16 @@ variable "config" {  type = list(object({
       query_time_range_override         = optional(string)
       skip_query_validation             = optional(bool)
       target_resource_types             = optional(list(string))
+      identity = optional(object({
+        type         = string
+        identity_ids = optional(list(string))
+      }))
     })), [])
 
     # monitor activity log alert
     activity_alerts = optional(list(object({
       name   = string
+      location = optional(string) # Overrides the config.location variable
       scopes = list(string)
       criteria = object({
         category                = string
@@ -156,6 +162,7 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |logv2_alerts | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
+|&nbsp;location | string | Optional |  |  Overrides the config.location variable |
 |&nbsp;criteria | object | Required |  |  |
 |&nbsp;&nbsp;operator | string | Required |  |  |
 |&nbsp;&nbsp;query | string | Required |  |  |
@@ -186,8 +193,12 @@ variable "config" {  type = list(object({
 |&nbsp;query_time_range_override | string | Optional |  |  |
 |&nbsp;skip_query_validation | bool | Optional |  |  |
 |&nbsp;target_resource_types | list(string) | Optional |  |  |
+|&nbsp;identity | object | Optional |  |  |
+|&nbsp;&nbsp;type | string | Required |  |  |
+|&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
 |activity_alerts | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
+|&nbsp;location | string | Optional |  |  Overrides the config.location variable |
 |&nbsp;scopes | list(string) | Required |  |  |
 |&nbsp;criteria | object | Required |  |  |
 |&nbsp;&nbsp;category | string | Required |  |  |
