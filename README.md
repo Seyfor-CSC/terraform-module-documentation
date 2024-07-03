@@ -58,7 +58,7 @@
 | [purview account](./purview-account/README.md) | v1.4.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.8.0 |
 | [redis cache](./redis-cache/README.md) | v1.3.0 |
-| [resource group](./resource-group/README.md) | v1.5.0 |
+| [resource group](./resource-group/README.md) | v1.6.0 |
 | [role assignment](./role-assignment/README.md) | v1.5.0 |
 | [role definition](./role-definition/README.md) | v1.5.0 |
 | [route table](./route-table/README.md) | v1.5.0 |
