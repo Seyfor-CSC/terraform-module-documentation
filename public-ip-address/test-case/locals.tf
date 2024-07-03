@@ -13,6 +13,7 @@ locals {
       location            = local.location
       resource_group_name = azurerm_resource_group.rg.name
       allocation_method   = "Static"
+      zones               = ["2"]
 
       monitoring = [
         {
