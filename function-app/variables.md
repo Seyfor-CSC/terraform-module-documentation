@@ -172,8 +172,9 @@ variable "config" {  type = list(object({
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
       categories = optional(object({
-        function_app_logs = optional(bool, true)
-        all_metrics       = optional(bool, true)
+        function_app_logs               = optional(bool, true)
+        app_service_authentication_logs = optional(bool, false)
+        all_metrics                     = optional(bool, true)
       }))
     })), [])
   }))
@@ -336,6 +337,7 @@ variable "config" {  type = list(object({
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;function_app_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_authentication_logs | bool | Optional |  false |  |
 |&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
