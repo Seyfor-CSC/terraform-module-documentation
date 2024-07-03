@@ -7,11 +7,13 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/public_ip_prefix
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/public_ip_prefix
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -20,7 +22,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Public IP Prefix
 * terraform import '`<path-to-module>`.azurerm_public_ip_prefix.public_ip_prefix["`<public-ip-prefix-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/publicIPPrefixes/`<public-ip-prefix-name>`'
 ### Diagnostic Setting
-* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<public-ip-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/publicIPAddresses/`<public-ip-name>`|`<diag-name>`'
+* terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<public-ip-prefix-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/publicIPPrefixes/`<public-ip-prefix-name>`|`<diag-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.public\_ip\_prefix_
 

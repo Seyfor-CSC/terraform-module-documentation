@@ -54,7 +54,7 @@
 | [private dns zone](./private-dns-zone/README.md) | v1.5.0 |
 | [private endpoint](./private-endpoint/README.md) | v1.5.0 |
 | [public ip address](./public-ip-address/README.md) | v1.6.0 |
-| [public ip prefix](./public-ip-prefix/README.md) | v1.5.0 |
+| [public ip prefix](./public-ip-prefix/README.md) | v1.6.0 |
 | [purview account](./purview-account/README.md) | v1.5.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v1.9.0 |
 | [redis cache](./redis-cache/README.md) | v1.3.0 |
