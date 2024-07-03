@@ -70,4 +70,4 @@
 | [virtual machine](./virtual-machine/README.md) | v1.5.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v1.3.0 |
 | [virtual network](./virtual-network/README.md) | v1.8.0 |
-| [virtual network peering](./virtual-network-peering/README.md) | v1.5.0 |
+| [virtual network peering](./virtual-network-peering/README.md) | v1.6.0 |
