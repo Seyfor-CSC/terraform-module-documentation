@@ -2,7 +2,7 @@
 
 ```
 variable "config" {  type = list(object({
-    # load balancer
+    # lb
     name                = string
     resource_group_name = string
     location            = string
@@ -24,8 +24,9 @@ variable "config" {  type = list(object({
 
     # lb backend address pool
     backend_pools = optional(list(object({
-      name            = string
-      loadbalancer_id = optional(string) # Inherited in module from parent resource
+      name             = string
+      loadbalancer_id  = optional(string) # Inherited in module from parent resource
+      synchronous_mode = optional(string)
       tunnel_interface = optional(list(object({
         identifier = string
         type       = string
@@ -137,7 +138,8 @@ variable "config" {  type = list(object({
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
       categories = optional(object({
-        all_metrics = optional(bool, true)
+        load_balancer_health_event = optional(bool, true)
+        all_metrics                = optional(bool, true)
       }))
     })), [])
   }))
@@ -171,6 +173,7 @@ variable "config" {  type = list(object({
 |backend_pools | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;loadbalancer_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;synchronous_mode | string | Optional |  |  |
 |&nbsp;tunnel_interface | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;identifier | string | Required |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
@@ -256,6 +259,7 @@ variable "config" {  type = list(object({
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;load_balancer_health_event | bool | Optional |  true |  |
 |&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 

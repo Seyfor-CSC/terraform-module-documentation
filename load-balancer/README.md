@@ -15,29 +15,29 @@ Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_backend_address_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_backend_address_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_backend_address_pool_address
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_backend_address_pool_address
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/network_interface_backend_address_pool_association
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/network_interface_backend_address_pool_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_outbound_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_outbound_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_probe
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_probe
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_nat_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_nat_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/lb_nat_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/lb_nat_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 

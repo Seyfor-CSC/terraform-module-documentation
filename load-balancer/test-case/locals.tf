@@ -14,7 +14,7 @@ locals {
       name                = local.naming.lb_1
       location            = local.location
       resource_group_name = azurerm_resource_group.rg.name
-      sku                 = "Standard"
+      sku                 = "Gateway"
       frontend_ip_configuration = [
         {
           name               = "${local.naming.lb_1}-frontend-ip"
@@ -22,8 +22,6 @@ locals {
           private_ip_address = "10.0.2.5"
         }
       ]
-
-      sku = "Gateway"
 
       backend_pools = [
         {
