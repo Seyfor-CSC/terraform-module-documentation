@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.96.0"
+      version = "=3.108.0"
     }
   }
   backend "local" {}
@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # logic app workflow
 module "logic_app_workflow" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-workflow.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-workflow.git?ref=v1.6.0"
   config = local.logic
 }
 
