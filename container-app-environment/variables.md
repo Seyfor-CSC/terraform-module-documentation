@@ -18,7 +18,8 @@ variable "config" {  type = list(object({
       maximum_count         = optional(number)
       minimum_count         = optional(number)
     }))
-    tags = optional(map(any))
+    mutual_tls_enabled = optional(bool)
+    tags               = optional(map(any))
 
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -58,6 +59,7 @@ variable "config" {  type = list(object({
 |&nbsp;workload_profile_type | string | Required |  |  |
 |&nbsp;maximum_count | number | Optional |  |  |
 |&nbsp;minimum_count | number | Optional |  |  |
+|mutual_tls_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
