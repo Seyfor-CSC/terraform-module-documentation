@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.96.0"
+      version = "=3.108.0"
     }
   }
   backend "local" {}
@@ -73,7 +73,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # app service
 module "app_service" {
-  source = "git@github.com:Seyfor-CSC/mit.app-service.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.app-service.git?ref=v1.6.0"
   config = local.app
 }
 

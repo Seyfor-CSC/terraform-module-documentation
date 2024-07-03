@@ -152,6 +152,7 @@ variable "config" {  type = list(object({
         app_service_platform_logs             = optional(bool, true)
         app_service_antivirus_scan_audit_logs = optional(bool, true)
         app_service_file_audit_logs           = optional(bool, true)
+        app_service_authentication_logs       = optional(bool, false)
         all_metrics                           = optional(bool, true)
       }))
     })), [])
@@ -292,6 +293,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;app_service_platform_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;app_service_antivirus_scan_audit_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;app_service_file_audit_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;app_service_authentication_logs | bool | Optional |  false |  |
 |&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
