@@ -5,24 +5,27 @@ PostgreSQL Flexible Server module can deploy these resources:
 * azurerm_postgresql_flexible_server_configuration (optional)
 * azurerm_postgresql_flexible_server_active_directory_administrator (optional)
 * azurerm_monitor_diagnostic_setting (optional)
+* azurerm_private_endpoint (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
 Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
-You can also see [changelog](changelog.md).
+You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/postgresql_flexible_server
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/postgresql_flexible_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/postgresql_flexible_server_database
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/postgresql_flexible_server_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/postgresql_flexible_server_configuration
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/postgresql_flexible_server_configuration
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/postgresql_flexible_server_active_directory_administrator
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/postgresql_flexible_server_active_directory_administrator
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.96.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
+
+https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -38,6 +41,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_postgresql_flexible_server_active_directory_administrator.postgresql_flexible_server_active_directory_administrator["`<postgreslq-flexible-server-name>`_`<postgresql-flexible-server-active-directory-administrator-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DBforPostgreSQL/flexibleservers/`<postgresql-flexible-server-name>`/administrators/`<postgresql-flexible-server-active-directory-administrator-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<postgresql-server-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DBforPostgreSQL/flexibleservers/`<postgresql-flexible-server-name>`/databases/`<postgresql-flexible-database-name>`|`<diag-name>`'
+### Private Endpoint
+* terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.postgresql\_flexible\_server_
 
@@ -62,9 +67,14 @@ module "pgsql" {
     source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v1.0.0"
     config = [
         {
-            name                = "seyterraformnepgsql01"
-            location            = "northeurope"
-            resource_group_name = "SEY-TERRAFORM-NE-RG01"
+            name                   = "seyterraformnepgsql01"
+            location               = "northeurope"
+            resource_group_name    = "SEY-TERRAFORM-NE-RG01"
+            version                = "14"
+            sku_name               = "GP_Standard_D4s_v3"
+            administrator_login    = "adminuser"
+            administrator_password = "P@ssword1234"
+            storage_mb             = "32768"
         }
     ]
 }
@@ -82,7 +92,6 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
 ## Lifecycle
 This module has a lifecycle block set up like this:
 ```

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.96.0"
+      version = "=3.108.0"
     }
   }
   backend "local" {}
@@ -21,6 +21,33 @@ resource "azurerm_resource_group" "rg" {
 
 data "azurerm_client_config" "current" {}
 
+# private endpoint prerequisities
+resource "azurerm_virtual_network" "vnet" {
+  name                = "example-network"
+  location            = local.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = ["10.0.0.0/16"]
+}
+
+resource "azurerm_subnet" "subnet" {
+  name                 = "example-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+resource "azurerm_private_dns_zone" "dns" {
+  name                = "test.private.dns"
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
+  name                  = "test"
+  resource_group_name   = azurerm_resource_group.rg.name
+  private_dns_zone_name = azurerm_private_dns_zone.dns.name
+  virtual_network_id    = azurerm_virtual_network.vnet.id
+}
+
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-TERRAFORM-NE-LA01"
@@ -32,7 +59,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # postgresql flexible server
 module "postgresql_flexible_server" {
-  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v1.5.0"
   config = local.pgsql
 }
 

@@ -42,6 +42,7 @@ variable "config" {  type = list(object({
     sku_name                          = optional(string)
     source_server_id                  = optional(string)
     auto_grow_enabled                 = optional(bool)
+    public_network_access_enabled     = optional(bool, false)
     storage_mb                        = optional(number)
     storage_tier                      = optional(string)
     version                           = optional(number)
@@ -71,6 +72,34 @@ variable "config" {  type = list(object({
       tenant_id           = string
       principal_name      = string
       principal_type      = string
+    })), [])
+
+    # private endpoint
+    private_endpoint = optional(list(object({
+      name                = string
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      location            = optional(string) # If not provided, inherited in module from parent resource
+      subnet_id           = string
+      private_service_connection = list(object({
+        name                              = string
+        is_manual_connection              = bool
+        private_connection_resource_id    = optional(string)
+        private_connection_resource_alias = optional(string)
+        subresource_names                 = optional(list(string))
+        request_message                   = optional(string)
+      }))
+      custom_network_interface_name = optional(string)
+      private_dns_zone_group = optional(object({
+        name                 = string
+        private_dns_zone_ids = list(string)
+      }))
+      ip_configuration = optional(list(object({
+        name               = string
+        private_ip_address = string
+        subresource_name   = string
+        member_name        = optional(string)
+      })), [])
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
 
     # monitoring
@@ -134,6 +163,7 @@ variable "config" {  type = list(object({
 |sku_name | string | Optional |  |  |
 |source_server_id | string | Optional |  |  |
 |auto_grow_enabled | bool | Optional |  |  |
+|public_network_access_enabled | bool | Optional |  false |  |
 |storage_mb | number | Optional |  |  |
 |storage_tier | string | Optional |  |  |
 |version | number | Optional |  |  |
@@ -155,6 +185,28 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;tenant_id | string | Required |  |  |
 |&nbsp;&nbsp;principal_name | string | Required |  |  |
 |&nbsp;&nbsp;principal_type | string | Required |  |  |
+|&nbsp;private_endpoint | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;&nbsp;private_service_connection | list(object) | Required |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
+|&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
+|&nbsp;&nbsp;private_dns_zone_group | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
+|&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_ip_address | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;subresource_name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;member_name | string | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
