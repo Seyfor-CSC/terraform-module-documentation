@@ -15,6 +15,7 @@ variable "config" {  type = object({
       start_vm_on_connect              = optional(bool)
       custom_rdp_properties            = optional(string)
       personal_desktop_assignment_type = optional(string)
+      public_network_access            = optional(string)
       maximum_sessions_allowed         = optional(number)
       preferred_app_group_type         = optional(string)
       scheduled_agent_updates = optional(object({
@@ -27,7 +28,7 @@ variable "config" {  type = object({
         })), [])
       }))
       vm_template = optional(string)
-      tags = optional(map(any))
+      tags        = optional(map(any))
 
       # virtual desktop application group
       application_groups = optional(list(object({
@@ -56,8 +57,8 @@ variable "config" {  type = object({
           eventhub_authorization_rule_id = optional(string)
           categories = optional(object({
             checkpoint = optional(bool, true)
-            management = optional(bool, true)
             error      = optional(bool, true)
+            management = optional(bool, true)
           }))
         })), [])
       })), [])
@@ -76,14 +77,14 @@ variable "config" {  type = object({
         eventhub_authorization_rule_id = optional(string)
         categories = optional(object({
           checkpoint                  = optional(bool, true)
-          connection_graphics_data    = optional(bool, true)
+          error                       = optional(bool, true)
+          management                  = optional(bool, true)
+          connection                  = optional(bool, true)
           host_registration           = optional(bool, true)
           agent_health_status         = optional(bool, true)
-          session_host_management     = optional(bool, true)
           network_data                = optional(bool, true)
-          connection                  = optional(bool, true)
-          management                  = optional(bool, true)
-          error                       = optional(bool, true)
+          connection_graphics_data    = optional(bool, true)
+          session_host_management     = optional(bool, true)
           autoscale_evaluation_pooled = optional(bool, true)
         }))
       })), [])
@@ -183,8 +184,8 @@ variable "config" {  type = object({
         eventhub_authorization_rule_id = optional(string)
         categories = optional(object({
           checkpoint = optional(bool, true)
-          management = optional(bool, true)
           error      = optional(bool, true)
+          management = optional(bool, true)
           feed       = optional(bool, true)
         }))
       })), [])
@@ -240,6 +241,7 @@ variable "config" {  type = object({
 |&nbsp;start_vm_on_connect | bool | Optional |  |  |
 |&nbsp;custom_rdp_properties | string | Optional |  |  |
 |&nbsp;personal_desktop_assignment_type | string | Optional |  |  |
+|&nbsp;public_network_access | string | Optional |  |  |
 |&nbsp;maximum_sessions_allowed | number | Optional |  |  |
 |&nbsp;preferred_app_group_type | string | Optional |  |  |
 |&nbsp;scheduled_agent_updates | object | Optional |  |  |
@@ -272,8 +274,8 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;checkpoint | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
 |&nbsp;registration_info | object | Optional |  |  |
 |&nbsp;&nbsp;expiration_date | string | Required |  |  |
 |&nbsp;&nbsp;hostpool_id | string | Optional |  |  Inherited in module from parent resource |
@@ -284,14 +286,14 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;checkpoint | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;connection_graphics_data | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;connection | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;host_registration | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;agent_health_status | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;session_host_management | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;network_data | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;connection | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;connection_graphics_data | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;session_host_management | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;autoscale_evaluation_pooled | bool | Optional |  true |  |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
@@ -369,8 +371,8 @@ variable "config" {  type = object({
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;checkpoint | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;error | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;management | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;feed | bool | Optional |  true |  |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |

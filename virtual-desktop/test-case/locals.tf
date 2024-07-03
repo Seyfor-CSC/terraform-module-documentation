@@ -44,7 +44,7 @@ locals {
         ]
 
         registration_info = {
-          expiration_date = "2024-03-30T23:59:59Z"
+          expiration_date = "2024-07-10T23:59:59Z"
         }
 
         monitoring = [
