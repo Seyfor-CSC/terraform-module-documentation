@@ -146,6 +146,7 @@ variable "config" {  type = list(object({
       max_unhealthy_upgraded_instance_percent = number
       pause_time_between_batches              = string
       prioritize_unhealthy_instances_enabled  = optional(bool)
+      maximum_surge_instances_enabled         = optional(bool)
     }))
     scale_in = optional(object({
       rule                   = optional(string)
@@ -408,6 +409,7 @@ variable "config" {  type = list(object({
 |&nbsp;max_unhealthy_upgraded_instance_percent | number | Required |  |  |
 |&nbsp;pause_time_between_batches | string | Required |  |  |
 |&nbsp;prioritize_unhealthy_instances_enabled | bool | Optional |  |  |
+|&nbsp;maximum_surge_instances_enabled | bool | Optional |  |  |
 |scale_in | object | Optional |  |  |
 |&nbsp;rule | string | Optional |  |  |
 |&nbsp;force_deletion_enabled | bool | Optional |  |  |
