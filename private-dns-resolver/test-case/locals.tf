@@ -17,8 +17,11 @@ locals {
       inbound_endpoints = [
         {
           name = "inbound_ep"
-          ip_configurations = [{
-            subnet_id = azurerm_subnet.subnet1.id
+          ip_configurations = [
+            {
+              subnet_id                    = azurerm_subnet.subnet1.id
+              private_ip_address           = "10.0.1.12"
+              private_ip_allocation_method = "Static"
             }
           ]
         }

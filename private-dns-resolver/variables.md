@@ -14,8 +14,9 @@ variable "config" {  type = list(object({
       name                    = string
       private_dns_resolver_id = optional(string) # Inherited in module from parent resource
       ip_configurations = list(object({
-        private_ip_allocation_method = optional(string)
         subnet_id                    = string
+        private_ip_address           = optional(string)
+        private_ip_allocation_method = optional(string)
       }))
       location = optional(string)   # Inherited in module from parent resource
       tags     = optional(map(any)) # If not provided, inherited in module from parent resource
@@ -82,8 +83,9 @@ variable "config" {  type = list(object({
 |&nbsp;name | string | Required |  |  |
 |&nbsp;private_dns_resolver_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;ip_configurations | list(object) | Required |  |  |
-|&nbsp;&nbsp;private_ip_allocation_method | string | Optional |  |  |
 |&nbsp;&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;&nbsp;private_ip_address | string | Optional |  |  |
+|&nbsp;&nbsp;private_ip_allocation_method | string | Optional |  |  |
 |&nbsp;location | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |outbound_endpoints | list(object) | Optional | [] |  |
