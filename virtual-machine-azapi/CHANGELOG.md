@@ -1,6 +1,6 @@
 # Changelog
 
-## Release v1.5.0
+## Release v1.5.0 - Beta
 
 ## Provider & Terraform Upgrade
 
@@ -8,7 +8,7 @@
 - Terraform: 1.8.5 (#20)
 - AzApi provider: 1.13.1 (#20)
    
-## Release v1.4.0
+## Release v1.4.0 - Beta
 
 ## Provider & Terraform Upgrade
 
