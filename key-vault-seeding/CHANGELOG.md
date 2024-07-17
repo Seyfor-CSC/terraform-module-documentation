@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v1.4.1
+
+## Bug Fixes
+
+- Don't create `random_password` when secret value is a custom value (#27)
+- Add nonsensitive() function to a condition in `random_password` for_each (#28)
+   
 ## Release v1.4.0
 
 ## Provider & Terraform Upgrade
