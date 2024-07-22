@@ -20,7 +20,8 @@ locals {
           name             = "sey-terraform-ne-10.0.0.0-25"
           address_prefixes = ["10.0.0.0/25"]
           nsg_name         = azurerm_network_security_group.nsg.name # deploys subnet network security group association
-          route_table_name = azurerm_route_table.rt.name  # deploys subnet route table association
+          nsg_rg           = lower(azurerm_resource_group.rg.name)   # has to be configured because azurerm_network_security_group.nsg has a resource group name in lowercase
+          route_table_name = azurerm_route_table.rt.name             # deploys subnet route table association
           delegation = {
             name = "aks-delegation"
             service_delegation = {
@@ -65,8 +66,9 @@ locals {
       address_prefixes     = ["10.0.2.0/25"]
       resource_group_name  = azurerm_resource_group.rg.name
       virtual_network_name = azurerm_virtual_network.vnet.name
-      nsg_name             = azurerm_network_security_group.nsg.name
-      route_table_name     = azurerm_route_table.rt.name
+      nsg_name             = azurerm_network_security_group.nsg.name # deploys subnet network security group association
+      nsg_rg               = lower(azurerm_resource_group.rg.name)   # has to be configured because azurerm_network_security_group.nsg has a resource group name in lowercase
+      route_table_name     = azurerm_route_table.rt.name             # deploys subnet route table association
     },
     {
       name                 = "sey-terraform-ne-10.0.2.128-25"

@@ -41,6 +41,9 @@ variable "config" {  type = list(object({
       nsg_name                                      = optional(string)
       route_table_name                              = optional(string)
       nat_gateway_name                              = optional(string)
+      nsg_rg                                        = optional(string)
+      route_table_rg                                = optional(string)
+      nat_gateway_rg                                = optional(string)
     }))
 
     # monitoring
@@ -81,6 +84,9 @@ variable "subnets" {
     nsg_name                                      = optional(string)
     route_table_name                              = optional(string)
     nat_gateway_name                              = optional(string)
+    nsg_rg                                        = optional(string)
+    route_table_rg                                = optional(string)
+    nat_gateway_rg                                = optional(string)
   }))
 
   default = null
@@ -130,6 +136,9 @@ variable "subscription_id" {
 |&nbsp;nsg_name | string | Optional |  |  |
 |&nbsp;route_table_name | string | Optional |  |  |
 |&nbsp;nat_gateway_name | string | Optional |  |  |
+|&nbsp;nsg_rg | string | Optional |  |  |
+|&nbsp;route_table_rg | string | Optional |  |  |
+|&nbsp;nat_gateway_rg | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

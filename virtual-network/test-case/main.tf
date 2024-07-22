@@ -24,7 +24,7 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_network_security_group" "nsg" {
   name                = local.naming.nsg
   location            = local.location
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = lower(azurerm_resource_group.rg.name) # using the lower function to showcase when to use the nsg_rg variable
 }
 
 resource "azurerm_route_table" "rt" {
@@ -52,12 +52,12 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual network
 module "virtual_network" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.8.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.8.1"
   config          = local.vnet
   subscription_id = data.azurerm_subscription.primary.id
 }
 module "subnets" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.8.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v1.8.1"
   subnets         = local.subnets
   subscription_id = data.azurerm_subscription.primary.id
 }

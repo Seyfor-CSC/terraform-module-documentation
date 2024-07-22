@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.8.1
+
+## Bug Fixes
+
+- Add `nsg_rg`, `route_table_rg`, and `nat_gateway_rg` variables that can be used when resource group name in the subnet-associated resource has different capitalisation of letters. (#33)
+
+
+
+   
 ## Release v1.8.0
 
 ## Provider & Terraform Upgrade
