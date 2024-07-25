@@ -1,24 +1,12 @@
 # Changelog
 
-## Release v1.5.0 - Beta
-
-## Provider & Terraform Upgrade
-
-- Azurerm provider: 3.108.0 (#20)
-- Terraform: 1.8.5 (#20)
-- AzApi provider: 1.13.1 (#20)
-   
-## Release v1.4.0 - Beta
-
-## Provider & Terraform Upgrade
-
-- Azurerm provider: 3.96.0 (#18)
-- Terraform: 1.7.5 (#18)
-- AzApi provider: 1.12.1 (#18)
+## Release v2.0.0
 
 ## Enhancements
 
-- Replace explicit dependencies with implicit (#18)
+- Redesign module (#25)
+
+
    
 ## Release v1.3.0
 

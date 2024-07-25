@@ -6,7 +6,7 @@ terraform {
     }
     azapi = {
       source  = "azure/azapi"
-      version = "=1.13.1"
+      version = "=1.12.1"
     }
   }
   backend "local" {}
@@ -23,45 +23,6 @@ provider "azapi" {
 resource "azurerm_resource_group" "rg" {
   name     = "SEY-TERRAFORM-NE-RG01"
   location = local.location
-}
-resource "azurerm_resource_group" "rg2" {
-  name     = "SEY-DISKS-NE-RG01"
-  location = local.location
-}
-
-resource "azurerm_managed_disk" "data_disk" {
-  name                 = "${local.naming.vm_1}-data01"
-  location             = azurerm_resource_group.rg2.location
-  resource_group_name  = azurerm_resource_group.rg2.name
-  storage_account_type = "StandardSSD_LRS"
-  disk_size_gb         = "256"
-  create_option        = "Empty"
-}
-
-resource "azurerm_managed_disk" "os_disk" {
-  name                 = "${local.naming.vm_1}-osdisk"
-  location             = azurerm_resource_group.rg2.location
-  resource_group_name  = azurerm_resource_group.rg2.name
-  storage_account_type = "Standard_LRS"
-  hyper_v_generation   = "V1"
-  os_type              = "Windows"
-  disk_size_gb         = "128"
-  create_option        = "FromImage"
-  image_reference_id   = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2022-Datacenter/Versions/20348.1970.230905"
-}
-
-resource "azurerm_virtual_network" "vnet" {
-  name                = "example-network"
-  location            = local.location
-  resource_group_name = azurerm_resource_group.rg.name
-  address_space       = ["10.0.0.0/16"]
-}
-
-resource "azurerm_subnet" "subnet" {
-  name                 = "example-subnet"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_monitor_data_collection_rule" "dcr" {
@@ -135,11 +96,16 @@ resource "azurerm_backup_policy_vm" "bp" {
 
 data "azurerm_client_config" "current" {}
 
-# virtual machine azapi
+data "azurerm_subnet" "subnet" {
+  name                 = "example-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = "example-network"
+
+}
+
 module "vm" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v1.5.0"
-  config          = local.vm
-  subscription_id = data.azurerm_client_config.current.subscription_id
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.0.0"
+  config = local.vm
 }
 
 output "outputs" {
