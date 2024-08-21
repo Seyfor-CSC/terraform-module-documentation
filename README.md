@@ -23,7 +23,7 @@
 | [cognitive account](./cognitive-account/README.md) | v1.6.0 |
 | [consumption budget](./consumption-budget/README.md) | v1.0.0 |
 | [container app](./container-app/README.md) | v1.0.1 |
-| [container app environment](./container-app-environment/README.md) | v1.2.0 |
+| [container app environment](./container-app-environment/README.md) | v1.2.1 |
 | [container app job](./container-app-job/README.md) | v1.1.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v1.6.0 |

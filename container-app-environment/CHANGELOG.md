@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.2.1
+
+## Enhancements
+
+- Remove toset functions from for_each (#19)
+
+
+   
 ## Release v1.2.0
 
 ## Provider & Terraform Upgrade
