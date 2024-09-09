@@ -64,7 +64,6 @@ locals {
         }
       ]
 
-      # needs to be imported to manage disk properties
       managed_disks = [
         # osdisk
         {
@@ -89,13 +88,14 @@ locals {
         },
         # data disks
         {
-          name                 = "${local.naming.vm_1}-data01"
-          resource_group_name  = azurerm_resource_group.rg.name
-          disk_size_gb         = 256
-          storage_account_type = "StandardSSD_LRS"
-          create_option        = "Empty"
-          zone = "2"
-          lun  = 1
+          name                      = "${local.naming.vm_1}-data01"
+          resource_group_name       = azurerm_resource_group.rg.name
+          disk_size_gb              = 256
+          storage_account_type      = "StandardSSD_LRS"
+          create_option             = "Empty"
+          zone                      = "2"
+          lun                       = 1
+          write_accelerator_enabled = false
 
           disk_backup = [
             {
@@ -107,23 +107,23 @@ locals {
         }
       ]
 
-        vm_extensions = [
-          {
-            name                 = "vmAgentExtension"
-            publisher            = "Microsoft.Azure.Monitor"
-            type                 = "AzureMonitorWindowsAgent"
-            type_handler_version = "1.18"
-          }
-        ]
+      vm_extensions = [
+        {
+          name                 = "vmAgentExtension"
+          publisher            = "Microsoft.Azure.Monitor"
+          type                 = "AzureMonitorWindowsAgent"
+          type_handler_version = "1.18"
+        }
+      ]
 
-        vm_backup = [
-          {
-            custom_name         = "${local.naming.vm_1}-backup"
-            resource_group_name = azurerm_resource_group.rg.name
-            recovery_vault_name = azurerm_recovery_services_vault.rsv.name
-            backup_policy_id    = azurerm_backup_policy_vm.bp.id
-          }
-        ]
+      vm_backup = [
+        {
+          custom_name         = "${local.naming.vm_1}-backup"
+          resource_group_name = azurerm_resource_group.rg.name
+          recovery_vault_name = azurerm_recovery_services_vault.rsv.name
+          backup_policy_id    = azurerm_backup_policy_vm.bp.id
+        }
+      ]
     }
   ]
 }

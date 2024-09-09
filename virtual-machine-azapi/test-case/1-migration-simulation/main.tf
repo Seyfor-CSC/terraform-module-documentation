@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "=3.108.0"
     }
+    azapi = {
+      source  = "azure/azapi"
+      version = "=1.15.0"
+    }
   }
   backend "local" {}
 }
@@ -12,6 +16,7 @@ provider "azurerm" {
   skip_provider_registration = false
   features {}
 }
+provider "azapi" {}
 
 # module deployment prerequisities
 resource "azurerm_resource_group" "rg" {
@@ -41,6 +46,13 @@ resource "azurerm_managed_disk" "data_disk" {
   disk_size_gb         = "256"
   create_option        = "Empty"
   zone                 = "2"
+}
+
+resource "azurerm_virtual_machine_data_disk_attachment" "data_disk" {
+  managed_disk_id    = azurerm_managed_disk.data_disk.id
+  virtual_machine_id = azapi_resource.vm.id
+  lun                = 1
+  caching            = "ReadWrite"
 }
 
 resource "azurerm_virtual_network" "vnet" {
@@ -93,22 +105,46 @@ resource "azurerm_network_interface" "nic1" {
   }
 }
 
-resource "azurerm_virtual_machine" "vm" {
-  name                         = local.naming.vm_1
-  location                     = azurerm_resource_group.rg.location
-  resource_group_name          = azurerm_resource_group.rg.name
-  network_interface_ids        = [azurerm_network_interface.nic0.id, azurerm_network_interface.nic1.id]
-  primary_network_interface_id = azurerm_network_interface.nic0.id
-  vm_size                      = "Standard_D2s_v3"
-  os_profile_windows_config {
-    provision_vm_agent = true
-  }
-  storage_os_disk {
-    name              = "${local.naming.vm_1}-osdisk"
-    caching           = "ReadWrite"
-    create_option     = "Attach"
-    managed_disk_type = "Standard_LRS"
-    managed_disk_id   = azurerm_managed_disk.os_disk.id
-    os_type           = "Windows"
+resource "azapi_resource" "vm" {
+  type      = "Microsoft.Compute/virtualMachines@2024-07-01"
+  location  = "northeurope"
+  name      = "SEYWINDOWSVM01"
+  parent_id = azurerm_resource_group.rg.id
+  body = {
+    properties = {
+      hardwareProfile = {
+        vmSize = "Standard_D2s_v3"
+      }
+      networkProfile = {
+        networkInterfaces = [
+          {
+            id = azurerm_network_interface.nic0.id
+            properties = {
+              primary = true
+            }
+          },
+          {
+            id = azurerm_network_interface.nic1.id
+            properties = {
+              primary = false
+            }
+          }
+        ]
+      }
+      storageProfile = {
+        osDisk = {
+          caching      = "ReadWrite"
+          createOption = "Attach"
+          deleteOption = "Detach"
+          diskSizeGB   = 128
+          managedDisk = {
+            id                 = azurerm_managed_disk.os_disk.id
+            storageAccountType = "Standard_LRS"
+          }
+          name   = "${local.naming.vm_1}-osdisk"
+          osType = "Windows"
+        }
+      }
+    }
   }
 }

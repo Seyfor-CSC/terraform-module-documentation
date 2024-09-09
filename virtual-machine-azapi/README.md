@@ -1,5 +1,5 @@
 # Introduction
-> **_NOTE:_** Only use for imports of migrated virtual machines
+> **_NOTE:_** Only use for imports of virtual machines with **attached** OS disk
 
 Virtual Machine module can deploy these resources:
 * azapi_resource (required)
@@ -18,7 +18,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/Azure/azapi/1.12.1/docs/resources/azapi_resource
+https://registry.terraform.io/providers/Azure/azapi/1.15.0/docs/resources/azapi_resource
 
 https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/network_interface
 
@@ -104,6 +104,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Import of Virtual Machine
 This module is complex and really specific to the scenario it is intended for. Use [test-case](test-case) as a guide for how to use it. First you should deploy [test-case/1-migration-simulation](test-case/1-migration-simulation) which will simulate the migrated resources. Then you can deploy [test-case/2-import](test-case/2-import) which will import the resources into the .tfstate file.
+## Paired Azurerm variables with AzAPI
+Some of the variables of AzAPI provider are paired and replaced with their appropriate match in Azurerm provider. Otherwise, some parts of the code would have to be duplicated and managed at two places. This is the case for networkProfile (replaced with network_interfaces), and osDisk with dataDisks (replaced with managed_disks). If `terraform plan` shows changes in any of these AzAPI variables, see [variables.md](variables.md) for the appropriate variable to be configured.
 
 &nbsp;
 
@@ -111,4 +113,6 @@ This module is complex and really specific to the scenario it is intended for. U
 ## Only use for imports of migrated virtual machines
 This module is not suitable to be used for deployments of new virtual machines. It is designed to be used for imports of virtual machines that are created from restored OS disks. 
 ## Changing property 'osProfile' is not allowed.
-If the virtual machine has an osProfile configured, it is not possible to import it. We are currently looking for a solution to change this.
+You have to use API version 2024-07-01 with the combination of AzAPI provider version 1.15.0 to be able to work around the issue with the changing 'osProfile' property. The virtual machine has to be transfered to the API version before it is imported.
+## osProfile property not tracked if created after import
+If you have imported a virtual machine with no osProfile visible in its configuration and later on it is created, Terraform doesn't see this change. If you need to manage this property using Terraform, the whole resource has to removed from the tfstate file and imported again.

@@ -208,7 +208,7 @@ variable "config" {  type = list(object({
       create_option        = optional(string, "Restore")
       delete_option        = optional(string, "Detach") # AzAPI
       detach_option        = optional(string)           # AzAPI; data disks only
-      to_be_detached       = optional(bool)             # AzAPI; data disks only
+      to_be_detached       = optional(bool, false)      # AzAPI; data disks only
       diff_disk_settings = optional(object({            # AzAPI; OS disk only
         option    = string
         placement = optional(string)
@@ -477,7 +477,7 @@ variable "config" {  type = list(object({
 |&nbsp;create_option | string | Optional |  "Restore" |  |
 |&nbsp;delete_option | string | Optional |  "Detach" |  AzAPI |
 |&nbsp;detach_option | string | Optional |  |  AzAPI; data disks only |
-|&nbsp;to_be_detached | bool | Optional |  |  AzAPI; data disks only |
+|&nbsp;to_be_detached | bool | Optional |  false |  AzAPI; data disks only |
 |&nbsp;diff_disk_settings | object | Optional |  |  AzAPI; OS disk only |
 |&nbsp;&nbsp;option | string | Required |  |  |
 |&nbsp;&nbsp;placement | string | Optional |  |  |

@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.1.0
+
+## Bug Fixes
+
+- Upgrade API version to 2024-07-01 and AzAPI provider version to 1.15.0 (#27)
+
+
+
+   
 ## Release v2.0.0
 
 ## Enhancements

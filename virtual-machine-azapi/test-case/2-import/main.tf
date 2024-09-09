@@ -6,7 +6,7 @@ terraform {
     }
     azapi = {
       source  = "azure/azapi"
-      version = "=1.12.1"
+      version = "=1.15.0"
     }
   }
   backend "local" {}
@@ -104,7 +104,7 @@ data "azurerm_subnet" "subnet" {
 }
 
 module "vm" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.1.0"
   config = local.vm
 }
 
