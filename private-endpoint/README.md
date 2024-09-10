@@ -10,7 +10,9 @@ You can see also see [changelog](CHANGELOG.md)
 
 Terraform documentation: 
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/private_endpoint
+
+> **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
 &nbsp;
 
