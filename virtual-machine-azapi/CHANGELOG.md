@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.1.1
+
+## Bug Fixes
+
+- Fix storageProfile typo in the word `properties` (#32)
+
+
+
+   
 ## Release v2.1.0
 
 ## Bug Fixes
