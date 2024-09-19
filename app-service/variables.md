@@ -51,6 +51,21 @@ variable "config" {  type = list(object({
         description               = optional(string)
       })), [])
       ip_restriction_default_action = optional(string)
+      scm_ip_restriction = optional(list(object({
+        action = optional(string)
+        headers = optional(object({
+          x_azure_fdid      = optional(list(string))
+          x_fd_health_probe = optional(number)
+          x_forwarded_for   = optional(list(string))
+          x_forwarded_host  = optional(list(string))
+        }))
+        ip_address                = optional(string)
+        name                      = optional(string)
+        priority                  = optional(number)
+        service_tag               = optional(string)
+        virtual_network_subnet_id = optional(string)
+        description               = optional(string)
+      })), [])
       use_32_bit_worker = optional(bool)
       vnet_route_all_enabled = optional(bool)
     })
@@ -212,6 +227,19 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;description | string | Optional |  |  |
 |&nbsp;ip_restriction_default_action | string | Optional |  |  |
+|&nbsp;scm_ip_restriction | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;action | string | Optional |  |  |
+|&nbsp;&nbsp;headers | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;x_azure_fdid | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;x_fd_health_probe | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;x_forwarded_for | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;x_forwarded_host | list(string) | Optional |  |  |
+|&nbsp;&nbsp;ip_address | string | Optional |  |  |
+|&nbsp;&nbsp;name | string | Optional |  |  |
+|&nbsp;&nbsp;priority | number | Optional |  |  |
+|&nbsp;&nbsp;service_tag | string | Optional |  |  |
+|&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;description | string | Optional |  |  |
 |&nbsp;use_32_bit_worker | bool | Optional |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
 |app_settings | map(any) | Optional |  |  |

@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.6.1
+
+## Enhancements
+
+- Add `scm_ip_restriction` variable (#49)
+
+
+   
 ## Release v1.6.0
 
 ## Provider & Terraform Upgrade
