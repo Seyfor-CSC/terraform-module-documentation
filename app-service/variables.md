@@ -66,7 +66,10 @@ variable "config" {  type = list(object({
         virtual_network_subnet_id = optional(string)
         description               = optional(string)
       })), [])
-      use_32_bit_worker = optional(bool)
+      scm_ip_restriction_default_action = optional(string)
+      scm_minimum_tls_version           = optional(string)
+      scm_use_main_ip_restriction       = optional(bool)
+      use_32_bit_worker                 = optional(bool)
       vnet_route_all_enabled = optional(bool)
     })
     app_settings = optional(map(any))
@@ -240,6 +243,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;description | string | Optional |  |  |
+|&nbsp;scm_ip_restriction_default_action | string | Optional |  |  |
+|&nbsp;scm_minimum_tls_version | string | Optional |  |  |
+|&nbsp;scm_use_main_ip_restriction | bool | Optional |  |  |
 |&nbsp;use_32_bit_worker | bool | Optional |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
 |app_settings | map(any) | Optional |  |  |

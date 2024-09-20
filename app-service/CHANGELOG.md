@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v1.6.2
+
+## Enhancements
+
+- Add `scm_ip_restriction_default_action`, `scm_use_main_ip_restriction`, and `scm_minimum_tls_version` variables (#52)
+
+
+   
 ## Release v1.6.1
 
 ## Enhancements
