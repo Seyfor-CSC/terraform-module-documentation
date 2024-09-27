@@ -65,7 +65,7 @@
 | [role definition](./role-definition/README.md) | v1.6.0 |
 | [route table](./route-table/README.md) | v1.6.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v1.5.0 |
-| [storage account](./storage-account/README.md) | v1.9.0 |
+| [storage account](./storage-account/README.md) | v1.9.1 |
 | [storage sync](./storage-sync/README.md) | v1.6.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v1.5.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v1.3.0 |

@@ -271,30 +271,35 @@ variable "config" {  type = list(object({
       eventhub_authorization_rule_id = optional(string)
       categories_storage = optional(object({
         transaction = optional(bool, true)
+        capacity    = optional(bool, true)
       }))
       categories_blob = optional(object({
         storage_read   = optional(bool, true)
         storage_write  = optional(bool, true)
         storage_delete = optional(bool, true)
         transaction    = optional(bool, true)
+        capacity       = optional(bool, true)
       }))
       categories_queue = optional(object({
         storage_read   = optional(bool, true)
         storage_write  = optional(bool, true)
         storage_delete = optional(bool, true)
         transaction    = optional(bool, true)
+        capacity       = optional(bool, true)
       }))
       categories_table = optional(object({
         storage_read   = optional(bool, true)
         storage_write  = optional(bool, true)
         storage_delete = optional(bool, true)
         transaction    = optional(bool, true)
+        capacity       = optional(bool, true)
       }))
       categories_file = optional(object({
         storage_read   = optional(bool, true)
         storage_write  = optional(bool, true)
         storage_delete = optional(bool, true)
         transaction    = optional(bool, true)
+        capacity       = optional(bool, true)
       }))
     })), [])
   }))
@@ -514,25 +519,30 @@ variable "config" {  type = list(object({
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
 |&nbsp;categories_storage | object | Optional |  |  |
 |&nbsp;&nbsp;transaction | bool | Optional |  true |  |
+|&nbsp;&nbsp;capacity | bool | Optional |  true |  |
 |&nbsp;categories_blob | object | Optional |  |  |
 |&nbsp;&nbsp;storage_read | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_write | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_delete | bool | Optional |  true |  |
 |&nbsp;&nbsp;transaction | bool | Optional |  true |  |
+|&nbsp;&nbsp;capacity | bool | Optional |  true |  |
 |&nbsp;categories_queue | object | Optional |  |  |
 |&nbsp;&nbsp;storage_read | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_write | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_delete | bool | Optional |  true |  |
 |&nbsp;&nbsp;transaction | bool | Optional |  true |  |
+|&nbsp;&nbsp;capacity | bool | Optional |  true |  |
 |&nbsp;categories_table | object | Optional |  |  |
 |&nbsp;&nbsp;storage_read | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_write | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_delete | bool | Optional |  true |  |
 |&nbsp;&nbsp;transaction | bool | Optional |  true |  |
+|&nbsp;&nbsp;capacity | bool | Optional |  true |  |
 |&nbsp;categories_file | object | Optional |  |  |
 |&nbsp;&nbsp;storage_read | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_write | bool | Optional |  true |  |
 |&nbsp;&nbsp;storage_delete | bool | Optional |  true |  |
 |&nbsp;&nbsp;transaction | bool | Optional |  true |  |
+|&nbsp;&nbsp;capacity | bool | Optional |  true |  |
 
 

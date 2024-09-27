@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v1.9.1
+
+## Bug Fixes
+
+- Resolve diagnostic settings redeployment (#48)
+
+
+
+   
 ## Release v1.9.0
 
 ## Provider & Terraform Upgrade

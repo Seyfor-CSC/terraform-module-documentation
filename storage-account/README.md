@@ -145,6 +145,7 @@ https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
 ### Possible workarounds: 
 1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
 2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
-## Diagnostic Setting metric always updating in place
+## Diagnostic Setting metrics updating in place
+If any of the metrics is disabled, the diagnostic setting will be updating in place with every run.
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
