@@ -13,13 +13,15 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/cognitive_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/cognitive_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/cognitive_deployment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/cognitive_deployment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/private_endpoint
+
+> **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
 &nbsp;
 
@@ -84,9 +86,4 @@ No special features in module.
 &nbsp;
 
 # Known Issues
-## Diagnostic Setting enabled log can't be deleted
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
-### Possible workarounds: 
-1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
-2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
+We currently log no issues in this module.

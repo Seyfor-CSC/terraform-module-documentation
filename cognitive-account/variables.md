@@ -52,8 +52,8 @@ variable "config" {  type = list(object({
         name    = string
         version = optional(string)
       })
-      scale = object({
-        type     = string
+      sku = object({
+        name     = string
         tier     = optional(string)
         size     = optional(string)
         family   = optional(string)
@@ -156,8 +156,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;format | string | Required |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;version | string | Optional |  |  |
-|&nbsp;scale | object | Required |  |  |
-|&nbsp;&nbsp;type | string | Required |  |  |
+|&nbsp;sku | object | Required |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;tier | string | Optional |  |  |
 |&nbsp;&nbsp;size | string | Optional |  |  |
 |&nbsp;&nbsp;family | string | Optional |  |  |
