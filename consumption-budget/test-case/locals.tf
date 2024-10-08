@@ -2,11 +2,11 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg          = "SEY-TERRAFORM-NE-RG01"
-    budget_mg1  = "sey-budget-mg1"
-    budget_rg1  = "sey-budget-rg1"
-    budget_sub1 = "sey-budget-sub1"
-    budget_sub2 = "sey-budget-sub2"
+    rg          = "SEY-BUDGET-NE-RG01"
+    budget_mg1  = "SEY-TERRAFORM-NE-BUDGETMG01"
+    budget_rg1  = "SEY-TERRAFORM-NE-BUDGETRG01"
+    budget_sub1 = "SEY-TERRAFORM-NE-BUDGETSUB01"
+    budget_sub2 = "SEY-TERRAFORM-NE-BUDGETSUB02"
   }
 
   consumption_budget = [

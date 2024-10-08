@@ -21,7 +21,7 @@
 | [backup vault](./backup-vault/README.md) | v2.0.0 |
 | [bastion host](./bastion-host/README.md) | v2.0.0 |
 | [cognitive account](./cognitive-account/README.md) | v2.0.0 |
-| [consumption budget](./consumption-budget/README.md) | v1.0.0 |
+| [consumption budget](./consumption-budget/README.md) | v2.0.0 |
 | [container app](./container-app/README.md) | v1.0.1 |
 | [container app environment](./container-app-environment/README.md) | v1.2.1 |
 | [container app job](./container-app-job/README.md) | v1.1.0 |
