@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_network_security_group" "example" {
-  name                = "mi-security-group"
+  name                = "SEY-MI-NE-NSG01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 }
@@ -97,7 +97,7 @@ resource "azurerm_network_security_rule" "deny_all_inbound" {
 
 resource "azurerm_network_security_rule" "allow_management_outbound" {
   name                        = "allow_management_outbound"
-  priority                    = 102
+  priority                    = 106
   direction                   = "Outbound"
   access                      = "Allow"
   protocol                    = "Tcp"
@@ -138,14 +138,14 @@ resource "azurerm_network_security_rule" "deny_all_outbound" {
 }
 
 resource "azurerm_virtual_network" "example" {
-  name                = "vnet-mi"
+  name                = "SEY-MI-NE-VNET01"
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
   location            = local.location
 }
 
 resource "azurerm_subnet" "example" {
-  name                 = "subnet-mi"
+  name                 = "sey-mi-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.0.0.0/24"]
@@ -164,10 +164,10 @@ resource "azurerm_subnet_network_security_group_association" "example" {
 }
 
 resource "azurerm_route_table" "example" {
-  name                          = "routetable-mi"
+  name                          = "SEY-MI-NE-RT01"
   location                      = local.location
   resource_group_name           = azurerm_resource_group.rg.name
-  disable_bgp_route_propagation = false
+  bgp_route_propagation_enabled = false
 }
 
 resource "azurerm_subnet_route_table_association" "example" {
@@ -177,26 +177,26 @@ resource "azurerm_subnet_route_table_association" "example" {
 
 # private endpoint prerequisities
 resource "azurerm_virtual_network" "vnet" {
-  name                = "example-network"
+  name                = "SEY-MI-NE-VNET02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "example-subnet"
+  name                 = "sey-mi-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_private_dns_zone" "dns" {
-  name                = "test.private.dns"
+  name                = "sey.mi.private.dns"
   resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
-  name                  = "test"
+  name                  = "SEY-MI-NE-VNET02"
   resource_group_name   = azurerm_resource_group.rg.name
   private_dns_zone_name = azurerm_private_dns_zone.dns.name
   virtual_network_id    = azurerm_virtual_network.vnet.id
@@ -204,7 +204,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
-  name                = "SEY-TERRAFORM-NE-LA01"
+  name                = "SEY-MI-NE-LA01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
@@ -213,7 +213,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # mssql managed instance
 module "mssql_managed_instance" {
-  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.mssql-managed-instance.git?ref=v2.0.0"
   config = local.mi
 }
 
