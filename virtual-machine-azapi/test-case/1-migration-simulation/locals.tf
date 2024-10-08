@@ -2,6 +2,6 @@ locals {
   location = "northeurope"
 
   naming = {
-    vm_1 = "SEYWINDOWSVM01"
+    vm_1 = "SEYAZAPIVM01"
   }
 }

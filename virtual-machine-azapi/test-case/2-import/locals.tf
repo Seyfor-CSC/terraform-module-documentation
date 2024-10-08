@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    vm_1 = "SEYWINDOWSVM01"
+    vm_1 = "SEYAZAPIVM01"
   }
   vm = [
     {
@@ -15,30 +15,13 @@ locals {
       }
       properties = {
         hardwareProfile = {
-          vmSize = "Standard_D2s_v3"
+          vmSize = "Standard_D2s_v4"
         }
       }
 
       network_interfaces = [
         {
-          name = "${local.naming.vm_1}-nic0"
-          ip_configuration = [
-            {
-              name                          = "ipconfig1"
-              subnet_id                     = data.azurerm_subnet.subnet.id
-              private_ip_address_allocation = "Static"
-              private_ip_address            = "10.0.1.26"
-              primary                       = true
-            },
-            {
-              name                          = "ipconfig2"
-              subnet_id                     = data.azurerm_subnet.subnet.id
-              private_ip_address_allocation = "Dynamic"
-            }
-          ]
-        },
-        {
-          name                           = "${local.naming.vm_1}-nic1"
+          name                           = "${local.naming.vm_1}-nic0"
           accelerated_networking_enabled = false
           ip_configuration = [
             {
@@ -70,10 +53,10 @@ locals {
           os_disk                       = true
           name                          = "${local.naming.vm_1}-osdisk"
           resource_group_name           = azurerm_resource_group.rg.name
-          create_option                 = "FromImage"
+          create_option                 = "Copy"
           hyper_v_generation            = "V1"
           storage_account_type          = "Standard_LRS"
-          image_reference_id            = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2022-Datacenter/Versions/20348.1970.230905"
+          source_resource_id            = data.azurerm_managed_disk.source-osdisk.id
           os_type                       = "Windows"
           public_network_access_enabled = "true"
           disk_size_gb                  = 128

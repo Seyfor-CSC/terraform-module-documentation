@@ -20,22 +20,23 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/Azure/azapi/1.15.0/docs/resources/azapi_resource
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/backup_protected_vm
 
 Microsoft documentation:
 
 https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/virtualmachines?pivots=deployment-language-terraform
 
+> **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 &nbsp;
 
 # Terraform Import
