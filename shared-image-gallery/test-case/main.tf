@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,21 +20,21 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "example" {
-  name                = "example-network"
+  name                = "SEY-ACG-NE-VNET01"
   address_space       = ["10.0.0.0/16"]
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_subnet" "example" {
-  name                 = "internal"
+  name                 = "sey-acg-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_network_interface" "example1" {
-  name                = "example-nic1"
+  name                = "SEY-ACG-NE-NIC01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -46,7 +46,7 @@ resource "azurerm_network_interface" "example1" {
 }
 
 resource "azurerm_network_interface" "example2" {
-  name                = "example-nic2"
+  name                = "SEY-ACG-NE-NIC02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -58,7 +58,7 @@ resource "azurerm_network_interface" "example2" {
 }
 
 resource "azurerm_windows_virtual_machine" "example1" {
-  name                = "SEY-VM1"
+  name                = "SEY-ACG-NE-VM01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   size                = "Standard_F2"
@@ -82,7 +82,7 @@ resource "azurerm_windows_virtual_machine" "example1" {
 }
 
 resource "azurerm_windows_virtual_machine" "example2" {
-  name                = "SEY-VM2"
+  name                = "SEY-ACG-NE-VM02"
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   size                = "Standard_F2"
@@ -107,7 +107,7 @@ resource "azurerm_windows_virtual_machine" "example2" {
 
 # shared image gallery
 module "shared_image_gallery" {
-  source = "git@github.com:Seyfor-CSC/mit.shared-image-gallery.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.shared-image-gallery.git?ref=v2.0.0"
   config = local.acg
 }
 

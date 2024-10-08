@@ -52,6 +52,7 @@ variable "config" {  type = list(object({
       trusted_launch_enabled              = optional(bool)
       confidential_vm_supported           = optional(bool)
       confidential_vm_enabled             = optional(bool)
+      hibernation_enabled                 = optional(bool)
       accelerated_network_support_enabled = optional(bool)
       tags                                = optional(map(any)) # If not provided, inherited in module from parent resource
 
@@ -134,6 +135,7 @@ variable "config" {  type = list(object({
 |&nbsp;trusted_launch_enabled | bool | Optional |  |  |
 |&nbsp;confidential_vm_supported | bool | Optional |  |  |
 |&nbsp;confidential_vm_enabled | bool | Optional |  |  |
+|&nbsp;hibernation_enabled | bool | Optional |  |  |
 |&nbsp;accelerated_network_support_enabled | bool | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;image_version | list(object) | Optional | [] |  |
