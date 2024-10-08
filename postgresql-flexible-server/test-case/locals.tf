@@ -2,9 +2,9 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg      = "SEY-TERRAFORM-NE-RG01"
-    pgsql_1 = "seyterraformnepgsql01"
-    pgsql_2 = "seyterraformnepgsql02"
+    rg      = "SEY-PGSQL-NE-RG01"
+    pgsql_1 = "sey-terraform-ne-pgsql01"
+    pgsql_2 = "sey-terraform-ne-pgsql02"
   }
 
   pgsql = [
@@ -23,7 +23,7 @@ locals {
 
       flexible_db = [
         {
-          name = "flexibledbexample"
+          name = "seypgsqldb01"
         }
       ]
 
