@@ -3,14 +3,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_public_ip" "pip1" {
-  name                = "public-ip-1"
+  name                = "SEY-LB-NE-PIP01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
@@ -29,21 +29,21 @@ resource "azurerm_public_ip" "pip1" {
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "vnet"
+  name                = "SEY-LB-NE-VNET01"
   address_space       = ["10.0.0.0/16"]
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "subnet"
+  name                 = "sey-lb-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_network_interface" "nic0" {
-  name                = local.naming.nic_0
+  name                = "SEY-LB-NE-NIC01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -56,7 +56,7 @@ resource "azurerm_network_interface" "nic0" {
 }
 
 resource "azurerm_network_interface" "nic1" {
-  name                = local.naming.nic_1
+  name                = "SEY-LB-NE-NIC02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -70,7 +70,7 @@ resource "azurerm_network_interface" "nic1" {
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
-  name                = "SEY-TERRAFORM-NE-LA01"
+  name                = "SEY-LB-NE-LA01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
@@ -79,7 +79,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # load balancer
 module "load_balancer" {
-  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v1.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.load-balancer.git?ref=v2.0.0"
   config = local.lb
 }
 

@@ -2,11 +2,9 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg    = "SEY-TERRAFORM-NE-RG01"
+    rg    = "SEY-LB-NE-RG01"
     lb_1  = "SEY-TERRAFORM-NE-LB01"
     lb_2  = "SEY-TERRAFORM-NE-LB02"
-    nic_0 = "nic0"
-    nic_1 = "nic1"
   }
 
   lb = [
@@ -43,12 +41,12 @@ locals {
 
           nic_association = [
             {
-              custom_name           = "${local.naming.nic_0}-association"
+              custom_name           = "${azurerm_network_interface.nic0.name}-association"
               ip_configuration_name = "internal"
               network_interface_id  = azurerm_network_interface.nic0.id
             },
             {
-              custom_name           = "${local.naming.nic_1}-association"
+              custom_name           = "${azurerm_network_interface.nic1.name}-association"
               ip_configuration_name = "internal"
               network_interface_id  = azurerm_network_interface.nic1.id
             }
