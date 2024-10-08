@@ -7,7 +7,6 @@
 - Terraform: 1.9.5 (#10)
 ## Enhancements
 - Implement Minimal Provider Version (#10)
-- Remove toset() functions (#10)
    
 ## Release v1.2.0
 
