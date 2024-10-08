@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -18,7 +18,7 @@ data "azurerm_subscription" "primary" {}
 
 # role definition
 module "role_definition" {
-  source = "git@github.com:Seyfor-CSC/mit.role-definition.git?ref=v1.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.role-definition.git?ref=v2.0.0"
   config = local.rd
 }
 

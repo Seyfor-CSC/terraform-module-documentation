@@ -9,8 +9,8 @@ locals {
 
   rd = [
     {
-      name        = local.naming.rd_1
-      scope       = data.azurerm_subscription.primary.id
+      name  = local.naming.rd_1
+      scope = data.azurerm_subscription.primary.id
       assignable_scopes = [
         data.azurerm_subscription.primary.id
       ]
@@ -27,8 +27,8 @@ locals {
       }
     },
     {
-      name        = local.naming.rd_2
-      scope       = data.azurerm_subscription.primary.id
+      name  = local.naming.rd_2
+      scope = data.azurerm_subscription.primary.id
       permissions = {
         actions      = ["*"]
         data_actions = ["*"]
