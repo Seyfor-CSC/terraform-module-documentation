@@ -23,15 +23,10 @@ variable "config" {  type = list(object({
     }))
     public_network_access_enabled = optional(bool, false)
     quarantine_policy_enabled     = optional(bool)
-    retention_policy = optional(object({
-      days    = optional(number)
-      enabled = optional(bool)
-    }))
-    trust_policy = optional(object({
-      enabled = optional(bool)
-    }))
-    zone_redundancy_enabled = optional(bool)
-    export_policy_enabled   = optional(bool)
+    retention_policy_in_days      = optional(number)
+    trust_policy_enabled          = optional(bool)
+    zone_redundancy_enabled       = optional(bool)
+    export_policy_enabled         = optional(bool)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -113,11 +108,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;ip_range | string | Required |  |  |
 |public_network_access_enabled | bool | Optional |  false |  |
 |quarantine_policy_enabled | bool | Optional |  |  |
-|retention_policy | object | Optional |  |  |
-|&nbsp;days | number | Optional |  |  |
-|&nbsp;enabled | bool | Optional |  |  |
-|trust_policy | object | Optional |  |  |
-|&nbsp;enabled | bool | Optional |  |  |
+|retention_policy_in_days | number | Optional |  |  |
+|trust_policy_enabled | bool | Optional |  |  |
 |zone_redundancy_enabled | bool | Optional |  |  |
 |export_policy_enabled | bool | Optional |  |  |
 |identity | object | Optional |  |  |
