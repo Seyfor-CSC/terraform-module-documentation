@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.0.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.1.0 (#11)
+- Terraform: 1.9.5 (#11)
+## Enhancements
+- Implement Minimal Provider Version (#11)
+- Remove toset() functions (#11)
+   
 ## Release v1.2.0
 
 ## Provider & Terraform Upgrade

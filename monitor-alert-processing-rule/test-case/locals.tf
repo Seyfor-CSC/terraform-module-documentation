@@ -2,9 +2,9 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg    = "SEY-TERRAFORM-NE-RG01"
-    apr_1 = "AlertProcessingRuleAG"
-    apr_2 = "AlertProcessingRuleSuppression"
+    rg    = "SEY-ALERTRULE-NE-RG01"
+    apr_1 = "SEY-TERRAFORM-NE-APR01"
+    apr_2 = "SEY-TERRAFORM-NE-APR02"
   }
 
   apr = [

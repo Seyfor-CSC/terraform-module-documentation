@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = true
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,19 +20,19 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_monitor_action_group" "ag1" {
-  name                = "mit-actiongroup01"
+  name                = "SEY-ALERTRULE-NE-AG01"
   resource_group_name = azurerm_resource_group.rg.name
-  short_name          = "action1"
+  short_name          = "SEYRULEAG01"
 }
 
 resource "azurerm_monitor_action_group" "ag2" {
-  name                = "mit-actiongroup02"
+  name                = "SEY-ALERTRULE-NE-AG02"
   resource_group_name = azurerm_resource_group.rg.name
-  short_name          = "action2"
+  short_name          = "SEYRULEAG02"
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "mitmonitorsa01"
+  name                     = "seyalertrulenesa01"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = local.location
   account_tier             = "Standard"
@@ -40,7 +40,7 @@ resource "azurerm_storage_account" "sa" {
 }
 
 resource "azurerm_monitor_metric_alert" "alert" {
-  name                = "example-metricalert"
+  name                = "sey-metricalert"
   resource_group_name = azurerm_resource_group.rg.name
   scopes              = [azurerm_storage_account.sa.id]
   description         = "Action will be triggered when Transactions count is greater than 50."
@@ -66,6 +66,6 @@ resource "azurerm_monitor_metric_alert" "alert" {
 
 # monitor alert processing rule
 module "apr" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-alert-processing-rule.git?ref=v1.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-alert-processing-rule.git?ref=v2.0.0"
   config = local.apr
 }
