@@ -2,11 +2,11 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg      = "SEY-TERRAFORM-NE-RG01"
-    sync_1  = "SEY-TERRAFORM-NE-SYNC01"
-    sync_2  = "SEY-TERRAFORM-NE-SYNC02"
-    group_1 = "SEY-TERRAFORM-NE-GROUP01"
-    group_2 = "SEY-TERRAFORM-NE-GROUP02"
+    rg      = "SEY-STORSYNC-NE-RG01"
+    sync_1  = "SEY-TERRAFORM-NE-STORSYNC01"
+    sync_2  = "SEY-TERRAFORM-NE-STORSYNC02"
+    group_1 = "SEY-TERRAFORM-NE-SYNCGROUP01"
+    group_2 = "SEY-TERRAFORM-NE-SYNCGROUP02"
   }
 
   sync = [
