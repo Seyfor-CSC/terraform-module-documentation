@@ -1,22 +1,22 @@
 
 locals {
-  location = "westeurope"
+  location = "northeurope"
 
   naming = {
-    rg   = "SEY-PURVIEW-WE-RG01"
-    pa_1 = "SEY-PURVIEW-WE-PA01"
+    rg      = "SEY-PURVIEW-NE-RG01"
+    purview = "SEY-TERRAFORM-NE-PURVIEW01"
   }
 
 
   purview_account = [
     {
-      name                = local.naming.pa_1
+      name                = local.naming.purview
       resource_group_name = azurerm_resource_group.rg.name
       location            = local.location
       identity = {
         type = "SystemAssigned"
       }
-      managed_resource_group_name = "SEY-PURVIEW-WE-RG02"
+      managed_resource_group_name = "${local.naming.rg}-DYN"
 
       monitoring = [
         {
