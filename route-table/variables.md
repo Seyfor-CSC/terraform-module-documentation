@@ -6,7 +6,7 @@ variable "config" {  type = list(object({
     name                          = string
     resource_group_name           = string
     location                      = string
-    disable_bgp_route_propagation = optional(bool)
+    bgp_route_propagation_enabled = optional(bool)
     tags                          = optional(map(any))
 
     # route
@@ -32,7 +32,7 @@ variable "config" {  type = list(object({
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
-|disable_bgp_route_propagation | bool | Optional |  |  |
+|bgp_route_propagation_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |routes | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |

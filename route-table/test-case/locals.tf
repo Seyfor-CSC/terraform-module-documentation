@@ -2,12 +2,12 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg   = "SEY-TERRAFORM-NE-RG01"
+    rg   = "SEY-ROUTETABLE-NE-RG01"
     rt_1 = "SEY-TERRAFORM-NE-RT01"
     rt_2 = "SEY-TERRAFORM-NE-RT02"
   }
 
-    rt = [
+  rt = [
     {
       name                = local.naming.rt_1
       location            = local.location
