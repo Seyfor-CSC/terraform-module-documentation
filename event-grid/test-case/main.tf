@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "seyterraformnesa01"
+  name                     = "seyeventgridnesa01"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = local.location
   account_tier             = "Standard"
@@ -29,7 +29,7 @@ resource "azurerm_storage_account" "sa" {
 }
 
 module "eventgrid" {
-  source = "git@github.com:Seyfor-CSC/mit.event-grid.git?ref=v1.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.event-grid.git?ref=v2.0.0"
   config = local.eventgrid
 }
 
