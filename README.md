@@ -1,5 +1,5 @@
 # Important information
-* All modules are currently tested on terraform version 1.8.5 and azurerm provider version 3.108.0.
+* All modules are currently tested on terraform version 1.9.5 and azurerm provider version 4.1.0.
 
 * Our modules are designed to save you time and effort by providing a consistent approach to deploying resources in Azure. Hardcoding resource ids required in child resources is in the past as it is now done automatically for you inside the module. For example, if you want to deploy a virtual machine with a network interface, you don't need to specify the network interface id in the virtual machine resource. You only need to configure the network interface and the module will take care of the rest.
 
@@ -15,7 +15,7 @@
 | Name | Latest Version |
 | ---- | -------------- |
 | [app service](./app-service/README.md) | v1.6.2 |
-| [app service plan](./app-service-plan/README.md) | v1.3.0 |
+| [app service plan](./app-service-plan/README.md) | v2.0.0 |
 | [automation account](./automation-account/README.md) | v1.8.0 |
 | [availability set](./availability-set/README.md) | v1.4.0 |
 | [backup vault](./backup-vault/README.md) | v1.6.0 |
