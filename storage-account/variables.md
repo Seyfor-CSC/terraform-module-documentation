@@ -12,8 +12,8 @@ variable "config" {  type = list(object({
     cross_tenant_replication_enabled = optional(bool)
     access_tier                      = optional(string)
     edge_zone                        = optional(string)
-    enable_https_traffic_only        = optional(bool, true)
-    min_tls_version                  = optional(string, "TLS1_2")
+    https_traffic_only_enabled       = optional(bool)
+    min_tls_version                  = optional(string)
     allow_nested_items_to_be_public  = optional(bool, false)
     shared_access_key_enabled        = optional(bool)
     public_network_access_enabled    = optional(bool, false)
@@ -130,6 +130,7 @@ variable "config" {  type = list(object({
         forest_name         = optional(string)
         netbios_domain_name = optional(string)
       }))
+      default_share_level_permission = optional(string)
     }))
     routing = optional(object({
       publish_internet_endpoints  = optional(bool)
@@ -322,8 +323,8 @@ variable "config" {  type = list(object({
 |cross_tenant_replication_enabled | bool | Optional |  |  |
 |access_tier | string | Optional |  |  |
 |edge_zone | string | Optional |  |  |
-|enable_https_traffic_only | bool | Optional |  true |  |
-|min_tls_version | string | Optional |  "TLS1_2" |  |
+|https_traffic_only_enabled | bool | Optional |  |  |
+|min_tls_version | string | Optional |  |  |
 |allow_nested_items_to_be_public | bool | Optional |  false |  |
 |shared_access_key_enabled | bool | Optional |  |  |
 |public_network_access_enabled | bool | Optional |  false |  |
@@ -419,6 +420,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;storage_sid | string | Optional |  |  |
 |&nbsp;&nbsp;forest_name | string | Optional |  |  |
 |&nbsp;&nbsp;netbios_domain_name | string | Optional |  |  |
+|&nbsp;default_share_level_permission | string | Optional |  |  |
 |routing | object | Optional |  |  |
 |&nbsp;publish_internet_endpoints | bool | Optional |  |  |
 |&nbsp;publish_microsoft_endpoints | bool | Optional |  |  |

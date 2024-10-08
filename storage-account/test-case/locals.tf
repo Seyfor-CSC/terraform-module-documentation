@@ -51,7 +51,7 @@ locals {
 
       file_shares = [
         {
-          name  = "fileshare1"
+          name  = "share1"
           quota = 50
 
           share_backup = {
@@ -60,7 +60,7 @@ locals {
           }
         },
         {
-          name  = "fileshare2"
+          name  = "share2"
           quota = 100
         }
       ]
@@ -73,10 +73,10 @@ locals {
 
       tables = [
         {
-          name = "table01"
+          name = "table1"
         },
         {
-          name = "table02"
+          name = "table2"
         }
       ]
 
