@@ -2,9 +2,9 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg      = "SEY-TERRAFORM-NE-RG01"
-    logic_1 = "SEY-TERRAFORM-NE-LOGIC01"
-    logic_2 = "SEY-TERRAFORM-NE-LOGIC02"
+    rg      = "SEY-LAWORKFLOW-NE-RG01"
+    logic_1 = "SEY-TERRAFORM-NE-LAWORKFLOW01"
+    logic_2 = "SEY-TERRAFORM-NE-LAWORKFLOW01"
   }
 
   logic = [
