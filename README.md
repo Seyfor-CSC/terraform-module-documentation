@@ -47,7 +47,7 @@
 | [mssql database](./mssql-database/README.md) | v2.0.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v1.5.0 |
 | [network security group](./network-security-group/README.md) | v2.0.0 |
-| [network watcher](./network-watcher/README.md) | v1.6.0 |
+| [network watcher](./network-watcher/README.md) | v2.0.0 |
 | [policy assignment](./policy-assignment/README.md) | v1.6.0 |
 | [policy definition](./policy-definition/README.md) | v1.2.0 |
 | [policy set definition](./policy-set-definition/README.md) | v1.7.0 |
