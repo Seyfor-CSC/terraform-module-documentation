@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg       = "SEY-TERRAFORM-NE-RG01"
+    rg       = "SEY-DNSRES-NE-RG01"
     dnsres_1 = "SEY-TERRAFORM-NE-DNSRES01"
     dnsres_2 = "SEY-TERRAFORM-NE-DNSRES02"
   }
@@ -54,7 +54,7 @@ locals {
 
           private_dns_resolver_virtual_network_links = [
             {
-              name               = "vnetlink01"
+              name               = "SEY-DNSRES-NE-VNETLINK01"
               virtual_network_id = azurerm_virtual_network.vnet1.id
             }
           ]

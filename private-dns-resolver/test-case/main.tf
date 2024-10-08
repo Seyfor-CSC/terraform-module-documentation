@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,33 +20,33 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet1" {
-  name                = "example-network1"
+  name                = "SEY-DNSRES-NE-VNET01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_virtual_network" "vnet2" {
-  name                = "example-network2"
+  name                = "SEY-DNSRES-NE-VNET02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.1.0.0/16"]
 
   subnet {
-    name           = "subnet"
-    address_prefix = "10.1.0.0/24"
+    name             = "sey-dnsres-ne-subnet01"
+    address_prefixes = ["10.1.0.0/24"]
   }
 }
 
 resource "azurerm_subnet" "subnet1" {
-  name                 = "example-subnet1"
+  name                 = "sey-dnsres-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet1.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_subnet" "subnet2" {
-  name                 = "example-subnet2"
+  name                 = "sey-dnsres-ne-subnet02"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet1.name
   address_prefixes     = ["10.0.2.0/24"]
@@ -54,7 +54,7 @@ resource "azurerm_subnet" "subnet2" {
 
 # private dns resolver
 module "private_dns_resolver" {
-  source = "git@github.com:Seyfor-CSC/mit.private-dns-resolver.git?ref=v1.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.private-dns-resolver.git?ref=v2.0.0"
   config = local.dnsres
 }
 
