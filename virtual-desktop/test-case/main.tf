@@ -2,15 +2,21 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "=3.0.1"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
+}
+provider "azuread" {
 }
 
 # module deployment prerequisities
@@ -57,32 +63,32 @@ resource "azurerm_role_assignment" "example" {
   name                             = random_uuid.example.result
   scope                            = azurerm_resource_group.rg.id
   role_definition_id               = azurerm_role_definition.example.role_definition_resource_id
-  principal_id                     = data.azuread_service_principal.example.id
+  principal_id                     = data.azuread_service_principal.example.object_id
   skip_service_principal_aad_check = true
 }
 
 # private endpoint prerequisities
 resource "azurerm_virtual_network" "vnet" {
-  name                = "example-network"
+  name                = "SEY-AVD-NE-VNET01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "example-subnet"
+  name                 = "sey-avd-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_private_dns_zone" "dns" {
-  name                = "test.private.dns"
+  name                = "sey.avd.private.dns"
   resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
-  name                  = "test"
+  name                  = "SEY-AVD-NE-VNET01"
   resource_group_name   = azurerm_resource_group.rg.name
   private_dns_zone_name = azurerm_private_dns_zone.dns.name
   virtual_network_id    = azurerm_virtual_network.vnet.id
@@ -90,7 +96,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
-  name                = "SEY-TERRAFORM-NE-LA01"
+  name                = "SEY-AVD-NE-LA01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
@@ -99,7 +105,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual desktop
 module "virtual_desktop" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v1.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v2.0.0"
   config = local.virtual_desktop
 }
 

@@ -2,12 +2,12 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg          = "SEY-TERRAFORM-NE-RG01"
-    pool_1      = "SEY-TERRAFORM-NE-POOL01"
-    group_1     = "SEY-TERRAFORM-NE-GROUP01"
-    group_2     = "SEY-TERRAFORM-NE-GROUP02"
-    plan_1      = "SEY-TERRAFORM-NE-PLAN01"
-    workspace_1 = "SEY-TERRAFORM-NE-WORKSPACE01"
+    rg          = "SEY-AVD-NE-RG01"
+    pool_1      = "SEY-AVD-NE-POOL01"
+    group_1     = "SEY-AVD-NE-GROUP01"
+    group_2     = "SEY-AVD-NE-GROUP02"
+    plan_1      = "SEY-AVD-NE-PLAN01"
+    workspace_1 = "SEY-AVD-NE-WORKSPACE01"
   }
 
   virtual_desktop = {
@@ -44,7 +44,7 @@ locals {
         ]
 
         registration_info = {
-          expiration_date = "2024-07-10T23:59:59Z"
+          expiration_date = timeadd(plantimestamp(), "2h")
         }
 
         monitoring = [
