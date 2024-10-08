@@ -72,6 +72,7 @@ variable "config" {  type = list(object({
     automatic_instance_repair = optional(object({
       enabled      = bool
       grace_period = optional(string)
+      action       = optional(string)
     }))
     boot_diagnostics = optional(object({
       storage_account_uri = optional(string)
@@ -172,11 +173,7 @@ variable "config" {  type = list(object({
       enabled = optional(bool)
       timeout = optional(string)
     }))
-    terminate_notification = optional(object({
-      enabled = bool
-      timeout = optional(string)
-    }))
-    termination_notification = optional(object({
+     termination_notification = optional(object({
       enabled = bool
       timeout = optional(string)
     }))
@@ -343,6 +340,7 @@ variable "config" {  type = list(object({
 |automatic_instance_repair | object | Optional |  |  |
 |&nbsp;enabled | bool | Required |  |  |
 |&nbsp;grace_period | string | Optional |  |  |
+|&nbsp;action | string | Optional |  |  |
 |boot_diagnostics | object | Optional |  |  |
 |&nbsp;storage_account_uri | string | Optional |  |  |
 |capacity_reservation_group_id | string | Optional |  |  |
@@ -428,9 +426,6 @@ variable "config" {  type = list(object({
 |&nbsp;version | string | Required |  |  |
 |spot_restore | object | Optional |  |  |
 |&nbsp;enabled | bool | Optional |  |  |
-|&nbsp;timeout | string | Optional |  |  |
-|terminate_notification | object | Optional |  |  |
-|&nbsp;enabled | bool | Required |  |  |
 |&nbsp;timeout | string | Optional |  |  |
 |termination_notification | object | Optional |  |  |
 |&nbsp;enabled | bool | Required |  |  |

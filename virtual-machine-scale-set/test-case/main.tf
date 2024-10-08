@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,14 +20,14 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "example-vnet"
+  name                = "SEY-VMSS-NE-VNET01"
   address_space       = ["10.0.0.0/16"]
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "internal"
+  name                 = "sey-vmss-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
@@ -44,7 +44,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual machine scale set
 module "vmss" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-scale-set.git?ref=v1.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-scale-set.git?ref=v2.0.0"
   config = local.vmss
 }
 

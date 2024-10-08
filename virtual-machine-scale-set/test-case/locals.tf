@@ -2,9 +2,9 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg             = "SEY-TERRAFORM-SCALESET-RG01"
-    vmss_windows01 = "SEY-TERRAFORM-SCALESET-WINDOWS01"
-    vmss_linux01   = "SEY-TERRAFORM-SCALESET-LINUX01"
+    rg             = "SEY-VMSS-NE-RG01"
+    vmss_windows01 = "SEY-VMSS-NE-WINDOWS01"
+    vmss_linux01   = "SEY-VMSS-NE-LINUX01"
   }
 
   vmss = [
