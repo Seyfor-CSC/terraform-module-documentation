@@ -18,9 +18,9 @@ variable "config" {  type = list(object({
           value       = optional(string)
         })), [])
         ephemeral_storage = optional(string) # Is currently in preview and not configurable at this time.
-        image   = string
+        image             = string
         memory            = optional(string)
-        name    = string
+        name              = string
         volume_mounts = optional(list(object({
           name = string
           path = string
@@ -36,7 +36,7 @@ variable "config" {  type = list(object({
           value       = optional(string)
         })), [])
         ephemeral_storage = optional(string) # Is currently in preview and not configurable at this time.
-        image   = string
+        image             = string
         liveness_probe = optional(object({
           failure_count_threshold = optional(number)
           header = optional(object({
@@ -52,8 +52,8 @@ variable "config" {  type = list(object({
           timeout                          = optional(number)
           transport                        = string
         }))
-        memory  = string
-        name    = string
+        memory = string
+        name   = string
         readiness_probe = optional(object({
           failure_count_threshold = optional(number)
           header = optional(object({
@@ -141,13 +141,8 @@ variable "config" {  type = list(object({
     }))
     ingress = optional(object({
       allow_insecure_connections = optional(bool)
-      custom_domain = optional(list(object({
-        certificate_binding_type = optional(string)
-        certificate_id           = string
-        name                     = string
-      })), [])
-      fqdn             = optional(string)
-      external_enabled = optional(bool)
+      fqdn                       = optional(string)
+      external_enabled           = optional(bool)
       ip_security_restriction = optional(list(object({
         action           = string
         description      = optional(string)
@@ -177,7 +172,7 @@ variable "config" {  type = list(object({
       value               = optional(string)
     })), [])
     workload_profile_name = optional(string)
-    tags = optional(map(any))
+    tags                  = optional(map(any))
   }))
 }
 
@@ -303,10 +298,6 @@ variable "config" {  type = list(object({
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |ingress | object | Optional |  |  |
 |&nbsp;allow_insecure_connections | bool | Optional |  |  |
-|&nbsp;custom_domain | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;certificate_binding_type | string | Optional |  |  |
-|&nbsp;&nbsp;certificate_id | string | Required |  |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;fqdn | string | Optional |  |  |
 |&nbsp;external_enabled | bool | Optional |  |  |
 |&nbsp;ip_security_restriction | list(object) | Optional | [] |  |
