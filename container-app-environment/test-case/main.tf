@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,14 +20,14 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "vnet-cae"
+  name                = "SEY-ACAE-NE-VNET01"
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.12.0/24"]
   location            = local.location
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "subnet-cae"
+  name                 = "sey-acae-ne-aubnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.12.0/27"]
@@ -42,7 +42,7 @@ resource "azurerm_subnet" "subnet" {
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
-  name                = "SEY-TERRAFORM-NE-LA01"
+  name                = "SEY-ACAE-NE-LA01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
@@ -51,7 +51,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container app environment
 module "container_app_environment" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v1.2.1"
+  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.0.0"
   config = local.cae
 }
 
