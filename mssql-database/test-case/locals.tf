@@ -2,14 +2,16 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg       = "SEY-TERRAFORM-NE-RG01"
-    sqlsrv_1 = "SEY-TERRAFORM-NE-SQLSRV01"
-    sqlsrv_2 = "SEY-TERRAFORM-NE-SQLSRV02"
+    rg     = "SEY-MSSQLDB-NE-RG01"
+    srvr_1 = "SEY-MSSQLDB-NE-SRVR01"
+    srvr_2 = "SEY-MSSQLDB-NE-SRVR02"
+    ep_1   = "SEY-MSSQLDB-NE-EP01"
+    db_1   = "SEY-MSSQLDB-NE-DB01"
   }
 
   sqlsrv = [
     {
-      name                          = local.naming.sqlsrv_1
+      name                          = local.naming.srvr_1
       location                      = local.location
       resource_group_name           = azurerm_resource_group.rg.name
       administrator_login           = "useradmin"
@@ -21,7 +23,7 @@ locals {
       }
       mssql_elasticpool = [
         {
-          name = "MSSQLElasticPool01"
+          name = local.naming.ep_1
           sku = {
             name     = "GP_Gen5"
             capacity = 4
@@ -44,7 +46,7 @@ locals {
       ]
       mssql_db = [
         {
-          name = "MSSQLDB01"
+          name = local.naming.db_1
 
           db_auditing_policy = {
             enabled                = true
@@ -74,12 +76,12 @@ locals {
 
       private_endpoint = [
         {
-          name                          = "${local.naming.sqlsrv_1}-PE01"
+          name                          = "${local.naming.srvr_1}-PE01"
           subnet_id                     = azurerm_subnet.subnet.id
-          custom_network_interface_name = "${local.naming.sqlsrv_1}-PE01.nic"
+          custom_network_interface_name = "${local.naming.srvr_1}-PE01.nic"
           private_service_connection = [
             {
-              name                 = "${local.naming.sqlsrv_1}-PE01-connection"
+              name                 = "${local.naming.srvr_1}-PE01-connection"
               is_manual_connection = false
               subresource_names    = ["sqlServer"]
             }
@@ -103,7 +105,7 @@ locals {
       tags = {}
     },
     {
-      name                         = local.naming.sqlsrv_2
+      name                         = local.naming.srvr_2
       location                     = local.location
       resource_group_name          = azurerm_resource_group.rg.name
       administrator_login          = "seyadmin"

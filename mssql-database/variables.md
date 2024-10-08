@@ -93,7 +93,6 @@ variable "config" {  type = list(object({
         monthly_retention         = optional(string)
         yearly_retention          = optional(string)
         week_of_year              = optional(number)
-        immutable_backups_enabled = optional(bool)
       }))
       max_size_gb                           = optional(number)
       min_capacity                          = optional(number)
@@ -287,7 +286,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;monthly_retention | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;yearly_retention | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;week_of_year | number | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;immutable_backups_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;max_size_gb | number | Optional |  |  |
 |&nbsp;&nbsp;min_capacity | number | Optional |  |  |
 |&nbsp;&nbsp;restore_point_in_time | string | Optional |  |  |
