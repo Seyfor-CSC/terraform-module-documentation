@@ -6,8 +6,7 @@
 - Azurerm provider: 4.1.0 (#15)
 - Terraform: 1.9.5 (#15)
 ## Enhancements
-- Implemented Minimal Provider Version (#15)
-- Remove toset() functions (#15)
+- Implement Minimal Provider Version (#15)
    
 ## Release v1.3.0
 
