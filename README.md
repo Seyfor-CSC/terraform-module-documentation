@@ -37,7 +37,7 @@
 | [key vault seeding](./key-vault-seeding/README.md) | v2.0.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.6.0 |
 | [load balancer](./load-balancer/README.md) | v2.0.0 |
-| [log analytics workspace](./log-analytics-workspace/README.md) | v1.6.0 |
+| [log analytics workspace](./log-analytics-workspace/README.md) | v2.0.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v1.4.0 |
 | [logic app standard](./logic-app-standard/README.md) | v1.6.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v1.6.0 |
