@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg   = "SEY-TERRAFORM-NE-RG01"
+    rg   = "SEY-AA-NE-RG01"
     aa_1 = "SEY-TERRAFORM-NE-AA01"
     aa_2 = "SEY-TERRAFORM-NE-AA02"
     ar_1 = "Get-LinuxVirtualMachine"
