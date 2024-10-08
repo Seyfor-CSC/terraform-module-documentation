@@ -10,9 +10,9 @@ variable "config" {  type = list(object({
       vm_size                       = string
       name                          = optional(string, "systemnp")
       capacity_reservation_group_id = optional(string)
-      enable_auto_scaling           = optional(bool)
-      enable_host_encryption        = optional(bool)
-      enable_node_public_ip         = optional(bool)
+      auto_scaling_enabled          = optional(bool)
+      host_encryption_enabled       = optional(bool)
+      node_public_ip_enabled        = optional(bool)
       max_pods                      = optional(number)
       node_public_ip_prefix_id      = optional(string)
       node_labels                   = optional(map(any))
@@ -35,9 +35,8 @@ variable "config" {  type = list(object({
     })
     dns_prefix                 = optional(string)
     dns_prefix_private_cluster = optional(string)
-    automatic_channel_upgrade  = optional(string)
+    automatic_upgrade_channel  = optional(string)
     azure_active_directory_role_based_access_control = optional(object({
-      managed                = optional(bool)
       admin_group_object_ids = optional(list(string))
       azure_rbac_enabled     = optional(bool)
     }))
@@ -119,7 +118,7 @@ variable "config" {  type = list(object({
       service_cidr        = optional(string)
       load_balancer_sku   = optional(string)
     }))
-    node_os_channel_upgrade = optional(string)
+    node_os_upgrade_channel = optional(string)
     node_resource_group     = optional(string)
     oidc_issuer_enabled     = optional(bool)
     oms_agent = optional(object({
@@ -137,7 +136,6 @@ variable "config" {  type = list(object({
     storage_profile = optional(object({
       blob_driver_enabled         = optional(bool)
       disk_driver_enabled         = optional(bool)
-      disk_driver_version         = optional(string)
       file_driver_enabled         = optional(bool)
       snapshot_controller_enabled = optional(bool)
     }))
@@ -159,9 +157,9 @@ variable "config" {  type = list(object({
       kubernetes_cluster_id         = optional(string) # Inherited in module from parent resource
       vm_size                       = string
       capacity_reservation_group_id = optional(string)
-      enable_auto_scaling           = optional(bool)
-      enable_host_encryption        = optional(bool)
-      enable_node_public_ip         = optional(bool)
+      auto_scaling_enabled          = optional(bool)
+      host_encryption_enabled       = optional(bool)
+      node_public_ip_enabled        = optional(bool)
       max_pods                      = optional(number)
       node_labels                   = optional(map(any))
       node_public_ip_prefix_id      = optional(string)
@@ -220,9 +218,9 @@ variable "config" {  type = list(object({
 |&nbsp;vm_size | string | Required |  |  |
 |&nbsp;name | string | Optional |  "systemnp" |  |
 |&nbsp;capacity_reservation_group_id | string | Optional |  |  |
-|&nbsp;enable_auto_scaling | bool | Optional |  |  |
-|&nbsp;enable_host_encryption | bool | Optional |  |  |
-|&nbsp;enable_node_public_ip | bool | Optional |  |  |
+|&nbsp;auto_scaling_enabled | bool | Optional |  |  |
+|&nbsp;host_encryption_enabled | bool | Optional |  |  |
+|&nbsp;node_public_ip_enabled | bool | Optional |  |  |
 |&nbsp;max_pods | number | Optional |  |  |
 |&nbsp;node_public_ip_prefix_id | string | Optional |  |  |
 |&nbsp;node_labels | map(any) | Optional |  |  |
@@ -243,9 +241,8 @@ variable "config" {  type = list(object({
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |dns_prefix | string | Optional |  |  |
 |dns_prefix_private_cluster | string | Optional |  |  |
-|automatic_channel_upgrade | string | Optional |  |  |
+|automatic_upgrade_channel | string | Optional |  |  |
 |azure_active_directory_role_based_access_control | object | Optional |  |  |
-|&nbsp;managed | bool | Optional |  |  |
 |&nbsp;admin_group_object_ids | list(string) | Optional |  |  |
 |&nbsp;&nbsp;azure_rbac_enabled | bool | Optional |  |  |
 |&nbsp;azure_policy_enabled | bool | Optional |  |  |
@@ -312,7 +309,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;pod_cidr | string | Optional |  |  |
 |&nbsp;&nbsp;service_cidr | string | Optional |  |  |
 |&nbsp;&nbsp;load_balancer_sku | string | Optional |  |  |
-|&nbsp;node_os_channel_upgrade | string | Optional |  |  |
+|&nbsp;node_os_upgrade_channel | string | Optional |  |  |
 |&nbsp;node_resource_group | string | Optional |  |  |
 |&nbsp;oidc_issuer_enabled | bool | Optional |  |  |
 |&nbsp;oms_agent | object | Optional |  |  |
@@ -328,7 +325,6 @@ variable "config" {  type = list(object({
 |&nbsp;storage_profile | object | Optional |  |  |
 |&nbsp;&nbsp;blob_driver_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;disk_driver_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;disk_driver_version | string | Optional |  |  |
 |&nbsp;&nbsp;file_driver_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;snapshot_controller_enabled | bool | Optional |  |  |
 |&nbsp;support_plan | string | Optional |  |  |
@@ -345,9 +341,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;kubernetes_cluster_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;vm_size | string | Required |  |  |
 |&nbsp;&nbsp;capacity_reservation_group_id | string | Optional |  |  |
-|&nbsp;&nbsp;enable_auto_scaling | bool | Optional |  |  |
-|&nbsp;&nbsp;enable_host_encryption | bool | Optional |  |  |
-|&nbsp;&nbsp;enable_node_public_ip | bool | Optional |  |  |
+|&nbsp;&nbsp;auto_scaling_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;host_encryption_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;node_public_ip_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;max_pods | number | Optional |  |  |
 |&nbsp;&nbsp;node_labels | map(any) | Optional |  |  |
 |&nbsp;&nbsp;node_public_ip_prefix_id | string | Optional |  |  |
