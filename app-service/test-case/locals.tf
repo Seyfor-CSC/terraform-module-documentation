@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg    = "SEY-TERRAFORM-NE-RG01"
+    rg    = "SEY-WEBAPP-NE-RG01"
     app_1 = "SEY-TERRAFORM-NE-APP01"
     app_2 = "SEY-TERRAFORM-NE-APP02"
   }
