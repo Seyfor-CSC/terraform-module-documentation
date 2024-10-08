@@ -2,20 +2,20 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
 # resource group
 module "resource_group" {
-  source = "git@github.com:Seyfor-CSC/mit.resource-group.git?ref=v1.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.resource-group.git?ref=v2.0.0"
   config = local.rg
 }
 
