@@ -3,13 +3,14 @@
 ```
 variable "config" {  type = list(object({
     # redis cache
-    name                = string
-    resource_group_name = string
-    location            = string
-    capacity            = number
-    family              = string
-    sku_name            = string
-    enable_non_ssl_port = optional(bool)
+    name                               = string
+    resource_group_name                = string
+    location                           = string
+    capacity                           = number
+    family                             = string
+    sku_name                           = string
+    access_keys_authentication_enabled = optional(bool)
+    non_ssl_port_enabled               = optional(bool)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -26,7 +27,7 @@ variable "config" {  type = list(object({
       aof_backup_enabled                      = optional(bool)
       aof_storage_connection_string_0         = optional(string)
       aof_storage_connection_string_1         = optional(string)
-      enable_authentication                   = optional(bool)
+      authentication_enabled                  = optional(bool)
       active_directory_authentication_enabled = optional(bool)
       maxmemory_reserved                      = optional(number)
       maxmemory_delta                         = optional(number)
@@ -106,7 +107,8 @@ variable "config" {  type = list(object({
 |capacity | number | Required |  |  |
 |family | string | Required |  |  |
 |sku_name | string | Required |  |  |
-|enable_non_ssl_port | bool | Optional |  |  |
+|access_keys_authentication_enabled | bool | Optional |  |  |
+|non_ssl_port_enabled | bool | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
@@ -121,7 +123,7 @@ variable "config" {  type = list(object({
 |&nbsp;aof_backup_enabled | bool | Optional |  |  |
 |&nbsp;aof_storage_connection_string_0 | string | Optional |  |  |
 |&nbsp;aof_storage_connection_string_1 | string | Optional |  |  |
-|&nbsp;enable_authentication | bool | Optional |  |  |
+|&nbsp;authentication_enabled | bool | Optional |  |  |
 |&nbsp;active_directory_authentication_enabled | bool | Optional |  |  |
 |&nbsp;maxmemory_reserved | number | Optional |  |  |
 |&nbsp;maxmemory_delta | number | Optional |  |  |

@@ -2,21 +2,21 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg   = "SEY-TERRAFORM-NE-RG01"
-    rc_1 = "SEY-TERRAFORM-NE-RC01"
-    rc_2 = "SEY-TERRAFORM-NE-RC02"
+    rg   = "SEY-REDIS-NE-RG01"
+    rc_1 = "SEY-TERRAFORM-NE-REDIS01"
+    rc_2 = "SEY-TERRAFORM-NE-REDIS02"
   }
 
   redis_cache = [
     {
-      name                = local.naming.rc_1
-      location            = local.location
-      resource_group_name = azurerm_resource_group.rg.name
-      capacity            = 2
-      family              = "P"
-      sku_name            = "Premium"
-      enable_non_ssl_port = false
-      redis_version       = 6
+      name                 = local.naming.rc_1
+      location             = local.location
+      resource_group_name  = azurerm_resource_group.rg.name
+      capacity             = 2
+      family               = "P"
+      sku_name             = "Premium"
+      non_ssl_port_enabled = false
+      redis_version        = 6
       identity = {
         type = "SystemAssigned"
       }
@@ -29,7 +29,7 @@ locals {
       redis_configuration = {
         maxmemory_reserved              = 3000
         rdb_storage_connection_string   = azurerm_storage_account.sa.primary_blob_connection_string
-        enable_authentication           = true
+        authentication_enabled          = true
         maxmemory_policy                = "volatile-random"
         maxfragmentationmemory_reserved = 5000
       }
@@ -82,7 +82,7 @@ locals {
       ]
       redis_configuration = {
         maxmemory_reserved              = 350
-        enable_authentication           = true
+        authentication_enabled          = true
         maxfragmentationmemory_reserved = 300
       }
 

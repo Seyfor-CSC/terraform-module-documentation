@@ -12,13 +12,15 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/redis_cache
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/redis_cache
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/private_endpoint
 
 &nbsp;
+
+> **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
@@ -89,9 +91,3 @@ https://github.com/Azure/azure-rest-api-specs/issues/3037
 ## Can't add rdb_storage_connection_string variable into ignore_changes
 [Terraform documentation for redis cache](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache#rdb_storage_connection_string) suggests to put the `rdb_storage_connection_string` into an ignore_changes block. However, that also ends in an error. Because of this, no ignore_changes block is implemented. See the following link for more details:
 https://github.com/Azure/azure-rest-api-specs/issues/3037#issuecomment-1398971779
-## Diagnostic Setting enabled log can't be deleted
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
-### Possible workarounds: 
-1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
-2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
