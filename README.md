@@ -42,7 +42,7 @@
 | [logic app standard](./logic-app-standard/README.md) | v2.0.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v2.0.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.0.0 |
-| [monitor alert](./monitor-alert/README.md) | v1.5.0 |
+| [monitor alert](./monitor-alert/README.md) | v2.0.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v1.2.0 |
 | [mssql database](./mssql-database/README.md) | v1.8.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v1.5.0 |

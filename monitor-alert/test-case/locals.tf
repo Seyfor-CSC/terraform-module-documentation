@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg = "SEY-TERRAFORM-NE-RG01"
+    rg = "SEY-ALERT-NE-RG01"
   }
 
   alerts = [
@@ -11,7 +11,7 @@ locals {
       location            = local.location
       logv2_alerts = [
         {
-          name                 = "example-msqrv2"
+          name                 = "sey-alert01"
           evaluation_frequency = "PT10M"
           window_duration      = "PT10M"
           scopes               = [azurerm_application_insights.ai.id]
@@ -42,7 +42,7 @@ locals {
 
       activity_alerts = [
         {
-          name        = "example-activitylogalert"
+          name        = "sey-alert02"
           scopes      = [azurerm_resource_group.rg.id]
           description = "This alert will monitor a specific storage account updates."
 
@@ -56,7 +56,7 @@ locals {
 
       metric_alerts = [
         {
-          name   = "example-metricalert"
+          name   = "sey-alert03"
           scopes = [azurerm_storage_account.sa.id]
           criteria = [
             {

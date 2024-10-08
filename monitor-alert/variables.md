@@ -7,7 +7,7 @@ variable "config" {  type = list(object({
 
     # monitor scheduled query rules alert v2
     logv2_alerts = optional(list(object({
-      name = string
+      name     = string
       location = optional(string) # Overrides the config.location variable
       criteria = object({
         operator                = string
@@ -51,9 +51,9 @@ variable "config" {  type = list(object({
 
     # monitor activity log alert
     activity_alerts = optional(list(object({
-      name   = string
+      name     = string
       location = optional(string) # Overrides the config.location variable
-      scopes = list(string)
+      scopes   = list(string)
       criteria = object({
         category                = string
         caller                  = optional(string)
