@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg   = "SEY-TERRAFORM-NE-RG01"
+    rg   = "SEY-VM-NE-RG01"
     vm_1 = "SEYWINDOWSVM01"
     vm_2 = "SEYWINDOWSVM02"
     vm_3 = "SEYLINUXVM01"
@@ -19,7 +19,6 @@ locals {
       admin_username                  = "adminuser"
       admin_password                  = "Password1234"
       disable_password_authentication = false
-      computer_name                   = "EX3TESTVM01"
       identity = {
         type = "SystemAssigned"
       }
@@ -90,7 +89,7 @@ locals {
 
           disk_backup = [
             {
-              name             = "${local.naming.vm_1}-data1"
+              name             = "${local.naming.vm_1}-data01"
               vault_id         = azurerm_data_protection_backup_vault.bv.id
               backup_policy_id = azurerm_data_protection_backup_policy_disk.bp.id
             }
@@ -145,7 +144,6 @@ locals {
       admin_username                  = "adminuser"
       admin_password                  = "Password1234"
       disable_password_authentication = false
-      computer_name                   = "EX3TESTVM02"
       os_disk = {
         name                 = "${local.naming.vm_2}-osdisk"
         caching              = "ReadWrite"
@@ -251,7 +249,7 @@ locals {
 
           disk_backup = [
             {
-              name             = "${local.naming.vm_3}-data1"
+              name             = "${local.naming.vm_3}-data01"
               vault_id         = azurerm_data_protection_backup_vault.bv.id
               backup_policy_id = azurerm_data_protection_backup_policy_disk.bp.id
             }

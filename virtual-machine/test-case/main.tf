@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -22,21 +22,21 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "example-network"
+  name                = "SEY-VM-NE-VNET01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "example-subnet"
+  name                 = "sey-vm-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_monitor_data_collection_rule" "dcr" {
-  name                = "dcr"
+  name                = "SEY-VM-NE-DCR01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   destinations {
@@ -51,7 +51,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
 }
 
 resource "azurerm_data_protection_backup_vault" "bv" {
-  name                = "sey-terraform-bv01"
+  name                = "SEY-VM-NE-BV01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   datastore_type      = "VaultStore"
@@ -75,7 +75,7 @@ resource "azurerm_role_assignment" "rbac2" {
 }
 
 resource "azurerm_data_protection_backup_policy_disk" "bp" {
-  name     = "backup-policy"
+  name     = "daily-policy"
   vault_id = azurerm_data_protection_backup_vault.bv.id
 
   backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT4H"]
@@ -92,7 +92,7 @@ resource "azurerm_data_protection_backup_policy_disk" "bp" {
 }
 
 resource "azurerm_recovery_services_vault" "rsv" {
-  name                = "sey-terraform-rsv01"
+  name                = "SEY-VM-NE-RSV01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
@@ -100,7 +100,7 @@ resource "azurerm_recovery_services_vault" "rsv" {
 }
 
 resource "azurerm_backup_policy_vm" "bp" {
-  name                = "recovery-vault-policy"
+  name                = "daily-policy"
   resource_group_name = azurerm_resource_group.rg.name
   recovery_vault_name = azurerm_recovery_services_vault.rsv.name
 
@@ -115,7 +115,7 @@ resource "azurerm_backup_policy_vm" "bp" {
 
 # virtual machine
 module "virtual_machine" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v1.5.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v2.0.0"
   config          = local.vm
   subscription_id = data.azurerm_client_config.current.subscription_id
 }
