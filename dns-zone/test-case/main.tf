@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # dns zone
 module "dns_zone" {
-  source = "git@github.com:Seyfor-CSC/mit.dns-zone.git?ref=v1.3.0"
+  source = "@github.com:Seyfor-CSC/mit.dns-zone.git?ref=v2.0.0"
   config = local.dns
 }
 
