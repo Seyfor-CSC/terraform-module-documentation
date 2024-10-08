@@ -34,7 +34,7 @@
 | [event hub](./event-hub/README.md) | v2.0.0 |
 | [function app](./function-app/README.md) | v2.0.0 |
 | [key vault](./key-vault/README.md) | v2.0.0 |
-| [key vault seeding](./key-vault-seeding/README.md) | v1.4.1 |
+| [key vault seeding](./key-vault-seeding/README.md) | v2.0.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v1.6.0 |
 | [load balancer](./load-balancer/README.md) | v1.6.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v1.6.0 |
