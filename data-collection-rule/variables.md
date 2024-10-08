@@ -101,9 +101,9 @@ variable "config" {  type = list(object({
       })), [])
       syslog = optional(list(object({
         facility_names = list(string)
+        streams        = optional(list(string), ["Microsoft-Syslog"])
         log_levels     = list(string)
         name           = string
-        streams        = optional(list(string))
       })), [])
       windows_event_log = optional(list(object({
         name           = string
@@ -229,9 +229,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;syslog | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;facility_names | list(string) | Required |  |  |
+|&nbsp;&nbsp;streams | list(string) | Optional |  |  |
 |&nbsp;&nbsp;log_levels | list(string) | Required |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;streams | list(string) | Optional |  |  |
 |&nbsp;windows_event_log | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;streams | list(string) | Required |  |  |
