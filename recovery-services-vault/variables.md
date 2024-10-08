@@ -75,6 +75,13 @@ variable "config" {  type = list(object({
         days              = optional(list(number))
         include_last_days = optional(bool)
       }))
+      tiering_policy = optional(object({
+        archived_restore_point = object({
+          mode          = string
+          duration      = optional(number)
+          duration_type = optional(string)
+        })
+      }))
     })), [])
 
     # backup policy file share

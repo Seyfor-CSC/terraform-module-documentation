@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg    = "SEY-TERRAFORM-NE-RG01"
+    rg    = "SEY-RSV-NE-RG01"
     rsv_1 = "SEY-TERRAFORM-NE-RSV01"
     rsv_2 = "SEY-TERRAFORM-NE-RSV02"
   }
