@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,13 +20,13 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet1" {
-  name                = "example-network1"
+  name                = "SEY-BASTION-NE-VNET01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/24"]
 }
 resource "azurerm_virtual_network" "vnet2" {
-  name                = "example-network2"
+  name                = "SEY-BASTION-NE-VNET02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.1.0/24"]
@@ -46,7 +46,7 @@ resource "azurerm_subnet" "subnet2" {
 }
 
 resource "azurerm_public_ip" "pip1" {
-  name                = "example-pip1"
+  name                = "SEY-BASTION-NE-PIP01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
@@ -54,7 +54,7 @@ resource "azurerm_public_ip" "pip1" {
 }
 
 resource "azurerm_public_ip" "pip2" {
-  name                = "example-pip2"
+  name                = "SEY-BASTION-NE-PIP02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
@@ -64,7 +64,7 @@ resource "azurerm_public_ip" "pip2" {
 
 # monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
-  name                = "SEY-TERRAFORM-NE-LA01"
+  name                = "SEY-BASTION-NE-LA01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "PerGB2018"
@@ -73,7 +73,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # bastion host
 module "bastion_host" {
-  source = "git@github.com:Seyfor-CSC/mit.bastion-host.git?ref=v1.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.bastion-host.git?ref=v2.0.0"
   config = local.bh
 }
 
