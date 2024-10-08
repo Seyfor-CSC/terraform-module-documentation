@@ -39,7 +39,7 @@
 | [load balancer](./load-balancer/README.md) | v2.0.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.0.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.0.0 |
-| [logic app standard](./logic-app-standard/README.md) | v1.6.0 |
+| [logic app standard](./logic-app-standard/README.md) | v2.0.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v1.6.0 |
 | [monitor action group](./monitor-action-group/README.md) | v1.5.0 |
 | [monitor alert](./monitor-alert/README.md) | v1.5.0 |
