@@ -14,7 +14,7 @@ variable "config" {  type = list(object({
       ttl          = optional(number)
       tags         = optional(map(any)) # If not provided, inherited in module from parent resource
     }))
-    tags = optional(map(any)) 
+    tags = optional(map(any))
 
     # private dns zone virtual network link
     virtual_network_links = optional(list(object({

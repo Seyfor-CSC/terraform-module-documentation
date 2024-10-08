@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.108.0"
+      version = "=4.1.0"
     }
   }
   backend "local" {}
 }
 
 provider "azurerm" {
-  skip_provider_registration = false
+  resource_provider_registrations = "core"
   features {}
 }
 
@@ -20,13 +20,13 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_virtual_network" "vnet1" {
-  name                = "example-network1"
+  name                = "SEY-PDNSZONE-NE-VNET01"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
 }
 resource "azurerm_virtual_network" "vnet2" {
-  name                = "example-network2"
+  name                = "SEY-PDNSZONE-NE-VNET02"
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
@@ -34,7 +34,7 @@ resource "azurerm_virtual_network" "vnet2" {
 
 # private dns zone
 module "private_dns_zone" {
-  source = "git@github.com:Seyfor-CSC/mit.private-dns-zone.git?ref=v1.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.private-dns-zone.git?ref=v2.0.0"
   config = local.dns
 }
 
