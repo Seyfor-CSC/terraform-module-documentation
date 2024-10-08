@@ -15,7 +15,6 @@ variable "config" {  type = list(object({
       identity_ids = optional(list(string))
     }))
     maximum_throughput_units = optional(number)
-    zone_redundant           = optional(bool)
     network_rulesets = optional(object({
       default_action                 = string
       public_network_access_enabled  = optional(bool, false)
@@ -146,7 +145,6 @@ variable "config" {  type = list(object({
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |maximum_throughput_units | number | Optional |  |  |
-|zone_redundant | bool | Optional |  |  |
 |network_rulesets | object | Optional |  |  |
 |&nbsp;default_action | string | Required |  |  |
 |&nbsp;public_network_access_enabled | bool | Optional |  false |  |

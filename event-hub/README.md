@@ -15,19 +15,21 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub_namespace
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/eventhub_namespace
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/eventhub
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub_consumer_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/eventhub_consumer_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/eventhub_authorization_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/eventhub_authorization_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/3.108.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/private_endpoint
 
 &nbsp;
+
+> **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
@@ -97,9 +99,4 @@ No special features in module.
 &nbsp;
 
 # Known Issues
-## Diagnostic Setting enabled log can't be deleted
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/23267
-### Possible workarounds: 
-1. Disable the log manually in Azure Portal and then reflect the change in your Terraform configuration.
-2. Delete the whole diagnostic setting and deploy it again with your desired configuration.
+We currently log no issues in this module.
