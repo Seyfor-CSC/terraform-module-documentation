@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg     = "SEY-TERRAFORM-NE-RG01"
+    rg     = "SEY-PEERING-NE-RG01"
     vnet_1 = "SEY-TERRAFORM-NE-VNET01"
     vnet_2 = "SEY-TERRAFORM-NE-VNET02"
   }
