@@ -8,6 +8,7 @@
 ## Enhancements
 - Implement Minimal Provider Version (#35)
 - Remove toset() functions (#35)
+- Set `private_endpoint_network_policies` default value to `Enabled`
    
 ## Release v1.8.1
 
