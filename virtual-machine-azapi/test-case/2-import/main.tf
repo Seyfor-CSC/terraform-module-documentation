@@ -111,7 +111,7 @@ data "azurerm_managed_disk" "source-osdisk" {
 }
 
 module "vm" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.2.1"
   config = local.vm
 }
 

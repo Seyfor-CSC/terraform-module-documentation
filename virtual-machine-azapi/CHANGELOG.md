@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.2.1
+
+## Bug Fixes
+
+- Replace merge function in os_disk local variable with concat (#37)
+
+
+
+   
 ## Release v2.2.0
 
 ## Provider & Terraform Upgrade
