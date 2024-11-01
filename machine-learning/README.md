@@ -1,6 +1,8 @@
 # Introduction
 Machine Learning module can deploy these resources:
 * azurerm_machine_learning_workspace (required)
+* azurerm_monitor_diagnostic_setting (optional)
+* azurerm_private_endpoint (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
