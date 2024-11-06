@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.0.1
+
+## Enhancements
+
+- Change `private_endpoint_network_policies` default to `Disabled` (#37)
+
+
+   
 ## Release v2.0.0
 
 ## Provider & Terraform Upgrade
