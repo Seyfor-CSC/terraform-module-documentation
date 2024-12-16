@@ -259,7 +259,7 @@ variable "config" {  type = list(object({
   }))
 }
 
-variable "subscription_id" { # Custom variable that needs to be provided when using disk or vm backup
+variable "subscription_id" { # Custom variable that needs to be provided for OS disk backup
   type    = string
   default = null
 }
