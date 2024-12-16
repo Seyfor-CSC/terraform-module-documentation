@@ -58,7 +58,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Virtual Machine Extension
 * terraform import '`<path-to-module>`.azurerm_virtual_machine_extension.virtual_machine_extension["`<virtual-machine-name`_`<virtual-machine-extension-name`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Compute/virtualMachines/`<virtual-machine-name>`/extensions/`<extensionName>`'
 ### Backup Instance Disk
-* terraform import '`<path-to-module>`.azurerm_data_protection_backup_instance_disk.data_protection_backup_instance_disk["`<virtual-machine-name>`_`<managed-disk-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
+* terraform import '`<path-to-module>`.azurerm_data_protection_backup_instance_disk.data_protection_backup_instance_disk["`<virtual-machine-name>`_`<backup-instance-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupInstances/`<backup-instance-name>`'
 ### Backup Protected VM
 * terraform import '`<path-to-module>`.azurerm_backup_protected_vm.backup_protected_vm["`<virtual-machine-name>`_`<recovery-services-vault-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.RecoveryServices/vaults/`<recovery-services-vault-name>`/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;`<resource-group-name>`;`<virtual-machine-name>`/protectedItems/vm;iaasvmcontainerv2;`<resource-group-name>`;`<virtual-machine-name>`'
 
