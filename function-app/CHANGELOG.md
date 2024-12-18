@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.0.1
+
+## Bug Fixes
+
+- Fix typo in `custom_network_interface_name` variable (#21)
+
+
+
+   
 ## Release v2.0.0
 
 ## Provider & Terraform Upgrade

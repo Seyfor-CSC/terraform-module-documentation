@@ -151,7 +151,7 @@ variable "config" {  type = list(object({
         subresource_names                 = optional(list(string))
         request_message                   = optional(string)
       }))
-      custom_network_intserface_name = optional(string)
+      custom_network_interface_name = optional(string)
       private_dns_zone_group = optional(object({
         name                 = string
         private_dns_zone_ids = list(string)
@@ -320,7 +320,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
 |&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
 |&nbsp;&nbsp;request_message | string | Optional |  |  |
-|&nbsp;custom_network_intserface_name | string | Optional |  |  |
+|&nbsp;custom_network_interface_name | string | Optional |  |  |
 |&nbsp;private_dns_zone_group | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
