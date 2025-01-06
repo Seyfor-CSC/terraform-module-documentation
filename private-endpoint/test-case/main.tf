@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -14,6 +14,8 @@ provider "azurerm" {
 }
 
 # module deployment prerequisities
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -45,24 +47,25 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
   virtual_network_id    = azurerm_virtual_network.vnet.id
 }
 
-resource "azurerm_automation_account" "aa" {
-  name                = local.naming.aa_1
-  location            = local.location
-  resource_group_name = azurerm_resource_group.rg.name
-  sku_name            = "Basic"
+resource "azurerm_storage_account" "sa_1" {
+  name                     = local.naming.sa_1
+  location                 = local.location
+  resource_group_name      = azurerm_resource_group.rg.name
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
 
-resource "azurerm_recovery_services_vault" "rsv" {
-  name                = local.naming.rsv_1
-  location            = local.location
-  resource_group_name = azurerm_resource_group.rg.name
-  sku                 = "Standard"
-  soft_delete_enabled = false
+resource "azurerm_storage_account" "sa_2" {
+  name                     = local.naming.sa_2
+  location                 = local.location
+  resource_group_name      = azurerm_resource_group.rg.name
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
 
 # private endpoint
 module "private_endpoint" {
-  source = "git@github.com:Seyfor-CSC/mit.private-endpoint.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.private-endpoint.git?ref=v2.1.0"
   config = local.pe
 
   depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_link]

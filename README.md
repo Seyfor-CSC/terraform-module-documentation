@@ -55,7 +55,7 @@
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.0.0 |
 | [private dns resolver](./private-dns-resolver/README.md) | v2.0.0 |
 | [private dns zone](./private-dns-zone/README.md) | v2.0.0 |
-| [private endpoint](./private-endpoint/README.md) | v2.0.0 |
+| [private endpoint](./private-endpoint/README.md) | v2.1.0 |
 | [public ip address](./public-ip-address/README.md) | v2.0.0 |
 | [public ip prefix](./public-ip-prefix/README.md) | v2.0.0 |
 | [purview account](./purview-account/README.md) | v2.0.0 |
