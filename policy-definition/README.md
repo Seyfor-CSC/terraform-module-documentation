@@ -19,9 +19,9 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/p
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Management Group Level Policy Definition
-* terraform import '`<path-to-module>`.azurerm_policy_definition.policy_definition["`<policy-definition-name>`"]' '/providers/Microsoft.Management/managementGroups/`<management-group-id>`/providers/Microsoft.Authorization/policySetDefinitions/`<policy-definition-name>`'
+* terraform import '`<path-to-module>`.azurerm_policy_definition.policy_definition["`<policy-definition-name>`"]' '/providers/Microsoft.Management/managementGroups/`<management-group-id>`/providers/Microsoft.Authorization/policyDefinitions/`<policy-definition-name>`'
 ### Subscription Level Policy Definition
-* terraform import '`<path-to-module>`.azurerm_policy_definition.policy_definition["`<policy-definition-name>`"]' '/subscriptions/`<subscription-id>`/providers/Microsoft.Authorization/policySetDefinitions/`<policy-definition-name>`'
+* terraform import '`<path-to-module>`.azurerm_policy_definition.policy_definition["`<policy-definition-name>`"]' '/subscriptions/`<subscription-id>`/providers/Microsoft.Authorization/policyDefinitions/`<policy-definition-name>`'
 
 >**_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.policy\_definition_
 
