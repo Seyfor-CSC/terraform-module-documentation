@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -27,7 +27,7 @@ resource "azurerm_container_app_environment" "cae" {
 
 # container app
 module "ca" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-app.git?ref=v2.1.0"
   config = local.ca
 }
 

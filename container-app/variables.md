@@ -61,6 +61,7 @@ variable "config" {  type = list(object({
             value = string
           }))
           host                    = optional(string)
+          initial_delay           = optional(number)
           interval_seconds        = optional(number)
           path                    = optional(string)
           port                    = number
@@ -75,6 +76,7 @@ variable "config" {  type = list(object({
             value = string
           }))
           host                             = optional(string)
+          initial_delay                    = optional(number)
           interval_seconds                 = optional(number)
           path                             = optional(string)
           port                             = number
@@ -171,8 +173,9 @@ variable "config" {  type = list(object({
       key_vault_secret_id = optional(string)
       value               = optional(string)
     })), [])
-    workload_profile_name = optional(string)
-    tags                  = optional(map(any))
+    workload_profile_name  = optional(string)
+    max_inactive_revisions = optional(number)
+    tags                   = optional(map(any))
   }))
 }
 
@@ -235,6 +238,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;host | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;initial_delay | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;port | number | Required |  |  |
@@ -247,6 +251,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;host | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;initial_delay | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;port | number | Required |  |  |
@@ -324,6 +329,7 @@ variable "config" {  type = list(object({
 |&nbsp;key_vault_secret_id | string | Optional |  |  |
 |&nbsp;value | string | Optional |  |  |
 |workload_profile_name | string | Optional |  |  |
+|max_inactive_revisions | number | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 
 
