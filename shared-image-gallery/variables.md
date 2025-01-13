@@ -53,6 +53,7 @@ variable "config" {  type = list(object({
       confidential_vm_supported           = optional(bool)
       confidential_vm_enabled             = optional(bool)
       hibernation_enabled                 = optional(bool)
+      disk_controller_type_nvme_enabled   = optional(bool)
       accelerated_network_support_enabled = optional(bool)
       tags                                = optional(map(any)) # If not provided, inherited in module from parent resource
 
@@ -136,6 +137,7 @@ variable "config" {  type = list(object({
 |&nbsp;confidential_vm_supported | bool | Optional |  |  |
 |&nbsp;confidential_vm_enabled | bool | Optional |  |  |
 |&nbsp;hibernation_enabled | bool | Optional |  |  |
+|&nbsp;disk_controller_type_nvme_enabled | bool | Optional |  |  |
 |&nbsp;accelerated_network_support_enabled | bool | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;image_version | list(object) | Optional | [] |  |
