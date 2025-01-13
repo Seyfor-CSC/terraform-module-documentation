@@ -11,16 +11,18 @@ variable "config" {  type = list(object({
       subnet_id            = string
       public_ip_address_id = string
     }))
-    copy_paste_enabled     = optional(bool)
-    file_copy_enabled      = optional(bool)
-    sku                    = optional(string)
-    ip_connect_enabled     = optional(bool)
-    kerberos_enabled       = optional(bool)
-    scale_units            = optional(number)
-    shareable_link_enabled = optional(bool)
-    tunneling_enabled      = optional(bool)
-    virtual_network_id     = optional(string)
-    tags                   = optional(map(any))
+    copy_paste_enabled        = optional(bool)
+    file_copy_enabled         = optional(bool)
+    sku                       = optional(string)
+    ip_connect_enabled        = optional(bool)
+    kerberos_enabled          = optional(bool)
+    scale_units               = optional(number)
+    shareable_link_enabled    = optional(bool)
+    tunneling_enabled         = optional(bool)
+    session_recording_enabled = optional(bool)
+    virtual_network_id        = optional(string)
+    zones                     = optional(list(string))
+    tags                      = optional(map(any))
 
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -59,7 +61,9 @@ variable "config" {  type = list(object({
 |scale_units | number | Optional |  |  |
 |shareable_link_enabled | bool | Optional |  |  |
 |tunneling_enabled | bool | Optional |  |  |
+|session_recording_enabled | bool | Optional |  |  |
 |virtual_network_id | string | Optional |  |  |
+|zones | list(string) | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |

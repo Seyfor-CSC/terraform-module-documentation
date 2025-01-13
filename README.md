@@ -19,7 +19,7 @@
 | [automation account](./automation-account/README.md) | v2.0.0 |
 | [availability set](./availability-set/README.md) | v2.1.0 |
 | [backup vault](./backup-vault/README.md) | v2.1.0 |
-| [bastion host](./bastion-host/README.md) | v2.0.0 |
+| [bastion host](./bastion-host/README.md) | v2.1.0 |
 | [cognitive account](./cognitive-account/README.md) | v2.0.0 |
 | [consumption budget](./consumption-budget/README.md) | v2.0.0 |
 | [container app](./container-app/README.md) | v2.1.0 |
@@ -67,7 +67,7 @@
 | [role definition](./role-definition/README.md) | v2.1.0 |
 | [route table](./route-table/README.md) | v2.1.0 |
 | [servicebus](./servicebus/README.md) | v2.1.0 |
-| [shared image gallery](./shared-image-gallery/README.md) | v2.0.0 |
+| [shared image gallery](./shared-image-gallery/README.md) | v2.1.0 |
 | [storage account](./storage-account/README.md) | v2.0.0 |
 | [storage sync](./storage-sync/README.md) | v2.1.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.1.0 |
