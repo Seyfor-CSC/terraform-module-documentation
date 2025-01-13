@@ -26,7 +26,7 @@
 | [container app environment](./container-app-environment/README.md) | v2.0.0 |
 | [container app job](./container-app-job/README.md) | v2.1.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
-| [container registry](./container-registry/README.md) | v2.0.0 |
+| [container registry](./container-registry/README.md) | v2.1.0 |
 | [data collection rule](./data-collection-rule/README.md) | v2.1.0 |
 | [data factory](./data-factory/README.md) | v2.1.0 |
 | [dns zone](./dns-zone/README.md) | v2.1.0 |
@@ -34,7 +34,7 @@
 | [event hub](./event-hub/README.md) | v2.0.0 |
 | [function app](./function-app/README.md) | v2.0.1 |
 | [key vault](./key-vault/README.md) | v2.0.0 |
-| [key vault seeding](./key-vault-seeding/README.md) | v2.0.0 |
+| [key vault seeding](./key-vault-seeding/README.md) | v2.1.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.0.0 |
 | [load balancer](./load-balancer/README.md) | v2.1.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.1.0 |
