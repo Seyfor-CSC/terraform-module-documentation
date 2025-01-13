@@ -11,6 +11,7 @@ variable "config" {  type = list(object({
     ddos_protection_mode    = optional(string)
     ddos_protection_plan_id = optional(string)
     domain_name_label       = optional(string)
+    domain_name_label_scope = optional(string)
     edge_zone               = optional(string)
     idle_timeout_in_minutes = optional(number)
     ip_tags                 = optional(map(any))
@@ -53,6 +54,7 @@ variable "config" {  type = list(object({
 |ddos_protection_mode | string | Optional |  |  |
 |ddos_protection_plan_id | string | Optional |  |  |
 |domain_name_label | string | Optional |  |  |
+|domain_name_label_scope | string | Optional |  |  |
 |edge_zone | string | Optional |  |  |
 |idle_timeout_in_minutes | number | Optional |  |  |
 |ip_tags | map(any) | Optional |  |  |
