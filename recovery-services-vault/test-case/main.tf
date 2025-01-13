@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -64,16 +64,15 @@ resource "azurerm_eventhub_namespace" "eventhub_namespace" {
 }
 
 resource "azurerm_eventhub" "eventhub" {
-  name                = "SEY-RSV-NE-EVH01"
-  namespace_name      = azurerm_eventhub_namespace.eventhub_namespace.name
-  resource_group_name = azurerm_resource_group.rg.name
-  partition_count     = 2
-  message_retention   = 1
+  name              = "SEY-RSV-NE-EVH01"
+  namespace_id      = azurerm_eventhub_namespace.eventhub_namespace.id
+  partition_count   = 2
+  message_retention = 1
 }
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.1.0"
   config = local.rsv
 }
 

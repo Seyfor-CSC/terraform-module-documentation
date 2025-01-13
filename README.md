@@ -60,13 +60,13 @@
 | [public ip address](./public-ip-address/README.md) | v2.0.0 |
 | [public ip prefix](./public-ip-prefix/README.md) | v2.0.0 |
 | [purview account](./purview-account/README.md) | v2.0.0 |
-| [recovery services vault](./recovery-services-vault/README.md) | v2.0.0 |
+| [recovery services vault](./recovery-services-vault/README.md) | v2.1.0 |
 | [redis cache](./redis-cache/README.md) | v2.0.0 |
 | [resource group](./resource-group/README.md) | v2.1.0 |
 | [role assignment](./role-assignment/README.md) | v2.0.0 |
 | [role definition](./role-definition/README.md) | v2.1.0 |
 | [route table](./route-table/README.md) | v2.1.0 |
-| [servicebus](./servicebus/README.md) | v2.0.0 |
+| [servicebus](./servicebus/README.md) | v2.1.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.0.0 |
 | [storage account](./storage-account/README.md) | v2.0.0 |
 | [storage sync](./storage-sync/README.md) | v2.1.0 |
