@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -42,6 +42,6 @@ resource "azurerm_monitor_action_group" "ag" {
 
 # monitor alert
 module "monitor_alert" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-alert.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-alert.git?ref=v2.1.0"
   config = local.alerts
 }
