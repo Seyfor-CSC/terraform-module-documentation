@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -36,8 +36,8 @@ resource "azurerm_storage_account" "sa" {
 }
 
 resource "azurerm_storage_container" "container" {
-  name                 = "seydcrnec01"
-  storage_account_name = azurerm_storage_account.sa.name
+  name               = "seydcrnec01"
+  storage_account_id = azurerm_storage_account.sa.id
 }
 
 resource "azurerm_monitor_data_collection_endpoint" "example" {
@@ -52,7 +52,7 @@ resource "azurerm_monitor_data_collection_endpoint" "example" {
 
 # data collection rule
 module "data_collection_rule" {
-  source = "git@github.com:Seyfor-CSC/mit.data-collection-rule.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.data-collection-rule.git?ref=v2.1.0"
   config = local.dcr
 }
 
