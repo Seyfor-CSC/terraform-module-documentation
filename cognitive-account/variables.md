@@ -59,8 +59,9 @@ variable "config" {  type = list(object({
         family   = optional(string)
         capacity = optional(number)
       })
-      rai_policy_name        = optional(string)
-      version_upgrade_option = optional(string)
+      dynamic_throttling_enabled = optional(bool)
+      rai_policy_name            = optional(string)
+      version_upgrade_option     = optional(string)
     })), [])
 
     # private endpoint
@@ -98,10 +99,11 @@ variable "config" {  type = list(object({
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
       categories = optional(object({
-        audit            = optional(bool, true)
-        request_response = optional(bool, true)
-        trace            = optional(bool, true)
-        all_metrics      = optional(bool, true)
+        audit                      = optional(bool, true)
+        request_response           = optional(bool, true)
+        trace                      = optional(bool, true)
+        azure_openai_request_usage = optional(bool, true)
+        all_metrics                = optional(bool, true)
       }))
     })), [])
   }))
@@ -162,6 +164,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;size | string | Optional |  |  |
 |&nbsp;&nbsp;family | string | Optional |  |  |
 |&nbsp;&nbsp;capacity | number | Optional |  |  |
+|&nbsp;dynamic_throttling_enabled | bool | Optional |  |  |
 |&nbsp;rai_policy_name | string | Optional |  |  |
 |&nbsp;version_upgrade_option | string | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
@@ -195,6 +198,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;audit | bool | Optional |  true |  |
 |&nbsp;&nbsp;request_response | bool | Optional |  true |  |
 |&nbsp;&nbsp;trace | bool | Optional |  true |  |
+|&nbsp;&nbsp;azure_openai_request_usage | bool | Optional |  true |  |
 |&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
