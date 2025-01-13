@@ -30,30 +30,6 @@ variable "config" {  type = list(object({
       destination_application_security_group_ids = optional(list(string))
     })), [])
 
-    # network watcher flow log
-    nsg_flow_log = optional(list(object({
-      name                      = string
-      resource_group_name       = string
-      network_watcher_name      = string
-      network_security_group_id = optional(string) # Inherited in module from parent resource
-      storage_account_id        = string
-      enabled                   = bool
-      retention_policy = object({
-        enabled = bool
-        days    = number
-      })
-      location = optional(string)
-      traffic_analytics = optional(object({
-        enabled               = bool
-        workspace_id          = string
-        workspace_region      = string
-        workspace_resource_id = string
-        interval_in_minutes   = optional(number)
-      }))
-      version = optional(number)
-      tags    = optional(map(any)) # If not provided, inherited in module from parent resource
-    })), [])
-
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
       diag_name                      = optional(string) # Name of the diagnostic setting
@@ -99,25 +75,6 @@ variable "config" {  type = list(object({
 |&nbsp;destination_address_prefix | string | Optional |  |  |
 |&nbsp;destination_address_prefixes | list(string) | Optional |  |  |
 |&nbsp;destination_application_security_group_ids | list(string) | Optional |  |  |
-|nsg_flow_log | list(object) | Optional | [] |  |
-|&nbsp;name | string | Required |  |  |
-|&nbsp;resource_group_name | string | Required |  |  |
-|&nbsp;network_watcher_name | string | Required |  |  |
-|&nbsp;network_security_group_id | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;storage_account_id | string | Required |  |  |
-|&nbsp;enabled | bool | Required |  |  |
-|&nbsp;retention_policy | object | Required |  |  |
-|&nbsp;&nbsp;enabled | bool | Required |  |  |
-|&nbsp;&nbsp;days | number | Required |  |  |
-|&nbsp;location | string | Optional |  |  |
-|&nbsp;traffic_analytics | object | Optional |  |  |
-|&nbsp;&nbsp;enabled | bool | Required |  |  |
-|&nbsp;&nbsp;workspace_id | string | Required |  |  |
-|&nbsp;&nbsp;workspace_region | string | Required |  |  |
-|&nbsp;&nbsp;workspace_resource_id | string | Required |  |  |
-|&nbsp;&nbsp;interval_in_minutes | number | Optional |  |  |
-|&nbsp;version | number | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

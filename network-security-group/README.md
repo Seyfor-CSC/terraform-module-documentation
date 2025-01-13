@@ -2,7 +2,6 @@
 Network Security Group module can deploy these resources:
 * azurerm_network_security_group (required)
 * azurerm_network_security_rule (optional)
-* azurerm_network_watcher_flow_log (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
@@ -13,13 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/network_security_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/network_security_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/network_security_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/network_security_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/network_watcher_flow_log
-
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -31,8 +28,6 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_network_security_group.network_security_group["`<nsg-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/networkSecurityGroups/`<nsg-name>`'
 ### Rules
 * terraform import '`<path-to-module>`.azurerm_network_security_rule.network_security_rule["`<nsg-name>`_`<nsg-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/networkSecurityGroups/`<nsg-name>`/securityRules/`<nsg-rule-name>`'
-### Flow Logs
-* terraform import '`<path-to-module>`.azurerm_network_watcher_flow_log.network_watcher_flow_log["`<nsg-name>`_`<flow-log-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/networkWatchers/`<network-watcher-name>`/flowLogs/`<flow-log-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<nsg-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/networkSecurityGroups/`<nsg-name>`|`<diag-name>`'
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## Release v2.1.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.14.0 (#23)
+- Terraform: 1.10.3 (#23)
+
+## Enhancements
+- Seperate `azurerm_network_watcher_flow_log` to a dedicated module (#22)
+
+
+   
 ## Release v2.0.0
 
 ## Provider & Terraform Upgrade

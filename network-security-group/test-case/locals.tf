@@ -36,19 +36,6 @@ locals {
           destination_address_prefix = "*"
         }
       ]
-      nsg_flow_log = [
-        {
-          name                 = "flowlog"
-          network_watcher_name = azurerm_network_watcher.nw.name
-          resource_group_name  = azurerm_resource_group.rg.name
-          storage_account_id   = azurerm_storage_account.sa.id
-          enabled              = true
-          retention_policy = {
-            enabled = true
-            days    = 7
-          }
-        }
-      ]
 
       monitoring = [
         {
