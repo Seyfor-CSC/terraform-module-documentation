@@ -3,11 +3,12 @@
 ```
 variable "config" {  type = list(object({
     # data protection backup vault
-    name                = string
-    resource_group_name = string
-    location            = string
-    datastore_type      = string
-    redundancy          = string
+    name                         = string
+    resource_group_name          = string
+    location                     = string
+    datastore_type               = string
+    redundancy                   = string
+    cross_region_restore_enabled = optional(bool)
     identity = optional(object({
       type = string
     }))
@@ -62,6 +63,7 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |datastore_type | string | Required |  |  |
 |redundancy | string | Required |  |  |
+|cross_region_restore_enabled | bool | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |retention_duration_in_days | number | Optional |  |  |
