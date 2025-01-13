@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -52,12 +52,12 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual network
 module "virtual_network" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.0.1"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.1.0"
   config          = local.vnet
   subscription_id = data.azurerm_subscription.primary.id
 }
 module "subnets" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.0.1"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.1.0"
   subnets         = local.subnets
   subscription_id = data.azurerm_subscription.primary.id
 }

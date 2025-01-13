@@ -75,5 +75,5 @@
 | [virtual machine](./virtual-machine/README.md) | v2.0.0 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.2.1 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.0.0 |
-| [virtual network](./virtual-network/README.md) | v2.0.1 |
+| [virtual network](./virtual-network/README.md) | v2.1.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v2.1.0 |
