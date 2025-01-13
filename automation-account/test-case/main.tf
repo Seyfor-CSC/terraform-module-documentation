@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -57,7 +57,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # automation account
 module "automation_account" {
-  source     = "git@github.com:Seyfor-CSC/mit.automation-account.git?ref=v2.0.0"
+  source     = "git@github.com:Seyfor-CSC/mit.automation-account.git?ref=v2.1.0"
   config     = local.aa
   depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_link]
 }
