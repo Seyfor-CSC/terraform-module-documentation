@@ -32,7 +32,7 @@
 | [dns zone](./dns-zone/README.md) | v2.1.0 |
 | [event grid](./event-grid/README.md) | v2.1.0 |
 | [event hub](./event-hub/README.md) | v2.0.0 |
-| [function app](./function-app/README.md) | v2.0.1 |
+| [function app](./function-app/README.md) | v2.1.0 |
 | [key vault](./key-vault/README.md) | v2.0.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.1.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.0.0 |
