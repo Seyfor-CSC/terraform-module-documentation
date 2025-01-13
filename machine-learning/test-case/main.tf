@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.1.0"
+      version = "=4.14.0"
     }
   }
   backend "local" {}
@@ -121,16 +121,15 @@ resource "azurerm_eventhub_namespace" "eventhub_namespace" {
 }
 
 resource "azurerm_eventhub" "eh" {
-  name                = "sey-mlworkspace-ne-evh01"
-  namespace_name      = azurerm_eventhub_namespace.eventhub_namespace.name
-  resource_group_name = azurerm_resource_group.rg.name
-  partition_count     = 2
-  message_retention   = 1
+  name              = "sey-mlworkspace-ne-evh01"
+  namespace_id      = azurerm_eventhub_namespace.eventhub_namespace.id
+  partition_count   = 2
+  message_retention = 1
 }
 
 # machine learning workspace
 module "machine_learning_workspace" {
-  source = "git@github.com:Seyfor-CSC/mit.machine-learning.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.machine-learning.git?ref=v2.1.0"
   config = local.mlw
 }
 
