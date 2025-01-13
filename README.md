@@ -61,7 +61,7 @@
 | [public ip prefix](./public-ip-prefix/README.md) | v2.0.0 |
 | [purview account](./purview-account/README.md) | v2.1.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.1.0 |
-| [redis cache](./redis-cache/README.md) | v2.0.0 |
+| [redis cache](./redis-cache/README.md) | v2.1.0 |
 | [resource group](./resource-group/README.md) | v2.1.0 |
 | [role assignment](./role-assignment/README.md) | v2.0.0 |
 | [role definition](./role-definition/README.md) | v2.1.0 |
@@ -72,7 +72,7 @@
 | [storage sync](./storage-sync/README.md) | v2.1.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.1.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.0.0 |
-| [virtual machine](./virtual-machine/README.md) | v2.0.0 |
+| [virtual machine](./virtual-machine/README.md) | v2.1.0 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.2.1 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.0.0 |
 | [virtual network](./virtual-network/README.md) | v2.1.0 |
