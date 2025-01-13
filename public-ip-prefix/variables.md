@@ -7,6 +7,7 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     sku                 = optional(string)
+    sku_tier            = optional(string)
     ip_version          = optional(string)
     prefix_length       = optional(number)
     zones               = optional(set(string))
@@ -40,6 +41,7 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |sku | string | Optional |  |  |
+|sku_tier | string | Optional |  |  |
 |ip_version | string | Optional |  |  |
 |prefix_length | number | Optional |  |  |
 |zones | set(string) | Optional |  |  |
