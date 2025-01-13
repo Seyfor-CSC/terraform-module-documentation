@@ -14,13 +14,13 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/windows_virtual_machine_scale_set
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/windows_virtual_machine_scale_set
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/linux_virtual_machine_scale_set
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/linux_virtual_machine_scale_set
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_autoscale_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/monitor_autoscale_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 

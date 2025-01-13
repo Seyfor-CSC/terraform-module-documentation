@@ -173,7 +173,7 @@ variable "config" {  type = list(object({
       enabled = optional(bool)
       timeout = optional(string)
     }))
-     termination_notification = optional(object({
+    termination_notification = optional(object({
       enabled = bool
       timeout = optional(string)
     }))
