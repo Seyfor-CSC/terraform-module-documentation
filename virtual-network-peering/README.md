@@ -10,7 +10,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/virtual_network_peering
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/virtual_network_peering
 
 &nbsp;
 
