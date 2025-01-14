@@ -35,11 +35,10 @@ variable "config" {  type = list(object({
 
     # eventhub
     eventhub = optional(list(object({
-      name                = string
-      namespace_name      = optional(string) # Inherited in module from parent resource
-      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
-      partition_count     = number
-      message_retention   = number
+      name              = string
+      namespace_id      = optional(string) # Inherited in module from parent resource
+      partition_count   = number
+      message_retention = number
       capture_description = optional(object({
         enabled  = bool
         encoding = string
@@ -120,6 +119,8 @@ variable "config" {  type = list(object({
         operational_logs                = optional(bool, true)
         event_hub_vnet_connection_event = optional(bool, false)
         runtime_audit_logs              = optional(bool, false)
+        diagnostic_error_logs           = optional(bool, true)
+        data_dr_logs                    = optional(bool, true)
         all_metrics                     = optional(bool, true)
       }))
     })), [])
@@ -161,8 +162,7 @@ variable "config" {  type = list(object({
 |tags | map(any) | Optional |  |  |
 |eventhub | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;namespace_name | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;namespace_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;partition_count | number | Required |  |  |
 |&nbsp;message_retention | number | Required |  |  |
 |&nbsp;capture_description | object | Optional |  |  |
@@ -228,6 +228,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;operational_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;event_hub_vnet_connection_event | bool | Optional |  false |  |
 |&nbsp;&nbsp;runtime_audit_logs | bool | Optional |  false |  |
+|&nbsp;&nbsp;diagnostic_error_logs | bool | Optional |  true |  |
+|&nbsp;&nbsp;data_dr_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
