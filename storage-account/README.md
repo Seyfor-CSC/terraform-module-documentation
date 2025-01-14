@@ -19,25 +19,25 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.1.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/private_endpoint
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -143,3 +143,10 @@ Not all available variables for Storage Management Policy are currently supporte
 If any of the metrics is disabled, the diagnostic setting will be updating in place with every run.
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
+## Container and File Share migration to new API
+AzureRM provider introduced changes to the API for storage account containers and file shares. Previous Data Plane API is replaced with the Resource Manager API. This deprecates the use of `storage_account_name` in the `azurerm_storage_container` and `azurerm_storage_share` resources. The new API requires the use of `storage_account_id` instead. This module has been updated to use the new API. The `storage_account_name` variable is still available for backward compatibility, however, its value isn't inherited from the resource anymore and needs to be provided explicitly.
+If you want to migrate from `storage_account_name` to `storage_account_id`, you have to remove the resource from terraform state and reimport it with the new variable. New import has to use the `Resource Manager ID` instead of the previously used `ID`.
+### GitHub Pull Request
+https://github.com/hashicorp/terraform-provider-azurerm/pull/27733
+## Deprecated variables migrating to resources
+AzureRM provider is slowly deprecating some variables in favor of resources. Since not all variables have been deprecated yet, this module will update once the deprecation is complete. In the meantime, you will be seeing a warning message that you can ignore.
