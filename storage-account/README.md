@@ -145,7 +145,7 @@ If any of the metrics is disabled, the diagnostic setting will be updating in pl
 https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
 ## Container and File Share migration to new API
 AzureRM provider introduced changes to the API for storage account containers and file shares. Previous Data Plane API is replaced with the Resource Manager API. This deprecates the use of `storage_account_name` in the `azurerm_storage_container` and `azurerm_storage_share` resources. The new API requires the use of `storage_account_id` instead. This module has been updated to use the new API. The `storage_account_name` variable is still available for backward compatibility, however, its value isn't inherited from the resource anymore and needs to be provided explicitly.
-If you want to migrate from `storage_account_name` to `storage_account_id`, you have to remove the resource from terraform state and reimport it with the new variable. New import has to use the `Resource Manager ID` instead of the previously used `ID`.
+If you want to migrate from `storage_account_name` to `storage_account_id`, you have to remove the resource from terraform state and reimport it with the new variable. New import has to use `ID` instead of the previously used `Resource Manager ID`.
 ### GitHub Pull Request
 https://github.com/hashicorp/terraform-provider-azurerm/pull/27733
 ## Deprecated variables migrating to resources
