@@ -31,7 +31,7 @@
 | [data factory](./data-factory/README.md) | v2.1.0 |
 | [dns zone](./dns-zone/README.md) | v2.1.0 |
 | [event grid](./event-grid/README.md) | v2.1.0 |
-| [event hub](./event-hub/README.md) | v2.0.0 |
+| [event hub](./event-hub/README.md) | v2.1.0 |
 | [function app](./function-app/README.md) | v2.1.0 |
 | [key vault](./key-vault/README.md) | v2.1.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.1.0 |
@@ -73,7 +73,7 @@
 | [user assigned identity](./user-assigned-identity/README.md) | v2.1.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.0.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.1.0 |
-| [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.2.1 |
+| [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.3.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.1.0 |
 | [virtual network](./virtual-network/README.md) | v2.1.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v2.1.0 |
