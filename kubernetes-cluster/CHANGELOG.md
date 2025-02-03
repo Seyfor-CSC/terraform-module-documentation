@@ -1,5 +1,17 @@
 # Changelog
 
+## Release v2.1.1
+
+
+   
+## Release v2.1.1
+
+## Enhancements
+
+- Add `monitor_metrics` & `msi_auth_for_monitoring_enabled` parameters (#55)
+
+
+   
 ## Release v2.1.0
 
 ## Provider & Terraform Upgrade

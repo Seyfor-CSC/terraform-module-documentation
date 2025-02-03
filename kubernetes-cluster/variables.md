@@ -108,6 +108,10 @@ variable "config" {  type = list(object({
     microsoft_defender = optional(object({
       log_analytics_workspace_id = string
     }))
+    monitor_metrics = optional(object({
+      annotations_allowed = optional(string)
+      labels_allowed      = optional(string)
+    }))
     network_profile = optional(object({
       network_plugin      = string
       network_policy      = optional(string)
@@ -122,7 +126,8 @@ variable "config" {  type = list(object({
     node_resource_group     = optional(string)
     oidc_issuer_enabled     = optional(bool)
     oms_agent = optional(object({
-      log_analytics_workspace_id = string
+      log_analytics_workspace_id      = string
+      msi_auth_for_monitoring_enabled = optional(bool)
     }))
     private_cluster_enabled             = optional(bool, true)
     private_dns_zone_id                 = optional(string)
@@ -300,6 +305,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
 |&nbsp;microsoft_defender | object | Optional |  |  |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
+|&nbsp;monitor_metrics | object | Optional |  |  |
+|&nbsp;&nbsp;annotations_allowed | string | Optional |  |  |
+|&nbsp;&nbsp;labels_allowed | string | Optional |  |  |
 |&nbsp;network_profile | object | Optional |  |  |
 |&nbsp;&nbsp;network_plugin | string | Required |  |  |
 |&nbsp;&nbsp;network_policy | string | Optional |  |  |
@@ -314,6 +322,7 @@ variable "config" {  type = list(object({
 |&nbsp;oidc_issuer_enabled | bool | Optional |  |  |
 |&nbsp;oms_agent | object | Optional |  |  |
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
+|&nbsp;&nbsp;msi_auth_for_monitoring_enabled | bool | Optional |  |  |
 |&nbsp;private_cluster_enabled | bool | Optional |  true |  |
 |&nbsp;private_dns_zone_id | string | Optional |  |  |
 |&nbsp;private_cluster_public_fqdn_enabled | bool | Optional |  |  |
