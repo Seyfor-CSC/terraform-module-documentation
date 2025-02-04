@@ -24,7 +24,9 @@ variable "config" {  type = list(object({
       type                          = optional(string)
       ultra_ssd_enabled             = optional(bool)
       upgrade_settings = optional(object({
-        max_surge = string
+        drain_timeout_in_minutes      = optional(number)
+        node_soak_duration_in_minutes = optional(number)
+        max_surge                     = string
       }))
       vnet_subnet_id = optional(string)
       zones          = optional(list(string))
@@ -174,7 +176,9 @@ variable "config" {  type = list(object({
       pod_subnet_id                 = optional(string)
       ultra_ssd_enabled             = optional(bool)
       upgrade_settings = optional(object({
-        max_surge = string
+        drain_timeout_in_minutes      = optional(number)
+        node_soak_duration_in_minutes = optional(number)
+        max_surge                     = string
       }))
       vnet_subnet_id = optional(string)
       zones          = optional(list(string))
@@ -237,6 +241,8 @@ variable "config" {  type = list(object({
 |&nbsp;type | string | Optional |  |  |
 |&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
 |&nbsp;upgrade_settings | object | Optional |  |  |
+|&nbsp;&nbsp;drain_timeout_in_minutes | number | Optional |  |  |
+|&nbsp;&nbsp;node_soak_duration_in_minutes | number | Optional |  |  |
 |&nbsp;&nbsp;max_surge | string | Required |  |  |
 |&nbsp;vnet_subnet_id | string | Optional |  |  |
 |&nbsp;zones | list(string) | Optional |  |  |
@@ -362,6 +368,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;pod_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;upgrade_settings | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;drain_timeout_in_minutes | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;node_soak_duration_in_minutes | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;max_surge | string | Required |  |  |
 |&nbsp;&nbsp;vnet_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;zones | list(string) | Optional |  |  |

@@ -1,6 +1,10 @@
 # Changelog
 
-## Release v2.1.1
+## Release v2.1.2
+
+## Enhancements
+
+- Add `drain_timeout_in_minutes` & `node_soak_duration_in_minutes` parameters (#57)
 
 
    
