@@ -50,7 +50,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 ### Container
 * terraform import '`<path-to-module>`.azurerm_storage_container.storage_container["`<storage-account-name>`_`<storage-container-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/blobServices/default/containers/`<storage-container-name>`'
 ### File Share
-* terraform import '`<path-to-module>`.azurerm_storage_share.storage_share["`<storage-account-name>`_`<storage-share-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/fileServices/default/fileshares/`<storage-share-name>`'
+* terraform import '`<path-to-module>`.azurerm_storage_share.storage_share["`<storage-account-name>`_`<storage-share-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Storage/storageAccounts/`<storage-account-name>`/fileServices/default/shares/`<storage-share-name>`'
 ### Queue
 * terraform import '`<path-to-module>`.azurerm_storage_queue.storage_queue["`<storage-account-name>`_`<storage-queue-name>`"]' 'https://`<storage-account-name>`.queue.core.windows.net/`<storage-queue-name>`'
 ### Table
