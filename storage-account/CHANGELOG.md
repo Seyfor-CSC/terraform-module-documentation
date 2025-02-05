@@ -1,5 +1,19 @@
 # Changelog
 
+## Release v2.1.1
+
+## Bug Fixes
+
+- Fix `file_share` and `container` outputs (#59)
+- Fix `storage_account_id` to be used unless `storage_account_name` is used (#60)
+
+
+## Enhancements
+
+- Fix import commands of `file_shares` and `containers` (#61)
+
+
+   
 ## Release v2.1.0
 
 ## Provider & Terraform Upgrade
