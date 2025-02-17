@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.2.0
+
+## Enhancements
+
+- Support for `storage_account_id` in diagnostic settings (#73)
+
+
+   
 ## Release v2.1.1
 
 ## Bug Fixes
