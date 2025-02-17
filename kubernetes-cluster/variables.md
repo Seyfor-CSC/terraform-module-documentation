@@ -194,6 +194,7 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      storage_account_id             = optional(string)
       categories = optional(object({
         kube_controller_manager  = optional(bool, true)
         cloud_controller_manager = optional(bool, true)
@@ -382,6 +383,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;kube_controller_manager | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;cloud_controller_manager | bool | Optional |  true |  |
