@@ -129,7 +129,7 @@ resource "azurerm_eventhub" "eh" {
 
 # machine learning workspace
 module "machine_learning_workspace" {
-  source = "git@github.com:Seyfor-CSC/mit.machine-learning.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.machine-learning.git?ref=v2.2.0"
   config = local.mlw
 }
 
