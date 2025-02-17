@@ -57,6 +57,7 @@ variable "config" {  type = list(object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        storage_account_id             = optional(string)
         categories = optional(object({
           basic                     = optional(bool, true)
           instance_and_app_advanced = optional(bool, true)
@@ -147,6 +148,7 @@ variable "config" {  type = list(object({
         log_analytics_workspace_id     = optional(string)
         eventhub_name                  = optional(string)
         eventhub_authorization_rule_id = optional(string)
+        storage_account_id             = optional(string)
         categories = optional(object({
           sql_insights                   = optional(bool, true)
           automatic_tuning               = optional(bool, true)
@@ -256,6 +258,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;basic | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;instance_and_app_advanced | bool | Optional |  true |  |
@@ -331,6 +334,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;sql_insights | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;automatic_tuning | bool | Optional |  true |  |
