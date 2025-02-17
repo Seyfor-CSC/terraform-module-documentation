@@ -71,6 +71,7 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      storage_account_id             = optional(string)
       categories = optional(object({
         audit_event                     = optional(bool, true)
         azure_policy_evaluation_details = optional(bool, true)
@@ -145,6 +146,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;audit_event | bool | Optional |  true |  |
 |&nbsp;&nbsp;&nbsp;azure_policy_evaluation_details | bool | Optional |  true |  |
