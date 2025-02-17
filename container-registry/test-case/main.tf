@@ -57,7 +57,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container registry
 module "container_registry" {
-  source = "git@github.com:Seyfor-CSC/mit.container-registry.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-registry.git?ref=v2.2.0"
   config = local.cr
 }
 
