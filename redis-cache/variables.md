@@ -84,6 +84,7 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      storage_account_id             = optional(string)
       categories = optional(object({
         connected_client_list             = optional(bool, true)
         ms_entra_authentication_audit_log = optional(bool, true)
@@ -171,6 +172,7 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;connected_client_list | bool | Optional |  true |  |
 |&nbsp;&nbsp;ms_entra_authentication_audit_log | bool | Optional |  true |  |
