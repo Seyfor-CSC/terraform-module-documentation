@@ -124,6 +124,7 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      storage_account_id             = optional(string)
       categories = optional(object({
         job_logs        = optional(bool, true)
         job_streams     = optional(bool, true)
@@ -238,6 +239,7 @@ variable "config" {  type = list(object({
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |
 |&nbsp;eventhub_name | string | Optional |  |  |
 |&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;storage_account_id | string | Optional |  |  |
 |&nbsp;categories | object | Optional |  |  |
 |&nbsp;&nbsp;job_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;job_streams | bool | Optional |  true |  |
