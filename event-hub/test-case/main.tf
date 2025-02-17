@@ -57,7 +57,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # event hub
 module "event_hub" {
-  source = "git@github.com:Seyfor-CSC/mit.event-hub.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.event-hub.git?ref=v2.2.0"
   config = local.evhns
 }
 
