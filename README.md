@@ -19,7 +19,7 @@
 | [automation account](./automation-account/README.md) | v2.2.0 |
 | [availability set](./availability-set/README.md) | v2.1.0 |
 | [backup vault](./backup-vault/README.md) | v2.2.0 |
-| [bastion host](./bastion-host/README.md) | v2.1.0 |
+| [bastion host](./bastion-host/README.md) | v2.2.0 |
 | [cognitive account](./cognitive-account/README.md) | v2.1.0 |
 | [consumption budget](./consumption-budget/README.md) | v2.1.0 |
 | [container app](./container-app/README.md) | v2.1.0 |
