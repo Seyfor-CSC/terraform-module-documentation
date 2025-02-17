@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # public ip prefix
 module "public_ip_prefix" {
-  source = "git@github.com:Seyfor-CSC/mit.public-ip-prefix.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.public-ip-prefix.git?ref=v2.2.0"
   config = local.pipp
 }
 
