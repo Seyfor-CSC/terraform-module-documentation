@@ -157,6 +157,7 @@ variable "config" {  type = list(object({
       log_analytics_workspace_id     = optional(string)
       eventhub_name                  = optional(string)
       eventhub_authorization_rule_id = optional(string)
+      storage_account_id             = optional(string)
       recovery                       = optional(bool, false) # Custom variable used to enable recovery logs
       backup                         = optional(bool, false) # Custom variable used to enable new backup logs
       backup_report                  = optional(bool, false) # Custom variable used to enable backup legacy logs

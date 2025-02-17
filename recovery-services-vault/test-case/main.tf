@@ -72,7 +72,7 @@ resource "azurerm_eventhub" "eventhub" {
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.2.0"
   config = local.rsv
 }
 
