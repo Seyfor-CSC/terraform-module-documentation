@@ -73,7 +73,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # logic app standard
 module "logic_app_standard" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-standard.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-standard.git?ref=v2.2.0"
   config = local.logic
 }
 
