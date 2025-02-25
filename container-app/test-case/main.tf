@@ -27,7 +27,7 @@ resource "azurerm_container_app_environment" "cae" {
 
 # container app
 module "ca" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-app.git?ref=v2.1.1"
   config = local.ca
 }
 
