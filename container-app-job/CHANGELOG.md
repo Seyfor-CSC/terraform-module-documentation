@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.1.1
+
+## Enhancements
+
+- Add `principal_id` to outputs (#24)
+
+
+   
 ## Release v2.1.0
 
 ## Provider & Terraform Upgrade

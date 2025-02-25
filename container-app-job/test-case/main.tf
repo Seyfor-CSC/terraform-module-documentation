@@ -25,7 +25,7 @@ resource "azurerm_container_app_environment" "cae" {
 }
 
 module "caj" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-job.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-app-job.git?ref=v2.1.1"
   config = local.caj
 }
 

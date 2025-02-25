@@ -28,12 +28,13 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value                 | Comment |
-| ----------- | --------------------- | ------- |
-| outputs     | name                  |         |
-|             | id                    |         |
-|             | event_stream_endpoint |         |
-|             | outbound_ip_addresses |         |
+| Output Name | Value                 | Comment                                              |
+| ----------- | --------------------- | ---------------------------------------------------- |
+| outputs     | name                  |                                                      |
+|             | id                    |                                                      |
+|             | principal_id          | principal_id (object_id) of system assigned identity |
+|             | event_stream_endpoint |                                                      |
+|             | outbound_ip_addresses |                                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Container App Job module is used as a value for the _scope_ variable in Role Assignment resource.
