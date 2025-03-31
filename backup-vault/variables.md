@@ -13,6 +13,7 @@ variable "config" {  type = list(object({
       type = string
     }))
     retention_duration_in_days = optional(number)
+    immutability               = optional(string)
     soft_delete                = optional(string)
     tags                       = optional(map(any))
 
@@ -68,6 +69,7 @@ variable "config" {  type = list(object({
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |retention_duration_in_days | number | Optional |  |  |
+|immutability | string | Optional |  |  |
 |soft_delete | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |backup_policy_disk | list(object) | Optional | [] |  |
