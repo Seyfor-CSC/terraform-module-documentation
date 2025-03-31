@@ -1,5 +1,19 @@
 # Changelog
 
+## Release v2.2.0
+
+## Provider & Terraform Upgrade
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.23.0 (#40)
+- Terraform: 1.11.2 (#40)
+
+## Enhancements
+
+- Support for `storage_account_id` in diagnostic settings (#36)
+
+
+   
 ## Release v2.1.0
 
 ## Provider & Terraform Upgrade
