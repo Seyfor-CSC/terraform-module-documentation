@@ -66,7 +66,7 @@
 | [role assignment](./role-assignment/README.md) | v2.1.0 |
 | [role definition](./role-definition/README.md) | v2.1.0 |
 | [route table](./route-table/README.md) | v2.1.0 |
-| [servicebus](./servicebus/README.md) | v2.2.0 |
+| [servicebus](./servicebus/README.md) | v2.3.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.2.0 |
 | [storage account](./storage-account/README.md) | v2.2.0 |
 | [storage sync](./storage-sync/README.md) | v2.1.0 |
