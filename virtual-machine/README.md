@@ -19,23 +19,23 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/windows_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/windows_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/linux_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/linux_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/virtual_machine_data_disk_attachment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/virtual_machine_data_disk_attachment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_protected_vm
 
 &nbsp;
 
@@ -74,6 +74,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 | outputs     | name               |                                                      |
 |             | id                 |                                                      |
 |             | principal_id       | principal_id (object_id) of system assigned identity |
+|             | os_disk_id         |                                                      |
 |             | network_interfaces | Network Interface outputs                            |
 |             | &nbsp;name         |                                                      |
 |             | &nbsp;id           |                                                      |
