@@ -4,13 +4,15 @@
 variable "config" {  type = object({
     # key vault secret
     secret = optional(list(object({
-      name            = string
-      value           = optional(string) # If not provided, generated in module in 'random_password' resource
-      key_vault_id    = string
-      content_type    = optional(string)
-      not_before_date = optional(string)
-      expiration_date = optional(string)
-      tags            = optional(map(any))
+      name             = string
+      value            = optional(string) # If not provided, generated in module in 'random_password' resource
+      value_wo         = optional(string)
+      value_wo_version = optional(string)
+      key_vault_id     = string
+      content_type     = optional(string)
+      not_before_date  = optional(string)
+      expiration_date  = optional(string)
+      tags             = optional(map(any))
 
       # random password
       length           = optional(number, 12)
@@ -38,6 +40,8 @@ variable "config" {  type = object({
 |secret | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;value | string | Optional |  |  If not provided, generated in module in 'random_password' resource |
+|&nbsp;value_wo | string | Optional |  |  |
+|&nbsp;value_wo_version | string | Optional |  |  |
 |&nbsp;key_vault_id | string | Required |  |  |
 |&nbsp;content_type | string | Optional |  |  |
 |&nbsp;not_before_date | string | Optional |  |  |
