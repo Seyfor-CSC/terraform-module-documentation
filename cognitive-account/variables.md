@@ -25,6 +25,7 @@ variable "config" {  type = list(object({
     metrics_advisor_super_user_name = optional(string)
     metrics_advisor_website_name    = optional(string)
     network_acls = optional(object({
+      bypass         = optional(string)
       default_action = string
       ip_rules       = optional(list(string))
       virtual_network_rules = optional(list(object({
@@ -138,6 +139,7 @@ variable "config" {  type = list(object({
 |metrics_advisor_super_user_name | string | Optional |  |  |
 |metrics_advisor_website_name | string | Optional |  |  |
 |network_acls | object | Optional |  |  |
+|&nbsp;bypass | string | Optional |  |  |
 |&nbsp;default_action | string | Required |  |  |
 |&nbsp;ip_rules | list(string) | Optional |  |  |
 |&nbsp;virtual_network_rules | list(object) | Optional | [] |  |
