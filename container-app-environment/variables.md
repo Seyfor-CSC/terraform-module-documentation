@@ -12,12 +12,13 @@ variable "config" {  type = list(object({
     internal_load_balancer_enabled              = optional(bool)
     zone_redundancy_enabled                     = optional(bool)
     log_analytics_workspace_id                  = optional(string)
-    workload_profile = optional(object({
+    logs_destination                            = optional(string)
+    workload_profile = optional(list(object({
       name                  = string
       workload_profile_type = string
       maximum_count         = optional(number)
       minimum_count         = optional(number)
-    }))
+    })), [])
     mutual_tls_enabled = optional(bool)
     tags               = optional(map(any))
 
@@ -55,7 +56,8 @@ variable "config" {  type = list(object({
 |internal_load_balancer_enabled | bool | Optional |  |  |
 |zone_redundancy_enabled | bool | Optional |  |  |
 |log_analytics_workspace_id | string | Optional |  |  |
-|workload_profile | object | Optional |  |  |
+|logs_destination | string | Optional |  |  |
+|workload_profile | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;workload_profile_type | string | Required |  |  |
 |&nbsp;maximum_count | number | Optional |  |  |

@@ -16,10 +16,12 @@ locals {
       infrastructure_subnet_id           = azurerm_subnet.subnet.id
       log_analytics_workspace_id         = azurerm_log_analytics_workspace.la.id
 
-      workload_profile = {
-        name                  = "Consumption"
-        workload_profile_type = "Consumption"
-      }
+      workload_profile = [
+        {
+          name                  = "Consumption"
+          workload_profile_type = "Consumption"
+        }
+      ]
 
       monitoring = [
         {
