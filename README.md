@@ -1,5 +1,5 @@
 # Important information
-* All modules are currently tested on terraform version 1.10.3 and azurerm provider version 4.14.0.
+* All modules are currently tested on terraform version 1.11.2 and azurerm provider version 4.23.0.
 
 * Our modules are designed to save you time and effort by providing a consistent approach to deploying resources in Azure. Hardcoding resource ids required in child resources is in the past as it is now done automatically for you inside the module. For example, if you want to deploy a virtual machine with a network interface, you don't need to specify the network interface id in the virtual machine resource. You only need to configure the network interface and the module will take care of the rest.
 
@@ -21,7 +21,7 @@
 | [backup vault](./backup-vault/README.md) | v2.3.0 |
 | [bastion host](./bastion-host/README.md) | v2.3.0 |
 | [cognitive account](./cognitive-account/README.md) | v2.2.0 |
-| [consumption budget](./consumption-budget/README.md) | v2.1.0 |
+| [consumption budget](./consumption-budget/README.md) | v2.2.0 |
 | [container app](./container-app/README.md) | v2.1.1 |
 | [container app environment](./container-app-environment/README.md) | v2.2.0 |
 | [container app job](./container-app-job/README.md) | v2.1.1 |
@@ -41,7 +41,7 @@
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.3.0 |
 | [logic app standard](./logic-app-standard/README.md) | v2.2.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v2.3.0 |
-| [machine learning](./machine-learning/README.md) | v2.2.0 |
+| [machine learning](./machine-learning/README.md) | v2.3.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.2.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.0 |
