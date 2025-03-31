@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/shared_image_gallery
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/shared_image_gallery
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/shared_image
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/shared_image
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/shared_image_version
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/shared_image_version
 
 &nbsp;
 
