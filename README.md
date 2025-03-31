@@ -36,7 +36,7 @@
 | [key vault](./key-vault/README.md) | v2.3.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.1.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.2.0 |
-| [load balancer](./load-balancer/README.md) | v2.2.0 |
+| [load balancer](./load-balancer/README.md) | v2.3.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.2.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.2.0 |
 | [logic app standard](./logic-app-standard/README.md) | v2.2.0 |
@@ -58,7 +58,7 @@
 | [private dns zone](./private-dns-zone/README.md) | v2.1.0 |
 | [private endpoint](./private-endpoint/README.md) | v2.2.0 |
 | [public ip address](./public-ip-address/README.md) | v2.2.0 |
-| [public ip prefix](./public-ip-prefix/README.md) | v2.2.0 |
+| [public ip prefix](./public-ip-prefix/README.md) | v2.3.0 |
 | [purview account](./purview-account/README.md) | v2.2.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.2.0 |
 | [redis cache](./redis-cache/README.md) | v2.2.0 |
