@@ -6,15 +6,24 @@ variable "config" {  type = list(object({
     name                         = string
     resource_group_name          = string
     location                     = string
-    administrator_login          = string
-    administrator_login_password = string
     license_type                 = string
     sku_name                     = string
     storage_size_in_gb           = number
     subnet_id                    = string
     vcores                       = number
-    collation                    = optional(string)
-    dns_zone_partner_id          = optional(string)
+    administrator_login          = optional(string)
+    administrator_login_password = optional(string)
+    azure_active_directory_administrator = optional(object({
+      login_username                      = string
+      object_id                           = string
+      principal_type                      = string
+      azuread_authentication_only_enabled = optional(bool)
+      tenant_id                           = optional(string)
+    }))
+    collation              = optional(string)
+    database_format        = optional(string)
+    dns_zone_partner_id    = optional(string)
+    hybrid_secondary_usage = optional(string)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -83,57 +92,65 @@ variable "config" {  type = list(object({
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
-|administrator_login | string | Required |  |  |
-|administrator_login_password | string | Required |  |  |
 |license_type | string | Required |  |  |
 |sku_name | string | Required |  |  |
 |storage_size_in_gb | number | Required |  |  |
 |subnet_id | string | Required |  |  |
 |vcores | number | Required |  |  |
-|collation | string | Optional |  |  |
-|dns_zone_partner_id | string | Optional |  |  |
-|identity | object | Optional |  |  |
-|&nbsp;type | string | Required |  |  |
-|&nbsp;identity_ids | list(string) | Optional |  |  |
-|maintenance_configuration_name | string | Optional |  |  |
-|minimum_tls_version | string | Optional |  "1.2" |  |
-|proxy_override | string | Optional |  |  |
-|public_data_endpoint_enabled | bool | Optional |  false |  |
-|storage_account_type | string | Optional |  |  |
-|zone_redundant_enabled | bool | Optional |  |  |
-|timezone_id | string | Optional |  |  |
-|tags | map(any) | Optional |  |  |
-|private_endpoint | list(object) | Optional | [] |  |
-|&nbsp;name | string | Required |  |  |
-|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;subnet_id | string | Required |  |  |
-|&nbsp;private_service_connection | list(object) | Required |  |  |
+|administrator_login | string | Optional |  |  |
+|administrator_login_password | string | Optional |  |  |
+|azure_active_directory_administrator | object | Optional |  |  |
+|&nbsp;login_username | string | Required |  |  |
+|&nbsp;object_id | string | Required |  |  |
+|&nbsp;&nbsp;principal_type | string | Required |  |  |
+|&nbsp;&nbsp;azuread_authentication_only_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;tenant_id | string | Optional |  |  |
+|&nbsp;collation | string | Optional |  |  |
+|&nbsp;database_format | string | Optional |  |  |
+|&nbsp;dns_zone_partner_id | string | Optional |  |  |
+|&nbsp;hybrid_secondary_usage | string | Optional |  |  |
+|&nbsp;identity | object | Optional |  |  |
+|&nbsp;&nbsp;type | string | Required |  |  |
+|&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
+|&nbsp;maintenance_configuration_name | string | Optional |  |  |
+|&nbsp;minimum_tls_version | string | Optional |  "1.2" |  |
+|&nbsp;proxy_override | string | Optional |  |  |
+|&nbsp;public_data_endpoint_enabled | bool | Optional |  false |  |
+|&nbsp;storage_account_type | string | Optional |  |  |
+|&nbsp;zone_redundant_enabled | bool | Optional |  |  |
+|&nbsp;timezone_id | string | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
-|&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
-|&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
-|&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
-|&nbsp;&nbsp;request_message | string | Optional |  |  |
-|&nbsp;custom_network_interface_name | string | Optional |  |  |
-|&nbsp;private_dns_zone_group | object | Optional |  |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
-|&nbsp;ip_configuration | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;private_ip_address | string | Required |  |  |
-|&nbsp;&nbsp;subresource_name | string | Required |  |  |
-|&nbsp;&nbsp;member_name | string | Optional |  |  |
-|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
-|monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
-|&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
-|&nbsp;log_analytics_workspace_id | string | Optional |  |  |
-|&nbsp;eventhub_name | string | Optional |  |  |
-|&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
-|&nbsp;storage_account_id | string | Optional |  |  |
-|&nbsp;categories | object | Optional |  |  |
-|&nbsp;&nbsp;sql_security_audit_events | bool | Optional |  true |  |
-|&nbsp;&nbsp;devops_operations_audit | bool | Optional |  true |  |
-|&nbsp;&nbsp;resource_usage_stats | bool | Optional |  true |  |
+|&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;&nbsp;private_service_connection | list(object) | Required |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;request_message | string | Optional |  |  |
+|&nbsp;&nbsp;custom_network_interface_name | string | Optional |  |  |
+|&nbsp;&nbsp;private_dns_zone_group | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
+|&nbsp;&nbsp;ip_configuration | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;private_ip_address | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;subresource_name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;member_name | string | Optional |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
+|&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;sql_security_audit_events | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;devops_operations_audit | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;resource_usage_stats | bool | Optional |  true |  |
 
 
