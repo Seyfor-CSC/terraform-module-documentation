@@ -3,11 +3,13 @@
 ```
 variable "config" {  type = list(object({
     # postgresql flexible server
-    name                   = string
-    resource_group_name    = string
-    location               = string
-    administrator_login    = optional(string)
-    administrator_password = optional(string)
+    name                                    = string
+    resource_group_name                     = string
+    location                                = string
+    administrator_login                     = optional(string)
+    administrator_password                  = optional(string)
+    administrator_password_wo               = optional(string)
+    administrator_password_wo_version = optional(string)
     authentication = optional(object({
       active_directory_auth_enabled = optional(bool)
       password_auth_enabled         = optional(bool)
@@ -135,6 +137,8 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |administrator_login | string | Optional |  |  |
 |administrator_password | string | Optional |  |  |
+|administrator_password_wo | string | Optional |  |  |
+|administrator_password_wo_version | string | Optional |  |  |
 |authentication | object | Optional |  |  |
 |&nbsp;active_directory_auth_enabled | bool | Optional |  |  |
 |&nbsp;password_auth_enabled | bool | Optional |  |  |
