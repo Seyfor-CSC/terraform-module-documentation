@@ -50,9 +50,9 @@
 | [network security group](./network-security-group/README.md) | v2.3.0 |
 | [network watcher](./network-watcher/README.md) | v2.1.0 |
 | [network watcher flow log](./network-watcher-flow-log/README.md) | v2.0.0 |
-| [policy assignment](./policy-assignment/README.md) | v2.1.0 |
+| [policy assignment](./policy-assignment/README.md) | v2.2.0 |
 | [policy definition](./policy-definition/README.md) | v2.1.0 |
-| [policy set definition](./policy-set-definition/README.md) | v2.1.0 |
+| [policy set definition](./policy-set-definition/README.md) | v2.2.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.2.0 |
 | [private dns resolver](./private-dns-resolver/README.md) | v2.2.0 |
 | [private dns zone](./private-dns-zone/README.md) | v2.1.0 |
