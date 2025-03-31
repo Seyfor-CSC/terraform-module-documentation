@@ -31,7 +31,7 @@
 | [data factory](./data-factory/README.md) | v2.2.0 |
 | [dns zone](./dns-zone/README.md) | v2.1.0 |
 | [event grid](./event-grid/README.md) | v2.2.0 |
-| [event hub](./event-hub/README.md) | v2.2.0 |
+| [event hub](./event-hub/README.md) | v2.3.0 |
 | [function app](./function-app/README.md) | v2.2.0 |
 | [key vault](./key-vault/README.md) | v2.3.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.1.0 |
@@ -43,7 +43,7 @@
 | [logic app workflow](./logic-app-workflow/README.md) | v2.2.0 |
 | [machine learning](./machine-learning/README.md) | v2.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.1.0 |
-| [monitor alert](./monitor-alert/README.md) | v2.1.0 |
+| [monitor alert](./monitor-alert/README.md) | v2.2.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.0 |
 | [mssql database](./mssql-database/README.md) | v2.2.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.2.0 |
