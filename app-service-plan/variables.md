@@ -3,17 +3,18 @@
 ```
 variable "config" {  type = list(object({
     # service plan
-    name                         = string
-    resource_group_name          = string
-    location                     = string
-    os_type                      = string
-    sku_name                     = string
-    app_service_environment_id   = optional(string)
-    maximum_elastic_worker_count = optional(number)
-    worker_count                 = optional(number)
-    per_site_scaling_enabled     = optional(bool)
-    zone_balancing_enabled       = optional(bool)
-    tags                         = optional(map(any))
+    name                            = string
+    resource_group_name             = string
+    location                        = string
+    os_type                         = string
+    sku_name                        = string
+    app_service_environment_id      = optional(string)
+    premium_plan_auto_scale_enabled = optional(bool)
+    maximum_elastic_worker_count    = optional(number)
+    worker_count                    = optional(number)
+    per_site_scaling_enabled        = optional(bool)
+    zone_balancing_enabled          = optional(bool)
+    tags                            = optional(map(any))
 
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -43,6 +44,7 @@ variable "config" {  type = list(object({
 |os_type | string | Required |  |  |
 |sku_name | string | Required |  |  |
 |app_service_environment_id | string | Optional |  |  |
+|premium_plan_auto_scale_enabled | bool | Optional |  |  |
 |maximum_elastic_worker_count | number | Optional |  |  |
 |worker_count | number | Optional |  |  |
 |per_site_scaling_enabled | bool | Optional |  |  |
