@@ -40,7 +40,7 @@
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.3.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.2.0 |
 | [logic app standard](./logic-app-standard/README.md) | v2.2.0 |
-| [logic app workflow](./logic-app-workflow/README.md) | v2.2.0 |
+| [logic app workflow](./logic-app-workflow/README.md) | v2.3.0 |
 | [machine learning](./machine-learning/README.md) | v2.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.1.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.0 |
