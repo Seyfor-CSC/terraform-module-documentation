@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_sync
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_sync
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/storage_sync_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_sync_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.14.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_endpoint
 
 &nbsp;
 
