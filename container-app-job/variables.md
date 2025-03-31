@@ -29,12 +29,11 @@ variable "config" {  type = list(object({
             name  = string
             value = string
           }))
-          host                             = optional(string)
-          initial_delay                    = optional(number)
-          interval_seconds                 = optional(number)
-          path                             = optional(string)
-          timeout                          = optional(number)
-          termination_grace_period_seconds = optional(number)
+          host             = optional(string)
+          initial_delay    = optional(number)
+          interval_seconds = optional(number)
+          path             = optional(string)
+          timeout          = optional(number)
         }))
         readiness_probe = optional(object({
           port                    = number
@@ -58,11 +57,10 @@ variable "config" {  type = list(object({
             name  = string
             value = string
           }))
-          host                             = optional(string)
-          interval_seconds                 = optional(number)
-          path                             = optional(string)
-          timeout                          = optional(number)
-          termination_grace_period_seconds = optional(number)
+          host             = optional(string)
+          interval_seconds = optional(number)
+          path             = optional(string)
+          timeout          = optional(number)
         }))
         volume_mounts = optional(object({
           name = string
@@ -91,6 +89,7 @@ variable "config" {  type = list(object({
         name         = optional(string)
         storage_type = optional(string)
         storage_name = optional(string)
+        mount_options = optional(string)
       }))
     })
     replica_timeout_in_seconds = number
@@ -180,7 +179,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;timeout | number | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;termination_grace_period_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;readiness_probe | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;port | number | Required |  |  |
 |&nbsp;&nbsp;&nbsp;transport | string | Required |  |  |
@@ -204,7 +202,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;timeout | number | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;termination_grace_period_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;volume_mounts | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Required |  |  |
@@ -227,6 +224,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;name | string | Optional |  |  |
 |&nbsp;&nbsp;storage_type | string | Optional |  |  |
 |&nbsp;&nbsp;storage_name | string | Optional |  |  |
+|&nbsp;&nbsp;mount_options | string | Optional |  |  |
 |replica_timeout_in_seconds | number | Required |  |  |
 |workload_profile_name | string | Optional |  |  |
 |replica_retry_limit | number | Optional |  |  |
