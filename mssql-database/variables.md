@@ -3,12 +3,14 @@
 ```
 variable "config" {  type = list(object({
     # mssql server
-    name                         = string
-    resource_group_name          = string
-    location                     = string
-    version                      = string
-    administrator_login          = optional(string)
-    administrator_login_password = optional(string)
+    name                                    = string
+    resource_group_name                     = string
+    location                                = string
+    version                                 = string
+    administrator_login                     = optional(string)
+    administrator_login_password            = optional(string)
+    administrator_login_password_wo         = optional(string)
+    administrator_login_password_wo_version = optional(string)
     azuread_administrator = optional(object({
       login_username              = string
       object_id                   = string
@@ -218,6 +220,8 @@ variable "config" {  type = list(object({
 |version | string | Required |  |  |
 |administrator_login | string | Optional |  |  |
 |administrator_login_password | string | Optional |  |  |
+|administrator_login_password_wo | string | Optional |  |  |
+|administrator_login_password_wo_version | string | Optional |  |  |
 |azuread_administrator | object | Optional |  |  |
 |&nbsp;login_username | string | Required |  |  |
 |&nbsp;object_id | string | Required |  |  |
