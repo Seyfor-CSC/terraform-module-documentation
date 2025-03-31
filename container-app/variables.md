@@ -43,14 +43,13 @@ variable "config" {  type = list(object({
             name  = string
             value = string
           }))
-          host                             = optional(string)
-          initial_delay                    = optional(number)
-          interval_seconds                 = optional(number)
-          path                             = optional(string)
-          port                             = number
-          termination_grace_period_seconds = optional(number)
-          timeout                          = optional(number)
-          transport                        = string
+          host             = optional(string)
+          initial_delay    = optional(number)
+          interval_seconds = optional(number)
+          path             = optional(string)
+          port             = number
+          timeout          = optional(number)
+          transport        = string
         }))
         memory = string
         name   = string
@@ -75,18 +74,18 @@ variable "config" {  type = list(object({
             name  = string
             value = string
           }))
-          host                             = optional(string)
-          initial_delay                    = optional(number)
-          interval_seconds                 = optional(number)
-          path                             = optional(string)
-          port                             = number
-          termination_grace_period_seconds = optional(number)
-          timeout                          = optional(number)
-          transport                        = string
+          host             = optional(string)
+          initial_delay    = optional(number)
+          interval_seconds = optional(number)
+          path             = optional(string)
+          port             = number
+          timeout          = optional(number)
+          transport        = string
         }))
         volume_mounts = optional(list(object({
-          name = string
-          path = string
+          name     = string
+          path     = string
+          sub_path = optional(string)
         })), [])
       }))
       max_replicas = optional(number)
@@ -125,11 +124,13 @@ variable "config" {  type = list(object({
           trigger_parameter = string
         })), [])
       })), [])
-      revision_suffix = optional(string)
+      revision_suffix                  = optional(string)
+      termination_grace_period_seconds = optional(number)
       volume = optional(list(object({
-        name         = string
-        storage_name = optional(string)
-        storage_type = optional(string)
+        name          = string
+        storage_name  = optional(string)
+        storage_type  = optional(string)
+        mount_options = optional(string)
       })), [])
     })
     dapr = optional(object({
@@ -159,7 +160,8 @@ variable "config" {  type = list(object({
         revision_suffix = optional(string)
         percentage      = number
       }))
-      transport = optional(string)
+      transport               = optional(string)
+      client_certificate_mode = optional(string)
     }))
     registry = optional(object({
       server               = string
@@ -227,7 +229,6 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;port | number | Required |  |  |
-|&nbsp;&nbsp;&nbsp;termination_grace_period_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;timeout | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;transport | string | Required |  |  |
 |&nbsp;&nbsp;memory | string | Required |  |  |
@@ -255,12 +256,12 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;port | number | Required |  |  |
-|&nbsp;&nbsp;&nbsp;termination_grace_period_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;timeout | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;transport | string | Required |  |  |
 |&nbsp;&nbsp;volume_mounts | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;sub_path | string | Optional |  |  |
 |&nbsp;max_replicas | number | Optional |  |  |
 |&nbsp;min_replicas | number | Optional |  |  |
 |&nbsp;azure_queue_scale_rule | list(object) | Optional | [] |  |
@@ -290,10 +291,12 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;secret_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;trigger_parameter | string | Required |  |  |
 |&nbsp;revision_suffix | string | Optional |  |  |
+|&nbsp;termination_grace_period_seconds | number | Optional |  |  |
 |&nbsp;volume | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;storage_name | string | Optional |  |  |
 |&nbsp;&nbsp;storage_type | string | Optional |  |  |
+|&nbsp;&nbsp;mount_options | string | Optional |  |  |
 |dapr | object | Optional |  |  |
 |&nbsp;app_id | string | Required |  |  |
 |&nbsp;app_port | number | Optional |  |  |
@@ -318,6 +321,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;revision_suffix | string | Optional |  |  |
 |&nbsp;&nbsp;percentage | number | Required |  |  |
 |&nbsp;transport | string | Optional |  |  |
+|&nbsp;client_certificate_mode | string | Optional |  |  |
 |registry | object | Optional |  |  |
 |&nbsp;server | string | Required |  |  |
 |&nbsp;identity | string | Optional |  |  |
