@@ -157,7 +157,6 @@ variable "config" {  type = list(object({
     # storage container
     containers = optional(list(object({
       name                              = string
-      storage_account_name              = optional(string) # Deprecated, use only for backward compatibility. See Known Issues in README.md for migration instructions.
       storage_account_id                = optional(string) # Inherited in module from parent resource
       container_access_type             = optional(string)
       default_encryption_scope          = optional(string)
@@ -167,11 +166,10 @@ variable "config" {  type = list(object({
 
     # storage share
     file_shares = optional(list(object({
-      name                 = string
-      storage_account_name              = optional(string) # Deprecated, use only for backward compatibility. See Known Issues in README.md for migration instructions.
-      storage_account_id                = optional(string) # Inherited in module from parent resource
-      quota                = number
-      access_tier          = optional(string)
+      name               = string
+      storage_account_id = optional(string) # Inherited in module from parent resource
+      quota              = number
+      access_tier        = optional(string)
       acl = optional(list(object({
         id = string
         access_policy = optional(object({
@@ -444,7 +442,6 @@ variable "config" {  type = list(object({
 |tags | map(any) | Optional |  |  |
 |containers | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;storage_account_name | string | Optional |  |  Deprecated, use only for backward compatibility. See Known Issues in README.md for migration instructions. |
 |&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;container_access_type | string | Optional |  |  |
 |&nbsp;default_encryption_scope | string | Optional |  |  |
@@ -452,7 +449,6 @@ variable "config" {  type = list(object({
 |&nbsp;metadata | map(string) | Optional |  |  |
 |file_shares | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;storage_account_name | string | Optional |  |  Deprecated, use only for backward compatibility. See Known Issues in README.md for migration instructions. |
 |&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;quota | number | Required |  |  |
 |&nbsp;access_tier | string | Optional |  |  |
