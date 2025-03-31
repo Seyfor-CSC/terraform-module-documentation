@@ -15,10 +15,11 @@ variable "config" {  type = list(object({
     encryption = optional(object({
       enforcement = string
     }))
-    dns_servers             = optional(list(string), [])
-    edge_zone               = optional(string)
-    flow_timeout_in_minutes = optional(number)
-    tags                    = optional(map(any))
+    dns_servers                    = optional(list(string), [])
+    edge_zone                      = optional(string)
+    flow_timeout_in_minutes        = optional(number)
+    private_endpoint_vnet_policies = optional(string)
+    tags                           = optional(map(any))
 
     # subnet
     subnets = list(object({
@@ -118,6 +119,7 @@ variable "subscription_id" {
 |dns_servers | list(string) | Optional | [] |  |
 |edge_zone | string | Optional |  |  |
 |flow_timeout_in_minutes | number | Optional |  |  |
+|private_endpoint_vnet_policies | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |subnets | list(object) | Required |  |  |
 |&nbsp;name | string | Required |  |  |
