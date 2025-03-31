@@ -17,15 +17,17 @@ variable "config" {  type = list(object({
       type  = string
       value = string
     }))
-    client_affinity_enabled = optional(bool)
-    client_certificate_mode = optional(string)
-    enabled                 = optional(bool)
-    https_only              = optional(bool)
+    client_affinity_enabled                  = optional(bool)
+    client_certificate_mode                  = optional(string)
+    enabled                                  = optional(bool)
+    ftp_publish_basic_authentication_enabled = optional(bool)
+    https_only                               = optional(bool)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
     }))
-    public_network_access = optional(string, "Disabled")
+    public_network_access                    = optional(string, "Disabled")
+    scm_publish_basic_authentication_enabled = optional(bool)
     site_config = optional(object({
       always_on           = optional(bool)
       app_scale_limit     = optional(number)
@@ -81,6 +83,7 @@ variable "config" {  type = list(object({
     storage_account_share_name = optional(string)
     version                    = optional(string)
     virtual_network_subnet_id  = optional(string)
+    vnet_content_share_enabled = optional(bool)
     tags                       = optional(map(any))
 
     # private endpoint
@@ -152,11 +155,13 @@ variable "config" {  type = list(object({
 |client_affinity_enabled | bool | Optional |  |  |
 |client_certificate_mode | string | Optional |  |  |
 |enabled | bool | Optional |  |  |
+|ftp_publish_basic_authentication_enabled | bool | Optional |  |  |
 |https_only | bool | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |public_network_access | string | Optional |  "Disabled" |  |
+|scm_publish_basic_authentication_enabled | bool | Optional |  |  |
 |site_config | object | Optional |  |  |
 |&nbsp;always_on | bool | Optional |  |  |
 |&nbsp;app_scale_limit | number | Optional |  |  |
@@ -206,6 +211,7 @@ variable "config" {  type = list(object({
 |storage_account_share_name | string | Optional |  |  |
 |version | string | Optional |  |  |
 |virtual_network_subnet_id | string | Optional |  |  |
+|vnet_content_share_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
