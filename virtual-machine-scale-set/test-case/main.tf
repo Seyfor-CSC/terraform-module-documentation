@@ -44,8 +44,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual machine scale set
 module "vmss" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-scale-set.git?ref=v2.3.0"
-  config = local.vmss
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-scale-set.git?ref=v2.3.1"
 }
 
 output "vmss" {

@@ -118,6 +118,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 ## Custom variables
 * `os_type` variable must be configured to either _Window_ or _Linux_ value. This variable is used to determine which virtual machine scale set will be deployed.
 * `autoscale` variable must be defined if you want autoscaling to be enabled. It is important this variable is set otherwise autoscale will not work. When you set the value to _true_, lifecycle with ignore_changes block for the variable `instances` is turned on. This is because the number of instances in that case is managed by autoscale and not by terraform.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 

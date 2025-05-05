@@ -34,7 +34,7 @@
 | [event hub](./event-hub/README.md) | v2.3.1 |
 | [function app](./function-app/README.md) | v2.2.0 |
 | [key vault](./key-vault/README.md) | v2.3.1 |
-| [key vault seeding](./key-vault-seeding/README.md) | v2.2.0 |
+| [key vault seeding](./key-vault-seeding/README.md) | v2.2.1 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.3.1 |
 | [load balancer](./load-balancer/README.md) | v2.3.1 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.3.1 |
@@ -76,8 +76,8 @@
 | [storage sync](./storage-sync/README.md) | v2.2.1 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.2.1 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.3.0 |
-| [virtual machine](./virtual-machine/README.md) | v2.2.0 |
-| [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.4.0 |
-| [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.3.0 |
+| [virtual machine](./virtual-machine/README.md) | v2.2.1 |
+| [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.4.1 |
+| [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.3.1 |
 | [virtual network](./virtual-network/README.md) | v2.3.1 |
 | [virtual network peering](./virtual-network-peering/README.md) | v2.2.0 |
