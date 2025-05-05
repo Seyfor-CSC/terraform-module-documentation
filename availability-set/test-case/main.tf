@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # availability set
 module "availability_set" {
-  source = "git@github.com:Seyfor-CSC/mit.availability-set.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.availability-set.git?ref=v2.2.1"
   config = local.avset
 }
 
