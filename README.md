@@ -32,7 +32,7 @@
 | [dns zone](./dns-zone/README.md) | v2.2.0 |
 | [event grid](./event-grid/README.md) | v2.3.0 |
 | [event hub](./event-hub/README.md) | v2.3.1 |
-| [function app](./function-app/README.md) | v2.2.0 |
+| [function app](./function-app/README.md) | v2.2.1 |
 | [key vault](./key-vault/README.md) | v2.3.1 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.2.1 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.3.1 |
@@ -45,7 +45,7 @@
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.0.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.2.1 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.1 |
-| [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.0 |
+| [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.1 |
 | [mssql database](./mssql-database/README.md) | v2.3.1 |
 | [mssql failover group](./mssql-failover-group/README.md) | v2.0.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.3.1 |
