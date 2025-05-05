@@ -121,6 +121,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 ## Custom variables
 * `workspace_name` replaces the `workspace_id` variable in the `associations` list of objects.
 * `hostpool_name` replaces the `hostpool_id` variable in the `host_pool` list of objects.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
