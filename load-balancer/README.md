@@ -118,6 +118,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 * `backend_address_pool_name` replaces the `backend_address_pool_id` variable in the `nat_rules` list of objects.
 * `probe_name` replaces the `probe_id` variable in the `rules` list of objects.
 * `custom_name` used for looping through the `nic_association` list of objects.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
