@@ -57,7 +57,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # data factory
 module "data_factory" {
-  source = "git@github.com:Seyfor-CSC/mit.data-factory.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.data-factory.git?ref=v2.3.1"
   config = local.df
 }
 
