@@ -78,7 +78,9 @@ lifecycle {
     ]
 }
 ```
-This means you can't manage _workflow\_parameters_ and _parameters_ (the inside configuration of Logic App Workflow) variables by Terraform
+This means you can't manage _workflow\_parameters_ and _parameters_ (the inside configuration of Logic App Workflow) variables by Terraform.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 

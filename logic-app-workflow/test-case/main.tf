@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # logic app workflow
 module "logic_app_workflow" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-workflow.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-workflow.git?ref=v2.3.1"
   config = local.logic
 }
 
