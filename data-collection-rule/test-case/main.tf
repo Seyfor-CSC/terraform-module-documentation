@@ -52,7 +52,7 @@ resource "azurerm_monitor_data_collection_endpoint" "example" {
 
 # data collection rule
 module "data_collection_rule" {
-  source = "git@github.com:Seyfor-CSC/mit.data-collection-rule.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.data-collection-rule.git?ref=v2.3.1"
   config = local.dcr
 }
 
