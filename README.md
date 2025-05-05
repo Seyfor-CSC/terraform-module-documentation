@@ -29,7 +29,7 @@
 | [container registry](./container-registry/README.md) | v2.3.1 |
 | [data collection rule](./data-collection-rule/README.md) | v2.3.1 |
 | [data factory](./data-factory/README.md) | v2.3.1 |
-| [dns zone](./dns-zone/README.md) | v2.2.0 |
+| [dns zone](./dns-zone/README.md) | v2.2.1 |
 | [event grid](./event-grid/README.md) | v2.3.0 |
 | [event hub](./event-hub/README.md) | v2.3.1 |
 | [function app](./function-app/README.md) | v2.2.1 |
@@ -42,7 +42,7 @@
 | [logic app standard](./logic-app-standard/README.md) | v2.3.1 |
 | [logic app workflow](./logic-app-workflow/README.md) | v2.3.1 |
 | [machine learning](./machine-learning/README.md) | v2.3.0 |
-| [maintenance configuration](./maintenance-configuration/README.md) | v2.0.0 |
+| [maintenance configuration](./maintenance-configuration/README.md) | v2.0.1 |
 | [monitor action group](./monitor-action-group/README.md) | v2.2.1 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.1 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.1 |
