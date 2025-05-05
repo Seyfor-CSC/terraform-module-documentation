@@ -15,7 +15,7 @@ provider "azurerm" {
 
 # resource group
 module "resource_group" {
-  source = "git@github.com:Seyfor-CSC/mit.resource-group.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.resource-group.git?ref=v2.2.1"
   config = local.rg
 }
 

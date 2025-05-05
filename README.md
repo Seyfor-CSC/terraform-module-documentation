@@ -49,7 +49,7 @@
 | [mssql database](./mssql-database/README.md) | v2.3.0 |
 | [mssql failover group](./mssql-failover-group/README.md) | v2.0.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.3.0 |
-| [network security group](./network-security-group/README.md) | v2.3.0 |
+| [network security group](./network-security-group/README.md) | v2.3.1 |
 | [network watcher](./network-watcher/README.md) | v2.2.0 |
 | [network watcher flow log](./network-watcher-flow-log/README.md) | v2.1.0 |
 | [pim](./pim/README.md) | v2.0.0 |
@@ -65,11 +65,11 @@
 | [purview account](./purview-account/README.md) | v2.3.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.3.0 |
 | [redis cache](./redis-cache/README.md) | v2.3.0 |
-| [resource group](./resource-group/README.md) | v2.2.0 |
+| [resource group](./resource-group/README.md) | v2.2.1 |
 | [role assignment](./role-assignment/README.md) | v2.2.0 |
 | [role definition](./role-definition/README.md) | v2.2.0 |
 | [role management policy](./role-management-policy/README.md) | v2.0.0 |
-| [route table](./route-table/README.md) | v2.2.0 |
+| [route table](./route-table/README.md) | v2.2.1 |
 | [servicebus](./servicebus/README.md) | v2.3.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.2.0 |
 | [storage account](./storage-account/README.md) | v2.3.0 |
@@ -79,5 +79,5 @@
 | [virtual machine](./virtual-machine/README.md) | v2.2.0 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.4.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.3.0 |
-| [virtual network](./virtual-network/README.md) | v2.3.0 |
+| [virtual network](./virtual-network/README.md) | v2.3.1 |
 | [virtual network peering](./virtual-network-peering/README.md) | v2.2.0 |
