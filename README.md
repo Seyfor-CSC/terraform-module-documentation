@@ -32,6 +32,7 @@
 | [dns zone](./dns-zone/README.md) | v2.2.1 |
 | [event grid](./event-grid/README.md) | v2.3.1 |
 | [event hub](./event-hub/README.md) | v2.3.1 |
+| [frontdoor](./frontdoor/README.md) | v2.0.0 |
 | [function app](./function-app/README.md) | v2.2.1 |
 | [key vault](./key-vault/README.md) | v2.3.1 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.2.1 |
