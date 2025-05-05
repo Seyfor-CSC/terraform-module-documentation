@@ -28,7 +28,7 @@
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.3.1 |
 | [data collection rule](./data-collection-rule/README.md) | v2.3.1 |
-| [data factory](./data-factory/README.md) | v2.3.0 |
+| [data factory](./data-factory/README.md) | v2.3.1 |
 | [dns zone](./dns-zone/README.md) | v2.2.0 |
 | [event grid](./event-grid/README.md) | v2.3.0 |
 | [event hub](./event-hub/README.md) | v2.3.1 |
@@ -46,7 +46,7 @@
 | [monitor action group](./monitor-action-group/README.md) | v2.2.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.0 |
-| [mssql database](./mssql-database/README.md) | v2.3.0 |
+| [mssql database](./mssql-database/README.md) | v2.3.1 |
 | [mssql failover group](./mssql-failover-group/README.md) | v2.0.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.3.1 |
 | [network security group](./network-security-group/README.md) | v2.3.1 |
@@ -56,7 +56,7 @@
 | [policy assignment](./policy-assignment/README.md) | v2.2.0 |
 | [policy definition](./policy-definition/README.md) | v2.2.0 |
 | [policy set definition](./policy-set-definition/README.md) | v2.2.0 |
-| [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.3.0 |
+| [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.3.1 |
 | [private dns resolver](./private-dns-resolver/README.md) | v2.2.0 |
 | [private dns zone](./private-dns-zone/README.md) | v2.2.1 |
 | [private endpoint](./private-endpoint/README.md) | v2.2.0 |
@@ -74,7 +74,7 @@
 | [shared image gallery](./shared-image-gallery/README.md) | v2.2.0 |
 | [storage account](./storage-account/README.md) | v2.3.1 |
 | [storage sync](./storage-sync/README.md) | v2.2.0 |
-| [user assigned identity](./user-assigned-identity/README.md) | v2.2.0 |
+| [user assigned identity](./user-assigned-identity/README.md) | v2.2.1 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.3.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.2.0 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.4.0 |
