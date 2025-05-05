@@ -16,7 +16,7 @@
 | ---- | -------------- |
 | [app service](./app-service/README.md) | v2.3.0 |
 | [app service plan](./app-service-plan/README.md) | v2.3.0 |
-| [automation account](./automation-account/README.md) | v2.3.0 |
+| [automation account](./automation-account/README.md) | v2.3.1 |
 | [availability set](./availability-set/README.md) | v2.2.0 |
 | [backup vault](./backup-vault/README.md) | v2.3.1 |
 | [bastion host](./bastion-host/README.md) | v2.3.0 |
@@ -27,7 +27,7 @@
 | [container app job](./container-app-job/README.md) | v2.2.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.3.1 |
-| [data collection rule](./data-collection-rule/README.md) | v2.3.0 |
+| [data collection rule](./data-collection-rule/README.md) | v2.3.1 |
 | [data factory](./data-factory/README.md) | v2.3.0 |
 | [dns zone](./dns-zone/README.md) | v2.2.0 |
 | [event grid](./event-grid/README.md) | v2.3.0 |
