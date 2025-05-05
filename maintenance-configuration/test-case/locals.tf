@@ -37,10 +37,10 @@ locals {
       in_guest_user_patch_mode = "User"
     },
     {
-        name                = local.naming.mc2
-        resource_group_name = azurerm_resource_group.rg.name
-        location            = local.location
-        scope               = "Extension"
+      name                = local.naming.mc2
+      resource_group_name = azurerm_resource_group.rg.name
+      location            = local.location
+      scope               = "Extension"
     }
   ]
 }

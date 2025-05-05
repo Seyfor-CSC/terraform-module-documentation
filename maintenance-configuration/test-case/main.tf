@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # maintenance configuration
 module "maintenance_configuration" {
-  source = "git@github.com:Seyfor-CSC/mit.maintenance-configuration.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.maintenance-configuration.git?ref=v2.0.1"
   config = local.mc
 }
 

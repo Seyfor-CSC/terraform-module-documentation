@@ -24,13 +24,13 @@
 | [consumption budget](./consumption-budget/README.md) | v2.2.0 |
 | [container app](./container-app/README.md) | v2.2.1 |
 | [container app environment](./container-app-environment/README.md) | v2.3.1 |
-| [container app job](./container-app-job/README.md) | v2.2.0 |
+| [container app job](./container-app-job/README.md) | v2.2.1 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.3.1 |
 | [data collection rule](./data-collection-rule/README.md) | v2.3.1 |
 | [data factory](./data-factory/README.md) | v2.3.1 |
 | [dns zone](./dns-zone/README.md) | v2.2.1 |
-| [event grid](./event-grid/README.md) | v2.3.0 |
+| [event grid](./event-grid/README.md) | v2.3.1 |
 | [event hub](./event-hub/README.md) | v2.3.1 |
 | [function app](./function-app/README.md) | v2.2.1 |
 | [key vault](./key-vault/README.md) | v2.3.1 |
