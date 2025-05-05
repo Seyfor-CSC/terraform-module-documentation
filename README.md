@@ -17,9 +17,9 @@
 | [app service](./app-service/README.md) | v2.3.0 |
 | [app service plan](./app-service-plan/README.md) | v2.3.0 |
 | [automation account](./automation-account/README.md) | v2.3.1 |
-| [availability set](./availability-set/README.md) | v2.2.0 |
+| [availability set](./availability-set/README.md) | v2.2.1 |
 | [backup vault](./backup-vault/README.md) | v2.3.1 |
-| [bastion host](./bastion-host/README.md) | v2.3.0 |
+| [bastion host](./bastion-host/README.md) | v2.3.1 |
 | [cognitive account](./cognitive-account/README.md) | v2.3.0 |
 | [consumption budget](./consumption-budget/README.md) | v2.2.0 |
 | [container app](./container-app/README.md) | v2.2.0 |
@@ -39,7 +39,7 @@
 | [load balancer](./load-balancer/README.md) | v2.3.1 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.3.1 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.3.0 |
-| [logic app standard](./logic-app-standard/README.md) | v2.3.0 |
+| [logic app standard](./logic-app-standard/README.md) | v2.3.1 |
 | [logic app workflow](./logic-app-workflow/README.md) | v2.3.0 |
 | [machine learning](./machine-learning/README.md) | v2.3.0 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.0.0 |
