@@ -42,6 +42,6 @@ resource "azurerm_monitor_action_group" "ag" {
 
 # monitor alert
 module "monitor_alert" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-alert.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-alert.git?ref=v2.2.1"
   config = local.alerts
 }
