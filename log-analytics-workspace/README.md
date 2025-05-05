@@ -67,6 +67,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Custom variables
 In the `monitoring` variable object is a variable called `self_logging`, which is used to determine which Log Analytics Workspace should be used for diagnostic settings logging. If set to `true`, the diagnostic settings will be sent to itself. If set to `false`, the diagnostic settings will be sent to the Log Analytics Workspace provided in the `log_analytics_workspace_id` variable. Default value is `false`.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
