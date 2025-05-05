@@ -29,7 +29,7 @@ resource "azurerm_storage_account" "sa" {
 }
 
 module "eventgrid" {
-  source = "git@github.com:Seyfor-CSC/mit.event-grid.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.event-grid.git?ref=v2.3.1"
   config = local.eventgrid
 }
 

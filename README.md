@@ -41,7 +41,7 @@
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.3.1 |
 | [logic app standard](./logic-app-standard/README.md) | v2.3.1 |
 | [logic app workflow](./logic-app-workflow/README.md) | v2.3.1 |
-| [machine learning](./machine-learning/README.md) | v2.3.0 |
+| [machine learning](./machine-learning/README.md) | v2.3.1 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.0.1 |
 | [monitor action group](./monitor-action-group/README.md) | v2.2.1 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.1 |
@@ -51,7 +51,7 @@
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.3.1 |
 | [network security group](./network-security-group/README.md) | v2.3.1 |
 | [network watcher](./network-watcher/README.md) | v2.2.1 |
-| [network watcher flow log](./network-watcher-flow-log/README.md) | v2.1.0 |
+| [network watcher flow log](./network-watcher-flow-log/README.md) | v2.1.1 |
 | [pim](./pim/README.md) | v2.0.0 |
 | [policy assignment](./policy-assignment/README.md) | v2.2.0 |
 | [policy definition](./policy-definition/README.md) | v2.2.0 |
@@ -70,7 +70,7 @@
 | [role definition](./role-definition/README.md) | v2.2.0 |
 | [role management policy](./role-management-policy/README.md) | v2.0.0 |
 | [route table](./route-table/README.md) | v2.2.1 |
-| [servicebus](./servicebus/README.md) | v2.3.0 |
+| [servicebus](./servicebus/README.md) | v2.3.1 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.2.1 |
 | [storage account](./storage-account/README.md) | v2.3.1 |
 | [storage sync](./storage-sync/README.md) | v2.2.1 |
