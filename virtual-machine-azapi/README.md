@@ -107,6 +107,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 This module is complex and really specific to the scenario it is intended for. Use [test-case](test-case) as a guide for how to use it. First you should deploy [test-case/1-migration-simulation](test-case/1-migration-simulation) which will simulate the migrated resources. Then you can deploy [test-case/2-import](test-case/2-import) which will import the resources into the .tfstate file.
 ## Paired Azurerm variables with AzAPI
 Some of the variables of AzAPI provider are paired and replaced with their appropriate match in Azurerm provider. Otherwise, some parts of the code would have to be duplicated and managed at two places. This is the case for networkProfile (replaced with network_interfaces), and osDisk with dataDisks (replaced with managed_disks). If `terraform plan` shows changes in any of these AzAPI variables, see [variables.md](variables.md) for the appropriate variable to be configured.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
