@@ -103,6 +103,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Forwarding Ruleset Outbound Endpoint IDs
 `private_dns_resolver_outbound_endpoint_ids` variable in the `private_dns_resolver_dns_forwarding_rulesets` list of objects is supposed to be a list of Outbound Endpoint ids. However, in this module, you need to supply it with names of those Outbound Endpoints which you want to associate with the Forwarding Ruleset. It can only be names of Outbound Endpoints which are being created in the same module call as the Forwarding Ruleset. The module will then resolve those names to ids.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 

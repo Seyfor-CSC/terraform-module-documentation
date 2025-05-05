@@ -54,7 +54,7 @@ resource "azurerm_subnet" "subnet2" {
 
 # private dns resolver
 module "private_dns_resolver" {
-  source = "git@github.com:Seyfor-CSC/mit.private-dns-resolver.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.private-dns-resolver.git?ref=v2.2.1"
   config = local.dnsres
 }
 
