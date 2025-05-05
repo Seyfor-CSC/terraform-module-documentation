@@ -23,7 +23,7 @@
 | [cognitive account](./cognitive-account/README.md) | v2.3.1 |
 | [consumption budget](./consumption-budget/README.md) | v2.2.0 |
 | [container app](./container-app/README.md) | v2.2.0 |
-| [container app environment](./container-app-environment/README.md) | v2.3.0 |
+| [container app environment](./container-app-environment/README.md) | v2.3.1 |
 | [container app job](./container-app-job/README.md) | v2.2.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.3.1 |
@@ -71,7 +71,7 @@
 | [role management policy](./role-management-policy/README.md) | v2.0.0 |
 | [route table](./route-table/README.md) | v2.2.1 |
 | [servicebus](./servicebus/README.md) | v2.3.0 |
-| [shared image gallery](./shared-image-gallery/README.md) | v2.2.0 |
+| [shared image gallery](./shared-image-gallery/README.md) | v2.2.1 |
 | [storage account](./storage-account/README.md) | v2.3.1 |
 | [storage sync](./storage-sync/README.md) | v2.2.1 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.2.1 |
