@@ -59,7 +59,7 @@
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.3.1 |
 | [private dns resolver](./private-dns-resolver/README.md) | v2.2.0 |
 | [private dns zone](./private-dns-zone/README.md) | v2.2.1 |
-| [private endpoint](./private-endpoint/README.md) | v2.2.0 |
+| [private endpoint](./private-endpoint/README.md) | v2.2.1 |
 | [public ip address](./public-ip-address/README.md) | v2.3.1 |
 | [public ip prefix](./public-ip-prefix/README.md) | v2.3.1 |
 | [purview account](./purview-account/README.md) | v2.3.0 |
@@ -73,7 +73,7 @@
 | [servicebus](./servicebus/README.md) | v2.3.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.2.0 |
 | [storage account](./storage-account/README.md) | v2.3.1 |
-| [storage sync](./storage-sync/README.md) | v2.2.0 |
+| [storage sync](./storage-sync/README.md) | v2.2.1 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.2.1 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.3.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.2.0 |
