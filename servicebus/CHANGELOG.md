@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.3.1
+
+## Enhancements
+
+- Add tags `Platform` and `MonitoringTier` to `ignore_changes` (#23)
+
+
+   
 ## Release v2.3.0
 
 ## Provider & Terraform Upgrade
