@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # logic app integration account
 module "integration_account" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-integration-account.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-integration-account.git?ref=v2.3.1"
   config = local.ia
 }
 
