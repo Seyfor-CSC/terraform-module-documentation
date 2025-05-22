@@ -80,7 +80,7 @@ variable "config" {  type = list(object({
         replication_mode                         = optional(string)
         storage_account_id                       = optional(string)
         tags                                     = optional(map(any)) # If not provided, inherited in module from parent resource
-      })))
+      })), [])
     })), [])
   }))
 }

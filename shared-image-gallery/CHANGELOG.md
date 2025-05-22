@@ -1,10 +1,19 @@
 # Changelog
 
+## Release v2.2.2
+
+## Bug Fixes
+
+- Fix error with module failing when `image_version` variable is `null` (#38)
+
+
+
+   
 ## Release v2.2.1
 
 ## Enhancements
 
-- Add tags `Platfrom` and `MonitoringTier` to `ignore_changes` (#36)
+- Add tags `Platform` and `MonitoringTier` to `ignore_changes` (#36)
 
 
    

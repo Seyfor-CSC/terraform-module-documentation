@@ -107,7 +107,7 @@ resource "azurerm_windows_virtual_machine" "example2" {
 
 # shared image gallery
 module "shared_image_gallery" {
-  source = "git@github.com:Seyfor-CSC/mit.shared-image-gallery.git?ref=v2.2.1"
+  source = "git@github.com:Seyfor-CSC/mit.shared-image-gallery.git?ref=v2.2.2"
   config = local.acg
 }
 
