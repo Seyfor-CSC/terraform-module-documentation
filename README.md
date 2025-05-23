@@ -44,7 +44,7 @@
 | [logic app workflow](./logic-app-workflow/README.md) | v2.3.1 |
 | [machine learning](./machine-learning/README.md) | v2.3.1 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.0.1 |
-| [monitor action group](./monitor-action-group/README.md) | v2.2.1 |
+| [monitor action group](./monitor-action-group/README.md) | v2.2.2 |
 | [monitor alert](./monitor-alert/README.md) | v2.2.1 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.2.1 |
 | [mssql database](./mssql-database/README.md) | v2.3.1 |

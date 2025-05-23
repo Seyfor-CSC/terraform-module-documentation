@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # monitor action group
 module "monitor_action_group" {
-  source = "git@github.com:Seyfor-CSC/mit.monitor-action-group.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.monitor-action-group.git?ref=v2.2.2"
   config = local.ag
 }
 

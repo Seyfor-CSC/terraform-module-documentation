@@ -1,5 +1,22 @@
 # Changelog
 
+## Release v2.2.2
+
+## Bug Fixes
+
+- Remove `instances` from the `ignore_changes` lifecycle (#36)
+
+
+
+   
+## Release v2.2.1
+
+## Enhancements
+
+- Add tags `Platform` and `MonitoringTier` to `ignore_changes` (#35)
+
+
+   
 ## Release v2.2.0
 
 ## Provider & Terraform Upgrade
