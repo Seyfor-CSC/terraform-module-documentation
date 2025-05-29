@@ -1,10 +1,19 @@
 # Changelog
 
+## Release v2.2.2
+
+## Bug Fixes
+
+- Fix an error with `sub_path` in `init_container` (#39)
+
+
+
+   
 ## Release v2.2.1
 
 ## Enhancements
 
-- Add tags `Platfrom` and `MonitoringTier` to `ignore_changes` (#37)
+- Add tags `Platform` and `MonitoringTier` to `ignore_changes` (#37)
 
 
    
