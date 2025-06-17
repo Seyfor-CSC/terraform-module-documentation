@@ -65,7 +65,7 @@ resource "azurerm_storage_account" "sa_2" {
 
 # private endpoint
 module "private_endpoint" {
-  source = "git@github.com:Seyfor-CSC/mit.private-endpoint.git?ref=v2.2.1"
+  source = "git@github.com:Seyfor-CSC/mit.private-endpoint.git?ref=v2.3.0"
   config = local.pe
 
   depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_link]
