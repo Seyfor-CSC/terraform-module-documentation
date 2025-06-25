@@ -11,7 +11,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/key_vault_secret
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/key_vault_secret
 
 https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
 
@@ -45,6 +45,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Module Features
 ## Random Secret Generator
 This module has a resource called `random_password` which is used to generate random secret values. This way, hardcoding secrets in the code can be avoided. A random password will only be generated if you don't set neither `value` nor `value_wo` variable in the secret. Go to [test-case/locals.tf](test-case/locals.tf) to see an example of how to use this feature.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
