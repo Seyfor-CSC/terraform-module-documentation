@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "rg" {
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
   location = local.location
 }
 
-# private endpoint prerequisities
+# private endpoint prerequisites
 resource "azurerm_virtual_network" "vnet" {
   name                = "SEY-KV-NE-VNET01"
   location            = local.location
@@ -48,7 +48,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
   virtual_network_id    = azurerm_virtual_network.vnet.id
 }
 
-# monitoring prerequisities
+# monitoring prerequisites
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-KV-NE-LA01"
   location            = local.location
@@ -59,7 +59,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # key vault
 module "key_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v2.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault.git?ref=v2.4.0"
   config = local.kv
 }
 
