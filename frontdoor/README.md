@@ -16,19 +16,19 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cdn_frontdoor_profile
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_profile
   
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cdn_frontdoor_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_endpoint
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cdn_frontdoor_origin_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_origin_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cdn_frontdoor_origin
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_origin
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cdn_frontdoor_route
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_route
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cdn_frontdoor_custom_domain
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_custom_domain
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
