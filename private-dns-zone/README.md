@@ -11,9 +11,9 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_dns_zone
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_dns_zone
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_dns_zone_virtual_network_link
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_dns_zone_virtual_network_link
 
 &nbsp;
 
@@ -69,6 +69,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 # Module Features
 ## Private DNS Zone outputs: replacement of dots with hyphens
 Private DNS zone has dots in its name. However, dots are not allowed in the output names. Therefore, these dots are replaced with hyphens in the outputs. For example, if you have a private DNS zone named `sey.terraform.ne.dns` in your configuration, the output will be `sey-terraform-ne-dns`. Reference the Example usage of outputs (section above) to see how to use the private DNS zone output.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
