@@ -10,7 +10,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_action_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_action_group
 
 &nbsp;
 
