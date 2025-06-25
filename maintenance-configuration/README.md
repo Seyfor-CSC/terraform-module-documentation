@@ -10,7 +10,7 @@ You can also see [changelog](changelog.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/maintenance_configuration
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/maintenance_configuration
 
 &nbsp;
 

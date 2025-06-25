@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# automation account prerequisities
+# module deployment prerequisites
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # maintenance configuration
 module "maintenance_configuration" {
-  source = "git@github.com:Seyfor-CSC/mit.maintenance-configuration.git?ref=v2.0.1"
+  source = "git@github.com:Seyfor-CSC/mit.maintenance-configuration.git?ref=v2.1.0"
   config = local.mc
 }
 
