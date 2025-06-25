@@ -7,7 +7,7 @@ variable "config" {  type = list(object({
     resource_group_name = string
     location            = string
     default_node_pool = object({
-      vm_size                       = string
+      vm_size                       = optional(string)
       name                          = optional(string, "systemnp")
       capacity_reservation_group_id = optional(string)
       auto_scaling_enabled          = optional(bool)
@@ -162,7 +162,7 @@ variable "config" {  type = list(object({
     cluster_node_pool = optional(list(object({
       name                          = string
       kubernetes_cluster_id         = optional(string) # Inherited in module from parent resource
-      vm_size                       = string
+      vm_size                       = optional(string)
       capacity_reservation_group_id = optional(string)
       auto_scaling_enabled          = optional(bool)
       host_encryption_enabled       = optional(bool)
@@ -225,7 +225,7 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |default_node_pool | object | Required |  |  |
-|&nbsp;vm_size | string | Required |  |  |
+|&nbsp;vm_size | string | Optional |  |  |
 |&nbsp;name | string | Optional |  "systemnp" |  |
 |&nbsp;capacity_reservation_group_id | string | Optional |  |  |
 |&nbsp;auto_scaling_enabled | bool | Optional |  |  |
@@ -355,7 +355,7 @@ variable "config" {  type = list(object({
 |&nbsp;cluster_node_pool | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;kubernetes_cluster_id | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;&nbsp;vm_size | string | Required |  |  |
+|&nbsp;&nbsp;vm_size | string | Optional |  |  |
 |&nbsp;&nbsp;capacity_reservation_group_id | string | Optional |  |  |
 |&nbsp;&nbsp;auto_scaling_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;host_encryption_enabled | bool | Optional |  |  |

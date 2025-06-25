@@ -36,7 +36,7 @@
 | [function app](./function-app/README.md) | v2.2.1 |
 | [key vault](./key-vault/README.md) | v2.3.1 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.2.1 |
-| [kubernetes cluster](./kubernetes-cluster/README.md) | v2.3.1 |
+| [kubernetes cluster](./kubernetes-cluster/README.md) | v2.4.0 |
 | [load balancer](./load-balancer/README.md) | v2.4.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.4.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.4.0 |
@@ -66,7 +66,6 @@
 | [purview account](./purview-account/README.md) | v2.3.1 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.3.1 |
 | [redis cache](./redis-cache/README.md) | v2.3.1 |
-| [resource group](./resource-group/README.md) | v2.2.1 |
 | [role assignment](./role-assignment/README.md) | v2.2.0 |
 | [role definition](./role-definition/README.md) | v2.2.0 |
 | [role management policy](./role-management-policy/README.md) | v2.0.0 |
