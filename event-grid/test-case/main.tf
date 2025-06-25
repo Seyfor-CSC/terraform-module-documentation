@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -29,7 +29,7 @@ resource "azurerm_storage_account" "sa" {
 }
 
 module "eventgrid" {
-  source = "git@github.com:Seyfor-CSC/mit.event-grid.git?ref=v2.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.event-grid.git?ref=v2.4.0"
   config = local.eventgrid
 }
 
