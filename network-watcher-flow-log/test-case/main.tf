@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -34,25 +34,21 @@ resource "azurerm_storage_account" "sa" {
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "SEY-FLOWLOG-SAN-VNET01"
+  name                = "SEY-FLOWLOG-NE-VNET01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
   address_space       = ["10.0.1.0/28"]
-  subnet {
-    name             = "default"
-    address_prefixes = ["10.0.1.0/29"]
-  }
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "sey-flowlog-san-subnet01"
+  name                 = "sey-flowlog-ne-subnet01"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.1.8/29"]
+  address_prefixes     = ["10.0.1.0/29"]
 }
 
 # network watcher flow log
 module "flow_log" {
-  source = "git@github.com:Seyfor-CSC/mit.network-watcher-flow-log.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.network-watcher-flow-log.git?ref=v2.2.0"
   config = local.flow_log
 }

@@ -10,7 +10,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/network_watcher_flow_log
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/network_watcher_flow_log
 
 &nbsp;
 
@@ -31,7 +31,8 @@ There are no outputs.
 &nbsp;
 
 # Module Features
-No special features in module.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
