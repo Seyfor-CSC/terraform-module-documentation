@@ -39,7 +39,7 @@
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.3.1 |
 | [load balancer](./load-balancer/README.md) | v2.3.1 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.3.1 |
-| [logic app integration account](./logic-app-integration-account/README.md) | v2.3.1 |
+| [logic app integration account](./logic-app-integration-account/README.md) | v2.4.0 |
 | [logic app standard](./logic-app-standard/README.md) | v2.4.0 |
 | [logic app workflow](./logic-app-workflow/README.md) | v2.4.0 |
 | [machine learning](./machine-learning/README.md) | v2.3.1 |
