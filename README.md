@@ -76,7 +76,7 @@
 | [storage account](./storage-account/README.md) | v2.3.1 |
 | [storage sync](./storage-sync/README.md) | v2.2.1 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.2.1 |
-| [virtual desktop](./virtual-desktop/README.md) | v2.3.1 |
+| [virtual desktop](./virtual-desktop/README.md) | v2.4.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.3.0 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.5.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.4.0 |

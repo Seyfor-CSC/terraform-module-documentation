@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "=3.1.0"
+      version = "=3.4.0"
     }
   }
   backend "local" {}
@@ -19,7 +19,7 @@ provider "azurerm" {
 provider "azuread" {
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -67,7 +67,7 @@ resource "azurerm_role_assignment" "example" {
   skip_service_principal_aad_check = true
 }
 
-# private endpoint prerequisities
+# private endpoint prerequisites
 resource "azurerm_virtual_network" "vnet" {
   name                = "SEY-AVD-NE-VNET01"
   location            = local.location
@@ -94,7 +94,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
   virtual_network_id    = azurerm_virtual_network.vnet.id
 }
 
-# monitoring prerequisities
+# monitoring prerequisites
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-AVD-NE-LA01"
   location            = local.location
@@ -105,7 +105,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual desktop
 module "virtual_desktop" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v2.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v2.4.0"
   config = local.virtual_desktop
 }
 
