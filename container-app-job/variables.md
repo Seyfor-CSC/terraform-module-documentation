@@ -86,9 +86,9 @@ variable "config" {  type = list(object({
         }))
       }))
       volume = optional(object({
-        name         = optional(string)
-        storage_type = optional(string)
-        storage_name = optional(string)
+        name          = optional(string)
+        storage_type  = optional(string)
+        storage_name  = optional(string)
         mount_options = optional(string)
       }))
     })
