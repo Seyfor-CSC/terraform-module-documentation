@@ -18,19 +18,19 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/Azure/azapi/2.2.0/docs/resources/azapi_resource
+https://registry.terraform.io/providers/Azure/azapi/2.4.0/docs/resources/azapi_resource
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_protected_vm
 
 Microsoft documentation:
 

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
     azapi = {
       source  = "azure/azapi"
@@ -83,7 +83,6 @@ resource "azurerm_windows_virtual_machine" "vm" {
   size                              = "Standard_D2s_v4"
   admin_username                    = "adminuser"
   admin_password                    = "P@$$w0rd1234!"
-  vm_agent_platform_updates_enabled = true
   network_interface_ids = [
     azurerm_network_interface.nic0.id
   ]

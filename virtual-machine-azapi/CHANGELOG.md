@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v2.5.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.33.0 (#60)
+- Azapi provider: 2.4.0 (#60)
+- Terraform: 1.12.2 (#60)
+   
 ## Release v2.4.1
 
 ## Enhancements

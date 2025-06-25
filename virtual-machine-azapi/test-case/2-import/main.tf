@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
     azapi = {
       source  = "azure/azapi"
-      version = "=2.3.0"
+      version = "=2.4.0"
     }
   }
   backend "local" {}
@@ -111,7 +111,7 @@ data "azurerm_managed_disk" "source-osdisk" {
 }
 
 module "vm" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.4.1"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine-azapi.git?ref=v2.5.0"
   config = local.vm
 }
 
