@@ -14,15 +14,15 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/recovery_services_vault
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/recovery_services_vault
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_policy_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_policy_vm
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_policy_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_policy_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -113,6 +113,8 @@ You can also create a custom combination of log categories by setting the `categ
 Navigate to [test-case/locals.tf](test-case/locals.tf) to see how we set this all up.
 
  > **NOTE:** Refer to [Microsoft documentation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults) for more details about log categories in Recovery Services Vaults.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 

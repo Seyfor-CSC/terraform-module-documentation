@@ -183,7 +183,7 @@ variable "config" {  type = list(object({
         asr_jobs                = optional(bool, true)
         asr_replicated_items    = optional(bool, true)
         azure_backup_operations = optional(bool, true)
-        health                  = optional(bool, true)
+        all_metrics             = optional(bool, true)
       }))
     })), [])
   }))
