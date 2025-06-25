@@ -19,23 +19,23 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/windows_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/windows_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/linux_virtual_machine
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/linux_virtual_machine
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/network_interface
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/network_interface
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/managed_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/managed_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/virtual_machine_data_disk_attachment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_machine_data_disk_attachment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_data_collection_rule_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_data_collection_rule_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/virtual_machine_extension
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_machine_extension
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/data_protection_backup_instance_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/data_protection_backup_instance_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_protected_vm
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_protected_vm
 
 &nbsp;
 
@@ -152,6 +152,8 @@ lifecycle {
 ```
 ## Subscription Id
 When using the module, subscription_id variable needs to be configured in the module call (in the same place as source or the config variable) if you want to turn on backup of OS disks. Set the value of this variable to the subscription id you will deploy this module into. Go to [test-case/main.tf](test-case/main.tf) to see how it should look like.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 

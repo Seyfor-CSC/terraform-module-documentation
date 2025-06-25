@@ -116,7 +116,6 @@ variable "config" {  type = list(object({
     }))
     timezone                          = optional(string) # windows only
     user_data                         = optional(string)
-    vm_agent_platform_updates_enabled = optional(bool)
     virtual_machine_scale_set_id      = optional(string)
     vtpm_enabled                      = optional(bool)
     winrm_listener = optional(list(object({ # windows only
@@ -368,7 +367,6 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;timeout | string | Optional |  |  |
 |timezone | string | Optional |  |  windows only |
 |user_data | string | Optional |  |  |
-|vm_agent_platform_updates_enabled | bool | Optional |  |  |
 |virtual_machine_scale_set_id | string | Optional |  |  |
 |vtpm_enabled | bool | Optional |  |  |
 |winrm_listener | list(object) | Optional | [] |  windows only |

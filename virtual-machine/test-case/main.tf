@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "rg" {
@@ -115,7 +115,7 @@ resource "azurerm_backup_policy_vm" "bp" {
 
 # virtual machine
 module "virtual_machine" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v2.2.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v2.2.1"
   config          = local.vm
   subscription_id = data.azurerm_client_config.current.subscription_id
 }
