@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -107,7 +107,7 @@ resource "azurerm_windows_virtual_machine" "example2" {
 
 # shared image gallery
 module "shared_image_gallery" {
-  source = "git@github.com:Seyfor-CSC/mit.shared-image-gallery.git?ref=v2.2.2"
+  source = "git@github.com:Seyfor-CSC/mit.shared-image-gallery.git?ref=v2.3.0"
   config = local.acg
 }
 

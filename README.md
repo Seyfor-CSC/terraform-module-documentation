@@ -72,7 +72,7 @@
 | [role management policy](./role-management-policy/README.md) | v2.0.0 |
 | [route table](./route-table/README.md) | v2.2.1 |
 | [servicebus](./servicebus/README.md) | v2.3.1 |
-| [shared image gallery](./shared-image-gallery/README.md) | v2.2.2 |
+| [shared image gallery](./shared-image-gallery/README.md) | v2.3.0 |
 | [storage account](./storage-account/README.md) | v2.4.0 |
 | [storage sync](./storage-sync/README.md) | v2.3.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.3.0 |
