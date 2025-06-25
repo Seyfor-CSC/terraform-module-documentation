@@ -11,9 +11,9 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_alert_processing_rule_action_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_alert_processing_rule_action_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_alert_processing_rule_suppression
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_alert_processing_rule_suppression
 
 &nbsp;
 
@@ -38,6 +38,8 @@ There are no outputs.
 # Module Features
 ## How to deploy Monitor Alert Processing Rule Action Group and Suppression
 These two resources have identical variables, except for `add_action_group_ids`. If you configure this variable, `azurerm_monitor_alert_processing_rule_action_group` resource will be deployed. If you leave it empty, `azurerm_monitor_alert_processing_rule_suppression` resource will be deployed.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
