@@ -1,5 +1,19 @@
 # Changelog
 
+## Release v2.4.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.33.0 (#59)
+- Terraform: 1.12.2 (#59)
+   
+## Release v2.3.1
+
+## Enhancements
+
+- Add tags `Platform` and `MonitoringTier` to `ignore_changes` (#58)
+
+
+   
 ## Release v2.3.0
 
 ## Provider & Terraform Upgrade

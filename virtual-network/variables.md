@@ -3,11 +3,12 @@
 ```
 variable "config" {  type = list(object({
     # virtual network
-    name                = string
-    resource_group_name = string
-    location            = string
-    address_space       = list(string)
-    bgp_community       = optional(string)
+    name                    = string
+    resource_group_name     = string
+    location                = string
+    address_space           = list(string)
+    bgp_community           = optional(string)
+    flow_timeout_in_minutes = optional(number)
     ddos_protection_plan = optional(object({
       id     = string
       enable = bool
@@ -17,7 +18,6 @@ variable "config" {  type = list(object({
     }))
     dns_servers                    = optional(list(string), [])
     edge_zone                      = optional(string)
-    flow_timeout_in_minutes        = optional(number)
     private_endpoint_vnet_policies = optional(string)
     tags                           = optional(map(any))
 
@@ -111,6 +111,7 @@ variable "subscription_id" {
 |location | string | Required |  |  |
 |address_space | list(string) | Required |  |  |
 |bgp_community | string | Optional |  |  |
+|flow_timeout_in_minutes | number | Optional |  |  |
 |ddos_protection_plan | object | Optional |  |  |
 |&nbsp;id | string | Required |  |  |
 |&nbsp;enable | bool | Required |  |  |
@@ -118,7 +119,6 @@ variable "subscription_id" {
 |&nbsp;enforcement | string | Required |  |  |
 |dns_servers | list(string) | Optional | [] |  |
 |edge_zone | string | Optional |  |  |
-|flow_timeout_in_minutes | number | Optional |  |  |
 |private_endpoint_vnet_policies | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |subnets | list(object) | Required |  |  |

@@ -15,17 +15,17 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/virtual_network
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_network
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/subnet
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/subnet
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/subnet_network_security_group_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/subnet_network_security_group_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/subnet_route_table_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/subnet_route_table_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/subnet_nat_gateway_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/subnet_nat_gateway_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -117,8 +117,11 @@ Sometimes, the capital letters in resource IDs, like those for resource groups, 
 It is common to have dots in the subnet name. However, dots are not allowed in the output names. Therefore, dots in subnet names are replaced with hyphens in the output names. For example, if you have subnet named `subnet-10.0.1.0-24` in your configuration, the output name will be `subnet-10-0-1-0-24`. Reference the Example usage of outputs (section above) to see how to use the subnet output.
 ## Subnet only deployment without Virtual Network
 If you want to deploy a subnet without the virtual network, you can do so by setting the `subnets` variable instead of the `config` variable. You can't use one module call to deploy a `subnets` variable and a `config` variable at the same time. Each module call can only deploy one of these variables. Go to [test-case](test-case) to see how to deploy each scenario.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+## ip_address_pool not supported
+We currently have no scenario for `ip_address_pool` in the module. If you need this feature, please contact us and we will implement it.

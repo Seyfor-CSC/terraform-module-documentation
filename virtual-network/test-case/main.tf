@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 data "azurerm_subscription" "primary" {}
 
 resource "azurerm_resource_group" "rg" {
@@ -41,7 +41,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.0.2.0/24"]
 }
 
-# monitoring prerequisities
+# monitoring prerequisites
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-NETWORK-NE-LA01"
   location            = local.location
@@ -52,12 +52,12 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual network
 module "virtual_network" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.3.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.4.0"
   config          = local.vnet
   subscription_id = data.azurerm_subscription.primary.id
 }
 module "subnets" {
-  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.2.0"
+  source          = "git@github.com:Seyfor-CSC/mit.virtual-network.git?ref=v2.4.0"
   subnets         = local.subnets
   subscription_id = data.azurerm_subscription.primary.id
 }
