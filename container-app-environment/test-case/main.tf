@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -40,7 +40,7 @@ resource "azurerm_subnet" "subnet" {
   }
 }
 
-# monitoring prerequisities
+# monitoring prerequisites
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-ACAE-NE-LA01"
   location            = local.location
@@ -51,7 +51,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container app environment
 module "container_app_environment" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.4.0"
   config = local.cae
 }
 
