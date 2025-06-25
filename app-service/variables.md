@@ -124,7 +124,8 @@ variable "config" {  type = list(object({
       app_setting_names       = optional(list(string))
       connection_string_names = optional(list(string))
     }))
-    virtual_network_subnet_id = optional(string)
+    virtual_network_backup_restore_enabled = optional(bool)
+    virtual_network_subnet_id              = optional(string)
     tags = optional(map(any))
 
     # private endpoint
@@ -290,6 +291,7 @@ variable "config" {  type = list(object({
 |sticky_settings | object | Optional |  |  |
 |&nbsp;app_setting_names | list(string) | Optional |  |  |
 |&nbsp;connection_string_names | list(string) | Optional |  |  |
+|virtual_network_backup_restore_enabled | bool | Optional |  |  |
 |virtual_network_subnet_id | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
