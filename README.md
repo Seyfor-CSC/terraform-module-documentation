@@ -1,5 +1,5 @@
 # Important information
-* All modules are currently tested on terraform version 1.11.2 and azurerm provider version 4.23.0.
+* All modules are currently tested on terraform version 1.12.2 and azurerm provider version 4.33.0.
 
 * Our modules are designed to save you time and effort by providing a consistent approach to deploying resources in Azure. Hardcoding resource ids required in child resources is in the past as it is now done automatically for you inside the module. For example, if you want to deploy a virtual machine with a network interface, you don't need to specify the network interface id in the virtual machine resource. You only need to configure the network interface and the module will take care of the rest.
 
@@ -66,7 +66,7 @@
 | [purview account](./purview-account/README.md) | v2.4.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.4.0 |
 | [redis cache](./redis-cache/README.md) | v2.4.0 |
-| [resource group](./resource-group/README.md) | v2.2.1 |
+| [resource group](./resource-group/README.md) | v2.3.0 |
 | [role assignment](./role-assignment/README.md) | v2.3.0 |
 | [role definition](./role-definition/README.md) | v2.3.0 |
 | [role management policy](./role-management-policy/README.md) | v2.1.0 |
