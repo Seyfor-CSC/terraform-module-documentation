@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,13 +13,13 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
 }
 
-# monitoring prerequisities
+# monitoring prerequisites
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-ASP-NE-LA01"
   location            = local.location
@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # app service plan
 module "app_service_plan" {
-  source = "git@github.com:Seyfor-CSC/mit.app-service-plan.git?ref=v2.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.app-service-plan.git?ref=v2.4.0"
   config = local.asp
 }
 
