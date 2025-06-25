@@ -16,19 +16,19 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/mssql_server
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/mssql_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/mssql_database
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/mssql_database
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/mssql_database_extended_auditing_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/mssql_database_extended_auditing_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/mssql_elasticpool
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/mssql_elasticpool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/mssql_firewall_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/mssql_firewall_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -113,7 +113,8 @@ lifecycle {
   ]
 }
 ```
-
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 

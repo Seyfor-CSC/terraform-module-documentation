@@ -17,7 +17,8 @@ variable "config" {  type = list(object({
       tenant_id                   = optional(string)
       azuread_authentication_only = optional(bool)
     }))
-    connection_policy = optional(string)
+    connection_policy                        = optional(string)
+    express_vulnerability_assessment_enabled = optional(bool)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -228,6 +229,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;tenant_id | string | Optional |  |  |
 |&nbsp;&nbsp;azuread_authentication_only | bool | Optional |  |  |
 |&nbsp;connection_policy | string | Optional |  |  |
+|&nbsp;express_vulnerability_assessment_enabled | bool | Optional |  |  |
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
