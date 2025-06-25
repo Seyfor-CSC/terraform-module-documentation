@@ -15,17 +15,17 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/eventhub_namespace
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/eventhub_namespace
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/eventhub
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/eventhub
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/eventhub_consumer_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/eventhub_consumer_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/eventhub_authorization_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/eventhub_authorization_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -94,7 +94,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
