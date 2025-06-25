@@ -10,7 +10,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/role_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/role_management_policy
 
 &nbsp;
 
