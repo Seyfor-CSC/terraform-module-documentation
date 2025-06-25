@@ -19,25 +19,25 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -140,8 +140,6 @@ We reserve the right to include tags dedicated to our product Advanced Monitorin
 [blob_properties not setting default value of soft delete](https://github.com/hashicorp/terraform-provider-azurerm/issues/21856)
 ## Supported Variables
 Not all available variables for Storage Management Policy are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.
-## Diagnostic Setting metrics updating in place
-If any of the metrics is disabled, the diagnostic setting will be updating in place with every run.
 ### GitHub issue
 https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
 ## Container and File Share migration to new API
