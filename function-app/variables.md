@@ -133,6 +133,7 @@ variable "config" {  type = list(object({
     storage_uses_managed_identity                  = optional(bool)
     storage_key_vault_secret_id                    = optional(string)
     virtual_network_subnet_id                      = optional(string)
+    virtual_network_backup_restore_enabled         = optional(bool)
     vnet_image_pull_enabled                        = optional(bool)
     webdeploy_publish_basic_authentication_enabled = optional(bool)
     zip_deploy_file                                = optional(string)
@@ -307,6 +308,7 @@ variable "config" {  type = list(object({
 |storage_uses_managed_identity | bool | Optional |  |  |
 |storage_key_vault_secret_id | string | Optional |  |  |
 |virtual_network_subnet_id | string | Optional |  |  |
+|virtual_network_backup_restore_enabled | bool | Optional |  |  |
 |vnet_image_pull_enabled | bool | Optional |  |  |
 |webdeploy_publish_basic_authentication_enabled | bool | Optional |  |  |
 |zip_deploy_file | string | Optional |  |  |
