@@ -74,7 +74,7 @@
 | [servicebus](./servicebus/README.md) | v2.3.1 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.2.2 |
 | [storage account](./storage-account/README.md) | v2.3.1 |
-| [storage sync](./storage-sync/README.md) | v2.2.1 |
+| [storage sync](./storage-sync/README.md) | v2.3.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.3.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.4.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.3.0 |
