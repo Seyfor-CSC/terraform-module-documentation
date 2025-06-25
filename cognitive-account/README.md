@@ -13,13 +13,13 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cognitive_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cognitive_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/cognitive_deployment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cognitive_deployment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -81,7 +81,8 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
+## Monitoring tags in `ignore_changes` lifecycle block
+We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 
 &nbsp;
 
