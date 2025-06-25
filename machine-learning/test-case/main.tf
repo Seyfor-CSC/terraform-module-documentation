@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.23.0"
+      version = "=4.33.0"
     }
   }
   backend "local" {}
@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-# module deployment prerequisities
+# module deployment prerequisites
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "rg" {
@@ -78,7 +78,7 @@ resource "azurerm_key_vault_key" "kvk" {
   depends_on = [azurerm_key_vault_access_policy.kvap]
 }
 
-# private endpoint prerequisities
+# private endpoint prerequisites
 resource "azurerm_virtual_network" "vnet" {
   name                = "SEY-MLWORKSPACE-NE-VNET01"
   location            = local.location
@@ -105,7 +105,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
   virtual_network_id    = azurerm_virtual_network.vnet.id
 }
 
-# monitoring prerequisities
+# monitoring prerequisites
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-MLWORKSPACE-NE-LA01"
   resource_group_name = azurerm_resource_group.rg.name
@@ -129,7 +129,7 @@ resource "azurerm_eventhub" "eh" {
 
 # machine learning workspace
 module "machine_learning_workspace" {
-  source = "git@github.com:Seyfor-CSC/mit.machine-learning.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.machine-learning.git?ref=v2.4.0"
   config = local.mlw
 }
 
