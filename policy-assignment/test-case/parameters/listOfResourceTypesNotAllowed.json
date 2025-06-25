@@ -1,7 +1,0 @@
-{
-    "listOfResourceTypesNotAllowed": {
-        "value": [
-            "microsoft.network/publicipaddresses"
-        ]
-    }
-}

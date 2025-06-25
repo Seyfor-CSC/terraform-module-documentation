@@ -1,9 +1,0 @@
-{
-    "listOfAllowedLocations": {
-        "value": [
-            "global",
-            "northeurope",
-            "westeurope"
-        ]
-    }
-}
