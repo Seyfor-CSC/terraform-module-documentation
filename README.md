@@ -41,7 +41,7 @@
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.3.1 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.3.1 |
 | [logic app standard](./logic-app-standard/README.md) | v2.3.1 |
-| [logic app workflow](./logic-app-workflow/README.md) | v2.3.1 |
+| [logic app workflow](./logic-app-workflow/README.md) | v2.4.0 |
 | [machine learning](./machine-learning/README.md) | v2.3.1 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.0.1 |
 | [monitor action group](./monitor-action-group/README.md) | v2.2.2 |
