@@ -11,9 +11,9 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/pim_active_role_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/pim_active_role_assignment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.23.0/docs/resources/pim_eligible_role_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/pim_eligible_role_assignment
 
 &nbsp;
 
