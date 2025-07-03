@@ -15,7 +15,7 @@ provider "azurerm" {
 
 # policy definition
 module "policy_definition" {
-  source = "git@github.com:Seyfor-CSC/mit.policy-definition.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.policy-definition.git?ref=v2.4.0"
   config = local.policy_definition
 }
 

@@ -17,21 +17,28 @@ locals {
       metadata = jsonencode({
         category = "General"
       })
-      parameters = "${path.module}/parameters/Allowed-Locations.json"
-
-      policy_rule = <<POLICY_RULE
-      {
-          "if": {
-            "not": {
-              "field": "location",
-              "in": "[parameters('allowedLocations')]"
-            }
-          },
-          "then": {
-            "effect": "audit"
+      parameters = jsonencode({
+        allowedLocations = {
+          type = "Array"
+          metadata = {
+            description = "The list of allowed locations for resources."
+            displayName = "Allowed locations"
+            strongType = "location"
           }
         }
-      POLICY_RULE
+      })
+
+      policy_rule = jsonencode({
+        if = {
+          not = {
+            field = "location"
+            in   = "[parameters('allowedLocations')]"
+          }
+        }
+        then = {
+          effect = "audit"
+        }
+      })
     },
     {
       name                = local.naming.policy_2
@@ -43,27 +50,25 @@ locals {
       metadata = jsonencode({
         category = "General"
       })
-      parameters = "${path.module}/parameters/Disallowed-Resources.json"
+      parameters = file("parameters/Disallowed-Resources.json")
 
-      policy_rule = <<POLICY_RULE
-      {
-          "if": {
-            "allOf": [
-              {
-                "field": "type",
-                "in": "[parameters('listOfResourceTypesNotAllowed')]"
-              },
-              {
-                "value": "[field('type')]",
-                "exists": true
-              }
-            ]
-          },
-          "then": {
-            "effect": "[parameters('effect')]"
-          }
+      policy_rule = jsonencode({
+        if = {
+          allOf = [
+            {
+              field = "type"
+              in    = "[parameters('listOfResourceTypesNotAllowed')]"
+            },
+            {
+              value = "[field('type')]"
+              exists = true
+            }
+          ]
+        },
+        then = {
+          effect = "[parameters('effect')]"
         }
-      POLICY_RULE
+      })
     }
   ]
 }
