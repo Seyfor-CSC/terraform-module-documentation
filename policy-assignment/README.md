@@ -46,8 +46,6 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Module Features
 ## subscription_id and management_group_id
 This module can be deployed at either the subscription or management group level. The module will automatically determine which level it is being deployed at and use the appropriate id. See [test-case/locals.tf](test-case/locals.tf) for an example of how to deploy at different levels.
-## parameters variable
-Parameters are passed into policy assignment through a json file. See [test-case/locals.tf](test-case/locals.tf) and [test-case/parameters](test-case/parameters) for an example of how to use this variable.
 
 &nbsp;
 

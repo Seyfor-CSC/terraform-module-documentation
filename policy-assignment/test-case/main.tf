@@ -18,7 +18,7 @@ data "azurerm_subscription" "primary" {}
 
 # policy assignment
 module "policy_assignment" {
-  source = "git@github.com:Seyfor-CSC/mit.policy-assignment.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.policy-assignment.git?ref=v2.4.0"
   config = local.policy
 }
 output "policy_assignment" {

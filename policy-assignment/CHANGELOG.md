@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.4.0
+
+## Enhancements
+
+- Add support for direct string input in `parameters` (#40)
+
+
+   
 ## Release v2.3.0
 
 ## Provider & Terraform Upgrade
