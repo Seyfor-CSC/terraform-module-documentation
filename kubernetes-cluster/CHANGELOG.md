@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.4.1
+
+## Enhancements
+
+- Add `network_data_plane` parameter (#68)
+
+
+   
 ## Release v2.4.0
 
 ## Provider & Terraform Upgrade

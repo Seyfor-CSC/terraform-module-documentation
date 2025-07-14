@@ -118,6 +118,7 @@ variable "config" {  type = list(object({
       network_plugin      = string
       network_policy      = optional(string)
       dns_service_ip      = optional(string)
+      network_data_plane  = optional(string)
       network_plugin_mode = optional(string)
       outbound_type       = optional(string)
       pod_cidr            = optional(string)
@@ -319,6 +320,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;network_plugin | string | Required |  |  |
 |&nbsp;&nbsp;network_policy | string | Optional |  |  |
 |&nbsp;&nbsp;dns_service_ip | string | Optional |  |  |
+|&nbsp;&nbsp;network_data_plane | string | Optional |  |  |
 |&nbsp;&nbsp;network_plugin_mode | string | Optional |  |  |
 |&nbsp;&nbsp;outbound_type | string | Optional |  |  |
 |&nbsp;&nbsp;pod_cidr | string | Optional |  |  |
