@@ -84,8 +84,7 @@ resource "azurerm_policy_assignment" "policy_assignment" {
 &nbsp;
 
 # Module Features
-## parameters variable
-Parameters are passed into policy set definition through a json file. See [test-case/locals.tf](test-case/locals.tf) and [test-case/parameters](test-case/parameters) for an example of how to use this variable.
+No special features in module.
 
 &nbsp;
 

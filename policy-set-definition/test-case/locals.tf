@@ -15,26 +15,29 @@ locals {
       metadata = jsonencode({
         category = "Tags"
       })
-      parameters = "${path.module}/parameters/SEY-TERRAFORM-POLICY01.json"
+      parameters = file("parameters/SEY-TERRAFORM-POLICY01.json")
+      # other option how to pass parameters
+      # parameters = jsonencode({
+      # })
 
       policy_definition_reference = [
         {
           reference_id : "RequiredRGTagServiceOwner",
           policy_definition_id : "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
-          parameter_values = <<VALUE
-            { 
-                "tagName" : {"value" : "[parameters('RequiredRGTagServiceOwner')]"}
+          parameter_values = jsonencode(
+            {
+              tagName = { value = "[parameters('RequiredRGTagServiceOwner')]" }
             }
-            VALUE
+          )
         },
         {
           reference_id : "RequiredRGTagAPMID",
           policy_definition_id : "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
-          parameter_values = <<VALUE
-            { 
-                "tagName" : {"value" : "[parameters('RequiredRGTagAPMID')]"}
+          parameter_values = jsonencode(
+            {
+              tagName = { value = "[parameters('RequiredRGTagAPMID')]" }
             }
-            VALUE
+          )
         }
       ]
     }
