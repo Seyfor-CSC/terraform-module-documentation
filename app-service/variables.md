@@ -73,6 +73,95 @@ variable "config" {  type = list(object({
       vnet_route_all_enabled = optional(bool)
     })
     app_settings = optional(map(any))
+    auth_settings_v2 = optional(object({
+      auth_enabled                            = optional(bool)
+      runtime_version                         = optional(string)
+      config_file_path                        = optional(string)
+      require_authentication                  = optional(bool)
+      unauthenticated_action                  = optional(string)
+      default_provider                        = optional(string)
+      excluded_paths                          = optional(list(string))
+      require_https                           = optional(bool)
+      http_route_api_prefix                   = optional(string)
+      forward_proxy_convention                = optional(string)
+      forward_proxy_custom_host_header_name   = optional(string)
+      forward_proxy_custom_scheme_header_name = optional(string)
+      apple_v2 = optional(object({
+        client_id                  = string
+        client_secret_setting_name = string
+        login_scopes               = optional(list(string))
+      }))
+      active_directory_v2 = optional(object({
+        client_id                            = string
+        tenant_auth_endpoint                 = string
+        client_secret_setting_name           = optional(string)
+        client_secret_certificate_thumbprint = optional(string)
+        jwt_allowed_groups                   = optional(list(string))
+        jwt_allowed_client_applications      = optional(list(string))
+        www_authentication_disabled          = optional(bool)
+        allowed_groups                       = optional(list(string))
+        allowed_identities                   = optional(list(string))
+        allowed_applications                 = optional(list(string))
+        login_parameters                     = optional(map(string))
+        allowed_audiences                    = optional(list(string))
+      }))
+      azure_static_web_app_v2 = optional(object({
+        client_id = string
+      }))
+      custom_oidc_v2 = optional(list(object({
+        name                          = string
+        client_id                     = string
+        openid_configuration_endpoint = string
+        name_claim_type               = optional(string)
+        scopes                        = optional(list(string))
+        client_credential_method      = optional(string)
+        client_secret_setting_name    = optional(string)
+        authorisation_endpoint        = optional(string)
+        token_endpoint                = optional(string)
+        issuer_endpoint               = optional(string)
+        certification_uri             = optional(string)
+      })), [])
+      facebook_v2 = optional(object({
+        app_id                  = string
+        app_secret_setting_name = string
+        graph_api_version       = optional(string)
+        login_scopes            = optional(list(string))
+      }))
+      github_v2 = optional(object({
+        client_id                  = string
+        client_secret_setting_name = string
+        login_scopes               = optional(list(string))
+      }))
+      google_v2 = optional(object({
+        client_id                  = string
+        client_secret_setting_name = string
+        allowed_audiences          = optional(list(string))
+        login_scopes               = optional(list(string))
+      }))
+      microsoft_v2 = optional(object({
+        client_id                  = string
+        client_secret_setting_name = string
+        allowed_audiences          = optional(list(string))
+        login_scopes               = optional(list(string))
+      }))
+      twitter_v2 = optional(object({
+        consumer_key                 = string
+        consumer_secret_setting_name = string
+      }))
+      login = optional(object({
+        logout_endpoint                   = optional(string)
+        token_store_enabled               = optional(bool)
+        token_refresh_extension_time      = optional(number)
+        token_store_path                  = optional(string)
+        token_store_sas_setting_name      = optional(string)
+        preserve_url_fragments_for_logins = optional(bool)
+        allowed_external_redirect_urls    = optional(list(string))
+        cookie_expiration_convention      = optional(string)
+        cookie_expiration_time            = optional(string)
+        validate_nonce                    = optional(bool)
+        nonce_expiration_time             = optional(string)
+      }))
+    }))
     backup = optional(object({
       name = string
       schedule = object({
@@ -251,6 +340,84 @@ variable "config" {  type = list(object({
 |&nbsp;use_32_bit_worker | bool | Optional |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
 |app_settings | map(any) | Optional |  |  |
+|auth_settings_v2 | object | Optional |  |  |
+|&nbsp;auth_enabled | bool | Optional |  |  |
+|&nbsp;runtime_version | string | Optional |  |  |
+|&nbsp;config_file_path | string | Optional |  |  |
+|&nbsp;require_authentication | bool | Optional |  |  |
+|&nbsp;unauthenticated_action | string | Optional |  |  |
+|&nbsp;default_provider | string | Optional |  |  |
+|&nbsp;excluded_paths | list(string) | Optional |  |  |
+|&nbsp;require_https | bool | Optional |  |  |
+|&nbsp;http_route_api_prefix | string | Optional |  |  |
+|&nbsp;forward_proxy_convention | string | Optional |  |  |
+|&nbsp;forward_proxy_custom_host_header_name | string | Optional |  |  |
+|&nbsp;forward_proxy_custom_scheme_header_name | string | Optional |  |  |
+|&nbsp;apple_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Required |  |  |
+|&nbsp;&nbsp;login_scopes | list(string) | Optional |  |  |
+|&nbsp;active_directory_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;tenant_auth_endpoint | string | Required |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;client_secret_certificate_thumbprint | string | Optional |  |  |
+|&nbsp;&nbsp;jwt_allowed_groups | list(string) | Optional |  |  |
+|&nbsp;&nbsp;jwt_allowed_client_applications | list(string) | Optional |  |  |
+|&nbsp;&nbsp;www_authentication_disabled | bool | Optional |  |  |
+|&nbsp;&nbsp;allowed_groups | list(string) | Optional |  |  |
+|&nbsp;&nbsp;allowed_identities | list(string) | Optional |  |  |
+|&nbsp;&nbsp;allowed_applications | list(string) | Optional |  |  |
+|&nbsp;&nbsp;login_parameters | map(string) | Optional |  |  |
+|&nbsp;&nbsp;allowed_audiences | list(string) | Optional |  |  |
+|&nbsp;azure_static_web_app_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;custom_oidc_v2 | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;openid_configuration_endpoint | string | Required |  |  |
+|&nbsp;&nbsp;name_claim_type | string | Optional |  |  |
+|&nbsp;&nbsp;scopes | list(string) | Optional |  |  |
+|&nbsp;&nbsp;client_credential_method | string | Optional |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;authorisation_endpoint | string | Optional |  |  |
+|&nbsp;&nbsp;token_endpoint | string | Optional |  |  |
+|&nbsp;&nbsp;issuer_endpoint | string | Optional |  |  |
+|&nbsp;&nbsp;certification_uri | string | Optional |  |  |
+|&nbsp;facebook_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;app_id | string | Required |  |  |
+|&nbsp;&nbsp;app_secret_setting_name | string | Required |  |  |
+|&nbsp;&nbsp;graph_api_version | string | Optional |  |  |
+|&nbsp;&nbsp;login_scopes | list(string) | Optional |  |  |
+|&nbsp;github_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Required |  |  |
+|&nbsp;&nbsp;login_scopes | list(string) | Optional |  |  |
+|&nbsp;google_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Required |  |  |
+|&nbsp;&nbsp;allowed_audiences | list(string) | Optional |  |  |
+|&nbsp;&nbsp;login_scopes | list(string) | Optional |  |  |
+|&nbsp;microsoft_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Required |  |  |
+|&nbsp;&nbsp;allowed_audiences | list(string) | Optional |  |  |
+|&nbsp;&nbsp;login_scopes | list(string) | Optional |  |  |
+|&nbsp;twitter_v2 | object | Optional |  |  |
+|&nbsp;&nbsp;consumer_key | string | Required |  |  |
+|&nbsp;&nbsp;consumer_secret_setting_name | string | Required |  |  |
+|&nbsp;login | object | Optional |  |  |
+|&nbsp;&nbsp;logout_endpoint | string | Optional |  |  |
+|&nbsp;&nbsp;token_store_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;token_refresh_extension_time | number | Optional |  |  |
+|&nbsp;&nbsp;token_store_path | string | Optional |  |  |
+|&nbsp;&nbsp;token_store_sas_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;preserve_url_fragments_for_logins | bool | Optional |  |  |
+|&nbsp;&nbsp;allowed_external_redirect_urls | list(string) | Optional |  |  |
+|&nbsp;&nbsp;cookie_expiration_convention | string | Optional |  |  |
+|&nbsp;&nbsp;cookie_expiration_time | string | Optional |  |  |
+|&nbsp;&nbsp;validate_nonce | bool | Optional |  |  |
+|&nbsp;&nbsp;nonce_expiration_time | string | Optional |  |  |
 |backup | object | Optional |  |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;schedule | object | Required |  |  |

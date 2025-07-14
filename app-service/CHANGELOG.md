@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.4.1
+
+## Enhancements
+
+- Add `auth_settings_v2` parameter to `ignore_changes` (#79)
+
+
+   
 ## Release v2.4.0
 
 ## Provider & Terraform Upgrade
