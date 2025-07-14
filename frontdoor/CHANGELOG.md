@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.1.1
+
+## Enhancements
+
+- Add `[]` as a default value for `cdn_frontdoor_origin_names` parameter in `route` (#8)
+
+
+   
 ## Release v2.1.0
 
 ## Provider & Terraform Upgrade

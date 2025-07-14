@@ -63,12 +63,12 @@ variable "config" {  type = list(object({
     # cdn frontdoor route
     route = optional(list(object({
       name                            = string
-      cdn_frontdoor_endpoint_id       = optional(string)       # Do not use, is replaced by cdn_frontdoor_endpoint_name parameter
-      cdn_frontdoor_endpoint_name     = optional(string)       # Custom variable replacing cdn_frontdoor_endpoint_id parameter. Frontdoor endpoint name, which is being created in this frontdoor, is expected
-      cdn_frontdoor_origin_group_id   = optional(string)       # Do not use, is replaced by cdn_frontdoor_origin_group_name parameter
-      cdn_frontdoor_origin_group_name = optional(string)       # Custom variable replacing cdn_frontdoor_origin_group_id parameter. Frontdoor origin group name, which is being created in this frontdoor, is expected
-      cdn_frontdoor_origin_ids        = optional(list(string)) # Do not use, is replaced by cdn_frontdoor_origin_names parameter
-      cdn_frontdoor_origin_names      = optional(list(string)) # Custom variable replacing cdn_frontdoor_origin_ids parameter. Frontdoor origin names, which are being created in this frontdoor, are expected
+      cdn_frontdoor_endpoint_id       = optional(string)           # Do not use, is replaced by cdn_frontdoor_endpoint_name parameter
+      cdn_frontdoor_endpoint_name     = optional(string)           # Custom variable replacing cdn_frontdoor_endpoint_id parameter. Frontdoor endpoint name, which is being created in this frontdoor, is expected
+      cdn_frontdoor_origin_group_id   = optional(string)           # Do not use, is replaced by cdn_frontdoor_origin_group_name parameter
+      cdn_frontdoor_origin_group_name = optional(string)           # Custom variable replacing cdn_frontdoor_origin_group_id parameter. Frontdoor origin group name, which is being created in this frontdoor, is expected
+      cdn_frontdoor_origin_ids        = optional(list(string))     # Do not use, is replaced by cdn_frontdoor_origin_names parameter
+      cdn_frontdoor_origin_names      = optional(list(string), []) # Custom variable replacing cdn_frontdoor_origin_ids parameter. Frontdoor origin names, which are being created in this frontdoor, are expected
       patterns_to_match               = list(string)
       supported_protocols             = list(string)
       forwarding_protocol             = optional(string)
@@ -175,7 +175,7 @@ variable "config" {  type = list(object({
 |&nbsp;cdn_frontdoor_origin_group_id | string | Optional |  |  Do not use, is replaced by cdn_frontdoor_origin_group_name parameter |
 |&nbsp;cdn_frontdoor_origin_group_name | string | Optional |  |  Custom variable replacing cdn_frontdoor_origin_group_id parameter. Frontdoor origin group name, which is being created in this frontdoor, is expected |
 |&nbsp;cdn_frontdoor_origin_ids | list(string) | Optional |  |  Do not use, is replaced by cdn_frontdoor_origin_names parameter |
-|&nbsp;cdn_frontdoor_origin_names | list(string) | Optional |  |  Custom variable replacing cdn_frontdoor_origin_ids parameter. Frontdoor origin names, which are being created in this frontdoor, are expected |
+|&nbsp;cdn_frontdoor_origin_names | list(string) | Optional | [] |  Custom variable replacing cdn_frontdoor_origin_ids parameter. Frontdoor origin names, which are being created in this frontdoor, are expected |
 |&nbsp;patterns_to_match | list(string) | Required |  |  |
 |&nbsp;supported_protocols | list(string) | Required |  |  |
 |&nbsp;forwarding_protocol | string | Optional |  |  |

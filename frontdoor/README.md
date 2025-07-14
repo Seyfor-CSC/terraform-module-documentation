@@ -35,27 +35,27 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Front Door Profile
-* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_profile.frontdoor_profile["`<profile-name>`"]'
+* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_profile.cdn_frontdoor_profile["`<profile-name>`"]'
 '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Cdn/profiles/`<profile-name>`'
 
 ### Front Door Endpoint
-* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_endpoint.frontdoor_endpoint["`<profile-name>`\_`<endpoint-name>`"]'
+* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_endpoint.cdn_frontdoor_endpoint["`<profile-name>`\_`<endpoint-name>`"]'
 '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Cdn/profiles/`<profile-name>`/afdEndpoints/`<endpoint-name>`'
 
 ### Front Door Origin Group
-* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_origin_group.frontdoor_origin_group["`<profile-name>`\_`<origin-group-name>`"]'
+* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_origin_group.cdn_frontdoor_origin_group["`<profile-name>`\_`<origin-group-name>`"]'
 '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Cdn/profiles/`<profile-name>`/originGroups/`<origin-group-name>`'
 
 ### Front Door Origin
-* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_origin.frontdoor_origin["`<profile-name>`\_`<origin_group_name>`\_`<origin-name>`"]'
+* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_origin.cdn_frontdoor_origin["`<profile-name>`\_`<origin_group_name>`\_`<origin-name>`"]'
 '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Cdn/profiles/`<profile-name>`/originGroups/`<origin_group_name>`/origins/`<origin-name>`'
 
 ### Front Door Route
-* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_route.frontdoor_route["`<profile-name>`\_`<route-name>`"]'
+* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_route.cdn_frontdoor_route["`<profile-name>`\_`<route-name>`"]'
 '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Cdn/profiles/`<profile-name>`/afdEndpoints/`<endpoint-name>`/routes/`<route-name>`'
 
 ### Front Door Custom Domain
-* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_custom_domain.frontdoor_custom_domain["`<profile-name>`\_`<custom-domain-name>`"]'
+* terraform import '`<path-to-module>`.azurerm_cdn_frontdoor_custom_domain.cdn_frontdoor_custom_domain["`<profile-name>`\_`<custom-domain-name>`"]'
 '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Cdn/profiles/`<profile-name>`/customDomains/`<custom-domain-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.frontdoor_
