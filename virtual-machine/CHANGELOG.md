@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.3.1
+
+## Enhancements
+
+- Allow optional inheritance of `source_vm_id` in the `azurerm_backup_protected_vm` resource (#66)
+
+
+   
 ## Release v2.3.0
 
 ## Provider & Terraform Upgrade

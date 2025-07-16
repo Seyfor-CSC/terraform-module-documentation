@@ -114,10 +114,10 @@ variable "config" {  type = list(object({
       enabled = bool
       timeout = optional(string)
     }))
-    timezone                          = optional(string) # windows only
-    user_data                         = optional(string)
-    virtual_machine_scale_set_id      = optional(string)
-    vtpm_enabled                      = optional(bool)
+    timezone                     = optional(string) # windows only
+    user_data                    = optional(string)
+    virtual_machine_scale_set_id = optional(string)
+    vtpm_enabled                 = optional(bool)
     winrm_listener = optional(list(object({ # windows only
       protocol        = optional(string, "Https")
       certificate_url = optional(string)
@@ -229,7 +229,7 @@ variable "config" {  type = list(object({
     vm_backup = optional(list(object({
       resource_group_name = string
       recovery_vault_name = string
-      source_vm_id        = optional(string) # Inherited in module from parent resource
+      source_vm_id        = optional(string) # If not provided, inherited in module from parent resource
       backup_policy_id    = optional(string)
       exclude_disk_luns   = optional(list(number))
       include_disk_luns   = optional(list(number))
@@ -458,7 +458,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |vm_backup | list(object) | Optional | [] |  |
 |&nbsp;resource_group_name | string | Required |  |  |
 |&nbsp;recovery_vault_name | string | Required |  |  |
-|&nbsp;source_vm_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;source_vm_id | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;backup_policy_id | string | Optional |  |  |
 |&nbsp;exclude_disk_luns | list(number) | Optional |  |  |
 |&nbsp;include_disk_luns | list(number) | Optional |  |  |
