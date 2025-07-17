@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.5.0
+
+## Enhancements
+
+- Add `azurerm_container_app_environment_storage` resource (#23)
+
+
+   
 ## Release v2.4.0
 
 ## Provider & Terraform Upgrade

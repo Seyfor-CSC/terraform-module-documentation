@@ -22,6 +22,17 @@ variable "config" {  type = list(object({
     mutual_tls_enabled = optional(bool)
     tags               = optional(map(any))
 
+    # container app environment storage
+    storage = optional(list(object({
+      name                         = string
+      container_app_environment_id = optional(string) # Ihnerited in module from parent resource
+      account_name                 = string
+      access_key                   = string
+      share_name                   = string
+      access_mode                  = string
+      nfs_server_url               = optional(string)
+    })), [])
+
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
       diag_name                      = optional(string) # Name of the diagnostic setting
@@ -64,6 +75,14 @@ variable "config" {  type = list(object({
 |&nbsp;minimum_count | number | Optional |  |  |
 |mutual_tls_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
+|storage | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;container_app_environment_id | string | Optional |  |  Ihnerited in module from parent resource |
+|&nbsp;account_name | string | Required |  |  |
+|&nbsp;access_key | string | Required |  |  |
+|&nbsp;share_name | string | Required |  |  |
+|&nbsp;access_mode | string | Required |  |  |
+|&nbsp;nfs_server_url | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

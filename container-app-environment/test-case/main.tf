@@ -40,7 +40,21 @@ resource "azurerm_subnet" "subnet" {
   }
 }
 
-# monitoring prerequisites
+resource "azurerm_storage_account" "sa" {
+  name                     = "seyacaenesa01"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = local.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
+resource "azurerm_storage_share" "share" {
+  name               = "sey-acae-ne-share01"
+  storage_account_id = azurerm_storage_account.sa.id
+  quota              = 5
+}
+
+# monitoring prerequisities
 resource "azurerm_log_analytics_workspace" "la" {
   name                = "SEY-ACAE-NE-LA01"
   location            = local.location
@@ -51,7 +65,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container app environment
 module "container_app_environment" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.5.0"
   config = local.cae
 }
 

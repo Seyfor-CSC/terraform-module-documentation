@@ -1,6 +1,7 @@
 # Introduction
 Container App Environment module can deploy these resources:
 * azurerm_container_app_environment (required)
+* azurerm_container_app_environment_storage (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
@@ -13,7 +14,10 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/container_app_environment
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/container_app_environment_storage
+
 https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -23,6 +27,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Container App Environment
 * terraform import '`<path-to-module>`.azurerm_container_app_environment.container_app_environment["`<container-app-environment-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`'
+### Container App Environment Storage
+* terraform import '`<path-to-module>`.azurerm_container_app_environment_storage.container_app_environment_storage["`<container-app-environment-name>`_`<container-app-environment-storage-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`/storages/`<container-app-environment-storage-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<container-app-environment-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`|`<diag-name>`'
 
@@ -33,12 +39,14 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value             | Comment                                            |
-| ----------- | ----------------- | -------------------------------------------------- |
-| outputs     | name              |                                                    |
-|             | id                |                                                    |
-|             | default_domain    | Default, publicly resolvable name of deployed CAE  |
-|             | static_ip_address | Static IP address of deployed CAE                  |
+| Output Name | Value             | Comment                                           |
+| ----------- | ----------------- | ------------------------------------------------- |
+| outputs     | name              |                                                   |
+|             | id                |                                                   |
+|             | default_domain    | Default, publicly resolvable name of deployed CAE |
+|             | static_ip_address | Static IP address of deployed CAE                 |
+|             | storage           | Container App Environment Storage outputs         |
+|             | &nbsp;id          |                                                   |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Container App Environment module is used as a value for the _scope_ variable in Role Assignment resource.

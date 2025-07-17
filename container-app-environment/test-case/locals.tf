@@ -23,6 +23,16 @@ locals {
         }
       ]
 
+      storage = [
+        {
+          name         = "seyacaenesa01"
+          account_name = azurerm_storage_account.sa.name
+          access_key   = azurerm_storage_account.sa.primary_access_key
+          share_name   = azurerm_storage_share.share.name
+          access_mode  = "ReadWrite"
+        }
+      ]
+
       monitoring = [
         {
           diag_name                  = "Monitoring"
