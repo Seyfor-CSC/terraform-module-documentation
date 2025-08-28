@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.3.1
+
+## Enhancements
+
+- Add `resolution_policy` parametr to virtual network link configuration (#42)
+
+
+   
 ## Release v2.3.0
 
 ## Provider & Terraform Upgrade

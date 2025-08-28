@@ -3,8 +3,8 @@ locals {
 
   naming = {
     rg    = "SEY-PDNSZONE-NE-RG01"
-    dns_1 = "sey.blob.core.windows.net"
-    dns_2 = "sey.file.core.windows.net"
+    dns_1 = "privatelink.blob.core.windows.net"
+    dns_2 = "privatelink.file.core.windows.net"
   }
 
   dns = [

@@ -23,6 +23,7 @@ variable "config" {  type = list(object({
       private_dns_zone_name = optional(string) # Inherited in module from parent resource
       virtual_network_id    = string
       registration_enabled  = optional(bool)
+      resolution_policy     = optional(string)
       tags                  = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
   }))
@@ -53,6 +54,7 @@ variable "config" {  type = list(object({
 |&nbsp;private_dns_zone_name | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;virtual_network_id | string | Required |  |  |
 |&nbsp;registration_enabled | bool | Optional |  |  |
+|&nbsp;resolution_policy | string | Optional |  |  |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 
 
