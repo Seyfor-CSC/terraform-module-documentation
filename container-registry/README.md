@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/container_registry
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/container_registry
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -38,13 +38,14 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value          | Comment                                              |
-| ----------- | -------------- | ---------------------------------------------------- |
-| outputs     | name           |                                                      |
-|             | id             |                                                      |
-|             | login_server   | URL to log into the container registry               |
-|             | admin_username | Username associated with the CR Admin account        |
-|             | principal_id   | principal_id (object_id) of system assigned identity |
+| Output Name | Value                    | Comment                                              |
+| ----------- | ------------------------ | ---------------------------------------------------- |
+| outputs     | name                     |                                                      |
+|             | id                       |                                                      |
+|             | login_server             | URL to log into the container registry               |
+|             | admin_username           | Username associated with the CR Admin account        |
+|             | data_endpoint_host_names |                                                      |
+|             | principal_id             | principal_id (object_id) of system assigned identity |
 
 
 ## Example usage of outputs
