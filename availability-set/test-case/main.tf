@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.33.0"
+      version = "=4.45.0"
     }
   }
   backend "local" {}
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # availability set
 module "availability_set" {
-  source = "git@github.com:Seyfor-CSC/mit.availability-set.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.availability-set.git?ref=v2.4.0"
   config = local.avset
 }
 
