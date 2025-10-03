@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.33.0"
+      version = "=4.45.0"
     }
   }
   backend "local" {}
@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # public ip address
 module "public_ip_address" {
-  source = "git@github.com:Seyfor-CSC/mit.public-ip-address.git?ref=v2.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.public-ip-address.git?ref=v2.5.0"
   config = local.pip
 }
 
