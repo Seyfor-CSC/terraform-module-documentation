@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/data_factory
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_factory
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/private_endpoint
 
 &nbsp;
 
