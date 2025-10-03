@@ -10,11 +10,11 @@ locals {
   eventgrid = {
     system_topic = [
       {
-        location               = local.location
-        name                   = local.naming.st
-        resource_group_name    = local.naming.rg
-        source_arm_resource_id = azurerm_storage_account.sa.id
-        topic_type             = "Microsoft.Storage.StorageAccounts"
+        location            = local.location
+        name                = local.naming.st
+        resource_group_name = local.naming.rg
+        source_resource_id  = azurerm_storage_account.sa.id
+        topic_type          = "Microsoft.Storage.StorageAccounts"
       }
     ]
   }

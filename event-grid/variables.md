@@ -2,12 +2,13 @@
 
 ```
 variable "config" {  type = object({
+    # eventgrid system topic
     system_topic = optional(list(object({
-      name                   = string
-      resource_group_name    = string
-      location               = string
-      source_arm_resource_id = string
-      topic_type             = string
+      name                = string
+      resource_group_name = string
+      location            = string
+      source_resource_id  = string
+      topic_type          = string
       identity = optional(object({
         type         = string
         identity_ids = optional(list(string))
@@ -42,7 +43,7 @@ variable "config" {  type = object({
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Required |  |  |
 |&nbsp;location | string | Required |  |  |
-|&nbsp;source_arm_resource_id | string | Required |  |  |
+|&nbsp;source_resource_id | string | Required |  |  |
 |&nbsp;topic_type | string | Required |  |  |
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
