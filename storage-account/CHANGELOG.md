@@ -1,5 +1,11 @@
 # Changelog
 
+## Release v2.5.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.45.0 (#90)
+- Terraform: 1.13.3 (#90)
+   
 ## Release v2.4.0
 
 ## Provider & Terraform Upgrade
@@ -223,10 +229,4 @@
 - File Share
 - Share Properties
 - Blob Properties
-   
-## Release v1.0.0
-
-### Added
-
-- Initial code
    

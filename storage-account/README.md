@@ -19,25 +19,25 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/private_endpoint
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -140,12 +140,10 @@ We reserve the right to include tags dedicated to our product Advanced Monitorin
 [blob_properties not setting default value of soft delete](https://github.com/hashicorp/terraform-provider-azurerm/issues/21856)
 ## Supported Variables
 Not all available variables for Storage Management Policy are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
 ## Container and File Share migration to new API
 AzureRM provider introduced changes to the API for storage account containers and file shares. Previous Data Plane API is replaced with the Resource Manager API. This deprecates the use of `storage_account_name` in the `azurerm_storage_container` and `azurerm_storage_share` resources. The new API requires the use of `storage_account_id` instead. This module has been updated to use the new API which triggers changes in terraform plan. However, the changes do not force the recreation of the resources and can be safely applied.
 ### GitHub Pull Request
-Chnage of API: https://github.com/hashicorp/terraform-provider-azurerm/pull/27733
+Change of API: https://github.com/hashicorp/terraform-provider-azurerm/pull/27733
 Support for migration: https://github.com/hashicorp/terraform-provider-azurerm/pull/28784
 ## Deprecated variables migrating to resources
 AzureRM provider is slowly deprecating some variables in favor of resources. Since not all variables have been deprecated yet, this module will update once the deprecation is complete. In the meantime, you will be seeing a warning message that you can ignore.

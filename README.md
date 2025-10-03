@@ -73,7 +73,7 @@
 | [route table](./route-table/README.md) | v2.3.0 |
 | [servicebus](./servicebus/README.md) | v2.4.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.3.0 |
-| [storage account](./storage-account/README.md) | v2.4.0 |
+| [storage account](./storage-account/README.md) | v2.5.0 |
 | [storage sync](./storage-sync/README.md) | v2.3.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.3.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.4.0 |

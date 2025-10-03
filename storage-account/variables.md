@@ -3,23 +3,24 @@
 ```
 variable "config" {  type = list(object({
     # storage account
-    name                             = string
-    resource_group_name              = string
-    location                         = string
-    account_tier                     = string
-    account_replication_type         = string
-    account_kind                     = optional(string)
-    cross_tenant_replication_enabled = optional(bool)
-    access_tier                      = optional(string)
-    edge_zone                        = optional(string)
-    https_traffic_only_enabled       = optional(bool)
-    min_tls_version                  = optional(string)
-    allow_nested_items_to_be_public  = optional(bool, false)
-    shared_access_key_enabled        = optional(bool)
-    public_network_access_enabled    = optional(bool, false)
-    default_to_oauth_authentication  = optional(bool)
-    is_hns_enabled                   = optional(bool)
-    nfsv3_enabled                    = optional(bool)
+    name                              = string
+    resource_group_name               = string
+    location                          = string
+    account_tier                      = string
+    account_replication_type          = string
+    provisioned_billing_model_version = optional(string)
+    account_kind                      = optional(string)
+    cross_tenant_replication_enabled  = optional(bool)
+    access_tier                       = optional(string)
+    edge_zone                         = optional(string)
+    https_traffic_only_enabled        = optional(bool)
+    min_tls_version                   = optional(string)
+    allow_nested_items_to_be_public   = optional(bool, false)
+    shared_access_key_enabled         = optional(bool)
+    public_network_access_enabled     = optional(bool, false)
+    default_to_oauth_authentication   = optional(bool)
+    is_hns_enabled                    = optional(bool)
+    nfsv3_enabled                     = optional(bool)
     custom_domain = optional(object({
       name          = string
       use_subdomain = optional(bool)
@@ -320,6 +321,7 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |account_tier | string | Required |  |  |
 |account_replication_type | string | Required |  |  |
+|provisioned_billing_model_version | string | Optional |  |  |
 |account_kind | string | Optional |  |  |
 |cross_tenant_replication_enabled | bool | Optional |  |  |
 |access_tier | string | Optional |  |  |
