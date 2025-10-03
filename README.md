@@ -46,7 +46,7 @@
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.4.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.4.0 |
-| [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.3.0 |
+| [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.4.0 |
 | [mssql database](./mssql-database/README.md) | v2.4.0 |
 | [mssql failover group](./mssql-failover-group/README.md) | v2.1.0 |
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.5.0 |
