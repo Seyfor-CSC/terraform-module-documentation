@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/kubernetes_cluster
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/kubernetes_cluster
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/kubernetes_cluster_node_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/kubernetes_cluster_node_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -91,4 +91,4 @@ We reserve the right to include tags dedicated to our product Advanced Monitorin
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+Not all available variables are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.
