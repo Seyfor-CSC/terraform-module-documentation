@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.33.0"
+      version = "=4.45.0"
     }
   }
   backend "local" {}
@@ -29,7 +29,7 @@ resource "azurerm_automation_account" "aa" {
 
 # role assignment
 module "role_assignment" {
-  source = "git@github.com:Seyfor-CSC/mit.role-assignment.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.role-assignment.git?ref=v2.4.0"
   config = local.rbac
 }
 
