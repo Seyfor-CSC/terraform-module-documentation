@@ -144,8 +144,16 @@ variable "config" {  type = list(object({
     }))
     ingress = optional(object({
       allow_insecure_connections = optional(bool)
-      fqdn                       = optional(string)
-      external_enabled           = optional(bool)
+      cors = optional(object({
+        allowed_origins           = list(string)
+        allow_credentials_enabled = optional(bool)
+        allowed_headers           = optional(list(string))
+        allowed_methods           = optional(list(string))
+        exposed_headers           = optional(list(string))
+        max_age_in_seconds        = optional(number)
+      }))
+      fqdn             = optional(string)
+      external_enabled = optional(bool)
       ip_security_restriction = optional(list(object({
         action           = string
         description      = optional(string)
@@ -306,6 +314,13 @@ variable "config" {  type = list(object({
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |ingress | object | Optional |  |  |
 |&nbsp;allow_insecure_connections | bool | Optional |  |  |
+|&nbsp;cors | object | Optional |  |  |
+|&nbsp;&nbsp;allowed_origins | list(string) | Required |  |  |
+|&nbsp;&nbsp;allow_credentials_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;allowed_headers | list(string) | Optional |  |  |
+|&nbsp;&nbsp;allowed_methods | list(string) | Optional |  |  |
+|&nbsp;&nbsp;exposed_headers | list(string) | Optional |  |  |
+|&nbsp;&nbsp;max_age_in_seconds | number | Optional |  |  |
 |&nbsp;fqdn | string | Optional |  |  |
 |&nbsp;external_enabled | bool | Optional |  |  |
 |&nbsp;ip_security_restriction | list(object) | Optional | [] |  |
