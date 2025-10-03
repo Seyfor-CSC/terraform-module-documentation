@@ -7,7 +7,7 @@ variable "config" {  type = list(object({
     resource_group_name             = string
     location                        = string
     allow_resource_only_permissions = optional(bool)
-    local_authentication_disabled   = optional(bool)
+    local_authentication_enabled    = optional(bool)
     sku                             = optional(string)
     retention_in_days               = optional(number, 90)
     daily_quota_gb                  = optional(number)
@@ -52,7 +52,7 @@ variable "config" {  type = list(object({
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
 |allow_resource_only_permissions | bool | Optional |  |  |
-|local_authentication_disabled | bool | Optional |  |  |
+|local_authentication_enabled | bool | Optional |  |  |
 |sku | string | Optional |  |  |
 |retention_in_days | number | Optional |  90 |  |
 |daily_quota_gb | number | Optional |  |  |
