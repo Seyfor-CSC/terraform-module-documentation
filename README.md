@@ -44,7 +44,7 @@
 | [logic app workflow](./logic-app-workflow/README.md) | v2.5.0 |
 | [machine learning](./machine-learning/README.md) | v2.5.0 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.2.0 |
-| [monitor action group](./monitor-action-group/README.md) | v2.3.0 |
+| [monitor action group](./monitor-action-group/README.md) | v2.4.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.4.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.3.0 |
 | [mssql database](./mssql-database/README.md) | v2.4.0 |
@@ -68,7 +68,7 @@
 | [redis cache](./redis-cache/README.md) | v2.4.0 |
 | [resource group](./resource-group/README.md) | v2.3.0 |
 | [role assignment](./role-assignment/README.md) | v2.4.0 |
-| [role definition](./role-definition/README.md) | v2.3.0 |
+| [role definition](./role-definition/README.md) | v2.4.0 |
 | [role management policy](./role-management-policy/README.md) | v2.2.0 |
 | [route table](./route-table/README.md) | v2.3.0 |
 | [servicebus](./servicebus/README.md) | v2.4.0 |
