@@ -35,6 +35,8 @@ variable "config" {  type = list(object({
         subnet_id = optional(string)
         version   = optional(string)
       }))
+      auxiliary_mode                = optional(string)
+      auxiliary_sku                 = optional(string)
       dns_servers                   = optional(list(string))
       enable_accelerated_networking = optional(bool)
       enable_ip_forwarding          = optional(bool)
@@ -311,6 +313,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;version | string | Optional |  |  |
 |&nbsp;&nbsp;subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;version | string | Optional |  |  |
+|&nbsp;auxiliary_mode | string | Optional |  |  |
+|&nbsp;auxiliary_sku | string | Optional |  |  |
 |&nbsp;dns_servers | list(string) | Optional |  |  |
 |&nbsp;enable_accelerated_networking | bool | Optional |  |  |
 |&nbsp;enable_ip_forwarding | bool | Optional |  |  |
