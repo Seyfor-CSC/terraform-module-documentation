@@ -34,9 +34,10 @@ variable "config" {  type = list(object({
           actions = optional(list(string))
         })
       }))
-      default_outbound_access_enabled               = optional(bool)
+      default_outbound_access_enabled = optional(bool)
       private_endpoint_network_policies             = optional(string)
       private_link_service_network_policies_enabled = optional(bool)
+      sharing_scope                                 = optional(string)
       service_endpoints                             = optional(list(string))
       service_endpoint_policy_ids                   = optional(list(string))
       nsg_name                                      = optional(string)
@@ -82,6 +83,7 @@ variable "subnets" {
     private_endpoint_network_policies             = optional(string)
     private_link_service_network_policies_enabled = optional(bool)
     service_endpoints                             = optional(list(string))
+    sharing_scope                                 = optional(string)
     service_endpoint_policy_ids                   = optional(list(string))
     nsg_name                                      = optional(string)
     route_table_name                              = optional(string)
@@ -134,6 +136,7 @@ variable "subscription_id" {
 |&nbsp;default_outbound_access_enabled | bool | Optional |  |  |
 |&nbsp;private_endpoint_network_policies | string | Optional |  |  |
 |&nbsp;private_link_service_network_policies_enabled | bool | Optional |  |  |
+|&nbsp;sharing_scope | string | Optional |  |  |
 |&nbsp;service_endpoints | list(string) | Optional |  |  |
 |&nbsp;service_endpoint_policy_ids | list(string) | Optional |  |  |
 |&nbsp;nsg_name | string | Optional |  |  |
