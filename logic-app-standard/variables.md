@@ -33,7 +33,7 @@ variable "config" {  type = list(object({
       app_scale_limit     = optional(number)
       auto_swap_slot_name = optional(string)
       cors = optional(object({
-        allowed_origins     = list(string)
+        allowed_origins     = optional(list(string))
         support_credentials = optional(bool)
       }))
       dotnet_framework_version = optional(string)
@@ -43,6 +43,7 @@ variable "config" {  type = list(object({
       http2_enabled            = optional(bool)
       ip_restriction = optional(list(object({
         ip_address                = optional(string)
+        description               = optional(string)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
         name                      = optional(string)
@@ -57,6 +58,7 @@ variable "config" {  type = list(object({
       })), [])
       scm_ip_restriction = optional(list(object({
         ip_address                = optional(string)
+        description               = optional(string)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
         name                      = optional(string)
@@ -167,7 +169,7 @@ variable "config" {  type = list(object({
 |&nbsp;app_scale_limit | number | Optional |  |  |
 |&nbsp;auto_swap_slot_name | string | Optional |  |  |
 |&nbsp;cors | object | Optional |  |  |
-|&nbsp;&nbsp;allowed_origins | list(string) | Required |  |  |
+|&nbsp;&nbsp;allowed_origins | list(string) | Optional |  |  |
 |&nbsp;&nbsp;support_credentials | bool | Optional |  |  |
 |&nbsp;dotnet_framework_version | string | Optional |  |  |
 |&nbsp;elastic_instance_minimum | number | Optional |  |  |
@@ -176,6 +178,7 @@ variable "config" {  type = list(object({
 |&nbsp;http2_enabled | bool | Optional |  |  |
 |&nbsp;ip_restriction | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;ip_address | string | Optional |  |  |
+|&nbsp;&nbsp;description | string | Optional |  |  |
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;name | string | Optional |  |  |
@@ -188,6 +191,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;x_forwarded_host | list(string) | Optional |  |  |
 |&nbsp;scm_ip_restriction | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;ip_address | string | Optional |  |  |
+|&nbsp;&nbsp;description | string | Optional |  |  |
 |&nbsp;&nbsp;service_tag | string | Optional |  |  |
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;name | string | Optional |  |  |
