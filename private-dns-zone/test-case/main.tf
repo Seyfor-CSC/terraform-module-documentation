@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.41.0"
+      version = "=4.45.0"
     }
   }
   backend "local" {}
@@ -34,7 +34,7 @@ resource "azurerm_virtual_network" "vnet2" {
 
 # private dns zone
 module "private_dns_zone" {
-  source = "git@github.com:Seyfor-CSC/mit.private-dns-zone.git?ref=v2.3.1"
+  source = "git@github.com:Seyfor-CSC/mit.private-dns-zone.git?ref=v2.4.0"
   config = local.dns
 }
 
