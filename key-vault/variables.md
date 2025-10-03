@@ -20,7 +20,7 @@ variable "config" {  type = list(object({
     enabled_for_deployment          = optional(bool)
     enabled_for_disk_encryption     = optional(bool)
     enabled_for_template_deployment = optional(bool)
-    enable_rbac_authorization       = optional(bool, true)
+    rbac_authorization_enabled      = optional(bool, true)
     network_acls = optional(object({
       bypass                     = optional(string, "AzureServices")
       default_action             = string
@@ -105,7 +105,7 @@ variable "config" {  type = list(object({
 |&nbsp;enabled_for_deployment | bool | Optional |  |  |
 |&nbsp;enabled_for_disk_encryption | bool | Optional |  |  |
 |&nbsp;enabled_for_template_deployment | bool | Optional |  |  |
-|&nbsp;enable_rbac_authorization | bool | Optional |  true |  |
+|&nbsp;rbac_authorization_enabled | bool | Optional |  true |  |
 |&nbsp;network_acls | object | Optional |  |  |
 |&nbsp;&nbsp;bypass | string | Optional |  "AzureServices" |  |
 |&nbsp;&nbsp;default_action | string | Required |  |  |
