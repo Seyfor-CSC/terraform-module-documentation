@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/container_app_environment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/container_app_environment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/container_app_environment_storage
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/container_app_environment_storage
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
@@ -39,14 +39,15 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value             | Comment                                           |
-| ----------- | ----------------- | ------------------------------------------------- |
-| outputs     | name              |                                                   |
-|             | id                |                                                   |
-|             | default_domain    | Default, publicly resolvable name of deployed CAE |
-|             | static_ip_address | Static IP address of deployed CAE                 |
-|             | storage           | Container App Environment Storage outputs         |
-|             | &nbsp;id          |                                                   |
+| Output Name | Value             | Comment                                              |
+| ----------- | ----------------- | ---------------------------------------------------- |
+| outputs     | name              |                                                      |
+|             | id                |                                                      |
+|             | principal_id      | principal_id (object_id) of system assigned identity |
+|             | default_domain    | Default, publicly resolvable name of deployed CAE    |
+|             | static_ip_address | Static IP address of deployed CAE                    |
+|             | storage           | Container App Environment Storage outputs            |
+|             | &nbsp;id          |                                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Container App Environment module is used as a value for the _scope_ variable in Role Assignment resource.

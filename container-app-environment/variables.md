@@ -10,9 +10,13 @@ variable "config" {  type = list(object({
     infrastructure_resource_group_name          = optional(string)
     infrastructure_subnet_id                    = optional(string)
     internal_load_balancer_enabled              = optional(bool)
-    zone_redundancy_enabled                     = optional(bool)
-    log_analytics_workspace_id                  = optional(string)
-    logs_destination                            = optional(string)
+    identity = optional(object({
+      type         = string
+      identity_ids = optional(list(string))
+    }))
+    zone_redundancy_enabled    = optional(bool)
+    log_analytics_workspace_id = optional(string)
+    logs_destination           = optional(string)
     workload_profile = optional(list(object({
       name                  = string
       workload_profile_type = string
@@ -65,6 +69,9 @@ variable "config" {  type = list(object({
 |infrastructure_resource_group_name | string | Optional |  |  |
 |infrastructure_subnet_id | string | Optional |  |  |
 |internal_load_balancer_enabled | bool | Optional |  |  |
+|identity | object | Optional |  |  |
+|&nbsp;type | string | Required |  |  |
+|&nbsp;identity_ids | list(string) | Optional |  |  |
 |zone_redundancy_enabled | bool | Optional |  |  |
 |log_analytics_workspace_id | string | Optional |  |  |
 |logs_destination | string | Optional |  |  |
