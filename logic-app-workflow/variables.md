@@ -14,7 +14,7 @@ variable "config" {  type = list(object({
         allowed_caller_ip_address_range = list(string)
       }))
       trigger = optional(object({
-        allowed_caller_ip_address_range = list(string)
+        allowed_caller_ip_address_range = optional(list(string))
         open_authentication_policy = optional(object({
           name = string
           claim = object({
@@ -72,7 +72,7 @@ variable "config" {  type = list(object({
 |&nbsp;content | object | Optional |  |  |
 |&nbsp;&nbsp;allowed_caller_ip_address_range | list(string) | Required |  |  |
 |&nbsp;trigger | object | Optional |  |  |
-|&nbsp;&nbsp;allowed_caller_ip_address_range | list(string) | Required |  |  |
+|&nbsp;&nbsp;allowed_caller_ip_address_range | list(string) | Optional |  |  |
 |&nbsp;&nbsp;open_authentication_policy | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;claim | object | Required |  |  |
