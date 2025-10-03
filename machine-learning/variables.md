@@ -24,7 +24,8 @@ variable "config" {  type = list(object({
       user_assigned_identity_id = optional(string)
     }))
     managed_network = optional(object({
-      isolation_mode = optional(string)
+      isolation_mode                = optional(string)
+      provision_on_creation_enabled = optional(bool)
     }))
     feature_store = optional(object({
       computer_spark_runtime_version = optional(string)
@@ -138,6 +139,7 @@ variable "config" {  type = list(object({
 |&nbsp;user_assigned_identity_id | string | Optional |  |  |
 |managed_network | object | Optional |  |  |
 |&nbsp;isolation_mode | string | Optional |  |  |
+|&nbsp;provision_on_creation_enabled | bool | Optional |  |  |
 |feature_store | object | Optional |  |  |
 |&nbsp;computer_spark_runtime_version | string | Optional |  |  |
 |&nbsp;offline_connection_name | string | Optional |  |  |
