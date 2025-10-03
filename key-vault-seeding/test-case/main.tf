@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.33.0"
+      version = "=4.45.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -55,7 +55,7 @@ resource "azurerm_role_assignment" "rbac" {
 
 # key vault seeding
 module "seeding" {
-  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v2.3.0"
+  source = "git@github.com:Seyfor-CSC/mit.key-vault-seeding.git?ref=v2.4.0"
   config = local.seeding
 }
 

@@ -11,7 +11,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/key_vault_secret
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/key_vault_secret
 
 https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
 
