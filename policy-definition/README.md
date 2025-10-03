@@ -10,7 +10,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/policy_definition
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/policy_definition
 
 &nbsp;
 
