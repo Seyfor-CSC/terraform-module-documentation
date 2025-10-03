@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.33.0"
+      version = "=4.45.0"
     }
   }
   backend "local" {}
@@ -44,7 +44,7 @@ resource "azurerm_eventhub" "eventhub" {
 
 # frontdoor
 module "frontdoor" {
-  source = "git@github.com:Seyfor-CSC/mit.frontdoor.git?ref=v2.1.1"
+  source = "git@github.com:Seyfor-CSC/mit.frontdoor.git?ref=v2.2.0"
   config = local.frontdoor
 }
 

@@ -16,19 +16,19 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_profile
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/cdn_frontdoor_profile
   
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/cdn_frontdoor_endpoint
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_origin_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/cdn_frontdoor_origin_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_origin
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/cdn_frontdoor_origin
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_route
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/cdn_frontdoor_route
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/cdn_frontdoor_custom_domain
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/cdn_frontdoor_custom_domain
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
@@ -119,7 +119,4 @@ We reserve the right to include tags dedicated to our product Advanced Monitorin
 &nbsp;
 
 # Known Issues
-## Diagnostic Setting metrics updating in place
-If any of the diagnostic settings categories is disabled, the diagnostic setting will be updating in place with every run.
-### GitHub issue
-https://github.com/hashicorp/terraform-provider-azurerm/issues/10388
+We currently log no issues in this module.

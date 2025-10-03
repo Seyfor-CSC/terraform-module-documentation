@@ -11,6 +11,9 @@ variable "config" {  type = list(object({
       identity_ids = optional(list(string))
     }))
     response_timeout_seconds = optional(number)
+    log_scrubbing_rule = optional(list(object({
+        match_variable = string
+    })), [])
     tags                     = optional(map(any))
 
     # cdn frontdoor endpoint
@@ -94,7 +97,6 @@ variable "config" {  type = list(object({
       host_name                = string
       tls = object({
         certificate_type        = optional(string)
-        minimum_tls_version     = optional(string)
         cdn_frontdoor_secret_id = optional(string)
       })
       dns_zone_id = optional(string)
@@ -132,6 +134,8 @@ variable "config" {  type = list(object({
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |response_timeout_seconds | number | Optional |  |  |
+|log_scrubbing_rule | list(object) | Optional | [] |  |
+|&nbsp;match_variable | string | Required |  |  |
 |tags | map(any) | Optional |  |  |
 |endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
@@ -197,7 +201,6 @@ variable "config" {  type = list(object({
 |&nbsp;host_name | string | Required |  |  |
 |&nbsp;tls | object | Required |  |  |
 |&nbsp;&nbsp;certificate_type | string | Optional |  |  |
-|&nbsp;&nbsp;minimum_tls_version | string | Optional |  |  |
 |&nbsp;&nbsp;cdn_frontdoor_secret_id | string | Optional |  |  |
 |&nbsp;dns_zone_id | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
