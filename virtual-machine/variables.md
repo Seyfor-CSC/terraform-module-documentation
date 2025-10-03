@@ -7,20 +7,18 @@ variable "config" {  type = list(object({
     name                  = string
     resource_group_name   = string
     location              = string
-    admin_username        = string
-    admin_password        = optional(string)       # Required for windows
     network_interface_ids = optional(list(string)) # If not provided, inherited in module from network interface resource
     size                  = string
     os_disk = object({
       caching              = optional(string, "ReadWrite")
-      storage_account_type = string
+      storage_account_type = optional(string)
       diff_disk_settings = optional(object({
         option    = string
         placement = optional(string)
       }))
       disk_encryption_set_id           = optional(string)
       disk_size_gb                     = optional(number)
-      name                             = optional(string) # If not provided, value is generated in the format of '<vm_name>-osdisk'
+      name                             = optional(string) # If not provided and os_managed_disk_id is null, value is generated in the format of '<vm_name>-osdisk'
       secure_vm_disk_encryption_set_id = optional(string)
       security_encryption_type         = optional(string)
       write_accelerator_enabled        = optional(bool)
@@ -33,8 +31,11 @@ variable "config" {  type = list(object({
         disk_id                      = optional(string) # Inherited in module from parent resource
         snapshot_resource_group_name = optional(string) # If not provided, inherited in module from parent resource
         backup_policy_id             = string
+        snapshot_subscription_id     = optional(string)
       })), [])
     })
+    admin_username = optional(string)
+    admin_password = optional(string)
     additional_capabilities = optional(object({
       ultra_ssd_enabled   = optional(bool)
       hibernation_enabled = optional(bool)
@@ -110,6 +111,7 @@ variable "config" {  type = list(object({
     os_image_notification = optional(object({
       timeout = optional(string)
     }))
+    os_managed_disk_id = optional(string)
     termination_notification = optional(object({
       enabled = bool
       timeout = optional(string)
@@ -203,6 +205,7 @@ variable "config" {  type = list(object({
         disk_id                      = optional(string) # Inherited in module from parent resource
         snapshot_resource_group_name = optional(string) # If not provided, inherited in module from parent resource
         backup_policy_id             = string
+        snapshot_subscription_id     = optional(string)
       })), [])
 
       # virtual machine data disk attachment
@@ -275,19 +278,17 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
-|admin_username | string | Required |  |  |
-|admin_password | string | Optional |  |  Required for windows |
 |network_interface_ids | list(string) | Optional |  |  If not provided, inherited in module from network interface resource |
 |size | string | Required |  |  |
 |os_disk | object | Required |  |  |
 |&nbsp;caching | string | Optional |  "ReadWrite" |  |
-|&nbsp;storage_account_type | string | Required |  |  |
+|&nbsp;storage_account_type | string | Optional |  |  |
 |&nbsp;diff_disk_settings | object | Optional |  |  |
 |&nbsp;&nbsp;option | string | Required |  |  |
 |&nbsp;&nbsp;placement | string | Optional |  |  |
 |&nbsp;disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;disk_size_gb | number | Optional |  |  |
-|&nbsp;name | string | Optional |  |  If not provided, value is generated in the format of '<vm_name>-osdisk' |
+|&nbsp;name | string | Optional |  |  If not provided and os_managed_disk_id is null, value is generated in the format of '<vm_name>-osdisk' |
 |&nbsp;secure_vm_disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;security_encryption_type | string | Optional |  |  |
 |&nbsp;write_accelerator_enabled | bool | Optional |  |  |
@@ -298,6 +299,9 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;&nbsp;disk_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;snapshot_resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
+|&nbsp;&nbsp;snapshot_subscription_id | string | Optional |  |  |
+|admin_username | string | Optional |  |  |
+|admin_password | string | Optional |  |  |
 |additional_capabilities | object | Optional |  |  |
 |&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
 |&nbsp;hibernation_enabled | bool | Optional |  |  |
@@ -362,6 +366,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;version | string | Required |  |  |
 |os_image_notification | object | Optional |  |  |
 |&nbsp;timeout | string | Optional |  |  |
+|os_managed_disk_id | string | Optional |  |  |
 |termination_notification | object | Optional |  |  |
 |&nbsp;enabled | bool | Required |  |  |
 |&nbsp;timeout | string | Optional |  |  |
@@ -442,6 +447,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;&nbsp;disk_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;snapshot_resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
+|&nbsp;&nbsp;snapshot_subscription_id | string | Optional |  |  |
 |&nbsp;disk_attachment | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;virtual_machine_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;&nbsp;managed_disk_id | string | Optional |  |  Inherited in module from parent resource |
