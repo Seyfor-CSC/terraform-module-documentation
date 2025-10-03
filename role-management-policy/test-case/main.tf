@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.33.0"
+      version = "=4.45.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "=3.4.0"
+      version = "=3.5.0"
     }
   }
   backend "local" {}
@@ -35,7 +35,7 @@ data "azurerm_role_definition" "rg_contributor" {
 }
 
 module "role_management_policy" {
-  source = "git@github.com:Seyfor-CSC/mit.role-management-policy.git?ref=v2.1.0"
+  source = "git@github.com:Seyfor-CSC/mit.role-management-policy.git?ref=v2.2.0"
   config = local.role_management_policy
 }
 
