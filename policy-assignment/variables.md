@@ -26,6 +26,7 @@ variable "config" {  type = list(object({
       value = string
       selectors = optional(list(object({
         in     = optional(list(string))
+        kind   = optional(string)
         not_in = optional(list(string))
       })), [])
     })), [])
@@ -69,6 +70,7 @@ variable "config" {  type = list(object({
 |&nbsp;value | string | Required |  |  |
 |&nbsp;selectors | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;in | list(string) | Optional |  |  |
+|&nbsp;&nbsp;kind | string | Optional |  |  |
 |&nbsp;&nbsp;not_in | list(string) | Optional |  |  |
 |resource_selectors | list(object) | Optional | [] |  |
 |&nbsp;name | string | Optional |  |  |

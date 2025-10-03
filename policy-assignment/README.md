@@ -12,9 +12,9 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/management_group_policy_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/management_group_policy_assignment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/subscription_policy_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/subscription_policy_assignment
 
 &nbsp;
 
