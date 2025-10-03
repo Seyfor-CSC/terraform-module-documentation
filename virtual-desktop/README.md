@@ -18,21 +18,21 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_desktop_host_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_desktop_host_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_desktop_application_group
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_desktop_application_group
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_desktop_host_pool_registration_info
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_desktop_host_pool_registration_info
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_desktop_scaling_plan
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_desktop_scaling_plan
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_desktop_workspace
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_desktop_workspace
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/virtual_desktop_workspace_application_group_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_desktop_workspace_application_group_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/private_endpoint
 
 &nbsp;
 
