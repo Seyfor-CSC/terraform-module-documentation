@@ -38,7 +38,12 @@ variable "config" {  type = list(object({
       name              = string
       namespace_id      = optional(string) # Inherited in module from parent resource
       partition_count   = number
-      message_retention = number
+      message_retention = optional(number)
+      retention_description = optional(object({
+        cleanup_policy                    = string
+        retention_time_in_hours           = optional(number)
+        tombstone_retention_time_in_hours = optional(number)
+      }))
       capture_description = optional(object({
         enabled  = bool
         encoding = string
@@ -165,7 +170,11 @@ variable "config" {  type = list(object({
 |&nbsp;name | string | Required |  |  |
 |&nbsp;namespace_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;partition_count | number | Required |  |  |
-|&nbsp;message_retention | number | Required |  |  |
+|&nbsp;message_retention | number | Optional |  |  |
+|&nbsp;retention_description | object | Optional |  |  |
+|&nbsp;&nbsp;cleanup_policy | string | Required |  |  |
+|&nbsp;&nbsp;retention_time_in_hours | number | Optional |  |  |
+|&nbsp;&nbsp;tombstone_retention_time_in_hours | number | Optional |  |  |
 |&nbsp;capture_description | object | Optional |  |  |
 |&nbsp;&nbsp;enabled | bool | Required |  |  |
 |&nbsp;&nbsp;encoding | string | Required |  |  |
