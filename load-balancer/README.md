@@ -19,25 +19,25 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_backend_address_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_backend_address_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_backend_address_pool_address
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_backend_address_pool_address
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/network_interface_backend_address_pool_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/network_interface_backend_address_pool_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_outbound_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_outbound_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_probe
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_probe
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_nat_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_nat_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/lb_nat_pool
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/lb_nat_pool
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.33.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 

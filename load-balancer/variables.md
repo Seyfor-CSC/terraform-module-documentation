@@ -61,7 +61,7 @@ variable "config" {  type = list(object({
         frontend_ip_configuration = optional(list(object({
           name = string
         })), [])
-        enable_tcp_reset         = optional(bool)
+        tcp_reset_enabled        = optional(bool)
         allocated_outbound_ports = optional(number)
         idle_timeout_in_minutes  = optional(number)
       })), [])
@@ -91,11 +91,11 @@ variable "config" {  type = list(object({
       backend_address_pool_names     = optional(list(string)) # Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are expected
       probe_id                       = optional(string)       # Do not use, is replaced by probe_name parameter
       probe_name                     = optional(string)       # Custom variable replacing probe_id parameter. Probe name, which is being created in this load balancer, is expected
-      enable_floating_ip             = optional(bool)
+      floating_ip_enabled            = optional(bool)
       idle_timeout_in_minutes        = optional(number)
       load_distribution              = optional(string)
       disable_outbound_snat          = optional(bool)
-      enable_tcp_reset               = optional(bool)
+      tcp_reset_enabled              = optional(bool)
     })), [])
 
     # lb nat rule
@@ -112,8 +112,8 @@ variable "config" {  type = list(object({
       backend_address_pool_id        = optional(string) # Do not use, is replaced by backend_address_pool_name parameter
       backend_address_pool_name      = optional(string) # Custom variable replacing backend_address_pool_id parameter. Backend address pool name, which is being created in this load balancer, is expected
       idle_timeout_in_minutes        = optional(number)
-      enable_floating_ip             = optional(bool)
-      enable_tcp_reset               = optional(bool)
+      floating_ip_enabled            = optional(bool)
+      tcp_reset_enabled              = optional(bool)
     })), [])
 
     # lb nat pool
@@ -199,7 +199,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;protocol | string | Required |  |  |
 |&nbsp;&nbsp;frontend_ip_configuration | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;enable_tcp_reset | bool | Optional |  |  |
+|&nbsp;&nbsp;tcp_reset_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;allocated_outbound_ports | number | Optional |  |  |
 |&nbsp;&nbsp;idle_timeout_in_minutes | number | Optional |  |  |
 |probes | list(object) | Optional | [] |  |
@@ -222,11 +222,11 @@ variable "config" {  type = list(object({
 |&nbsp;backend_address_pool_names | list(string) | Optional |  |  Custom variable replacing backend_address_pool_ids parameter. Backend address pool names, which are being created in this load balancer, are expected |
 |&nbsp;probe_id | string | Optional |  |  Do not use, is replaced by probe_name parameter |
 |&nbsp;probe_name | string | Optional |  |  Custom variable replacing probe_id parameter. Probe name, which is being created in this load balancer, is expected |
-|&nbsp;enable_floating_ip | bool | Optional |  |  |
+|&nbsp;floating_ip_enabled | bool | Optional |  |  |
 |&nbsp;idle_timeout_in_minutes | number | Optional |  |  |
 |&nbsp;load_distribution | string | Optional |  |  |
 |&nbsp;disable_outbound_snat | bool | Optional |  |  |
-|&nbsp;enable_tcp_reset | bool | Optional |  |  |
+|&nbsp;tcp_reset_enabled | bool | Optional |  |  |
 |nat_rules | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
@@ -240,8 +240,8 @@ variable "config" {  type = list(object({
 |&nbsp;backend_address_pool_id | string | Optional |  |  Do not use, is replaced by backend_address_pool_name parameter |
 |&nbsp;backend_address_pool_name | string | Optional |  |  Custom variable replacing backend_address_pool_id parameter. Backend address pool name, which is being created in this load balancer, is expected |
 |&nbsp;idle_timeout_in_minutes | number | Optional |  |  |
-|&nbsp;enable_floating_ip | bool | Optional |  |  |
-|&nbsp;enable_tcp_reset | bool | Optional |  |  |
+|&nbsp;floating_ip_enabled | bool | Optional |  |  |
+|&nbsp;tcp_reset_enabled | bool | Optional |  |  |
 |nat_pools | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
