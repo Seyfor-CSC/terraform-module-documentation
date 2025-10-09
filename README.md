@@ -1,5 +1,5 @@
 # Important information
-* All modules are currently tested on terraform version 1.12.2 and azurerm provider version 4.33.0.
+* All modules are currently tested on terraform version 1.13.3 and azurerm provider version 4.45.0.
 
 * Our modules are designed to save you time and effort by providing a consistent approach to deploying resources in Azure. Hardcoding resource ids required in child resources is in the past as it is now done automatically for you inside the module. For example, if you want to deploy a virtual machine with a network interface, you don't need to specify the network interface id in the virtual machine resource. You only need to configure the network interface and the module will take care of the rest.
 
@@ -27,6 +27,7 @@
 | [container app job](./container-app-job/README.md) | v2.4.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.5.0 |
+| [data collection endpoint](./data-collection-endpoint/README.md) | v2.0.0 |
 | [data collection rule](./data-collection-rule/README.md) | v2.5.0 |
 | [data factory](./data-factory/README.md) | v2.5.0 |
 | [dns zone](./dns-zone/README.md) | v2.4.0 |
