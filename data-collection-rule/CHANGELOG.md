@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.5.1
+
+## Enhancements
+
+- Add `immutable_id` to outputs (#48)
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade
