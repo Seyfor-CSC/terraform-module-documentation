@@ -26,8 +26,12 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Kubernetes Cluster
 * terraform import '`<path-to-module>`.azurerm_kubernetes_cluster.kubernetes_cluster["`<kubernetes-cluster-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ContainerService/managedClusters/`<kubernetes-cluster-name>`'
+### Kubernetes Cluster Autoscale
+* terraform import '`<path-to-module>`.azurerm_kubernetes_cluster.kubernetes_cluster_autoscale["`<kubernetes-cluster-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ContainerService/managedClusters/`<kubernetes-cluster-name>`'
 ### Kubernetes Cluster Node Pool
 * terraform import '`<path-to-module>`.azurerm_kubernetes_cluster_node_pool.kubernetes_cluster_node_pool["`<kubernetes-cluster-name>`_`<node-pool-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ContainerService/managedClusters/`<kubernetes-cluster-name>`/agentPools/`<node-pool-name>`'
+### Kubernetes Cluster Node Pool Autoscale
+* terraform import '`<path-to-module>`.azurerm_kubernetes_cluster_node_pool.kubernetes_cluster_node_pool_autoscale["`<kubernetes-cluster-name>`_`<node-pool-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ContainerService/managedClusters/`<kubernetes-cluster-name>`/agentPools/`<node-pool-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<kubernetes-cluster-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ContainerService/managedClusters/`<kubernetes-cluster-name>`|`<diag-name>`'
 
@@ -85,6 +89,10 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
+
+## Custom variables
+* `autoscale` variable must be defined if you want autoscaling to be enabled. It is important this variable is set otherwise autoscale will not work. When you set the value to _true_, lifecycle with ignore_changes block for the variable `node_count` is turned on. This is because the number of nodes in that case is managed by autoscale and not by terraform.
+
 ## Monitoring tags in `ignore_changes` lifecycle block
 We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 

@@ -44,6 +44,7 @@ locals {
       tags = {}
     },
     {
+      autoscale           = true
       name                = local.naming.aks_2
       location            = local.location
       resource_group_name = azurerm_resource_group.rg.name

@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.0
+
+## Enhancements
+
+- Add `node_count` to `ignore_changes` when `auto_scaling_enabled = true` (#70)
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade
