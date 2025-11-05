@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.4.1
+
+## Bug Fixes
+
+- Remove `zone` inheritance in `managed_disks` (#70)
+
+
+
+   
 ## Release v2.4.0
 
 ## Provider & Terraform Upgrade

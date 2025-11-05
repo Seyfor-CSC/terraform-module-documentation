@@ -191,7 +191,7 @@ variable "config" {  type = list(object({
       security_type                     = optional(string)
       secure_vm_disk_encryption_set_id  = optional(string)
       on_demand_bursting_enabled        = optional(bool)
-      zone                              = optional(string) # If not provided, inherited in module from parent resource
+      zone                              = optional(string)
       network_access_policy             = optional(string)
       disk_access_id                    = optional(string)
       public_network_access_enabled     = optional(bool, false)
@@ -435,7 +435,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;security_type | string | Optional |  |  |
 |&nbsp;secure_vm_disk_encryption_set_id | string | Optional |  |  |
 |&nbsp;on_demand_bursting_enabled | bool | Optional |  |  |
-|&nbsp;zone | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;zone | string | Optional |  |  |
 |&nbsp;network_access_policy | string | Optional |  |  |
 |&nbsp;disk_access_id | string | Optional |  |  |
 |&nbsp;public_network_access_enabled | bool | Optional |  false |  |
