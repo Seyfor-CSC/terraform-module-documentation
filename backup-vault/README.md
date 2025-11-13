@@ -2,6 +2,8 @@
 Backup Vault module can deploy these resources:
 * azurerm_data_protection_backup_vault (required)
 * azurerm_data_protection_backup_policy_disk (optional)
+* azurerm_data_protection_backup_policy_blob_storage (optional)
+* azurerm_data_protection_backup_policy_postgresql_flexible_server (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
@@ -16,6 +18,10 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_policy_disk
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_policy_blob_storage
+
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_policy_postgresql_flexible_server
+
 https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
@@ -28,6 +34,10 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_vault.data_protection_backup_vault["`<backup-vault-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`'
 ### Backup Policy Disk
 * terraform import '`<path-to-module>`.azurerm_data_protection_backup_policy_disk.data_protection_backup_policy_disk["`<backup-vault-name_backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
+### Backup Policy Blob Storage
+* terraform import '`<path-to-module>`.azurerm_data_protection_backup_policy_blob_storage.data_protection_backup_policy_blob_storage["`<backup-vault-name_backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
+### Backup Policy PostgreSQL Flexible Server
+* terraform import '`<path-to-module>`.azurerm_data_protection_backup_policy_postgresql_flexible_server.data_protection_backup_policy_postgresql_flexible_server["`<backup-vault-name_backup-policy-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupPolicies/`<backup-policy-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<backup-vault-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`|`<diag-name>`'
 
@@ -38,13 +48,17 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
-|             | principal_id | principal_id (object_id) of system assigned identity |
-|             | disk_policy  | Backup Policy Disk outputs                           |
-|             | &nbsp;id     |                                                      |
+| Output Name | Value              | Comment                                              |
+| ----------- | ------------------ | ---------------------------------------------------- |
+| outputs     | name               |                                                      |
+|             | id                 |                                                      |
+|             | principal_id       | principal_id (object_id) of system assigned identity |
+|             | disk_policy        | Backup Policy Disk outputs                           |  
+|             | &nbsp;id           |                                                      |  
+|             | blob_policy        | Backup Policy Blob Storage outputs                   |  
+|             | &nbsp;id           |                                                      |  
+|             | postgresql_policy  | Backup Policy PostgreSQL Flexible Server outputs     |  
+|             | &nbsp;id           |                                                      |  
 
 
 ## Example usage of outputs

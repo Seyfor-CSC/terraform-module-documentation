@@ -34,6 +34,61 @@ variable "config" {  type = list(object({
       time_zone = optional(string)
     })), [])
 
+    # data protection backup policy blob storage
+    backup_policy_blob_storage = optional(list(object({
+      name                                   = string
+      vault_id                               = optional(string) # Inherited in module from parent resource
+      backup_repeating_time_intervals        = optional(list(string))
+      operational_default_retention_duration = optional(string)
+      retention_rule = optional(list(object({
+        name = string
+        criteria = object({
+          absolute_criteria      = optional(string)
+          days_of_month          = optional(list(number))
+          days_of_week           = optional(list(string))
+          months_of_year         = optional(list(string))
+          scheduled_backup_times = optional(list(string))
+          weeks_of_month         = optional(list(string))
+        })
+        life_cycle = object({
+          data_store_type = string
+          duration        = string
+        })
+        priority = number
+      })), [])
+      time_zone                        = optional(string)
+      vault_default_retention_duration = optional(string)
+    })), [])
+
+    # data protection backup policy postgresql flexible server
+    backup_policy_postgresql_flexible_server = optional(list(object({
+      name                            = string
+      vault_id                        = optional(string) # Inherited in module from parent resource
+      backup_repeating_time_intervals = list(string)
+      default_retention_rule = object({
+        life_cycle = object({
+          data_store_type = string
+          duration        = string
+        })
+      })
+      retention_rule = optional(list(object({
+        name = string
+        criteria = object({
+          absolute_criteria      = optional(string)
+          days_of_week           = optional(list(string))
+          months_of_year         = optional(list(string))
+          scheduled_backup_times = optional(list(string))
+          weeks_of_month         = optional(list(string))
+        })
+        life_cycle = object({
+          data_store_type = string
+          duration        = string
+        })
+        priority = number
+      })), [])
+      time_zone = optional(string)
+    })), [])
+
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
       diag_name                      = optional(string) # Name of the diagnostic setting
@@ -82,6 +137,47 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;duration | string | Required |  |  |
 |&nbsp;&nbsp;criteria | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;absolute_criteria | string | Optional |  |  |
+|&nbsp;&nbsp;priority | number | Required |  |  |
+|&nbsp;time_zone | string | Optional |  |  |
+|backup_policy_blob_storage | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;vault_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;backup_repeating_time_intervals | list(string) | Optional |  |  |
+|&nbsp;operational_default_retention_duration | string | Optional |  |  |
+|&nbsp;retention_rule | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;criteria | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;absolute_criteria | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;days_of_month | list(number) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;days_of_week | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;months_of_year | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;scheduled_backup_times | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;weeks_of_month | list(string) | Optional |  |  |
+|&nbsp;&nbsp;life_cycle | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;data_store_type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;duration | string | Required |  |  |
+|&nbsp;&nbsp;priority | number | Required |  |  |
+|&nbsp;time_zone | string | Optional |  |  |
+|&nbsp;vault_default_retention_duration | string | Optional |  |  |
+|backup_policy_postgresql_flexible_server | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;vault_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;backup_repeating_time_intervals | list(string) | Required |  |  |
+|&nbsp;default_retention_rule | object | Required |  |  |
+|&nbsp;&nbsp;life_cycle | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;data_store_type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;duration | string | Required |  |  |
+|&nbsp;retention_rule | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;criteria | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;absolute_criteria | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;days_of_week | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;months_of_year | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;scheduled_backup_times | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;weeks_of_month | list(string) | Optional |  |  |
+|&nbsp;&nbsp;life_cycle | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;data_store_type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;duration | string | Required |  |  |
 |&nbsp;&nbsp;priority | number | Required |  |  |
 |&nbsp;time_zone | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |

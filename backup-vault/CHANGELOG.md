@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.0
+
+## Enhancements
+
+- Add `azurerm_data_protection_backup_policy_blob_storage` and `azurerm_data_protection_backup_policy_postgresql_flexible_server` resources (#55)
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade

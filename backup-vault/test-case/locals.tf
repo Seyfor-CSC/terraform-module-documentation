@@ -20,7 +20,7 @@ locals {
 
       backup_policy_disk = [
         {
-          name                            = "DailyBackupPolicy"
+          name                            = "DailyBackupPolicyDisk"
           backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT4H"]
           default_retention_duration      = "P7D"
           retention_rule = [
@@ -39,6 +39,56 @@ locals {
               criteria = {
                 absolute_criteria = "FirstOfWeek"
               }
+            }
+          ]
+        }
+      ]
+
+      backup_policy_blob_storage = [
+        {
+          name                                   = "DailyBackupPolicyBlob"
+          backup_repeating_time_intervals        = ["R/2021-05-19T06:33:16+00:00/PT4H"]
+          operational_default_retention_duration = "P30D"
+          vault_default_retention_duration       = "P90D"
+          time_zone                              = "Central European Standard Time"
+          retention_rule = [
+            {
+              name = "Daily"
+              criteria = {
+                absolute_criteria = "FirstOfDay"
+              }
+              life_cycle = {
+                data_store_type = "VaultStore"
+                duration        = "P30D"
+              }
+              priority = 25
+            }
+          ]
+        }
+      ]
+
+      backup_policy_postgresql_flexible_server = [
+        {
+          name                            = "WeeklyBackupPolicyPostgresqlFlexibleServer"
+          backup_repeating_time_intervals = ["R/2021-05-23T02:30:00+00:00/P1W"]
+          time_zone                       = "UTC"
+          default_retention_rule = {
+            life_cycle = {
+              data_store_type = "VaultStore"
+              duration        = "P4M"
+            }
+          }
+          retention_rule = [
+            {
+              name = "Weekly"
+              criteria = {
+                absolute_criteria = "FirstOfWeek"
+              }
+              life_cycle = {
+                data_store_type = "VaultStore"
+                duration        = "P12W"
+              }
+              priority = 20
             }
           ]
         }
