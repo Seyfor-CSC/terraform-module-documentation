@@ -2,7 +2,7 @@ locals {
   location = "northeurope"
 
   naming = {
-    rg   = "SEY-TERRAFORM-NE-RG01"
+    rg   = "SEY-SA-NE-RG01"
     sa_1 = "seyterraformnesa01"
     sa_2 = "seyterraformnesa02"
   }
@@ -24,20 +24,29 @@ locals {
       }
       blob_properties = {
         delete_retention_policy = {
-          days = 4
+          days = 35
         }
         restore_policy = {
-          days = 2
+          days = 30
         }
-        versioning_enabled  = true
-        change_feed_enabled = true
+        versioning_enabled            = true
+        change_feed_enabled           = true
+        change_feed_retention_in_days = 35
+        last_access_time_enabled      = false
         container_delete_retention_policy = {
-          days = 4
+          days = 30
         }
       }
 
       backup_container = {
         recovery_vault_name = azurerm_recovery_services_vault.rsv.name
+      }
+
+      backup_instance_blob_storage = {
+        name                            = "${local.naming.sa_1}-blob-backup"
+        vault_id                        = azurerm_data_protection_backup_vault.backup_vault.id
+        backup_policy_id                = azurerm_data_protection_backup_policy_blob_storage.blob_policy.id
+        storage_account_container_names = ["container1", "container2"]
       }
 
       containers = [

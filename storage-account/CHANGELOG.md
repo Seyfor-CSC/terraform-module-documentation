@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.0
+
+## Enhancements
+
+- Add `data_protection_backup_instance_blob_storage` resource (#92)
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade
@@ -220,13 +228,4 @@
 
 ### Added
 - Provisioner - `az login` command output supression
-   
-## Release v1.1.0
-
-### Added
-
-- Private Endpoint
-- File Share
-- Share Properties
-- Blob Properties
    

@@ -237,6 +237,16 @@ variable "config" {  type = list(object({
       storage_account_id  = optional(string) # Inherited in module from parent resource
     }))
 
+    # data protection backup instance blob storage
+    backup_instance_blob_storage = optional(object({
+      name                            = string
+      location                        = optional(string) # If not provided, inherited in module from parent resource
+      vault_id                        = string
+      storage_account_id              = optional(string) # Inherited in module from parent resource
+      backup_policy_id                = string
+      storage_account_container_names = optional(list(string))
+    }))
+
     # private endpoint
     private_endpoint = optional(list(object({
       name                = string
@@ -495,6 +505,13 @@ variable "config" {  type = list(object({
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;recovery_vault_name | string | Required |  |  |
 |&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
+|backup_instance_blob_storage | object | Optional |  |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;vault_id | string | Required |  |  |
+|&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;backup_policy_id | string | Required |  |  |
+|&nbsp;storage_account_container_names | list(string) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
