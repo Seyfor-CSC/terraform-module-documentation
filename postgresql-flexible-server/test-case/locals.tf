@@ -84,8 +84,17 @@ locals {
       sku_name                      = "GP_Standard_D4s_v3"
       administrator_login           = "useradmin"
       administrator_password        = "Password1234+"
+      backup_retention_days         = 14
+      geo_redundant_backup_enabled  = true
       storage_mb                    = "32768"
       public_network_access_enabled = true
+
+      backup_instance_postgresql = {
+        name               = "${local.naming.pgsql_2}-backup"
+        vault_id           = azurerm_data_protection_backup_vault.backup_vault.id
+        backup_policy_id   = azurerm_data_protection_backup_policy_postgresql_flexible_server.postgresql_policy.id
+        vault_principal_id = azurerm_data_protection_backup_vault.backup_vault.identity[0].principal_id
+      }
 
       tags = {}
     }

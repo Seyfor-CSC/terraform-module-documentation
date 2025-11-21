@@ -76,6 +76,16 @@ variable "config" {  type = list(object({
       principal_type      = string
     })), [])
 
+    # data protection backup instance postgresql flexible server
+    backup_instance_postgresql = optional(object({
+      name               = string
+      location           = optional(string) # If not provided, inherited in module from parent resource
+      vault_id           = string
+      server_id          = optional(string) # Inherited in module from parent resource
+      backup_policy_id   = string
+      vault_principal_id = string # Custom variable expecting backup vault managed identity principal_id as a value
+    }))
+
     # private endpoint
     private_endpoint = optional(list(object({
       name                = string
@@ -190,6 +200,13 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;tenant_id | string | Required |  |  |
 |&nbsp;&nbsp;principal_name | string | Required |  |  |
 |&nbsp;&nbsp;principal_type | string | Required |  |  |
+|&nbsp;backup_instance_postgresql | object | Optional |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;vault_id | string | Required |  |  |
+|&nbsp;&nbsp;server_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
+|&nbsp;&nbsp;vault_principal_id | string | Required |  |  Custom variable expecting backup vault managed identity principal_id as a value |
 |&nbsp;private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |

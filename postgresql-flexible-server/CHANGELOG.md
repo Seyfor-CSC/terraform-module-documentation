@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.0
+
+## Enhancements
+
+- Add `azurerm_data_protection_backup_instance_postgresql_flexible_server` resource (#44)
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade

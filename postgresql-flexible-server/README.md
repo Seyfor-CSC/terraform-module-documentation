@@ -4,6 +4,8 @@ PostgreSQL Flexible Server module can deploy these resources:
 * azurerm_postgresql_flexible_server_database (optional)
 * azurerm_postgresql_flexible_server_configuration (optional)
 * azurerm_postgresql_flexible_server_active_directory_administrator (optional)
+* azurerm_data_protection_backup_instance_postgresql_flexible_server (optional)
+* azurerm_role_assignment (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -23,6 +25,10 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/postgresql_flexible_server_active_directory_administrator
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_instance_postgresql_flexible_server
+
+https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/role_assignment
+
 https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/private_endpoint
@@ -41,6 +47,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_postgresql_flexible_server_configuration.postgresql_flexible_server_configuration["`<postgreslq-flexible-server-name>`_`<postgresql-flexible-server-configuration-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DBforPostgreSQL/flexibleservers/`<postgresql-flexible-server-name>`/configurations/`<postgresql-flexible-server-configuration-name>`'
 ### PostgreSQL Flexible AAD Administrator
 * terraform import '`<path-to-module>`.azurerm_postgresql_flexible_server_active_directory_administrator.postgresql_flexible_server_active_directory_administrator["`<postgreslq-flexible-server-name>`_`<postgresql-flexible-server-active-directory-administrator-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DBforPostgreSQL/flexibleservers/`<postgresql-flexible-server-name>`/administrators/`<postgresql-flexible-server-active-directory-administrator-name>`'
+### Data Protection Backup Instance PostgreSQL Flexible Server
+* terraform import '`<path-to-module>`.azurerm_data_protection_backup_instance_postgresql_flexible_server.data_protection_backup_instance_postgresql_flexible_server["`<postgresql-flexible-server-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DataProtection/backupVaults/`<backup-vault-name>`/backupInstances/`<backup-instance-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<postgresql-server-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.DBforPostgreSQL/flexibleservers/`<postgresql-flexible-server-name>`/databases/`<postgresql-flexible-database-name>`|`<diag-name>`'
 ### Private Endpoint
@@ -94,6 +102,11 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
+## Custom variables
+* `vault_principal_id` is used in the `backup_instance_postgresql` object to specify the principal_id of the backup vault's managed identity. This parameter is required when configuring backup functionality, as the module uses it to create the necessary role assignment that allows the backup vault to perform backup operations on the PostgreSQL Flexible Server.
+## Required role assignment
+When using backup functionality, the module creates a role assignment for the backup vault's managed identity. The role assigned is "PostgreSQL Flexible Server Long Term Retention Backup Role" at the scope of the PostgreSQL Flexible Server. This role assignment is necessary to grant the backup vault the required permissions to perform backup operations on the server.
+
 ## Lifecycle
 This module has a lifecycle block set up like this:
 ```

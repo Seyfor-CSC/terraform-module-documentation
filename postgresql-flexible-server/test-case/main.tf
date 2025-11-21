@@ -57,10 +57,48 @@ resource "azurerm_log_analytics_workspace" "la" {
   retention_in_days   = 30
 }
 
+# backup prerequisites
+resource "azurerm_data_protection_backup_vault" "backup_vault" {
+  name                = "SEY-PGSQL-NE-BV01"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = local.location
+  datastore_type      = "VaultStore"
+  redundancy          = "LocallyRedundant"
+  immutability        = "Disabled"
+  soft_delete         = "Off"
+
+  identity {
+    type = "SystemAssigned"
+  }
+}
+
+resource "azurerm_role_assignment" "backup_vault_role" {
+  scope                = azurerm_resource_group.rg.id
+  role_definition_name = "Reader"
+  principal_id         = azurerm_data_protection_backup_vault.backup_vault.identity[0].principal_id
+}
+
+resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "postgresql_policy" {
+  name     = "postgresql-backup-policy"
+  vault_id = azurerm_data_protection_backup_vault.backup_vault.id
+
+  backup_repeating_time_intervals = ["R/2024-05-05T22:33:00+00:00/P1W"]
+
+  default_retention_rule {
+    life_cycle {
+      duration        = "P4M"
+      data_store_type = "VaultStore"
+    }
+  }
+}
+
 # postgresql flexible server
 module "postgresql_flexible_server" {
-  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v2.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v2.6.0"
   config = local.pgsql
+  depends_on = [
+    azurerm_role_assignment.backup_vault_role
+  ]
 }
 
 output "postgresql_flexible_server" {
