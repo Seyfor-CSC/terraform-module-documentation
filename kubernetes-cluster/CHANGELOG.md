@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.1
+
+## Enhancements
+
+- Add `upgrade_override` parameter (#75)
+
+
+   
 ## Release v2.6.0
 
 ## Enhancements

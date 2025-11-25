@@ -30,7 +30,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # kubernetes cluster
 module "kubernetes_cluster" {
-  source = "git@github.com:Seyfor-CSC/mit.kubernetes-cluster.git?ref=v2.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.kubernetes-cluster.git?ref=v2.6.1"
   config = local.aks
 }
 

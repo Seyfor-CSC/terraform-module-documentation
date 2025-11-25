@@ -149,6 +149,10 @@ variable "config" {  type = list(object({
       snapshot_controller_enabled = optional(bool)
     }))
     support_plan = optional(string)
+    upgrade_override = optional(object({
+      force_upgrade_enabled = bool
+      effective_until       = optional(string)
+    }))
     windows_profile = optional(object({
       admin_username = string
       admin_password = optional(string)
@@ -349,6 +353,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;file_driver_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;snapshot_controller_enabled | bool | Optional |  |  |
 |&nbsp;support_plan | string | Optional |  |  |
+|&nbsp;upgrade_override | object | Optional |  |  |
+|&nbsp;&nbsp;force_upgrade_enabled | bool | Required |  |  |
+|&nbsp;&nbsp;effective_until | string | Optional |  |  |
 |&nbsp;windows_profile | object | Optional |  |  |
 |&nbsp;&nbsp;admin_username | string | Required |  |  |
 |&nbsp;&nbsp;admin_password | string | Optional |  |  |
