@@ -181,6 +181,7 @@ variable "config" {  type = list(object({
       os_disk_size_gb               = optional(string)
       os_disk_type                  = optional(string)
       pod_subnet_id                 = optional(string)
+      temporary_name_for_rotation   = optional(string)
       ultra_ssd_enabled             = optional(bool)
       upgrade_settings = optional(object({
         drain_timeout_in_minutes      = optional(number)
@@ -380,6 +381,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;os_disk_size_gb | string | Optional |  |  |
 |&nbsp;&nbsp;os_disk_type | string | Optional |  |  |
 |&nbsp;&nbsp;pod_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;temporary_name_for_rotation | string | Optional |  |  |
 |&nbsp;&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;upgrade_settings | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;drain_timeout_in_minutes | number | Optional |  |  |

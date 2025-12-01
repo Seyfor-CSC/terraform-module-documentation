@@ -37,7 +37,7 @@
 | [function app](./function-app/README.md) | v2.4.0 |
 | [key vault](./key-vault/README.md) | v2.5.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.4.0 |
-| [kubernetes cluster](./kubernetes-cluster/README.md) | v2.6.1 |
+| [kubernetes cluster](./kubernetes-cluster/README.md) | v2.6.2 |
 | [load balancer](./load-balancer/README.md) | v2.5.0 |
 | [log analytics workspace](./log-analytics-workspace/README.md) | v2.5.0 |
 | [logic app integration account](./logic-app-integration-account/README.md) | v2.5.0 |
@@ -74,6 +74,7 @@
 | [route table](./route-table/README.md) | v2.4.0 |
 | [servicebus](./servicebus/README.md) | v2.5.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.4.0 |
+| [solution.fortigate](./solution.fortigate/README.md) | v1.3.2 |
 | [solution.pim](./solution.pim/README.md) | v2.0.0 |
 | [storage account](./storage-account/README.md) | v2.6.0 |
 | [storage sync](./storage-sync/README.md) | v2.4.0 |

@@ -22,9 +22,10 @@ locals {
       }
       cluster_node_pool = [
         {
-          name       = "examplenp"
-          vm_size    = "Standard_D2_v2"
-          node_count = 1
+          name                        = "examplenp"
+          temporary_name_for_rotation = "tempnp"
+          vm_size                     = "Standard_D2ds_v6"
+          node_count                  = 1
         }
       ]
       identity = {

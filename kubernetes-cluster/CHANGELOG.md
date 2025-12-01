@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.2
+
+## Enhancements
+
+- Add `temporary_name_for_rotation` parameter (#77)
+
+
+   
 ## Release v2.6.1
 
 ## Enhancements
