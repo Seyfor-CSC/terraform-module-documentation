@@ -16,6 +16,7 @@ locals {
       account_replication_type      = "LRS"
       public_network_access_enabled = true
       enable_https_traffic_only     = false
+      shared_access_key_enabled     = true
       network_rules = {
         default_action = "Allow"
       }

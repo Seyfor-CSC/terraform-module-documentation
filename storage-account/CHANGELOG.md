@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.1
+
+## Enhancements
+
+- Set `shared_access_key_enabled` default value to `false` (#94)
+
+
+   
 ## Release v2.6.0
 
 ## Enhancements
@@ -223,9 +231,4 @@
 
 ### Updated
 - `private_link_access` for_each condition
-   
-## Release v1.1.1
-
-### Added
-- Provisioner - `az login` command output supression
    

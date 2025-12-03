@@ -106,7 +106,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # storage account
 module "storage_account" {
-  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.6.1"
   config = local.sa
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link,
