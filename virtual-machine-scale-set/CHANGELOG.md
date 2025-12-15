@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.5.1
+
+## Bug Fixes
+
+- Add missing `auxiliary_mode` and `auxiliary_sku` to autoscale resources (#46)
+
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade
