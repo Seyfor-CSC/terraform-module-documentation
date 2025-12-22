@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # maintenance configuration
 module "maintenance_configuration" {
-  source = "git@github.com:Seyfor-CSC/mit.maintenance-configuration.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.maintenance-configuration.git?ref=v2.3.0"
   config = local.mc
 }
 
