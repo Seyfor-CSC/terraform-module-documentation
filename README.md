@@ -56,7 +56,7 @@
 | [network watcher flow log](./network-watcher-flow-log/README.md) | v2.3.0 |
 | [pim](./pim/README.md) | v2.2.0 |
 | [policy assignment](./policy-assignment/README.md) | v2.6.0 |
-| [policy definition](./policy-definition/README.md) | v2.5.0 |
+| [policy definition](./policy-definition/README.md) | v2.6.0 |
 | [policy set definition](./policy-set-definition/README.md) | v2.6.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.6.0 |
 | [private dns resolver](./private-dns-resolver/README.md) | v2.4.0 |
