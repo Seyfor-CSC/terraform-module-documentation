@@ -31,7 +31,7 @@
 | [data collection rule](./data-collection-rule/README.md) | v2.5.1 |
 | [data factory](./data-factory/README.md) | v2.5.0 |
 | [dns zone](./dns-zone/README.md) | v2.4.0 |
-| [event grid](./event-grid/README.md) | v2.5.0 |
+| [event grid](./event-grid/README.md) | v2.6.0 |
 | [event hub](./event-hub/README.md) | v2.5.0 |
 | [frontdoor](./frontdoor/README.md) | v2.2.0 |
 | [function app](./function-app/README.md) | v2.4.0 |
