@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "4.45.0"
+      version = "4.56.0"
     }
   }
   backend "local" {}
@@ -94,7 +94,7 @@ resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "pos
 
 # postgresql flexible server
 module "postgresql_flexible_server" {
-  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v2.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.postgresql-flexible-server.git?ref=v2.7.0"
   config = local.pgsql
   depends_on = [
     azurerm_role_assignment.backup_vault_role
