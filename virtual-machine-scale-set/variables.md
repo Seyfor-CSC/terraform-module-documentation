@@ -179,10 +179,12 @@ variable "config" {  type = list(object({
       enabled = bool
       timeout = optional(string)
     }))
-    timezone     = optional(string) # windows only
-    upgrade_mode = optional(string)
-    user_data    = optional(string)
-    vtpm_enabled = optional(bool)
+    resilient_vm_creation_enabled = optional(bool)
+    resilient_vm_deletion_enabled = optional(bool)
+    timezone                      = optional(string) # windows only
+    upgrade_mode                  = optional(string)
+    user_data                     = optional(string)
+    vtpm_enabled                  = optional(bool)
     winrm_listener = optional(list(object({ # windows only
       certificate_url = optional(string)
       protocol        = string
@@ -435,6 +437,8 @@ variable "config" {  type = list(object({
 |termination_notification | object | Optional |  |  |
 |&nbsp;enabled | bool | Required |  |  |
 |&nbsp;timeout | string | Optional |  |  |
+|resilient_vm_creation_enabled | bool | Optional |  |  |
+|resilient_vm_deletion_enabled | bool | Optional |  |  |
 |timezone | string | Optional |  |  windows only |
 |upgrade_mode | string | Optional |  |  |
 |user_data | string | Optional |  |  |
