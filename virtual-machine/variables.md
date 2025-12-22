@@ -62,7 +62,7 @@ variable "config" {  type = list(object({
     disable_password_authentication                        = optional(bool) # linux only
     disk_controller_type                                   = optional(string)
     edge_zone                                              = optional(string)
-    enable_automatic_updates                               = optional(bool) # windows only
+    automatic_updates_enabled                              = optional(bool) # windows only
     encryption_at_host_enabled                             = optional(bool)
     eviction_policy                                        = optional(string)
     extensions_time_budget                                 = optional(string)
@@ -166,10 +166,10 @@ variable "config" {  type = list(object({
       disk_size_gb           = optional(number)
       edge_zone              = optional(string)
       encryption_settings = optional(object({
-        disk_encryption_key = optional(object({
+        disk_encryption_key = object({
           secret_url      = string
           source_vault_id = string
-        }))
+        })
         key_encryption_key = optional(object({
           key_url         = string
           source_vault_id = string
@@ -324,7 +324,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |disable_password_authentication | bool | Optional |  |  linux only |
 |disk_controller_type | string | Optional |  |  |
 |edge_zone | string | Optional |  |  |
-|enable_automatic_updates | bool | Optional |  |  windows only |
+|automatic_updates_enabled | bool | Optional |  |  windows only |
 |encryption_at_host_enabled | bool | Optional |  |  |
 |eviction_policy | string | Optional |  |  |
 |extensions_time_budget | string | Optional |  |  |
@@ -413,7 +413,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;disk_size_gb | number | Optional |  |  |
 |&nbsp;edge_zone | string | Optional |  |  |
 |&nbsp;encryption_settings | object | Optional |  |  |
-|&nbsp;&nbsp;disk_encryption_key | object | Optional |  |  |
+|&nbsp;&nbsp;disk_encryption_key | object | Required |  |  |
 |&nbsp;&nbsp;&nbsp;secret_url | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;source_vault_id | string | Required |  |  |
 |&nbsp;&nbsp;key_encryption_key | object | Optional |  |  |
