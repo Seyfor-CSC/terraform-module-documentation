@@ -214,6 +214,7 @@ variable "config" {  type = list(object({
       connection_string_names = optional(list(string))
     }))
     virtual_network_backup_restore_enabled = optional(bool)
+    virtual_network_image_pull_enabled     = optional(bool) # Windows Web App only
     virtual_network_subnet_id              = optional(string)
     tags = optional(map(any))
 
@@ -459,6 +460,7 @@ variable "config" {  type = list(object({
 |&nbsp;app_setting_names | list(string) | Optional |  |  |
 |&nbsp;connection_string_names | list(string) | Optional |  |  |
 |virtual_network_backup_restore_enabled | bool | Optional |  |  |
+|virtual_network_image_pull_enabled | bool | Optional |  |  Windows Web App only |
 |virtual_network_subnet_id | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
