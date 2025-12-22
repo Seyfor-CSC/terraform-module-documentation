@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -31,8 +31,8 @@ resource "azurerm_service_plan" "asp" {
   name                = "SEY-LASTANDARD-NE-ASP01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
-  os_type             = "Linux"
-  sku_name            = "WS1"
+  os_type             = "Windows"
+  sku_name            = "B1"
 }
 
 # private endpoint prerequisites
@@ -73,7 +73,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # logic app standard
 module "logic_app_standard" {
-  source = "git@github.com:Seyfor-CSC/mit.logic-app-standard.git?ref=v2.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.logic-app-standard.git?ref=v2.6.0"
   config = local.logic
 }
 
