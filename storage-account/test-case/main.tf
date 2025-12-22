@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -106,7 +106,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # storage account
 module "storage_account" {
-  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.6.1"
+  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.7.0"
   config = local.sa
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link,

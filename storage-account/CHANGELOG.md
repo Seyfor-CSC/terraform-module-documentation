@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v2.7.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.56.0 (#97)
+- Terraform: 1.14.2 (#97)
+- OpenTofu: 1.11.1 (#97)
+   
 ## Release v2.6.1
 
 ## Enhancements
@@ -226,9 +233,4 @@
 ### Version upgrade
 - Azurerm provider: 3.51.0
 - Terraform: 1.4.5
-   
-## Release v1.1.2
-
-### Updated
-- `private_link_access` for_each condition
    

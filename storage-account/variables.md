@@ -194,9 +194,9 @@ variable "config" {  type = list(object({
 
     # storage queue
     queues = optional(list(object({
-      name                 = string
-      storage_account_name = optional(string) # Inherited in module from parent resource
-      metadata             = optional(map(string))
+      name               = string
+      storage_account_id = optional(string) # Inherited in module from parent resource
+      metadata           = optional(map(string))
     })), [])
 
     # storage table
@@ -480,7 +480,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;backup_policy_id | string | Required |  |  |
 |queues | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;storage_account_name | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;metadata | map(string) | Optional |  |  |
 |tables | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
