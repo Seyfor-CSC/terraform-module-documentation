@@ -30,7 +30,7 @@
 | [data collection endpoint](./data-collection-endpoint/README.md) | v2.1.0 |
 | [data collection rule](./data-collection-rule/README.md) | v2.6.0 |
 | [data factory](./data-factory/README.md) | v2.6.0 |
-| [dns zone](./dns-zone/README.md) | v2.4.0 |
+| [dns zone](./dns-zone/README.md) | v2.5.0 |
 | [event grid](./event-grid/README.md) | v2.6.0 |
 | [event hub](./event-hub/README.md) | v2.6.0 |
 | [frontdoor](./frontdoor/README.md) | v2.3.0 |
@@ -46,7 +46,7 @@
 | [machine learning](./machine-learning/README.md) | v2.5.0 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.3.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.4.0 |
-| [monitor alert](./monitor-alert/README.md) | v2.4.0 |
+| [monitor alert](./monitor-alert/README.md) | v2.5.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.5.0 |
 | [mssql database](./mssql-database/README.md) | v2.5.0 |
 | [mssql failover group](./mssql-failover-group/README.md) | v2.3.0 |

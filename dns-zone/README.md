@@ -10,7 +10,7 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/dns_zone
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/dns_zone
 
 &nbsp;
 
@@ -35,6 +35,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | max_number_of_record_sets |         |
 |             | number_of_record_sets     |         |
 |             | name_servers              |         |
+|             | soa_record                |         |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed DNS Zone module is used as a value for the _scope_ variable in Role Assignment resource.
