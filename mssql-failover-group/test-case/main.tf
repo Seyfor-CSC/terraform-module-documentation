@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -49,7 +49,7 @@ resource "azurerm_mssql_database" "mssql1_db2" {
 
 # mssql failover group
 module "mssql_failover_group" {
-  source = "git@github.com:Seyfor-CSC/mit.mssql-failover-group.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.mssql-failover-group.git?ref=v2.3.0"
   config = local.mssql_failover_group
 }
 
