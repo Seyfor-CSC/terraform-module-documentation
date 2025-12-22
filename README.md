@@ -34,7 +34,7 @@
 | [event grid](./event-grid/README.md) | v2.6.0 |
 | [event hub](./event-hub/README.md) | v2.6.0 |
 | [frontdoor](./frontdoor/README.md) | v2.3.0 |
-| [function app](./function-app/README.md) | v2.4.0 |
+| [function app](./function-app/README.md) | v2.5.0 |
 | [key vault](./key-vault/README.md) | v2.6.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.5.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.7.0 |
@@ -82,6 +82,6 @@
 | [virtual desktop](./virtual-desktop/README.md) | v2.6.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.5.0 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.5.0 |
-| [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.5.1 |
+| [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.6.0 |
 | [virtual network](./virtual-network/README.md) | v2.6.0 |
 | [virtual network peering](./virtual-network-peering/README.md) | v2.5.0 |
