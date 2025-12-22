@@ -14,15 +14,15 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_vault
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/data_protection_backup_vault
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_policy_disk
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/data_protection_backup_policy_disk
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_policy_blob_storage
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/data_protection_backup_policy_blob_storage
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/data_protection_backup_policy_postgresql_flexible_server
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/data_protection_backup_policy_postgresql_flexible_server
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 

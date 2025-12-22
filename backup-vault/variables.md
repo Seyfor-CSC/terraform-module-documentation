@@ -10,7 +10,8 @@ variable "config" {  type = list(object({
     redundancy                   = string
     cross_region_restore_enabled = optional(bool)
     identity = optional(object({
-      type = string
+      type         = string
+      identity_ids = optional(list(string))
     }))
     retention_duration_in_days = optional(number)
     immutability               = optional(string)
@@ -123,6 +124,7 @@ variable "config" {  type = list(object({
 |cross_region_restore_enabled | bool | Optional |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
+|&nbsp;identity_ids | list(string) | Optional |  |  |
 |retention_duration_in_days | number | Optional |  |  |
 |immutability | string | Optional |  |  |
 |soft_delete | string | Optional |  |  |
