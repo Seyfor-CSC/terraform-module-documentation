@@ -11,9 +11,9 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/logic_app_workflow
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/logic_app_workflow
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
