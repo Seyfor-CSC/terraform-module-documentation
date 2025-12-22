@@ -15,17 +15,17 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/virtual_network
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/virtual_network
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/subnet
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/subnet
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/subnet_network_security_group_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/subnet_network_security_group_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/subnet_route_table_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/subnet_route_table_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/subnet_nat_gateway_association
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/subnet_nat_gateway_association
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
 &nbsp;
 
