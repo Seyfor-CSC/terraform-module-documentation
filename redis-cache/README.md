@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/redis_cache
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/redis_cache
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -90,5 +90,5 @@ We reserve the right to include tags dedicated to our product Advanced Monitorin
 Because of this, terraform plan will generate changes to the `rdb_storage_connection_string` variable every run. This is a known issue with the Azure API. See the following link for more details:
 https://github.com/Azure/azure-rest-api-specs/issues/3037
 ## Can't add rdb_storage_connection_string variable into ignore_changes
-[Terraform documentation for redis cache](https://registry.terraform.io/providers/hashicorp/azurerm/4.45.0/docs/resources/redis_cache#rdb_storage_connection_string) suggests to put the `rdb_storage_connection_string` into an ignore_changes block. However, that also ends in an error. Because of this, no ignore_changes block is implemented. See the following link for more details:
+[Terraform documentation for redis cache](https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/redis_cache#rdb_storage_connection_string) suggests to put the `rdb_storage_connection_string` into an ignore_changes block. However, that also ends in an error. Because of this, no ignore_changes block is implemented. See the following link for more details:
 https://github.com/Azure/azure-rest-api-specs/issues/3037#issuecomment-1398971779

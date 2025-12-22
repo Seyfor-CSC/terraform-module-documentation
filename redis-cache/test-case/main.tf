@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -65,7 +65,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # redis cache
 module "redis_cache" {
-  source = "git@github.com:Seyfor-CSC/mit.redis-cache.git?ref=v2.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.redis-cache.git?ref=v2.6.0"
   config = local.redis_cache
 }
 
