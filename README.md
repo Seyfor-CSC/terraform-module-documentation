@@ -20,7 +20,7 @@
 | [availability set](./availability-set/README.md) | v2.5.0 |
 | [backup vault](./backup-vault/README.md) | v2.7.0 |
 | [bastion host](./bastion-host/README.md) | v2.6.0 |
-| [cognitive account](./cognitive-account/README.md) | v2.5.0 |
+| [cognitive account](./cognitive-account/README.md) | v2.6.0 |
 | [consumption budget](./consumption-budget/README.md) | v2.5.0 |
 | [container app](./container-app/README.md) | v2.5.0 |
 | [container app environment](./container-app-environment/README.md) | v2.7.0 |
@@ -54,7 +54,7 @@
 | [network security group](./network-security-group/README.md) | v2.6.0 |
 | [network watcher](./network-watcher/README.md) | v2.4.0 |
 | [network watcher flow log](./network-watcher-flow-log/README.md) | v2.3.0 |
-| [pim](./pim/README.md) | v2.2.0 |
+| [pim](./pim/README.md) | v2.3.0 |
 | [policy assignment](./policy-assignment/README.md) | v2.6.0 |
 | [policy definition](./policy-definition/README.md) | v2.6.0 |
 | [policy set definition](./policy-set-definition/README.md) | v2.6.0 |
