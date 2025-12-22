@@ -41,7 +41,8 @@ variable "config" {  type = list(object({
       subnet_id         = optional(string)
       public_ip_enabled = optional(bool)
     }))
-    tags = optional(map(any))
+    service_side_encryption_enabled = optional(bool)
+    tags                            = optional(map(any))
 
     # private endpoint
     private_endpoint = optional(list(object({
@@ -152,6 +153,7 @@ variable "config" {  type = list(object({
 |serverless_compute | object | Optional |  |  |
 |&nbsp;subnet_id | string | Optional |  |  |
 |&nbsp;public_ip_enabled | bool | Optional |  |  |
+|service_side_encryption_enabled | bool | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
