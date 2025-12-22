@@ -8,7 +8,7 @@ variable "config" {  type = list(object({
     location                     = string
     container_app_environment_id = string
     template = object({
-      container = optional(object({
+      container = object({
         name    = string
         cpu     = number
         memory  = string
@@ -44,6 +44,7 @@ variable "config" {  type = list(object({
             value = string
           }))
           host                    = optional(string)
+          initial_delay           = optional(number)
           interval_seconds        = optional(number)
           path                    = optional(string)
           success_count_threshold = optional(number)
@@ -58,6 +59,7 @@ variable "config" {  type = list(object({
             value = string
           }))
           host             = optional(string)
+          initial_delay    = optional(number)
           interval_seconds = optional(number)
           path             = optional(string)
           timeout          = optional(number)
@@ -66,11 +68,11 @@ variable "config" {  type = list(object({
           name = string
           path = string
         }))
-      }))
+      })
       init_container = optional(object({
         name    = string
-        cpu     = number
-        memory  = string
+        cpu     = optional(number)
+        memory  = optional(string)
         image   = string
         args    = optional(list(string))
         command = optional(list(string))
@@ -86,7 +88,7 @@ variable "config" {  type = list(object({
         }))
       }))
       volume = optional(object({
-        name          = optional(string)
+        name          = string
         storage_type  = optional(string)
         storage_name  = optional(string)
         mount_options = optional(string)
@@ -105,7 +107,7 @@ variable "config" {  type = list(object({
       identity             = optional(string)
       username             = optional(string)
       password_secret_name = optional(string)
-      server               = optional(string)
+      server               = string
     })), [])
     manual_trigger_config = optional(object({
       parallelism              = optional(number)
@@ -119,12 +121,12 @@ variable "config" {  type = list(object({
         min_executions              = optional(number)
         polling_interval_in_seconds = optional(number)
         rules = optional(object({
-          name             = optional(string)
-          custom_rule_type = optional(string)
-          metadata         = optional(map(any))
+          name             = string
+          custom_rule_type = string
+          metadata         = map(any)
           authentication = optional(object({
-            secret_name       = optional(string)
-            trigger_parameter = optional(string)
+            secret_name       = string
+            trigger_parameter = string
           }))
         }))
       }))
@@ -135,7 +137,7 @@ variable "config" {  type = list(object({
       replica_completion_count = optional(number)
     }))
     identity = optional(object({
-      type         = optional(string)
+      type         = string
       identity_ids = optional(list(string))
     }))
     tags = optional(map(any))
@@ -155,7 +157,7 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |container_app_environment_id | string | Required |  |  |
 |template | object | Required |  |  |
-|&nbsp;container | object | Optional |  |  |
+|&nbsp;container | object | Required |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;cpu | number | Required |  |  |
 |&nbsp;&nbsp;memory | string | Required |  |  |
@@ -187,6 +189,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;host | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;initial_delay | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;success_count_threshold | number | Optional |  |  |
@@ -199,6 +202,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;&nbsp;value | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;host | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;initial_delay | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;interval_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;timeout | number | Optional |  |  |
@@ -207,8 +211,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;path | string | Required |  |  |
 |&nbsp;init_container | object | Optional |  |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;cpu | number | Required |  |  |
-|&nbsp;&nbsp;memory | string | Required |  |  |
+|&nbsp;&nbsp;cpu | number | Optional |  |  |
+|&nbsp;&nbsp;memory | string | Optional |  |  |
 |&nbsp;&nbsp;image | string | Required |  |  |
 |&nbsp;&nbsp;args | list(string) | Optional |  |  |
 |&nbsp;&nbsp;command | list(string) | Optional |  |  |
@@ -221,7 +225,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;path | string | Required |  |  |
 |&nbsp;volume | object | Optional |  |  |
-|&nbsp;&nbsp;name | string | Optional |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;storage_type | string | Optional |  |  |
 |&nbsp;&nbsp;storage_name | string | Optional |  |  |
 |&nbsp;&nbsp;mount_options | string | Optional |  |  |
@@ -237,7 +241,7 @@ variable "config" {  type = list(object({
 |&nbsp;identity | string | Optional |  |  |
 |&nbsp;username | string | Optional |  |  |
 |&nbsp;password_secret_name | string | Optional |  |  |
-|&nbsp;server | string | Optional |  |  |
+|&nbsp;server | string | Required |  |  |
 |manual_trigger_config | object | Optional |  |  |
 |&nbsp;parallelism | number | Optional |  |  |
 |&nbsp;replica_completion_count | number | Optional |  |  |
@@ -249,18 +253,18 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;min_executions | number | Optional |  |  |
 |&nbsp;&nbsp;polling_interval_in_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;rules | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;name | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;custom_rule_type | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;metadata | map(any) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;custom_rule_type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;metadata | map(any) | Required |  |  |
 |&nbsp;&nbsp;&nbsp;authentication | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;&nbsp;secret_name | string | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;&nbsp;trigger_parameter | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;secret_name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;trigger_parameter | string | Required |  |  |
 |schedule_trigger_config | object | Optional |  |  |
 |&nbsp;cron_expression | string | Required |  |  |
 |&nbsp;parallelism | number | Optional |  |  |
 |&nbsp;replica_completion_count | number | Optional |  |  |
 |identity | object | Optional |  |  |
-|&nbsp;type | string | Optional |  |  |
+|&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -27,7 +27,7 @@ resource "azurerm_container_app_environment" "cae" {
 
 # container app job
 module "caj" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-job.git?ref=v2.4.0"
+  source = "git@github.com:Seyfor-CSC/mit.container-app-job.git?ref=v2.5.0"
   config = local.caj
 }
 
