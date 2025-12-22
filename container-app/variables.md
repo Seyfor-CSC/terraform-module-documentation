@@ -88,8 +88,10 @@ variable "config" {  type = list(object({
           sub_path = optional(string)
         })), [])
       }))
-      max_replicas = optional(number)
-      min_replicas = optional(number)
+      max_replicas                = optional(number)
+      min_replicas                = optional(number)
+      cooldown_period_in_seconds  = optional(number)
+      polling_interval_in_seconds = optional(number)
       azure_queue_scale_rule = optional(list(object({
         name         = string
         queue_name   = string
@@ -272,6 +274,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;sub_path | string | Optional |  |  |
 |&nbsp;max_replicas | number | Optional |  |  |
 |&nbsp;min_replicas | number | Optional |  |  |
+|&nbsp;cooldown_period_in_seconds | number | Optional |  |  |
+|&nbsp;polling_interval_in_seconds | number | Optional |  |  |
 |&nbsp;azure_queue_scale_rule | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;queue_name | string | Required |  |  |
