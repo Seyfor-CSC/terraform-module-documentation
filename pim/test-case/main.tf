@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -28,7 +28,7 @@ data "azurerm_role_definition" "contributor" {
 
 # pim
 module "pim" {
-  source = "git@github.com:Seyfor-CSC/mit.pim.git?ref=v2.2.0"
+  source = "git@github.com:Seyfor-CSC/mit.pim.git?ref=v2.3.0"
   config = local.pim
 }
 
