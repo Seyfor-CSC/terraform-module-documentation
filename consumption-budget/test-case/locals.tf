@@ -1,6 +1,8 @@
 locals {
   location = "northeurope"
 
+  date = formatdate("YYYY-MM-DD'T'00:00:00Z", plantimestamp())
+
   naming = {
     rg          = "SEY-BUDGET-NE-RG01"
     budget_mg1  = "SEY-TERRAFORM-NE-BUDGETMG01"
@@ -17,7 +19,7 @@ locals {
       amount              = 10
 
       time_period = {
-        start_date = "2025-06-01T00:00:00Z"
+        start_date = formatdate("YYYY-MM-01'T'00:00:00Z", local.date)
       }
 
       notification = [
@@ -40,7 +42,7 @@ locals {
       amount              = 10
 
       time_period = {
-        start_date = "2025-06-01T00:00:00Z"
+        start_date = formatdate("YYYY-MM-01'T'00:00:00Z", local.date)
       }
 
       notification = [
@@ -63,8 +65,8 @@ locals {
       time_grain      = "Annually"
 
       time_period = {
-        start_date = "2024-08-01T00:00:00Z"
-        end_date   = "2026-08-01T00:00:00Z"
+        start_date = formatdate("YYYY-MM-01'T'00:00:00Z", local.date)
+        end_date   = formatdate("YYYY-MM-30'T'00:00:00Z", local.date)
       }
 
       notification = [
@@ -89,8 +91,8 @@ locals {
       time_grain      = "BillingMonth"
 
       time_period = {
-        start_date = "2024-08-01T00:00:00Z"
-        end_date   = "2026-08-01T00:00:00Z"
+        start_date = formatdate("YYYY-MM-01'T'00:00:00Z", local.date)
+        end_date   = formatdate("YYYY-MM-30'T'00:00:00Z", local.date)
       }
 
       notification = [
