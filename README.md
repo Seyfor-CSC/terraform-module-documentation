@@ -53,7 +53,7 @@
 | [mssql managed instance](./mssql-managed-instance/README.md) | v2.6.0 |
 | [network security group](./network-security-group/README.md) | v2.6.0 |
 | [network watcher](./network-watcher/README.md) | v2.5.0 |
-| [network watcher flow log](./network-watcher-flow-log/README.md) | v2.3.0 |
+| [network watcher flow log](./network-watcher-flow-log/README.md) | v2.4.0 |
 | [pim](./pim/README.md) | v2.3.0 |
 | [policy assignment](./policy-assignment/README.md) | v2.6.0 |
 | [policy definition](./policy-definition/README.md) | v2.6.0 |

@@ -6,7 +6,7 @@ variable "config" {  type = list(object({
     name                 = string
     resource_group_name  = string
     network_watcher_name = string
-    target_resource_id   = string
+    target_resource_id   = optional(string)
     storage_account_id   = string
     enabled              = bool
     retention_policy = object({
@@ -37,7 +37,7 @@ variable "config" {  type = list(object({
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |network_watcher_name | string | Required |  |  |
-|target_resource_id | string | Required |  |  |
+|target_resource_id | string | Optional |  |  |
 |storage_account_id | string | Required |  |  |
 |enabled | bool | Required |  |  |
 |retention_policy | object | Required |  |  |

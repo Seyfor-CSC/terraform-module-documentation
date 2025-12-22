@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v2.4.0
+
+## Provider & Terraform Upgrade
+- Azurerm provider: 4.56.0 (#27)
+- Terraform: 1.14.2 (#27)
+- OpenTofu: 1.11.1 (#27)
+   
 ## Release v2.3.0
 
 ## Provider & Terraform Upgrade
