@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
   }
   backend "local" {}
@@ -57,7 +57,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # data factory
 module "data_factory" {
-  source = "git@github.com:Seyfor-CSC/mit.data-factory.git?ref=v2.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.data-factory.git?ref=v2.6.0"
   config = local.df
 }
 
