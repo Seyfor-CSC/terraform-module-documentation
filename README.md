@@ -32,7 +32,7 @@
 | [data factory](./data-factory/README.md) | v2.6.0 |
 | [dns zone](./dns-zone/README.md) | v2.4.0 |
 | [event grid](./event-grid/README.md) | v2.6.0 |
-| [event hub](./event-hub/README.md) | v2.5.0 |
+| [event hub](./event-hub/README.md) | v2.6.0 |
 | [frontdoor](./frontdoor/README.md) | v2.3.0 |
 | [function app](./function-app/README.md) | v2.4.0 |
 | [key vault](./key-vault/README.md) | v2.6.0 |
@@ -71,7 +71,7 @@
 | [role assignment](./role-assignment/README.md) | v2.5.0 |
 | [role definition](./role-definition/README.md) | v2.5.0 |
 | [role management policy](./role-management-policy/README.md) | v2.2.0 |
-| [route table](./route-table/README.md) | v2.4.0 |
+| [route table](./route-table/README.md) | v2.5.0 |
 | [servicebus](./servicebus/README.md) | v2.5.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.5.0 |
 | [solution.fortigate](./solution.fortigate/README.md) | v1.3.2 |
