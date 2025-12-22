@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.45.0"
+      version = "=4.56.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "=3.5.0"
+      version = "=3.7.0"
     }
   }
   backend "local" {}
@@ -53,7 +53,7 @@ resource "azurerm_role_definition" "example" {
 }
 
 data "azuread_service_principal" "example" {
-  display_name = "Windows Virtual Desktop"
+  display_name = "Azure Virtual Desktop"
 }
 
 resource "random_uuid" "example" {
@@ -105,7 +105,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # virtual desktop
 module "virtual_desktop" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v2.5.0"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-desktop.git?ref=v2.6.0"
   config = local.virtual_desktop
 }
 
