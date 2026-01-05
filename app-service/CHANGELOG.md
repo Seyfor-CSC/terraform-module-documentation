@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.1
+
+## Enhancements
+
+- Add parameters to ignore_changes (#85)
+
+
+   
 ## Release v2.6.0
 
 ## Provider & Terraform Upgrade

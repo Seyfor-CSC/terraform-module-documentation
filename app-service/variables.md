@@ -9,6 +9,7 @@ variable "config" {  type = list(object({
     location            = string
     service_plan_id     = string
     site_config = object({
+      app_command_line = optional(string)
       application_stack = optional(object({
         current_stack                = optional(string) # Windows Web App only
         docker_image_name            = optional(string)
@@ -284,6 +285,7 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |service_plan_id | string | Required |  |  |
 |site_config | object | Required |  |  |
+|&nbsp;app_command_line | string | Optional |  |  |
 |&nbsp;application_stack | object | Optional |  |  |
 |&nbsp;&nbsp;current_stack | string | Optional |  |  Windows Web App only |
 |&nbsp;&nbsp;docker_image_name | string | Optional |  |  |

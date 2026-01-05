@@ -86,8 +86,10 @@ This module has a lifecycle block set up like this:
 ```
 lifecycle {
     ignore_changes = [
+        site_config[0].app_command_line,
         connection_string,
         app_settings,
+        auth_settings_v2,
         sticky_settings
     ]
 }
