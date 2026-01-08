@@ -1,13 +1,5 @@
 # Changelog
 
-## Release v1.0.0
-
-
-   
-## Release v1.0.0
-
-
-   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade
