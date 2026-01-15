@@ -75,6 +75,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | id                 |                                                      |
 |             | principal_id       | principal_id (object_id) of system assigned identity |
 |             | os_disk_id         |                                                      |
+|             | size               |                                                      |
+|             | zone               |                                                      |
 |             | network_interfaces | Network Interface outputs                            |
 |             | &nbsp;name         |                                                      |
 |             | &nbsp;id           |                                                      |
@@ -84,6 +86,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | vm_extensions      | Virtual Machine Extension outputs                    |
 |             | &nbsp;name         |                                                      |
 |             | &nbsp;id           |                                                      |
+
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Virtual Machine module is used as a value for the _scope_ variable in Role Assignment resource.

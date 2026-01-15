@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.5.1
+
+## Enhancements
+
+- Add `size` and `zone` to outputs (#74)
+
+
+   
 ## Release v2.5.0
 
 ## Provider & Terraform Upgrade
