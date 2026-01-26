@@ -2,6 +2,7 @@
 
 ```
 variable "config" {  type = list(object({
+    # servicebus namespace
     name                = string
     resource_group_name = string
     location            = string
@@ -33,6 +34,54 @@ variable "config" {  type = list(object({
       trusted_services_allowed = true
     })
     tags = optional(map(any))
+
+    # servicebus namespace authorization rule
+    authorization_rule = optional(list(object({
+      name         = string
+      namespace_id = optional(string) # Inherited in module from parent resource
+      listen       = optional(bool)
+      send         = optional(bool)
+      manage       = optional(bool)
+    })), [])
+
+    # servicebus queue
+    queue = optional(list(object({
+      name                                    = string
+      namespace_id                            = optional(string) # Inherited in module from parent resource
+      lock_duration                           = optional(string)
+      max_message_size_in_kilobytes           = optional(number)
+      max_size_in_megabytes                   = optional(number)
+      requires_duplicate_detection            = optional(bool)
+      requires_session                        = optional(bool)
+      default_message_ttl                     = optional(string)
+      dead_lettering_on_message_expiration    = optional(bool)
+      duplicate_detection_history_time_window = optional(string)
+      max_delivery_count                      = optional(number)
+      status                                  = optional(string)
+      batched_operations_enabled              = optional(bool)
+      auto_delete_on_idle                     = optional(string)
+      partitioning_enabled                    = optional(bool)
+      express_enabled                         = optional(bool)
+      forward_to                              = optional(string)
+      forward_dead_lettered_messages_to       = optional(string)
+    })), [])
+
+    # servicebus topic
+    topic = optional(list(object({
+      name                                    = string
+      namespace_id                            = optional(string) # Inherited in module from parent resource
+      status                                  = optional(string)
+      auto_delete_on_idle                     = optional(string)
+      default_message_ttl                     = optional(string)
+      duplicate_detection_history_time_window = optional(string)
+      batched_operations_enabled              = optional(bool)
+      express_enabled                         = optional(bool)
+      partitioning_enabled                    = optional(bool)
+      max_message_size_in_kilobytes           = optional(number)
+      max_size_in_megabytes                   = optional(number)
+      requires_duplicate_detection            = optional(bool)
+      support_ordering                        = optional(bool)
+    })), [])
 
     # private endpoint
     private_endpoint = optional(list(object({

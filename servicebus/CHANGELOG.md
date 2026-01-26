@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.7.0
+
+## Enhancements
+
+- Add `azurerm_servicebus_namespace_authorization_rule`, `azurerm_servicebus_queue`, and `azurerm_servicebus_topic` resources (#39)
+
+
+   
 ## Release v2.6.0
 
 ## Provider & Terraform Upgrade

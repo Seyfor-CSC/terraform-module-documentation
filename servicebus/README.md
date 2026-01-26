@@ -1,6 +1,9 @@
 # Introduction
 Servicebus module can deploy these resources:
 * azurerm_servicebus_namespace (required)
+* azurerm_servicebus_namespace_authorization_rule (optional)
+* azurerm_servicebus_queue (optional)
+* azurerm_servicebus_topic (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -14,6 +17,12 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_namespace
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_namespace_authorization_rule
+
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_queue
+
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_topic
+
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/private_endpoint
@@ -24,6 +33,12 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Servicebus Namespace
 * terraform import '`<path-to-module>`.azurerm_servicebus_namespace.servicebus_namespace["`<servicebus-namespace-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ServiceBus/namespaces/`<servicebus-namespace-name>`'
+### Servicebus Namespace Authorization Rule
+* terraform import '`<path-to-module>`.azurerm_servicebus_namespace_authorization_rule.servicebus_namespace_authorization_rule["`<servicebus-namespace-name>`_`<authorization-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ServiceBus/namespaces/`<servicebus-namespace-name>`/authorizationRules/`<authorization-rule-name>`'
+### Servicebus Queue
+* terraform import '`<path-to-module>`.azurerm_servicebus_queue.servicebus_queue["`<servicebus-namespace-name>`_`<queue-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ServiceBus/namespaces/`<servicebus-namespace-name>`/queues/`<queue-name>`'
+### Servicebus Topic
+* terraform import '`<path-to-module>`.azurerm_servicebus_topic.servicebus_topic["`<servicebus-namespace-name>`_`<topic-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ServiceBus/namespaces/`<servicebus-namespace-name>`/topics/`<topic-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<servicebus-namespace-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ServiceBus/namespaces/`<servicebus-namespace-name>`|`<diag-name>`'
  ### Private Endpoint
@@ -36,12 +51,18 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value        | Comment                                              |
-| ----------- | ------------ | ---------------------------------------------------- |
-| outputs     | name         |                                                      |
-|             | id           |                                                      |
-|             | principal_id | principal_id (object_id) of system assigned identity |
-|             | endpoint     |                                                      |
+| Output Name | Value              | Comment                                              |
+| ----------- | ------------------ | ---------------------------------------------------- |
+| outputs     | name               |                                                      |
+|             | id                 |                                                      |
+|             | principal_id       | principal_id (object_id) of system assigned identity |
+|             | endpoint           |                                                      |
+|             | authorization_rule | Namespace Authorization Rule outputs                 |
+|             | &nbsp;id           |                                                      |
+|             | queue              | Service Bus Queue outputs                            |
+|             | &nbsp;id           |                                                      |
+|             | topic              | Service Bus Topic outputs                            |
+|             | &nbsp;id           |                                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Servicebus module is used as a value for the _scope_ variable in Role Assignment resource.

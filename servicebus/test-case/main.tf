@@ -55,7 +55,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # servicebus
 module "servicebus" {
-  source = "git@github.com:Seyfor-CSC/mit.servicebus.git?ref=v2.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.servicebus.git?ref=v2.7.0"
   config = local.servicebus
 }
 

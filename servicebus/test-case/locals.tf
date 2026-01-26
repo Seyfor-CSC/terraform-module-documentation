@@ -13,11 +13,46 @@ locals {
       resource_group_name          = azurerm_resource_group.rg.name
       location                     = local.location
       sku                          = "Premium"
-      capacity                     = 2
+      capacity                     = 1
       premium_messaging_partitions = 1
       identity = {
         type = "SystemAssigned"
       }
+
+      authorization_rule = [
+        {
+          name   = "ListenRule"
+          listen = true
+        },
+        {
+          name = "SendRule"
+          send = true
+        }
+      ]
+
+      queue = [
+        {
+          name          = "test-queue1"
+          lock_duration = "PT30S"
+        },
+        {
+          name                                    = "test-queue2"
+          requires_duplicate_detection            = true
+          duplicate_detection_history_time_window = "PT10M"
+        }
+      ]
+
+      topic = [
+        {
+          name                = "test-topic1"
+          default_message_ttl = "P14D"
+        },
+        {
+          name                                    = "test-topic2"
+          requires_duplicate_detection            = true
+          duplicate_detection_history_time_window = "PT10M"
+        }
+      ]
 
       private_endpoint = [
         {
