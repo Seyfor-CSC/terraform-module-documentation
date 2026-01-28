@@ -20,6 +20,7 @@
 | [availability set](./availability-set/README.md) | v2.5.0 |
 | [backup vault](./backup-vault/README.md) | v2.7.0 |
 | [bastion host](./bastion-host/README.md) | v2.6.0 |
+| [capacity reservation group](./capacity-reservation-group/README.md) | v2.0.0 |
 | [cognitive account](./cognitive-account/README.md) | v2.6.0 |
 | [consumption budget](./consumption-budget/README.md) | v2.5.0 |
 | [container app](./container-app/README.md) | v2.5.0 |
@@ -78,7 +79,6 @@
 | [solution.fortigate](./solution.fortigate/README.md) | v1.3.2 |
 | [solution.pim](./solution.pim/README.md) | v2.1.0 |
 | [storage account](./storage-account/README.md) | v2.7.0 |
-| [storage sync](./storage-sync/README.md) | v2.5.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.5.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.6.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.5.1 |
