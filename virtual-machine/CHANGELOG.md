@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.5.2
+
+## Enhancements
+
+- Add custom variable `use_capacity_reservation` for VM filtering in the mit.capacity-reservation module (#81)
+
+
+   
 ## Release v2.5.1
 
 ## Enhancements

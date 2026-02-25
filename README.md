@@ -1,16 +1,4 @@
-# Important information
-* All modules are currently tested on terraform version 1.14.2, opentofu version 1.11.1, and azurerm provider version 4.56.0.
-
-* Our modules are designed to save you time and effort by providing a consistent approach to deploying resources in Azure. Hardcoding resource ids required in child resources is in the past as it is now done automatically for you inside the module. For example, if you want to deploy a virtual machine with a network interface, you don't need to specify the network interface id in the virtual machine resource. You only need to configure the network interface and the module will take care of the rest.
-
-* The same goes for the resource group and location variables. You don't need to specify them in every resource. Just do it once in the parent resource and the child resource will automatically inherit it. The resource group inheritance feature can be overridden if needed by setting the resource_group_name variable to a different value. Location inheritance can currently be overriden only in the private endpoint child module.
-
-* Few modules due to their complexity don't support all available variables. If you require any of these varibales, they can be added on demand.
-
-* By default, { ManagedBy = "Terraform" } tag is added to every resource deployed using our modules.
-
-## List of all available modules
-
+404: Not Found
 
 | Name | Latest Version |
 | ---- | -------------- |
@@ -76,12 +64,13 @@
 | [route table](./route-table/README.md) | v2.5.0 |
 | [servicebus](./servicebus/README.md) | v2.7.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.5.0 |
-| [solution.fortigate](./solution.fortigate/README.md) | v1.3.2 |
-| [solution.pim](./solution.pim/README.md) | v2.1.0 |
+| [solution.fortigate](./solution.fortigate/README.md) | v1.4.0 |
+| [solution.pim](./solution.pim/README.md) | v2.2.0 |
 | [storage account](./storage-account/README.md) | v2.7.0 |
+| [storage sync](./storage-sync/README.md) | v2.5.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.5.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.6.0 |
-| [virtual machine](./virtual-machine/README.md) | v2.5.1 |
+| [virtual machine](./virtual-machine/README.md) | v2.5.2 |
 | [virtual machine azapi](./virtual-machine-azapi/README.md) | v2.5.0 |
 | [virtual machine scale set](./virtual-machine-scale-set/README.md) | v2.6.0 |
 | [virtual network](./virtual-network/README.md) | v2.6.0 |
