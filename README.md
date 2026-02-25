@@ -1,4 +1,16 @@
-404: Not Found
+# Important information
+* All modules are currently tested on terraform version 1.14.2, opentofu version 1.11.1, and azurerm provider version 4.56.0.
+
+* Our modules are designed to save you time and effort by providing a consistent approach to deploying resources in Azure. Hardcoding resource ids required in child resources is in the past as it is now done automatically for you inside the module. For example, if you want to deploy a virtual machine with a network interface, you don't need to specify the network interface id in the virtual machine resource. You only need to configure the network interface and the module will take care of the rest.
+
+* The same goes for the resource group and location variables. You don't need to specify them in every resource. Just do it once in the parent resource and the child resource will automatically inherit it. The resource group inheritance feature can be overridden if needed by setting the resource_group_name variable to a different value. Location inheritance can currently be overriden only in the private endpoint child module.
+
+* Few modules due to their complexity don't support all available variables. If you require any of these varibales, they can be added on demand.
+
+* By default, { ManagedBy = "Terraform" } tag is added to every resource deployed using our modules.
+
+## List of all available modules
+
 
 | Name | Latest Version |
 | ---- | -------------- |
