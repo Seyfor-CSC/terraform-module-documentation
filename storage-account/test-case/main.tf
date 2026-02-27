@@ -56,12 +56,6 @@ resource "azurerm_data_protection_backup_vault" "backup_vault" {
   }
 }
 
-resource "azurerm_role_assignment" "backup_vault_role" {
-  scope                = azurerm_resource_group.rg.id
-  role_definition_name = "Storage Account Backup Contributor"
-  principal_id         = azurerm_data_protection_backup_vault.backup_vault.identity[0].principal_id
-}
-
 resource "azurerm_data_protection_backup_policy_blob_storage" "blob_policy" {
   name                                   = "blob-backup-policy"
   vault_id                               = azurerm_data_protection_backup_vault.backup_vault.id
@@ -106,11 +100,10 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # storage account
 module "storage_account" {
-  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.7.0"
+  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.7.1"
   config = local.sa
   depends_on = [
-    azurerm_private_dns_zone_virtual_network_link.dns_link,
-    azurerm_role_assignment.backup_vault_role
+    azurerm_private_dns_zone_virtual_network_link.dns_link
   ]
 }
 

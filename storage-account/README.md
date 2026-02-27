@@ -9,6 +9,7 @@ Storage Account module can deploy these resources:
 * azurerm_backup_container_storage_account (optional)
 * azurerm_backup_protected_file_share (optional)
 * azurerm_data_protection_backup_instance_blob_storage (optional)
+* azurerm_role_assignment (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 * azurerm_private_endpoint (optional)
 
@@ -37,6 +38,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/backup_protected_file_share
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/data_protection_backup_instance_blob_storage
+
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/role_assignment
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
@@ -135,6 +138,10 @@ resource "azurerm_role_assignment" "role_assignment" {
 &nbsp;
 
 # Module Features
+## Custom variables
+* `vault_principal_id` is used in the `backup_instance_blob_storage` object to specify the principal_id of the backup vault's managed identity. This parameter is required when configuring backup functionality, as the module uses it to create the necessary role assignment that allows the backup vault to perform backup operations on the Storage Account.
+## Required role assignment
+When using backup functionality, the module creates a role assignment for the backup vault's managed identity. The role assigned is "Storage Account Backup Contributor" at the scope of the Storage Account. This role assignment is necessary to grant the backup vault the required permissions to perform backup operations on the storage account.
 ## Monitoring tags in `ignore_changes` lifecycle block
 We reserve the right to include tags dedicated to our product Advanced Monitoring in the `ignore_changes` lifecycle block. This is to prevent the module from deleting those tags. The tags we ignore are: `tags["Platform"]`, `tags["MonitoringTier"]`.
 

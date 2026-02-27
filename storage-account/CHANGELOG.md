@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.7.1
+
+## Enhancements
+
+- Add role assignment for backup vault's identity (#104)
+
+
+   
 ## Release v2.7.0
 
 ## Provider & Terraform Upgrade
@@ -221,16 +229,4 @@
 - `azure_files_authentication` optional parameter
 ### Updated
 - `ip_configuration.subresource_name` is required
-   
-## Release v1.2.0
-
-### Added
-- Import commands for diagnostic settings of blobs, tables, queues and files
-
-### Updated
-- `file_share.acl` condition
-
-### Version upgrade
-- Azurerm provider: 3.51.0
-- Terraform: 1.4.5
    

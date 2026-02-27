@@ -48,6 +48,7 @@ locals {
         vault_id                        = azurerm_data_protection_backup_vault.backup_vault.id
         backup_policy_id                = azurerm_data_protection_backup_policy_blob_storage.blob_policy.id
         storage_account_container_names = ["container1", "container2"]
+        vault_principal_id              = azurerm_data_protection_backup_vault.backup_vault.identity[0].principal_id
       }
 
       containers = [

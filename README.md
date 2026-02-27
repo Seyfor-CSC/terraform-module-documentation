@@ -78,7 +78,7 @@
 | [shared image gallery](./shared-image-gallery/README.md) | v2.5.0 |
 | [solution.fortigate](./solution.fortigate/README.md) | v1.4.0 |
 | [solution.pim](./solution.pim/README.md) | v2.2.0 |
-| [storage account](./storage-account/README.md) | v2.7.0 |
+| [storage account](./storage-account/README.md) | v2.7.1 |
 | [storage sync](./storage-sync/README.md) | v2.5.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.5.0 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.6.0 |

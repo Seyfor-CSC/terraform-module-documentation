@@ -245,6 +245,7 @@ variable "config" {  type = list(object({
       storage_account_id              = optional(string) # Inherited in module from parent resource
       backup_policy_id                = string
       storage_account_container_names = optional(list(string))
+      vault_principal_id              = string # Custom variable expecting backup vault managed identity principal_id as a value
     }))
 
     # private endpoint
@@ -512,6 +513,7 @@ variable "config" {  type = list(object({
 |&nbsp;storage_account_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;backup_policy_id | string | Required |  |  |
 |&nbsp;storage_account_container_names | list(string) | Optional |  |  |
+|&nbsp;vault_principal_id | string | Required |  |  Custom variable expecting backup vault managed identity principal_id as a value |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
