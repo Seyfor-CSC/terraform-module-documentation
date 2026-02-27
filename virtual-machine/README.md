@@ -152,7 +152,8 @@ This module has a lifecycle block set up like this:
 lifecycle {
     ignore_changes = [
         admin_password,
-        admin_username
+        admin_username,
+        source_image_id,
     ]
 }
 ```

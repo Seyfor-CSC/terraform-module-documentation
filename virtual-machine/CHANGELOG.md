@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.5.3
+
+## Enhancements
+
+- Add `source_image_id` to the ignore_changes lifecycle (#85)
+
+
+   
 ## Release v2.5.2
 
 ## Enhancements
