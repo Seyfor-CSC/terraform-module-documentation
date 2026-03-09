@@ -90,24 +90,28 @@ There are a few things you need to do to import resources into .tfstate. In the 
 # Outputs
 ## Structure
 
-| Output Name | Value                 | Comment                                              |
-| ----------- | --------------------- | ---------------------------------------------------- |
-| outputs     | name                  |                                                      |
-|             | id                    |                                                      |
-|             | principal_id          | principal_id (object_id) of system assigned identity |
-|             | primary_blob_endpoint |                                                      |
-|             | container             | Container outputs                                    |
-|             | &nbsp;name            |                                                      |
-|             | &nbsp;id              |                                                      |
-|             | file_share            | File Share outputs                                   |
-|             | &nbsp;name            |                                                      |
-|             | &nbsp;id              |                                                      |
-|             | queue                 | Queue outputs                                        |
-|             | &nbsp;name            |                                                      |
-|             | &nbsp;id              |                                                      |
-|             | table                 | Table outputs                                        |
-|             | &nbsp;name            |                                                      |
-|             | &nbsp;id              |                                                      |
+| Output Name | Value                        | Comment                                              |
+| ----------- | ---------------------------- | ---------------------------------------------------- |
+| outputs     | name                         |                                                      |
+|             | id                           |                                                      |
+|             | principal_id                 | principal_id (object_id) of system assigned identity |
+|             | primary_blob_endpoint        |                                                      |
+|             | container                    | Container outputs                                    |
+|             | &nbsp;name                   |                                                      |
+|             | &nbsp;id                     |                                                      |
+|             | &nbsp;resource_manager_id    |                                                      |
+|             | file_share                   | File Share outputs                                   |
+|             | &nbsp;name                   |                                                      |
+|             | &nbsp;id                     |                                                      |
+|             | &nbsp;resource_manager_id    |                                                      |
+|             | queue                        | Queue outputs                                        |
+|             | &nbsp;name                   |                                                      |
+|             | &nbsp;id                     |                                                      |
+|             | &nbsp;resource_manager_id    |                                                      |
+|             | table                        | Table outputs                                        |
+|             | &nbsp;name                   |                                                      |
+|             | &nbsp;id                     |                                                      |
+|             | &nbsp;resource_manager_id    |                                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Storage Account module is used as a value for the _scope_ variable in Role Assignment resource.

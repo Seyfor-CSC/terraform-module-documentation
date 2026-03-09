@@ -1,5 +1,12 @@
 # Changelog
 
+## Release v2.7.2
+
+## Enhancements
+
+- Add `resource_manager_id` to data storage outputs (#106)
+
+   
 ## Release v2.7.1
 
 ## Enhancements
@@ -222,11 +229,4 @@
 ### Updated
 - private endpoint dependency
 - private endpoint deployment condition
-   
-## Release v1.2.1
-
-### Added
-- `azure_files_authentication` optional parameter
-### Updated
-- `ip_configuration.subresource_name` is required
    
