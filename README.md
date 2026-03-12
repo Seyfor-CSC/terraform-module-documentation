@@ -76,6 +76,7 @@
 | [route table](./route-table/README.md) | v2.5.0 |
 | [servicebus](./servicebus/README.md) | v2.7.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.5.0 |
+| [solution.capacity reservation](./solution.capacity-reservation/README.md) | v2.0.0 |
 | [solution.fortigate](./solution.fortigate/README.md) | v1.4.0 |
 | [solution.pim](./solution.pim/README.md) | v2.2.0 |
 | [storage account](./storage-account/README.md) | v2.7.2 |
