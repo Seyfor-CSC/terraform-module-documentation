@@ -23,8 +23,9 @@ variable "config" {  type = list(object({
       maximum_count         = optional(number)
       minimum_count         = optional(number)
     })), [])
-    mutual_tls_enabled = optional(bool)
-    tags               = optional(map(any))
+    mutual_tls_enabled    = optional(bool)
+    public_network_access = optional(string, "Disabled")
+    tags                  = optional(map(any))
 
     # container app environment storage
     storage = optional(list(object({
@@ -50,6 +51,34 @@ variable "config" {  type = list(object({
         app_env_spring_app_console_logs = optional(bool, true)
         all_metrics                     = optional(bool, true)
       }))
+    })), [])
+
+    # private endpoint
+    private_endpoint = optional(list(object({
+      name                = string
+      resource_group_name = optional(string) # If not provided, inherited in module from parent resource
+      location            = optional(string) # If not provided, inherited in module from parent resource
+      subnet_id           = string
+      private_service_connection = list(object({
+        name                              = string
+        is_manual_connection              = bool
+        private_connection_resource_id    = optional(string)
+        private_connection_resource_alias = optional(string)
+        subresource_names                 = optional(list(string))
+        request_message                   = optional(string)
+      }))
+      custom_network_interface_name = optional(string)
+      private_dns_zone_group = optional(object({
+        name                 = string
+        private_dns_zone_ids = list(string)
+      }))
+      ip_configuration = optional(list(object({
+        name               = string
+        private_ip_address = string
+        subresource_name   = string
+        member_name        = optional(string)
+      })), [])
+      tags = optional(map(any)) # If not provided, inherited in module from parent resource
     })), [])
   }))
 }
@@ -81,6 +110,7 @@ variable "config" {  type = list(object({
 |&nbsp;maximum_count | number | Optional |  |  |
 |&nbsp;minimum_count | number | Optional |  |  |
 |mutual_tls_enabled | bool | Optional |  |  |
+|public_network_access | string | Optional |  "Disabled" |  |
 |tags | map(any) | Optional |  |  |
 |storage | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
@@ -101,5 +131,27 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;container_app_system_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;app_env_spring_app_console_logs | bool | Optional |  true |  |
 |&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
+|private_endpoint | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;resource_group_name | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;location | string | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;subnet_id | string | Required |  |  |
+|&nbsp;private_service_connection | list(object) | Required |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;is_manual_connection | bool | Required |  |  |
+|&nbsp;&nbsp;private_connection_resource_id | string | Optional |  |  |
+|&nbsp;&nbsp;private_connection_resource_alias | string | Optional |  |  |
+|&nbsp;&nbsp;subresource_names | list(string) | Optional |  |  |
+|&nbsp;&nbsp;request_message | string | Optional |  |  |
+|&nbsp;custom_network_interface_name | string | Optional |  |  |
+|&nbsp;private_dns_zone_group | object | Optional |  |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;private_dns_zone_ids | list(string) | Required |  |  |
+|&nbsp;ip_configuration | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;private_ip_address | string | Required |  |  |
+|&nbsp;&nbsp;subresource_name | string | Required |  |  |
+|&nbsp;&nbsp;member_name | string | Optional |  |  |
+|&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 
 

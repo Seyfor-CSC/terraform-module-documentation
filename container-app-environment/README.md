@@ -3,6 +3,7 @@ Container App Environment module can deploy these resources:
 * azurerm_container_app_environment (required)
 * azurerm_container_app_environment_storage (optional)
 * azurerm_monitor_diagnostic_setting (optional)
+* azurerm_private_endpoint (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -18,6 +19,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/private_endpoint
+
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -31,6 +34,8 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_container_app_environment_storage.container_app_environment_storage["`<container-app-environment-name>`_`<container-app-environment-storage-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`/storages/`<container-app-environment-storage-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<container-app-environment-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.App/managedEnvironments/`<container-app-environment-name>`|`<diag-name>`'
+### Private Endpoint
+* terraform import '`<path-to-module>`.module.private_endpoint.azurerm_private_endpoint.private_endpoint["`<private-endpoint-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Network/privateEndpoints/`<private-endpoint-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.container\_app\_environment_
 

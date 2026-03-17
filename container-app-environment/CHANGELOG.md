@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.8.0
+
+## Enhancements
+
+- Add private endpoint (#60)
+
+
+   
 ## Release v2.7.0
 
 ## Provider & Terraform Upgrade

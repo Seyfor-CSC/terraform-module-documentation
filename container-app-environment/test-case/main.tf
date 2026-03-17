@@ -40,6 +40,26 @@ resource "azurerm_subnet" "subnet" {
   }
 }
 
+# private endpoint prerequisites
+resource "azurerm_subnet" "private_endpoints" {
+  name                 = "sey-pe-ne-subnet01"
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  resource_group_name  = azurerm_resource_group.rg.name
+  address_prefixes     = ["10.0.12.32/27"]
+}
+
+resource "azurerm_private_dns_zone" "dns" {
+  name                = "sey.acae.private.dns"
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
+  name                  = "SEY-ACAE-NE-VNET01"
+  resource_group_name   = azurerm_resource_group.rg.name
+  private_dns_zone_name = azurerm_private_dns_zone.dns.name
+  virtual_network_id    = azurerm_virtual_network.vnet.id
+}
+
 resource "azurerm_storage_account" "sa" {
   name                     = "seyacaenesa01"
   resource_group_name      = azurerm_resource_group.rg.name
@@ -65,8 +85,9 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container app environment
 module "container_app_environment" {
-  source = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.7.0"
-  config = local.cae
+  source     = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.8.0"
+  config     = local.cae
+  depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_link]
 }
 
 output "container_app_environment" {

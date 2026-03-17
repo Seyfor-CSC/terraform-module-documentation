@@ -43,12 +43,34 @@ locals {
         }
       ]
 
+      private_endpoint = [
+        {
+          name                          = "${local.naming.cae_1}-PE01"
+          subnet_id                     = azurerm_subnet.private_endpoints.id
+          custom_network_interface_name = "${local.naming.cae_1}-PE01.nic"
+          private_service_connection = [
+            {
+              name                 = "${local.naming.cae_1}-PE01-connection"
+              is_manual_connection = false
+              subresource_names    = ["managedEnvironments"]
+            }
+          ]
+          private_dns_zone_group = {
+            name = azurerm_private_dns_zone.dns.name
+            private_dns_zone_ids = [
+              azurerm_private_dns_zone.dns.id
+            ]
+          }
+        }
+      ]
+
       tags = {}
     },
     {
-      name                = local.naming.cae_2
-      location            = local.location
-      resource_group_name = azurerm_resource_group.rg.name
+      name                  = local.naming.cae_2
+      location              = local.location
+      resource_group_name   = azurerm_resource_group.rg.name
+      public_network_access = "Enabled"
 
       tags = {}
     }
