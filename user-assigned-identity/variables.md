@@ -6,6 +6,7 @@ variable "config" {  type = list(object({
     name                = string
     resource_group_name = string
     location            = string
+    isolation_scope     = optional(string)
     tags                = optional(map(any))
   }))
 }
@@ -21,6 +22,7 @@ variable "config" {  type = list(object({
 |name | string | Required |  |  |
 |resource_group_name | string | Required |  |  |
 |location | string | Required |  |  |
+|isolation_scope | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 
 
