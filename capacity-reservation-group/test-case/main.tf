@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.56.0"
+      version = "=4.64.0"
     }
   }
   backend "local" {}
@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "rg" {
 
 # capacity reservation group module
 module "capacity_reservation_group" {
-  source = "git@github.com:Seyfor-CSC/mit.capacity-reservation-group.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.capacity-reservation-group.git?ref=v2.1.0"
   config = local.capacity_reservation_group
 }
 

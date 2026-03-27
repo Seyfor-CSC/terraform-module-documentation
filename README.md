@@ -20,8 +20,8 @@
 | [availability set](./availability-set/README.md) | v2.6.0 |
 | [backup vault](./backup-vault/README.md) | v2.8.0 |
 | [bastion host](./bastion-host/README.md) | v2.7.0 |
-| [capacity reservation group](./capacity-reservation-group/README.md) | v2.0.0 |
-| [cognitive account](./cognitive-account/README.md) | v2.6.0 |
+| [capacity reservation group](./capacity-reservation-group/README.md) | v2.1.0 |
+| [cognitive account](./cognitive-account/README.md) | v2.7.0 |
 | [consumption budget](./consumption-budget/README.md) | v2.5.0 |
 | [container app](./container-app/README.md) | v2.5.0 |
 | [container app environment](./container-app-environment/README.md) | v2.8.0 |
