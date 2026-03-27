@@ -36,6 +36,7 @@ variable "config" {  type = list(object({
           value     = string
         }))
       }))
+      runtime_environment_name = optional(string)
       description              = optional(string)
       content                  = optional(string)
       log_activity_trace_level = optional(number)
@@ -171,6 +172,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;hash | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;algorithm | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;value | string | Required |  |  |
+|&nbsp;runtime_environment_name | string | Optional |  |  |
 |&nbsp;description | string | Optional |  |  |
 |&nbsp;content | string | Optional |  |  |
 |&nbsp;log_activity_trace_level | number | Optional |  |  |
