@@ -21,29 +21,29 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/data_protection_backup_instance_blob_storage
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/data_protection_backup_instance_blob_storage
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/role_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/role_assignment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/private_endpoint
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 

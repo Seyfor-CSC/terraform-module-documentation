@@ -26,8 +26,7 @@ variable "config" {  type = list(object({
       use_subdomain = optional(bool)
     }))
     customer_managed_key = optional(object({
-      key_vault_key_id          = string
-      managed_hsm_key_id        = optional(string)
+      key_vault_key_id          = optional(string)
       user_assigned_identity_id = string
     }))
     identity = optional(object({
@@ -349,8 +348,7 @@ variable "config" {  type = list(object({
 |&nbsp;name | string | Required |  |  |
 |&nbsp;use_subdomain | bool | Optional |  |  |
 |customer_managed_key | object | Optional |  |  |
-|&nbsp;key_vault_key_id | string | Required |  |  |
-|&nbsp;managed_hsm_key_id | string | Optional |  |  |
+|&nbsp;key_vault_key_id | string | Optional |  |  |
 |&nbsp;user_assigned_identity_id | string | Required |  |  |
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
