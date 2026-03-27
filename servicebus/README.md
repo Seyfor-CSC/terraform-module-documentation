@@ -15,17 +15,17 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_namespace
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/servicebus_namespace
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_namespace_authorization_rule
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/servicebus_namespace_authorization_rule
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/servicebus_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/servicebus_topic
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/servicebus_topic
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/private_endpoint
 
 &nbsp;
 
