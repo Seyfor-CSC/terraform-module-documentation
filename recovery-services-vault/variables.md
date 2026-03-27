@@ -15,7 +15,6 @@ variable "config" {  type = list(object({
     immutability                  = optional(string)
     storage_mode_type             = optional(string)
     cross_region_restore_enabled  = optional(bool)
-    soft_delete_enabled           = optional(bool)
     encryption = optional(object({
       key_id                            = string
       infrastructure_encryption_enabled = bool
@@ -121,6 +120,8 @@ variable "config" {  type = list(object({
         days              = optional(list(number))
         include_last_days = optional(bool)
       }))
+      snapshot_retention_in_days = optional(number)
+      backup_tier                = optional(string)
     })), [])
 
     # private endpoint
@@ -208,7 +209,6 @@ variable "config" {  type = list(object({
 |immutability | string | Optional |  |  |
 |storage_mode_type | string | Optional |  |  |
 |cross_region_restore_enabled | bool | Optional |  |  |
-|soft_delete_enabled | bool | Optional |  |  |
 |encryption | object | Optional |  |  |
 |&nbsp;key_id | string | Required |  |  |
 |&nbsp;infrastructure_encryption_enabled | bool | Required |  |  |

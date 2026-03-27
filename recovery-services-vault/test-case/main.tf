@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.56.0"
+      version = "=4.64.0"
     }
   }
   backend "local" {}
@@ -40,7 +40,7 @@ resource "azurerm_private_dns_zone" "dns" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_link" {
-  name                  = "SEY-RESV-NE-VNET02"
+  name                  = "SEY-RSV-NE-VNET02"
   resource_group_name   = azurerm_resource_group.rg.name
   private_dns_zone_name = azurerm_private_dns_zone.dns.name
   virtual_network_id    = azurerm_virtual_network.vnet.id
@@ -72,7 +72,7 @@ resource "azurerm_eventhub" "eventhub" {
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.7.0"
   config = local.rsv
 }
 
