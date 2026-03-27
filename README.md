@@ -70,8 +70,8 @@
 | [recovery services vault](./recovery-services-vault/README.md) | v2.7.0 |
 | [redis cache](./redis-cache/README.md) | v2.6.0 |
 | [resource group](./resource-group/README.md) | v2.5.0 |
-| [role assignment](./role-assignment/README.md) | v2.5.0 |
-| [role definition](./role-definition/README.md) | v2.5.0 |
+| [role assignment](./role-assignment/README.md) | v2.6.0 |
+| [role definition](./role-definition/README.md) | v2.6.0 |
 | [role management policy](./role-management-policy/README.md) | v2.4.0 |
 | [route table](./route-table/README.md) | v2.6.0 |
 | [servicebus](./servicebus/README.md) | v2.8.0 |
