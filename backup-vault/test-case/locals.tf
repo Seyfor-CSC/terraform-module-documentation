@@ -47,7 +47,7 @@ locals {
       backup_policy_blob_storage = [
         {
           name                                   = "DailyBackupPolicyBlob"
-          backup_repeating_time_intervals        = ["R/2021-05-19T06:33:16+00:00/PT4H"]
+          backup_repeating_time_intervals        = ["R/2021-05-19T06:33:16+00:00/P1D"]
           operational_default_retention_duration = "P30D"
           vault_default_retention_duration       = "P90D"
           time_zone                              = "Central European Standard Time"
