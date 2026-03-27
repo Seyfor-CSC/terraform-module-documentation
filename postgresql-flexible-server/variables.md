@@ -22,6 +22,10 @@ variable "config" {  type = list(object({
       geo_backup_key_vault_key_id          = optional(string)
       geo_backup_user_assigned_identity_id = optional(string)
     }))
+    cluster = optional(object({
+      size                  = number
+      default_database_name = optional(string)
+    }))
     geo_redundant_backup_enabled = optional(bool)
     create_mode                  = optional(string)
     delegated_subnet_id          = optional(string)
@@ -159,6 +163,9 @@ variable "config" {  type = list(object({
 |&nbsp;primary_user_assigned_identity_id | string | Optional |  |  |
 |&nbsp;geo_backup_key_vault_key_id | string | Optional |  |  |
 |&nbsp;geo_backup_user_assigned_identity_id | string | Optional |  |  |
+|cluster | object | Optional |  |  |
+|&nbsp;size | number | Required |  |  |
+|&nbsp;default_database_name | string | Optional |  |  |
 |geo_redundant_backup_enabled | bool | Optional |  |  |
 |create_mode | string | Optional |  |  |
 |delegated_subnet_id | string | Optional |  |  |
