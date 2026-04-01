@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.56.0"
+      version = "=4.64.0"
     }
   }
   backend "local" {}
@@ -44,7 +44,7 @@ resource "azurerm_capacity_reservation_group" "crg" {
 
 # capacity reservation module - must be created BEFORE VMs
 module "capacity_reservation" {
-  source = "git@github.com:Seyfor-CSC/mit.solution.capacity-reservation.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.solution.capacity-reservation.git?ref=v2.1.0"
 
   config = [
     {
@@ -60,7 +60,7 @@ module "capacity_reservation" {
 
 # virtual machines - depend on capacity reservations
 module "vms" {
-  source = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v2.5.2"
+  source = "git@github.com:Seyfor-CSC/mit.virtual-machine.git?ref=v2.6.0"
   config = local.vm
 
   depends_on = [

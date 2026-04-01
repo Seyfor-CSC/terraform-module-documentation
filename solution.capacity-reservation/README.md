@@ -10,7 +10,7 @@ Example use case is located in [test-case/locals.tf](test-case/locals.tf).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.56.0/docs/resources/capacity_reservation
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/capacity_reservation
 
 &nbsp;
 
