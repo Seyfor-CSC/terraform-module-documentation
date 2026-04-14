@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.1
+
+## Enhancements
+
+- Set `public_network_access_enabled` variable  default value in `managed_disks` resource to `true` (#91)
+
+
+   
 ## Release v2.6.0
 
 ## Provider & Terraform & OpenTofu Upgrade

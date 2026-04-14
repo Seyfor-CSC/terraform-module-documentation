@@ -195,7 +195,7 @@ variable "config" {  type = list(object({
       zone                              = optional(string)
       network_access_policy             = optional(string)
       disk_access_id                    = optional(string)
-      public_network_access_enabled     = optional(bool, false)
+      public_network_access_enabled     = optional(bool, true)
       tags                              = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # data protection backup instance disk
@@ -440,7 +440,7 @@ variable "subscription_id" { # Custom variable that needs to be provided for OS 
 |&nbsp;zone | string | Optional |  |  |
 |&nbsp;network_access_policy | string | Optional |  |  |
 |&nbsp;disk_access_id | string | Optional |  |  |
-|&nbsp;public_network_access_enabled | bool | Optional |  false |  |
+|&nbsp;public_network_access_enabled | bool | Optional |  true |  |
 |&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;disk_backup | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Optional |  |  If not provided, inherited in module from parent resource |
