@@ -9,7 +9,10 @@ variable "config" {  type = list(object({
     location            = string
     service_plan_id     = string
     site_config = object({
-      app_command_line = optional(string)
+      always_on             = optional(bool)
+      api_definition_url    = optional(string)
+      api_management_api_id = optional(string)
+      app_command_line      = optional(string)
       application_stack = optional(object({
         current_stack                = optional(string) # Windows Web App only
         docker_image_name            = optional(string)
@@ -30,12 +33,53 @@ variable "config" {  type = list(object({
         python_version               = optional(string) # Linux Web App only
         ruby_version                 = optional(string) # Linux Web App only
       }))
+      auto_heal_setting = optional(object({
+        action = optional(object({
+          action_type = string
+          custom_action = optional(object({ # Only for Windows Web App
+            executable = string
+            parameters = optional(string)
+          }))
+          minimum_process_execution_time = optional(string)
+        }))
+        trigger = optional(object({
+          private_memory_kb = optional(number) # Only for Windows Web App
+          requests = optional(object({
+            count    = number
+            interval = string
+          }))
+          slow_request = optional(object({
+            count      = number
+            interval   = string
+            time_taken = string
+          }))
+          slow_request_with_path = optional(list(object({
+            count      = number
+            interval   = string
+            time_taken = string
+            path       = optional(string)
+          })), [])
+          status_code = optional(list(object({
+            count             = number
+            interval          = string
+            status_code_range = string
+            path              = optional(string)
+            sub_status        = optional(string)
+            win32_status_code = optional(number)
+          })), [])
+        }))
+      }))
+      container_registry_managed_identity_client_id = optional(string)
+      container_registry_use_managed_identity       = optional(bool)
       cors = optional(object({
         allowed_origins     = list(string)
         support_credentials = optional(bool)
       }))
-      ftps_state = optional(string)
-      http2_enabled = optional(bool)
+      default_documents                 = optional(list(string))
+      ftps_state                        = optional(string)
+      health_check_path                 = optional(string)
+      health_check_eviction_time_in_min = optional(number)
+      http2_enabled                     = optional(bool)
       ip_restriction = optional(list(object({
         name   = optional(string)
         action = optional(string)
@@ -52,6 +96,12 @@ variable "config" {  type = list(object({
         description               = optional(string)
       })), [])
       ip_restriction_default_action = optional(string)
+      load_balancing_mode           = optional(string)
+      local_mysql_enabled           = optional(bool)
+      managed_pipeline_mode         = optional(string)
+      minimum_tls_version           = optional(string)
+      remote_debugging_enabled      = optional(bool)
+      remote_debugging_version      = optional(string)
       scm_ip_restriction = optional(list(object({
         action = optional(string)
         headers = optional(object({
@@ -71,9 +121,71 @@ variable "config" {  type = list(object({
       scm_minimum_tls_version           = optional(string)
       scm_use_main_ip_restriction       = optional(bool)
       use_32_bit_worker                 = optional(bool)
+      handler_mapping = optional(list(object({
+        extension             = string
+        script_processor_path = string
+        arguments             = optional(string)
+      })), [])
+      virtual_application = optional(list(object({ # Only for Windows Web App
+        physical_path = string
+        preload       = bool
+        virtual_directory = optional(list(object({
+          physical_path = optional(string)
+          virtual_path  = optional(string)
+        })), [])
+        virtual_path = string
+      })), [])
       vnet_route_all_enabled = optional(bool)
+      websockets_enabled     = optional(bool)
+      worker_count           = optional(number)
     })
     app_settings = optional(map(any))
+    auth_settings = optional(object({
+      enabled = bool
+      active_directory = optional(object({
+        client_id                  = string
+        allowed_audiences          = optional(list(string))
+        client_secret              = optional(string)
+        client_secret_setting_name = optional(string)
+      }))
+      additional_login_parameters    = optional(map(string))
+      allowed_external_redirect_urls = optional(list(string))
+      default_provider               = optional(string)
+      facebook = optional(object({
+        app_id                  = string
+        app_secret              = optional(string)
+        app_secret_setting_name = optional(string)
+        oauth_scopes            = optional(list(string))
+      }))
+      github = optional(object({
+        client_id                  = string
+        client_secret              = optional(string)
+        client_secret_setting_name = optional(string)
+        oauth_scopes               = optional(list(string))
+      }))
+      google = optional(object({
+        client_id                  = string
+        client_secret              = optional(string)
+        client_secret_setting_name = optional(string)
+        oauth_scopes               = optional(list(string))
+      }))
+      issuer = optional(string)
+      microsoft = optional(object({
+        client_id                  = string
+        client_secret              = optional(string)
+        client_secret_setting_name = optional(string)
+        oauth_scopes               = optional(list(string))
+      }))
+      runtime_version               = optional(string)
+      token_refresh_extension_hours = optional(number)
+      token_store_enabled           = optional(bool)
+      twitter = optional(object({
+        consumer_key                 = string
+        consumer_secret              = optional(string)
+        consumer_secret_setting_name = optional(string)
+      }))
+      unauthenticated_client_action = optional(string)
+    }))
     auth_settings_v2 = optional(object({
       auth_enabled                            = optional(bool)
       runtime_version                         = optional(string)
@@ -175,14 +287,19 @@ variable "config" {  type = list(object({
       storage_account_url = string
       enabled             = optional(bool)
     }))
-    client_affinity_enabled = optional(bool)
+    client_affinity_enabled            = optional(bool)
+    client_certificate_enabled         = optional(bool)
+    client_certificate_mode            = optional(string)
+    client_certificate_exclusion_paths = optional(string)
     connection_string = optional(list(object({
       name  = string
       type  = string
       value = string
     })), [])
-    https_only                    = optional(bool)
-    public_network_access_enabled = optional(bool, false)
+    enabled                                  = optional(bool)
+    ftp_publish_basic_authentication_enabled = optional(bool)
+    https_only                               = optional(bool)
+    public_network_access_enabled            = optional(bool, false)
     identity = optional(object({
       type         = string
       identity_ids = optional(list(string))
@@ -210,14 +327,25 @@ variable "config" {  type = list(object({
         }))
       }))
     }))
+    storage_account = optional(list(object({
+      access_key   = string
+      account_name = string
+      name         = string
+      share_name   = string
+      type         = string
+      mount_path   = optional(string)
+    })), [])
     sticky_settings = optional(object({
       app_setting_names       = optional(list(string))
       connection_string_names = optional(list(string))
     }))
-    virtual_network_backup_restore_enabled = optional(bool)
-    virtual_network_image_pull_enabled     = optional(bool) # Windows Web App only
-    virtual_network_subnet_id              = optional(string)
-    tags = optional(map(any))
+    virtual_network_backup_restore_enabled         = optional(bool)
+    vnet_image_pull_enabled                        = optional(bool) # Linux Web App only
+    virtual_network_image_pull_enabled             = optional(bool) # Windows Web App only
+    virtual_network_subnet_id                      = optional(string)
+    webdeploy_publish_basic_authentication_enabled = optional(bool)
+    zip_deploy_file                                = optional(string)
+    tags                                           = optional(map(any))
 
     # private endpoint
     private_endpoint = optional(list(object({
@@ -285,6 +413,9 @@ variable "config" {  type = list(object({
 |location | string | Required |  |  |
 |service_plan_id | string | Required |  |  |
 |site_config | object | Required |  |  |
+|&nbsp;always_on | bool | Optional |  |  |
+|&nbsp;api_definition_url | string | Optional |  |  |
+|&nbsp;api_management_api_id | string | Optional |  |  |
 |&nbsp;app_command_line | string | Optional |  |  |
 |&nbsp;application_stack | object | Optional |  |  |
 |&nbsp;&nbsp;current_stack | string | Optional |  |  Windows Web App only |
@@ -305,10 +436,43 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;python | bool | Optional |  |  Windows Web App only |
 |&nbsp;&nbsp;python_version | string | Optional |  |  Linux Web App only |
 |&nbsp;&nbsp;ruby_version | string | Optional |  |  Linux Web App only |
+|&nbsp;auto_heal_setting | object | Optional |  |  |
+|&nbsp;&nbsp;action | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;action_type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;custom_action | object | Optional |  |  Only for Windows Web App |
+|&nbsp;&nbsp;&nbsp;&nbsp;executable | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;parameters | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;minimum_process_execution_time | string | Optional |  |  |
+|&nbsp;&nbsp;trigger | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;private_memory_kb | number | Optional |  |  Only for Windows Web App |
+|&nbsp;&nbsp;&nbsp;requests | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;interval | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;slow_request | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;interval | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;time_taken | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;slow_request_with_path | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;interval | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;time_taken | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;status_code | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;count | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;interval | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;status_code_range | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;path | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;sub_status | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;win32_status_code | number | Optional |  |  |
+|&nbsp;container_registry_managed_identity_client_id | string | Optional |  |  |
+|&nbsp;container_registry_use_managed_identity | bool | Optional |  |  |
 |&nbsp;cors | object | Optional |  |  |
 |&nbsp;&nbsp;allowed_origins | list(string) | Required |  |  |
 |&nbsp;&nbsp;support_credentials | bool | Optional |  |  |
+|&nbsp;default_documents | list(string) | Optional |  |  |
 |&nbsp;ftps_state | string | Optional |  |  |
+|&nbsp;health_check_path | string | Optional |  |  |
+|&nbsp;health_check_eviction_time_in_min | number | Optional |  |  |
 |&nbsp;http2_enabled | bool | Optional |  |  |
 |&nbsp;ip_restriction | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;name | string | Optional |  |  |
@@ -324,6 +488,12 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;virtual_network_subnet_id | string | Optional |  |  |
 |&nbsp;&nbsp;description | string | Optional |  |  |
 |&nbsp;ip_restriction_default_action | string | Optional |  |  |
+|&nbsp;load_balancing_mode | string | Optional |  |  |
+|&nbsp;local_mysql_enabled | bool | Optional |  |  |
+|&nbsp;managed_pipeline_mode | string | Optional |  |  |
+|&nbsp;minimum_tls_version | string | Optional |  |  |
+|&nbsp;remote_debugging_enabled | bool | Optional |  |  |
+|&nbsp;remote_debugging_version | string | Optional |  |  |
 |&nbsp;scm_ip_restriction | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;action | string | Optional |  |  |
 |&nbsp;&nbsp;headers | object | Optional |  |  |
@@ -341,8 +511,60 @@ variable "config" {  type = list(object({
 |&nbsp;scm_minimum_tls_version | string | Optional |  |  |
 |&nbsp;scm_use_main_ip_restriction | bool | Optional |  |  |
 |&nbsp;use_32_bit_worker | bool | Optional |  |  |
+|&nbsp;handler_mapping | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;extension | string | Required |  |  |
+|&nbsp;&nbsp;script_processor_path | string | Required |  |  |
+|&nbsp;&nbsp;arguments | string | Optional |  |  |
+|&nbsp;virtual_application | list(object) | Optional | [] |  Only for Windows Web App |
+|&nbsp;&nbsp;physical_path | string | Required |  |  |
+|&nbsp;&nbsp;preload | bool | Required |  |  |
+|&nbsp;&nbsp;virtual_directory | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;physical_path | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;virtual_path | string | Optional |  |  |
+|&nbsp;&nbsp;virtual_path | string | Required |  |  |
 |&nbsp;vnet_route_all_enabled | bool | Optional |  |  |
+|&nbsp;websockets_enabled | bool | Optional |  |  |
+|&nbsp;worker_count | number | Optional |  |  |
 |app_settings | map(any) | Optional |  |  |
+|auth_settings | object | Optional |  |  |
+|&nbsp;enabled | bool | Required |  |  |
+|&nbsp;active_directory | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;allowed_audiences | list(string) | Optional |  |  |
+|&nbsp;&nbsp;client_secret | string | Optional |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Optional |  |  |
+|&nbsp;additional_login_parameters | map(string) | Optional |  |  |
+|&nbsp;allowed_external_redirect_urls | list(string) | Optional |  |  |
+|&nbsp;default_provider | string | Optional |  |  |
+|&nbsp;facebook | object | Optional |  |  |
+|&nbsp;&nbsp;app_id | string | Required |  |  |
+|&nbsp;&nbsp;app_secret | string | Optional |  |  |
+|&nbsp;&nbsp;app_secret_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;oauth_scopes | list(string) | Optional |  |  |
+|&nbsp;github | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret | string | Optional |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;oauth_scopes | list(string) | Optional |  |  |
+|&nbsp;google | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret | string | Optional |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;oauth_scopes | list(string) | Optional |  |  |
+|&nbsp;issuer | string | Optional |  |  |
+|&nbsp;microsoft | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Required |  |  |
+|&nbsp;&nbsp;client_secret | string | Optional |  |  |
+|&nbsp;&nbsp;client_secret_setting_name | string | Optional |  |  |
+|&nbsp;&nbsp;oauth_scopes | list(string) | Optional |  |  |
+|&nbsp;runtime_version | string | Optional |  |  |
+|&nbsp;token_refresh_extension_hours | number | Optional |  |  |
+|&nbsp;token_store_enabled | bool | Optional |  |  |
+|&nbsp;twitter | object | Optional |  |  |
+|&nbsp;&nbsp;consumer_key | string | Required |  |  |
+|&nbsp;&nbsp;consumer_secret | string | Optional |  |  |
+|&nbsp;&nbsp;consumer_secret_setting_name | string | Optional |  |  |
+|&nbsp;unauthenticated_client_action | string | Optional |  |  |
 |auth_settings_v2 | object | Optional |  |  |
 |&nbsp;auth_enabled | bool | Optional |  |  |
 |&nbsp;runtime_version | string | Optional |  |  |
@@ -432,10 +654,15 @@ variable "config" {  type = list(object({
 |&nbsp;storage_account_url | string | Required |  |  |
 |&nbsp;enabled | bool | Optional |  |  |
 |client_affinity_enabled | bool | Optional |  |  |
+|client_certificate_enabled | bool | Optional |  |  |
+|client_certificate_mode | string | Optional |  |  |
+|client_certificate_exclusion_paths | string | Optional |  |  |
 |connection_string | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;value | string | Required |  |  |
+|enabled | bool | Optional |  |  |
+|ftp_publish_basic_authentication_enabled | bool | Optional |  |  |
 |https_only | bool | Optional |  |  |
 |public_network_access_enabled | bool | Optional |  false |  |
 |identity | object | Optional |  |  |
@@ -458,12 +685,22 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;file_system | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;retention_in_days | number | Required |  |  |
 |&nbsp;&nbsp;&nbsp;retention_in_mb | number | Required |  |  |
+|storage_account | list(object) | Optional | [] |  |
+|&nbsp;access_key | string | Required |  |  |
+|&nbsp;account_name | string | Required |  |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;share_name | string | Required |  |  |
+|&nbsp;type | string | Required |  |  |
+|&nbsp;mount_path | string | Optional |  |  |
 |sticky_settings | object | Optional |  |  |
 |&nbsp;app_setting_names | list(string) | Optional |  |  |
 |&nbsp;connection_string_names | list(string) | Optional |  |  |
 |virtual_network_backup_restore_enabled | bool | Optional |  |  |
+|vnet_image_pull_enabled | bool | Optional |  |  Linux Web App only |
 |virtual_network_image_pull_enabled | bool | Optional |  |  Windows Web App only |
 |virtual_network_subnet_id | string | Optional |  |  |
+|webdeploy_publish_basic_authentication_enabled | bool | Optional |  |  |
+|zip_deploy_file | string | Optional |  |  |
 |tags | map(any) | Optional |  |  |
 |private_endpoint | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |

@@ -100,5 +100,4 @@ We reserve the right to include tags dedicated to our product Advanced Monitorin
 &nbsp;
 
 # Known Issues
-## Supported Variables
-Not all available variables are currently supported in this module. See [variables.md](variables.md) for an overview of supported variables.
+We currently log no issues in this module.

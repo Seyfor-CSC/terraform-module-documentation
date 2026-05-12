@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.7.1
+
+## Enhancements
+
+- Add all available parameters (#98)
+
+
+   
 ## Release v2.7.0
 
 ## Provider & Terraform & OpenTofu Upgrade
