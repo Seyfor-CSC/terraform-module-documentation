@@ -74,6 +74,7 @@
 | [role definition](./role-definition/README.md) | v2.6.0 |
 | [role management policy](./role-management-policy/README.md) | v2.4.0 |
 | [route table](./route-table/README.md) | v2.6.0 |
+| [search service](./search-service/README.md) | v2.0.0 |
 | [servicebus](./servicebus/README.md) | v2.8.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.6.0 |
 | [solution.capacity reservation](./solution.capacity-reservation/README.md) | v2.1.0 |
