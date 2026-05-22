@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.8.1
+
+## Enhancements
+
+- Add `key_vault_secrets_provider.secret_rotation_interval` and `azure_active_directory_role_based_access_control.tenant_id` (#92)
+
+
+   
 ## Release v2.8.0
 
 ## Provider & Terraform & OpenTofu Upgrade

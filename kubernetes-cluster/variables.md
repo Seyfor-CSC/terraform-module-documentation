@@ -40,6 +40,7 @@ variable "config" {  type = list(object({
     dns_prefix_private_cluster = optional(string)
     automatic_upgrade_channel  = optional(string)
     azure_active_directory_role_based_access_control = optional(object({
+      tenant_id              = optional(string)
       admin_group_object_ids = optional(list(string))
       azure_rbac_enabled     = optional(bool)
     }))
@@ -58,7 +59,8 @@ variable "config" {  type = list(object({
       subnet_id    = optional(string)
     }))
     key_vault_secrets_provider = optional(object({
-      secret_rotation_enabled = optional(bool)
+      secret_rotation_enabled  = optional(bool)
+      secret_rotation_interval = optional(string)
     }))
     kubernetes_version = optional(string)
     linux_profile = optional(object({
@@ -264,6 +266,7 @@ variable "config" {  type = list(object({
 |dns_prefix_private_cluster | string | Optional |  |  |
 |automatic_upgrade_channel | string | Optional |  |  |
 |azure_active_directory_role_based_access_control | object | Optional |  |  |
+|&nbsp;tenant_id | string | Optional |  |  |
 |&nbsp;admin_group_object_ids | list(string) | Optional |  |  |
 |&nbsp;&nbsp;azure_rbac_enabled | bool | Optional |  |  |
 |&nbsp;azure_policy_enabled | bool | Optional |  |  |
@@ -280,6 +283,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;subnet_id | string | Optional |  |  |
 |&nbsp;key_vault_secrets_provider | object | Optional |  |  |
 |&nbsp;&nbsp;secret_rotation_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;secret_rotation_interval | string | Optional |  |  |
 |&nbsp;kubernetes_version | string | Optional |  |  |
 |&nbsp;linux_profile | object | Optional |  |  |
 |&nbsp;&nbsp;admin_username | string | Required |  |  |
