@@ -42,6 +42,13 @@ locals {
 
       tags = {}
 
+      association = [
+        {
+          name               = "SEY-TERRAFORM-NE-DCRA01"
+          target_resource_id = azurerm_log_analytics_workspace.la.id
+        }
+      ]
+
       monitoring = [
         {
           diag_name                  = "Monitoring"

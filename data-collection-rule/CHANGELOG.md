@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.8.0
+
+## Enhancements
+
+- Add `azurerm_monitor_data_collection_rule_association` resource (#62)
+
+
+   
 ## Release v2.7.0
 
 ## Provider & Terraform & OpenTofu Upgrade

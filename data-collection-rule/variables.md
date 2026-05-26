@@ -130,6 +130,15 @@ variable "config" {  type = list(object({
     }))
     tags = optional(map(any))
 
+    # data collection rule association
+    association = optional(list(object({
+      name                        = string
+      target_resource_id          = string
+      data_collection_rule_id     = optional(string) # Inherited in module from parent resource
+      data_collection_endpoint_id = optional(string)
+      description                 = optional(string)
+    })), [])
+
     # monitoring
     monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
       diag_name                      = optional(string) # Name of the diagnostic setting
@@ -251,6 +260,12 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |tags | map(any) | Optional |  |  |
+|association | list(object) | Optional | [] |  |
+|&nbsp;name | string | Required |  |  |
+|&nbsp;target_resource_id | string | Required |  |  |
+|&nbsp;data_collection_rule_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;data_collection_endpoint_id | string | Optional |  |  |
+|&nbsp;description | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
 |&nbsp;log_analytics_workspace_id | string | Optional |  |  |

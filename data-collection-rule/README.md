@@ -1,6 +1,7 @@
 # Introduction
 Data Collection Rule module can deploy these resources:
 * azurerm_monitor_data_collection_rule (required)
+* azurerm_monitor_data_collection_rule_association (optional)
 * azurerm_monitor_diagnostic_setting (optional)
 
 Example variables structure is located in [variables.md](variables.md).
@@ -13,6 +14,8 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/monitor_data_collection_rule
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/monitor_data_collection_rule_association
+
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 &nbsp;
 
@@ -20,6 +23,8 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Data Collection Rule
 * terraform import '`<path-to-module>`.azurerm_monitor_data_collection_rule.monitor_data_collection_rule["`<data-collection-rule-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Insights/dataCollectionRules/`<data-collection-rule-name>`'
+### Data Collection Rule Association
+* terraform import '`<path-to-module>`.azurerm_monitor_data_collection_rule_association.monitor_data_collection_rule_association["`<data-collection-rule-name>`_`<association-name>`"]' '`<target-resource-id>`/providers/Microsoft.Insights/dataCollectionRuleAssociations/`<association-name>`'
 ### Diagnostic Setting
 * terraform import '`<path-to-module>`.azurerm_monitor_diagnostic_setting.diagnostic_setting["`<data-collection-rule-name>`_`<diag-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.Insights/dataCollectionRules/`<data-collection-rule-name>`|`<diag-name>`'
 
