@@ -1,5 +1,14 @@
 # Changelog
 
+## Release v2.7.2
+
+## Bug Fixes
+
+- Change x_fd_health_probe to list of strings (#99)
+
+
+
+   
 ## Release v2.7.1
 
 ## Enhancements

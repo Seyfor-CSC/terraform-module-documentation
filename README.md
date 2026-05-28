@@ -14,7 +14,7 @@
 
 | Name | Latest Version |
 | ---- | -------------- |
-| [app service](./app-service/README.md) | v2.7.1 |
+| [app service](./app-service/README.md) | v2.7.2 |
 | [app service plan](./app-service-plan/README.md) | v2.7.0 |
 | [application insights](./application-insights/README.md) | v2.0.0 |
 | [automation account](./automation-account/README.md) | v2.7.0 |

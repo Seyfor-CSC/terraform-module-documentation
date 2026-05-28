@@ -85,7 +85,7 @@ variable "config" {  type = list(object({
         action = optional(string)
         headers = optional(object({
           x_azure_fdid      = optional(list(string))
-          x_fd_health_probe = optional(number)
+          x_fd_health_probe = optional(list(string))
           x_forwarded_for   = optional(list(string))
           x_forwarded_host  = optional(list(string))
         }))
@@ -106,7 +106,7 @@ variable "config" {  type = list(object({
         action = optional(string)
         headers = optional(object({
           x_azure_fdid      = optional(list(string))
-          x_fd_health_probe = optional(number)
+          x_fd_health_probe = optional(list(string))
           x_forwarded_for   = optional(list(string))
           x_forwarded_host  = optional(list(string))
         }))
@@ -479,7 +479,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;action | string | Optional |  |  |
 |&nbsp;&nbsp;headers | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_azure_fdid | list(string) | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;x_fd_health_probe | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;x_fd_health_probe | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_for | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_host | list(string) | Optional |  |  |
 |&nbsp;&nbsp;ip_address | string | Optional |  |  |
@@ -498,7 +498,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;action | string | Optional |  |  |
 |&nbsp;&nbsp;headers | object | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_azure_fdid | list(string) | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;x_fd_health_probe | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;x_fd_health_probe | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_for | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_host | list(string) | Optional |  |  |
 |&nbsp;&nbsp;ip_address | string | Optional |  |  |
