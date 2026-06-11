@@ -13,6 +13,15 @@ locals {
       location            = local.location
       resource_group_name = azurerm_resource_group.rg.name
 
+      federated_identity_credential = [
+        {
+          name     = "example"
+          audience = ["foo"]
+          issuer   = "https://foo"
+          subject  = "foo"
+        }
+      ]
+
       tags = {}
     },
     {

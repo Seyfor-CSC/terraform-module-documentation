@@ -1,6 +1,7 @@
 # Introduction
 User Assigned Identity module can deploy these resources:
 * azurerm_user_assigned_identity (required)
+* azurerm_federated_identity_credential (optional)
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -12,6 +13,8 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/user_assigned_identity
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/federated_identity_credential
+
 &nbsp;
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
@@ -20,6 +23,9 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### User Assigned Identity
 * terraform import '`<path-to-module>`.azurerm_user_assigned_identity.user_assigned_identity["`<user-assigned-identity-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ManagedIdentity/userAssignedIdentities/`<user-assigned-identity-name>`'
+
+### Federated Identity Credential
+* terraform import '`<path-to-module>`.azurerm_federated_identity_credential.federated_identity_credential["`<federated-identity-credential-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ManagedIdentity/userAssignedIdentities/`<user-assigned-identity-name>`/federatedIdentityCredentials/`<federated-identity-credential-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.user\_assigned\_identity_
 
