@@ -25,7 +25,7 @@ There are a few things you need to do to import resources into .tfstate. In the 
 * terraform import '`<path-to-module>`.azurerm_user_assigned_identity.user_assigned_identity["`<user-assigned-identity-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ManagedIdentity/userAssignedIdentities/`<user-assigned-identity-name>`'
 
 ### Federated Identity Credential
-* terraform import '`<path-to-module>`.azurerm_federated_identity_credential.federated_identity_credential["`<federated-identity-credential-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ManagedIdentity/userAssignedIdentities/`<user-assigned-identity-name>`/federatedIdentityCredentials/`<federated-identity-credential-name>`'
+* terraform import '`<path-to-module>`.azurerm_federated_identity_credential.federated_identity_credential["`<user-assigned-identity-name>`_`<federated-identity-credential-name>`"]' '/subscriptions/`<subscription-id>`/resourceGroups/`<resource-group-name>`/providers/Microsoft.ManagedIdentity/userAssignedIdentities/`<user-assigned-identity-name>`/federatedIdentityCredentials/`<federated-identity-credential-name>`'
 
  > **_NOTE:_** `<path-to-module>` is terraform logical path from root. e.g. _module.user\_assigned\_identity_
 
