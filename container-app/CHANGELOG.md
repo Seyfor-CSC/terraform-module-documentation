@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.6.1
+
+## Enhancements
+
+- Change `init_container` to an optional list of objects (#59)
+
+
+   
 ## Release v2.6.0
 
 ## Provider & Terraform & OpenTofu Upgrade

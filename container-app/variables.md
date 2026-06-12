@@ -8,7 +8,7 @@ variable "config" {  type = list(object({
     container_app_environment_id = string
     revision_mode                = string
     template = object({
-      init_container = optional(object({
+      init_container = optional(list(object({
         args    = optional(list(string))
         command = optional(list(string))
         cpu     = optional(number)
@@ -25,7 +25,7 @@ variable "config" {  type = list(object({
           name = string
           path = string
         })), [])
-      }))
+      })), [])
       container = list(object({
         args    = optional(list(string))
         command = optional(list(string))
@@ -204,7 +204,7 @@ variable "config" {  type = list(object({
 |container_app_environment_id | string | Required |  |  |
 |revision_mode | string | Required |  |  |
 |template | object | Required |  |  |
-|&nbsp;init_container | object | Optional |  |  |
+|&nbsp;init_container | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;args | list(string) | Optional |  |  |
 |&nbsp;&nbsp;command | list(string) | Optional |  |  |
 |&nbsp;&nbsp;cpu | number | Optional |  |  |
