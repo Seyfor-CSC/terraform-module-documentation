@@ -12,9 +12,9 @@ variable "config" {  type = list(object({
     }))
     response_timeout_seconds = optional(number)
     log_scrubbing_rule = optional(list(object({
-        match_variable = string
+      match_variable = string
     })), [])
-    tags                     = optional(map(any))
+    tags = optional(map(any))
 
     # cdn frontdoor endpoint
     endpoint = optional(list(object({
@@ -98,6 +98,14 @@ variable "config" {  type = list(object({
       tls = object({
         certificate_type        = optional(string)
         cdn_frontdoor_secret_id = optional(string)
+        cipher_suite = optional(object({
+          type = string
+          custom_ciphers = optional(object({
+            tls12 = optional(list(string))
+            tls13 = optional(list(string))
+          }))
+        }))
+        minimum_version = optional(string)
       })
       dns_zone_id = optional(string)
     })), [])
@@ -202,6 +210,12 @@ variable "config" {  type = list(object({
 |&nbsp;tls | object | Required |  |  |
 |&nbsp;&nbsp;certificate_type | string | Optional |  |  |
 |&nbsp;&nbsp;cdn_frontdoor_secret_id | string | Optional |  |  |
+|&nbsp;&nbsp;cipher_suite | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;type | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;custom_ciphers | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;tls12 | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;tls13 | list(string) | Optional |  |  |
+|&nbsp;&nbsp;minimum_version | string | Optional |  |  |
 |&nbsp;dns_zone_id | string | Optional |  |  |
 |monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
