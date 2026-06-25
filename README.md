@@ -64,7 +64,7 @@
 | [policy definition](./policy-definition/README.md) | v2.7.0 |
 | [policy set definition](./policy-set-definition/README.md) | v2.7.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.8.0 |
-| [private dns resolver](./private-dns-resolver/README.md) | v2.6.0 |
+| [private dns resolver](./private-dns-resolver/README.md) | v2.7.0 |
 | [private dns zone](./private-dns-zone/README.md) | v2.6.0 |
 | [private endpoint](./private-endpoint/README.md) | v2.7.0 |
 | [public ip address](./public-ip-address/README.md) | v2.7.0 |
@@ -73,7 +73,7 @@
 | [recovery services vault](./recovery-services-vault/README.md) | v2.7.0 |
 | [redis cache](./redis-cache/README.md) | v2.7.0 |
 | [resource group](./resource-group/README.md) | v2.6.0 |
-| [role assignment](./role-assignment/README.md) | v2.6.0 |
+| [role assignment](./role-assignment/README.md) | v2.7.0 |
 | [role definition](./role-definition/README.md) | v2.6.0 |
 | [role management policy](./role-management-policy/README.md) | v2.5.0 |
 | [route table](./route-table/README.md) | v2.7.0 |
