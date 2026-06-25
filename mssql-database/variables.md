@@ -46,13 +46,14 @@ variable "config" {  type = list(object({
         min_capacity = number
         max_capacity = number
       })
-      maintenance_configuration_name = optional(string)
-      max_size_gb                    = optional(number)
-      max_size_bytes                 = optional(number)
-      enclave_type                   = optional(string)
-      zone_redundant                 = optional(bool)
-      license_type                   = optional(string)
-      tags                           = optional(map(any)) # If not provided, inherited in module from parent resource
+      maintenance_configuration_name  = optional(string)
+      max_size_gb                     = optional(number)
+      max_size_bytes                  = optional(number)
+      enclave_type                    = optional(string)
+      zone_redundant                  = optional(bool)
+      license_type                    = optional(string)
+      high_availability_replica_count = optional(number)
+      tags                            = optional(map(any)) # If not provided, inherited in module from parent resource
 
       # monitoring
       monitoring = optional(list(object({                 # Custom object for enabling diagnostic settings
@@ -259,6 +260,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;enclave_type | string | Optional |  |  |
 |&nbsp;&nbsp;zone_redundant | bool | Optional |  |  |
 |&nbsp;&nbsp;license_type | string | Optional |  |  |
+|&nbsp;&nbsp;high_availability_replica_count | number | Optional |  |  |
 |&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
 |&nbsp;&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
 |&nbsp;&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
