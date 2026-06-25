@@ -89,6 +89,7 @@ locals {
       resource_group_name   = azurerm_resource_group.rg.name
       sku_name              = "Balanced_B0"
       public_network_access = "Enabled"
+      default_database      = {}
 
       tags = {}
     }

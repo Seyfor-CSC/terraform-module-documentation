@@ -12,11 +12,11 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/managed_redis
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/managed_redis
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/private_endpoint
 
 &nbsp;
 
@@ -60,6 +60,9 @@ module "mr" {
             location            = "northeurope"
             resource_group_name = "SEY-TERRAFORM-NE-RG01"
             sku_name            = "Balanced_B3"
+            default_database    = {
+                ...
+            }
         }
     ]
 }
