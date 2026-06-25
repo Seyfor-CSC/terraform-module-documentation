@@ -60,7 +60,7 @@
 | [network watcher](./network-watcher/README.md) | v2.6.0 |
 | [network watcher flow log](./network-watcher-flow-log/README.md) | v2.6.0 |
 | [pim](./pim/README.md) | v2.4.0 |
-| [policy assignment](./policy-assignment/README.md) | v2.7.0 |
+| [policy assignment](./policy-assignment/README.md) | v2.8.0 |
 | [policy definition](./policy-definition/README.md) | v2.7.0 |
 | [policy set definition](./policy-set-definition/README.md) | v2.8.0 |
 | [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.9.0 |
