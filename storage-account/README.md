@@ -21,29 +21,29 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_container
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/storage_container
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/storage_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_queue
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/storage_queue
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_table
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/storage_table
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/storage_management_policy
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/storage_management_policy
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/backup_container_storage_account
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/backup_container_storage_account
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/backup_protected_file_share
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/backup_protected_file_share
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/data_protection_backup_instance_blob_storage
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/data_protection_backup_instance_blob_storage
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/role_assignment
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/role_assignment
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/monitor_diagnostic_setting
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/monitor_diagnostic_setting
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/private_endpoint
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/private_endpoint
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
 
@@ -99,19 +99,16 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | container                    | Container outputs                                    |
 |             | &nbsp;name                   |                                                      |
 |             | &nbsp;id                     |                                                      |
-|             | &nbsp;resource_manager_id    |                                                      |
 |             | file_share                   | File Share outputs                                   |
 |             | &nbsp;name                   |                                                      |
 |             | &nbsp;id                     |                                                      |
-|             | &nbsp;resource_manager_id    |                                                      |
+|             | &nbsp;rbac_scope_id          |                                                      |
 |             | queue                        | Queue outputs                                        |
 |             | &nbsp;name                   |                                                      |
 |             | &nbsp;id                     |                                                      |
-|             | &nbsp;resource_manager_id    |                                                      |
 |             | table                        | Table outputs                                        |
 |             | &nbsp;name                   |                                                      |
 |             | &nbsp;id                     |                                                      |
-|             | &nbsp;resource_manager_id    |                                                      |
 
 ## Example usage of outputs
 In the example below, outputted _id_ of the deployed Storage Account module is used as a value for the _scope_ variable in Role Assignment resource.
@@ -160,3 +157,7 @@ Not all available variables for Storage Management Policy are currently supporte
 AzureRM provider introduced changes to the API for storage account containers and file shares. Previous Data Plane API is replaced with the Resource Manager API. This deprecates the use of `storage_account_name` in the `azurerm_storage_container`, `azurerm_storage_share`, and `azurerm_storage_queue` resources. The new API requires the use of `storage_account_id` instead. This module has been updated to use the new API which triggers changes in terraform plan. However, the changes do not force the recreation of the resources and can be safely applied.
 ## Deprecated variables migrating to resources
 AzureRM provider is slowly deprecating some variables in favor of resources. Since not all variables have been deprecated yet, this module will update once the deprecation is complete. In the meantime, you will be seeing a warning message that you can ignore.
+## Storage Table `storage_account_id` vs `storage_account_name`
+Storage Table is the last data source that still uses `storage_account_name` instead of `storage_account_id`. The provider has implemented this change in version 4.77.0 but it forces replacement of the resource. Because of this, we will not be implementing this change until a fix is released.
+
+https://github.com/hashicorp/terraform-provider-azurerm/issues/32626

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.64.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -25,7 +25,6 @@ resource "azurerm_recovery_services_vault" "rsv" {
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
-  soft_delete_enabled = false
 }
 
 resource "azurerm_backup_policy_file_share" "example" {
@@ -100,7 +99,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # storage account
 module "storage_account" {
-  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.8.0"
+  source = "git@github.com:Seyfor-CSC/mit.storage-account.git?ref=v2.9.0"
   config = local.sa
   depends_on = [
     azurerm_private_dns_zone_virtual_network_link.dns_link

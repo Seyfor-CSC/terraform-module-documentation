@@ -83,8 +83,8 @@
 | [solution.capacity reservation](./solution.capacity-reservation/README.md) | v2.1.0 |
 | [solution.fortigate](./solution.fortigate/README.md) | v1.5.0 |
 | [solution.pim](./solution.pim/README.md) | v2.3.0 |
-| [storage account](./storage-account/README.md) | v2.8.0 |
-| [storage sync](./storage-sync/README.md) | v2.6.0 |
+| [storage account](./storage-account/README.md) | v2.9.0 |
+| [storage sync](./storage-sync/README.md) | v2.7.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.6.1 |
 | [virtual desktop](./virtual-desktop/README.md) | v2.7.0 |
 | [virtual machine](./virtual-machine/README.md) | v2.6.1 |

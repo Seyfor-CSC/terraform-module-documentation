@@ -1,5 +1,15 @@
 # Changelog
 
+## Release v2.9.0
+
+## Provider & Terraform & OpenTofu Upgrade
+
+- Azurerm provider: 4.77.0 (#114)
+- Terraform: 1.15.6 (#114)
+- OpenTofu: 1.12.2 (#114)
+
+
+   
 ## Release v2.8.0
 
 ## Provider & Terraform & OpenTofu Upgrade
@@ -228,9 +238,4 @@
 ### Updated
 - Optional variable `location` for private endpoint
 - Optional variable  `resource_group_name` for private endpoint
-   
-## Release v1.2.3
-
-### Added
-- primary_blob_endpoint to outputs
    
