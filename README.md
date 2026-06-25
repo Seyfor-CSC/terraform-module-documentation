@@ -63,7 +63,7 @@
 | [policy assignment](./policy-assignment/README.md) | v2.7.0 |
 | [policy definition](./policy-definition/README.md) | v2.7.0 |
 | [policy set definition](./policy-set-definition/README.md) | v2.8.0 |
-| [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.8.0 |
+| [postgresql flexible server](./postgresql-flexible-server/README.md) | v2.9.0 |
 | [private dns resolver](./private-dns-resolver/README.md) | v2.7.0 |
 | [private dns zone](./private-dns-zone/README.md) | v2.7.0 |
 | [private endpoint](./private-endpoint/README.md) | v2.7.0 |
