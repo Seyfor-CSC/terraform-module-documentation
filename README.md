@@ -69,7 +69,7 @@
 | [private endpoint](./private-endpoint/README.md) | v2.7.0 |
 | [public ip address](./public-ip-address/README.md) | v2.7.0 |
 | [public ip prefix](./public-ip-prefix/README.md) | v2.8.0 |
-| [purview account](./purview-account/README.md) | v2.7.0 |
+| [purview account](./purview-account/README.md) | v2.8.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.7.0 |
 | [redis cache](./redis-cache/README.md) | v2.7.0 |
 | [resource group](./resource-group/README.md) | v2.6.0 |
