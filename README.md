@@ -37,7 +37,7 @@
 | [event grid](./event-grid/README.md) | v2.7.0 |
 | [event hub](./event-hub/README.md) | v2.7.0 |
 | [frontdoor](./frontdoor/README.md) | v2.4.0 |
-| [function app](./function-app/README.md) | v2.6.0 |
+| [function app](./function-app/README.md) | v2.7.0 |
 | [key vault](./key-vault/README.md) | v2.7.0 |
 | [key vault seeding](./key-vault-seeding/README.md) | v2.6.0 |
 | [kubernetes cluster](./kubernetes-cluster/README.md) | v2.9.0 |
@@ -49,7 +49,7 @@
 | [machine learning](./machine-learning/README.md) | v2.7.0 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.5.0 |
 | [managed devops pool](./managed-devops-pool/README.md) | v2.0.0 |
-| [managed redis](./managed-redis/README.md) | v2.1.0 |
+| [managed redis](./managed-redis/README.md) | v2.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.7.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.7.0 |
 | [monitor alert processing rule](./monitor-alert-processing-rule/README.md) | v2.7.0 |
