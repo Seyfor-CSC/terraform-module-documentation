@@ -33,6 +33,7 @@ variable "config" {  type = list(object({
       action = optional(object({
         action_groups     = optional(list(string))
         custom_properties = optional(map(any))
+        email_subject     = optional(string)
       }))
       auto_mitigation_enabled           = optional(bool)
       workspace_alerts_storage_enabled  = optional(bool)
@@ -184,6 +185,7 @@ variable "config" {  type = list(object({
 |&nbsp;action | object | Optional |  |  |
 |&nbsp;&nbsp;action_groups | list(string) | Optional |  |  |
 |&nbsp;&nbsp;custom_properties | map(any) | Optional |  |  |
+|&nbsp;&nbsp;email_subject | string | Optional |  |  |
 |&nbsp;auto_mitigation_enabled | bool | Optional |  |  |
 |&nbsp;workspace_alerts_storage_enabled | bool | Optional |  |  |
 |&nbsp;description | string | Optional |  |  |
