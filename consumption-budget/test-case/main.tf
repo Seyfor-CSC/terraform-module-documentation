@@ -2,11 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.64.0"
-    }
-    azuread = {
-      source  = "hashicorp/azuread"
-      version = "=3.8.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -21,12 +17,6 @@ provider "azuread" {}
 # module deployment prerequisites
 data "azurerm_subscription" "primary" {}
 
-data "azurerm_client_config" "current" {}
-
-data "azuread_user" "user" {
-  object_id = data.azurerm_client_config.current.object_id
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = local.naming.rg
   location = local.location
@@ -34,7 +24,7 @@ resource "azurerm_resource_group" "rg" {
 
 # consumption budget
 module "consumption_budget" {
-  source = "git@github.com:Seyfor-CSC/mit.consumption-budget.git?ref=v2.6.0"
+  source = "git@github.com:Seyfor-CSC/mit.consumption-budget.git?ref=v2.7.0"
   config = local.consumption_budget
 }
 

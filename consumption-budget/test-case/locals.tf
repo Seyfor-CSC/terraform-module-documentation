@@ -29,7 +29,7 @@ locals {
           threshold = 10
 
           contact_emails = [
-            data.azuread_user.user.user_principal_name
+            "example.email@seyfor.com"
           ]
         }
       ]
@@ -52,7 +52,7 @@ locals {
           threshold = 10
 
           contact_emails = [
-            data.azuread_user.user.user_principal_name
+            "example.email@seyfor.com"
           ]
         }
       ]
@@ -76,7 +76,7 @@ locals {
           threshold = 10
 
           contact_emails = [
-            data.azuread_user.user.user_principal_name
+            "example.email@seyfor.com"
           ]
 
           threshold_type = "Forecasted"
@@ -102,7 +102,7 @@ locals {
           threshold = 10
 
           contact_emails = [
-            data.azuread_user.user.user_principal_name
+            "example.email@seyfor.com"
           ]
 
           threshold_type = "Forecasted"
