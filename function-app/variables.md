@@ -67,6 +67,7 @@ variable "config" {  type = list(object({
       load_balancing_mode              = optional(string)
       managed_pipeline_mode            = optional(string)
       minimum_tls_version              = optional(string)
+      minimum_tls_cipher_suite         = optional(string)
       pre_warmed_instance_count        = optional(number)
       remote_debugging_enabled         = optional(bool)
       remote_debugging_version         = optional(string)
@@ -249,6 +250,7 @@ variable "config" {  type = list(object({
 |&nbsp;load_balancing_mode | string | Optional |  |  |
 |&nbsp;managed_pipeline_mode | string | Optional |  |  |
 |&nbsp;minimum_tls_version | string | Optional |  |  |
+|&nbsp;minimum_tls_cipher_suite | string | Optional |  |  |
 |&nbsp;pre_warmed_instance_count | number | Optional |  |  |
 |&nbsp;remote_debugging_enabled | bool | Optional |  |  |
 |&nbsp;remote_debugging_version | string | Optional |  |  |
