@@ -28,6 +28,7 @@ variable "config" {  type = list(object({
       type         = string
       identity_ids = optional(list(string))
     }))
+    general_purpose_v2_enabled     = optional(bool)
     maintenance_configuration_name = optional(string)
     minimum_tls_version            = optional(string, "1.2")
     proxy_override                 = optional(string)
@@ -112,6 +113,7 @@ variable "config" {  type = list(object({
 |&nbsp;identity | object | Optional |  |  |
 |&nbsp;&nbsp;type | string | Required |  |  |
 |&nbsp;&nbsp;identity_ids | list(string) | Optional |  |  |
+|&nbsp;general_purpose_v2_enabled | bool | Optional |  |  |
 |&nbsp;maintenance_configuration_name | string | Optional |  |  |
 |&nbsp;minimum_tls_version | string | Optional |  "1.2" |  |
 |&nbsp;proxy_override | string | Optional |  |  |
