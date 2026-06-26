@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.70.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -43,7 +43,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # managed devops pool
 module "managed_devops_pool" {
-  source = "git@github.com:Seyfor-CSC/mit.managed-devops-pool.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.managed-devops-pool.git?ref=v2.1.0"
   config = local.config
 }
 

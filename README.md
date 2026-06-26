@@ -26,7 +26,7 @@
 | [consumption budget](./consumption-budget/README.md) | v2.7.0 |
 | [container app](./container-app/README.md) | v2.6.1 |
 | [container app environment](./container-app-environment/README.md) | v2.10.0 |
-| [container app job](./container-app-job/README.md) | v2.6.0 |
+| [container app job](./container-app-job/README.md) | v2.7.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.7.0 |
 | [data collection endpoint](./data-collection-endpoint/README.md) | v2.2.0 |
@@ -48,7 +48,7 @@
 | [logic app workflow](./logic-app-workflow/README.md) | v2.7.0 |
 | [machine learning](./machine-learning/README.md) | v2.8.0 |
 | [maintenance configuration](./maintenance-configuration/README.md) | v2.5.0 |
-| [managed devops pool](./managed-devops-pool/README.md) | v2.0.0 |
+| [managed devops pool](./managed-devops-pool/README.md) | v2.1.0 |
 | [managed redis](./managed-redis/README.md) | v2.2.0 |
 | [monitor action group](./monitor-action-group/README.md) | v2.7.0 |
 | [monitor alert](./monitor-alert/README.md) | v2.7.0 |
