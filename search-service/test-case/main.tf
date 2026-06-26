@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.64.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -58,7 +58,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # search service
 module "search_service" {
-  source = "git@github.com:Seyfor-CSC/mit.search-service.git?ref=v2.0.0"
+  source = "git@github.com:Seyfor-CSC/mit.search-service.git?ref=v2.1.0"
   config = local.config
 
   depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_link]
