@@ -9,7 +9,7 @@ variable "config" {  type = list(object({
     ip_configuration = optional(object({
       name                 = string
       subnet_id            = string
-      public_ip_address_id = string
+      public_ip_address_id = optional(string)
     }))
     copy_paste_enabled        = optional(bool)
     file_copy_enabled         = optional(bool)
@@ -53,7 +53,7 @@ variable "config" {  type = list(object({
 |ip_configuration | object | Optional |  |  |
 |&nbsp;name | string | Required |  |  |
 |&nbsp;subnet_id | string | Required |  |  |
-|&nbsp;public_ip_address_id | string | Required |  |  |
+|&nbsp;public_ip_address_id | string | Optional |  |  |
 |copy_paste_enabled | bool | Optional |  |  |
 |file_copy_enabled | bool | Optional |  |  |
 |sku | string | Optional |  |  |
