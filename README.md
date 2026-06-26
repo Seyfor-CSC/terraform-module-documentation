@@ -71,7 +71,7 @@
 | [public ip prefix](./public-ip-prefix/README.md) | v2.8.0 |
 | [purview account](./purview-account/README.md) | v2.8.0 |
 | [recovery services vault](./recovery-services-vault/README.md) | v2.7.0 |
-| [redis cache](./redis-cache/README.md) | v2.7.0 |
+| [redis cache](./redis-cache/README.md) | v2.8.0 |
 | [resource group](./resource-group/README.md) | v2.6.0 |
 | [role assignment](./role-assignment/README.md) | v2.7.0 |
 | [role definition](./role-definition/README.md) | v2.7.0 |
@@ -79,7 +79,7 @@
 | [route table](./route-table/README.md) | v2.7.0 |
 | [search service](./search-service/README.md) | v2.1.0 |
 | [servicebus](./servicebus/README.md) | v2.8.0 |
-| [shared image gallery](./shared-image-gallery/README.md) | v2.6.0 |
+| [shared image gallery](./shared-image-gallery/README.md) | v2.7.0 |
 | [solution.capacity reservation](./solution.capacity-reservation/README.md) | v2.1.0 |
 | [solution.fortigate](./solution.fortigate/README.md) | v1.5.0 |
 | [solution.pim](./solution.pim/README.md) | v2.3.0 |
