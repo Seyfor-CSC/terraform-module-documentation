@@ -105,6 +105,7 @@ variable "config" {  type = list(object({
         name             = string
         custom_rule_type = string
         metadata         = map(any)
+        identity_id      = optional(string)
         authentication = optional(list(object({
           secret_name       = string
           trigger_parameter = string
@@ -287,6 +288,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;name | string | Required |  |  |
 |&nbsp;&nbsp;custom_rule_type | string | Required |  |  |
 |&nbsp;&nbsp;metadata | map(any) | Required |  |  |
+|&nbsp;&nbsp;identity_id | string | Optional |  |  |
 |&nbsp;&nbsp;authentication | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;&nbsp;secret_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;trigger_parameter | string | Required |  |  |
