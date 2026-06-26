@@ -29,7 +29,7 @@
 | [container app job](./container-app-job/README.md) | v2.7.0 |
 | [container instance](./container-instance/README.md) | v1.4.0 |
 | [container registry](./container-registry/README.md) | v2.8.0 |
-| [data collection endpoint](./data-collection-endpoint/README.md) | v2.2.0 |
+| [data collection endpoint](./data-collection-endpoint/README.md) | v2.3.0 |
 | [data collection rule](./data-collection-rule/README.md) | v2.8.0 |
 | [data factory](./data-factory/README.md) | v2.8.0 |
 | [dev center](./dev-center/README.md) | v2.1.0 |
