@@ -48,10 +48,12 @@ variable "config" {  type = list(object({
         enabled  = bool
         encoding = string
         destination = object({
-          name                = string
-          archive_name_format = string
-          blob_container_name = string
-          storage_account_id  = string
+          name                        = string
+          archive_name_format         = string
+          blob_container_name         = string
+          storage_account_id          = string
+          storage_authentication_type = optional(string)
+          storage_authentication_id   = optional(string)
         })
         interval_in_seconds = optional(number)
         size_limit_in_bytes = optional(number)
@@ -183,6 +185,8 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;archive_name_format | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;blob_container_name | string | Required |  |  |
 |&nbsp;&nbsp;&nbsp;storage_account_id | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;storage_authentication_type | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_authentication_id | string | Optional |  |  |
 |&nbsp;&nbsp;interval_in_seconds | number | Optional |  |  |
 |&nbsp;&nbsp;size_limit_in_bytes | number | Optional |  |  |
 |&nbsp;&nbsp;skip_empty_archives | bool | Optional |  |  |
