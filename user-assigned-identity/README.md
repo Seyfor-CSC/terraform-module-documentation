@@ -11,9 +11,9 @@ You can also see [changelog](CHANGELOG.md).
 
 Terraform documentation:
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/user_assigned_identity
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/user_assigned_identity
 
-https://registry.terraform.io/providers/hashicorp/azurerm/4.64.0/docs/resources/federated_identity_credential
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/federated_identity_credential
 
 &nbsp;
 

@@ -11,11 +11,11 @@ variable "config" {  type = list(object({
 
     # federated identity credential
     federated_identity_credential = optional(list(object({
-      name      = string
-      parent_id = optional(string) # Inherited in module from parent resource
-      audience  = list(string)
-      issuer    = string
-      subject   = string
+      name                      = string
+      user_assigned_identity_id = optional(string) # Inherited in module from parent resource
+      audience                  = list(string)
+      issuer                    = string
+      subject                   = string
     })), [])
   }))
 }
@@ -35,7 +35,7 @@ variable "config" {  type = list(object({
 |tags | map(any) | Optional |  |  |
 |federated_identity_credential | list(object) | Optional | [] |  |
 |&nbsp;name | string | Required |  |  |
-|&nbsp;parent_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;user_assigned_identity_id | string | Optional |  |  Inherited in module from parent resource |
 |&nbsp;audience | list(string) | Required |  |  |
 |&nbsp;issuer | string | Required |  |  |
 |&nbsp;subject | string | Required |  |  |
