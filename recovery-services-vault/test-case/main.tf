@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.64.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -72,7 +72,7 @@ resource "azurerm_eventhub" "eventhub" {
 
 # recovery services vault
 module "recovery_services_vault" {
-  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.7.0"
+  source = "git@github.com:Seyfor-CSC/mit.recovery-services-vault.git?ref=v2.8.0"
   config = local.rsv
 }
 

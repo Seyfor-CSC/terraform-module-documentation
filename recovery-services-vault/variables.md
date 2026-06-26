@@ -24,7 +24,10 @@ variable "config" {  type = list(object({
     classic_vmware_replication_enabled = optional(bool)
     monitoring_rsv = optional(object({
       alerts_for_all_job_failures_enabled            = optional(bool)
+      alerts_for_all_failover_issues_enabled         = optional(bool)
+      alerts_for_all_replication_issues_enabled      = optional(bool)
       alerts_for_critical_operation_failures_enabled = optional(bool)
+      email_notifications_for_site_recovery_enabled  = optional(bool)
       }),
       {
         alerts_for_all_job_failures_enabled            = false
@@ -46,6 +49,7 @@ variable "config" {  type = list(object({
         weekdays      = optional(list(string))
       })
       policy_type                    = optional(string)
+      consistency_type               = optional(string)
       timezone                       = optional(string)
       instant_restore_retention_days = optional(number)
       instant_restore_resource_group = optional(object({
@@ -217,7 +221,10 @@ variable "config" {  type = list(object({
 |classic_vmware_replication_enabled | bool | Optional |  |  |
 |monitoring_rsv | object | Optional |  |  |
 |&nbsp;alerts_for_all_job_failures_enabled | bool | Optional |  |  |
+|&nbsp;alerts_for_all_failover_issues_enabled | bool | Optional |  |  |
+|&nbsp;alerts_for_all_replication_issues_enabled | bool | Optional |  |  |
 |&nbsp;alerts_for_critical_operation_failures_enabled | bool | Optional |  |  |
+|&nbsp;email_notifications_for_site_recovery_enabled | bool | Optional |  |  |
 |alerts_for_all_job_failures_enabled | false | Required |  |  |
 |alerts_for_critical_operation_failures_enabled | false | Required |  |  |
 
