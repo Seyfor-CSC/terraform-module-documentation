@@ -26,6 +26,7 @@ variable "config" {  type = list(object({
       type         = string
       identity_ids = optional(list(string))
     }))
+    key_vault_reference_identity_id          = optional(string)
     public_network_access                    = optional(string, "Disabled")
     scm_publish_basic_authentication_enabled = optional(bool)
     site_config = optional(object({
@@ -56,6 +57,7 @@ variable "config" {  type = list(object({
           x_forwarded_host  = optional(list(string))
         }))
       })), [])
+      ip_restriction_default_action = optional(string)
       scm_ip_restriction = optional(list(object({
         ip_address                = optional(string)
         description               = optional(string)
@@ -71,16 +73,17 @@ variable "config" {  type = list(object({
           x_forwarded_host  = optional(list(string))
         }))
       })), [])
-      scm_use_main_ip_restriction      = optional(bool)
-      scm_min_tls_version              = optional(string)
-      scm_type                         = optional(string)
-      linux_fx_version                 = optional(string)
-      min_tls_version                  = optional(string)
-      pre_warmed_instance_count        = optional(number)
-      runtime_scale_monitoring_enabled = optional(bool)
-      use_32_bit_worker_process        = optional(bool)
-      vnet_route_all_enabled           = optional(bool)
-      websockets_enabled               = optional(bool)
+      scm_ip_restriction_default_action = optional(string)
+      scm_use_main_ip_restriction       = optional(bool)
+      scm_min_tls_version               = optional(string)
+      scm_type                          = optional(string)
+      linux_fx_version                  = optional(string)
+      min_tls_version                   = optional(string)
+      pre_warmed_instance_count         = optional(number)
+      runtime_scale_monitoring_enabled  = optional(bool)
+      use_32_bit_worker_process         = optional(bool)
+      vnet_route_all_enabled            = optional(bool)
+      websockets_enabled                = optional(bool)
     }))
     storage_account_share_name = optional(string)
     version                    = optional(string)
@@ -162,6 +165,7 @@ variable "config" {  type = list(object({
 |identity | object | Optional |  |  |
 |&nbsp;type | string | Required |  |  |
 |&nbsp;identity_ids | list(string) | Optional |  |  |
+|key_vault_reference_identity_id | string | Optional |  |  |
 |public_network_access | string | Optional |  "Disabled" |  |
 |scm_publish_basic_authentication_enabled | bool | Optional |  |  |
 |site_config | object | Optional |  |  |
@@ -189,6 +193,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;x_fd_health_probe | list(number) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_for | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_host | list(string) | Optional |  |  |
+|&nbsp;ip_restriction_default_action | string | Optional |  |  |
 |&nbsp;scm_ip_restriction | list(object) | Optional | [] |  |
 |&nbsp;&nbsp;ip_address | string | Optional |  |  |
 |&nbsp;&nbsp;description | string | Optional |  |  |
@@ -202,6 +207,7 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;&nbsp;x_fd_health_probe | list(number) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_for | list(string) | Optional |  |  |
 |&nbsp;&nbsp;&nbsp;x_forwarded_host | list(string) | Optional |  |  |
+|&nbsp;scm_ip_restriction_default_action | string | Optional |  |  |
 |&nbsp;scm_use_main_ip_restriction | bool | Optional |  |  |
 |&nbsp;scm_min_tls_version | string | Optional |  |  |
 |&nbsp;scm_type | string | Optional |  |  |
