@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.64.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -55,7 +55,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # servicebus
 module "servicebus" {
-  source = "git@github.com:Seyfor-CSC/mit.servicebus.git?ref=v2.8.0"
+  source = "git@github.com:Seyfor-CSC/mit.servicebus.git?ref=v2.9.0"
   config = local.servicebus
 }
 
