@@ -35,8 +35,9 @@ variable "config" {  type = list(object({
     friendly_name                  = optional(string)
     high_business_impact           = optional(bool)
     primary_user_assigned_identity = optional(string)
-    v1_legacy_mode_enabled         = optional(bool)
-    sku_name                       = optional(string)
+    v1_legacy_mode_enabled          = optional(bool)
+    storage_account_access_type     = optional(string)
+    sku_name                        = optional(string)
     serverless_compute = optional(object({
       subnet_id         = optional(string)
       public_ip_enabled = optional(bool)
@@ -149,6 +150,7 @@ variable "config" {  type = list(object({
 |high_business_impact | bool | Optional |  |  |
 |primary_user_assigned_identity | string | Optional |  |  |
 |v1_legacy_mode_enabled | bool | Optional |  |  |
+|storage_account_access_type | string | Optional |  |  |
 |sku_name | string | Optional |  |  |
 |serverless_compute | object | Optional |  |  |
 |&nbsp;subnet_id | string | Optional |  |  |
