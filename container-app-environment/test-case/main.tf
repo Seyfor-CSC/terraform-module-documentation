@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.64.0"
+      version = "=4.77.0"
     }
   }
   backend "local" {}
@@ -85,7 +85,7 @@ resource "azurerm_log_analytics_workspace" "la" {
 
 # container app environment
 module "container_app_environment" {
-  source     = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.9.0"
+  source     = "git@github.com:Seyfor-CSC/mit.container-app-environment.git?ref=v2.10.0"
   config     = local.cae
   depends_on = [azurerm_private_dns_zone_virtual_network_link.dns_link]
 }
@@ -93,4 +93,3 @@ module "container_app_environment" {
 output "container_app_environment" {
   value = module.container_app_environment.outputs
 }
-

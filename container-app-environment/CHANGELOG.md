@@ -1,5 +1,9 @@
 # Changelog
 
+## Release v2.10.0
+
+
+   
 ## Release v2.9.0
 
 ## Provider & Terraform & OpenTofu Upgrade
