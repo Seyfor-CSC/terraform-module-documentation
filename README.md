@@ -80,9 +80,9 @@
 | [search service](./search-service/README.md) | v2.1.0 |
 | [servicebus](./servicebus/README.md) | v2.9.0 |
 | [shared image gallery](./shared-image-gallery/README.md) | v2.7.0 |
-| [solution.capacity reservation](./solution.capacity-reservation/README.md) | v2.1.0 |
-| [solution.fortigate](./solution.fortigate/README.md) | v1.5.0 |
-| [solution.pim](./solution.pim/README.md) | v2.3.0 |
+| [solution.capacity reservation](./solution.capacity-reservation/README.md) | v2.2.0 |
+| [solution.fortigate](./solution.fortigate/README.md) | v1.6.0 |
+| [solution.pim](./solution.pim/README.md) | v2.4.0 |
 | [storage account](./storage-account/README.md) | v2.9.0 |
 | [storage sync](./storage-sync/README.md) | v2.7.0 |
 | [user assigned identity](./user-assigned-identity/README.md) | v2.7.0 |
