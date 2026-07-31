@@ -81,6 +81,9 @@ There are a few things you need to do to import resources into .tfstate. In the 
 |             | network_interfaces             | Network Interface outputs                                                   |
 |             | &nbsp;name                     |                                                                             |
 |             | &nbsp;id                       |                                                                             |
+|             | &nbsp;ip_configuration         | IP Configuration outputs                                                    |
+|             | &nbsp;private_ip_address       | First private IP address of the Network Interface                           |
+|             | &nbsp;private_ip_addresses     | Private IP addresses of the Network Interface                               |
 |             | managed_disks                  | Managed Disk outputs                                                        |
 |             | &nbsp;name                     |                                                                             |
 |             | &nbsp;id                       |                                                                             |

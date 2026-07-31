@@ -10,6 +10,14 @@
 
 
    
+## Release v2.7.1
+
+## Enhancements
+
+- Add outputs for network interface (#97)
+
+
+   
 ## Release v2.6.1
 
 ## Enhancements
