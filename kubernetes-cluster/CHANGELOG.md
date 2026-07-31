@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.9.1
+
+## Enhancements
+
+- Add `advanced_networking` parameter (#98)
+
+
+   
 ## Release v2.9.0
 
 ## Provider & Terraform & OpenTofu Upgrade
@@ -222,10 +230,4 @@
 - terraform: 1.4.5
 
 
-   
-## Release v1.0.0
-
-### Added 
-
-- Initial code
    

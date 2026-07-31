@@ -127,6 +127,10 @@ variable "config" {  type = list(object({
       pod_cidr            = optional(string)
       service_cidr        = optional(string)
       load_balancer_sku   = optional(string)
+      advanced_networking = optional(object({
+        observability_enabled = optional(bool)
+        security_enabled      = optional(bool)
+      }))
     }))
     node_os_upgrade_channel = optional(string)
     node_resource_group     = optional(string)
@@ -338,6 +342,9 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;pod_cidr | string | Optional |  |  |
 |&nbsp;&nbsp;service_cidr | string | Optional |  |  |
 |&nbsp;&nbsp;load_balancer_sku | string | Optional |  |  |
+|&nbsp;&nbsp;advanced_networking | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;observability_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;security_enabled | bool | Optional |  |  |
 |&nbsp;node_os_upgrade_channel | string | Optional |  |  |
 |&nbsp;node_resource_group | string | Optional |  |  |
 |&nbsp;oidc_issuer_enabled | bool | Optional |  |  |
