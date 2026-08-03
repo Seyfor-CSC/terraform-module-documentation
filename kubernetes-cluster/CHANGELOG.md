@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.9.2
+
+## Enhancements
+
+- Add `workload_autoscaler_profile.vertical_pod_autoscaler_enabled` parameter (#100)
+
+
+   
 ## Release v2.9.1
 
 ## Enhancements
@@ -215,19 +223,4 @@
 
 ### Updated
 - Output of identity parameter `principal_id` 
-   
-## Release v1.1.0
-
-### Updated
-
-- Diagnostic Settings separated into its own .tf file
-- Readme - deleted change log, fixed typo
-- updated default value of `default_node_pool.name`
-
-### Version upgrade
-
-- azurerm provider: 3.51.0
-- terraform: 1.4.5
-
-
    

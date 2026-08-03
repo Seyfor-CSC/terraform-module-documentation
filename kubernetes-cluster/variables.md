@@ -143,7 +143,8 @@ variable "config" {  type = list(object({
     private_dns_zone_id                 = optional(string)
     private_cluster_public_fqdn_enabled = optional(bool)
     workload_autoscaler_profile = optional(object({
-      keda_enabled = optional(bool)
+      keda_enabled                    = optional(bool)
+      vertical_pod_autoscaler_enabled = optional(bool)
     }))
     workload_identity_enabled         = optional(bool)
     role_based_access_control_enabled = optional(bool)
@@ -356,6 +357,7 @@ variable "config" {  type = list(object({
 |&nbsp;private_cluster_public_fqdn_enabled | bool | Optional |  |  |
 |&nbsp;workload_autoscaler_profile | object | Optional |  |  |
 |&nbsp;&nbsp;keda_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;vertical_pod_autoscaler_enabled | bool | Optional |  |  |
 |&nbsp;workload_identity_enabled | bool | Optional |  |  |
 |&nbsp;role_based_access_control_enabled | bool | Optional |  |  |
 |&nbsp;sku_tier | string | Optional |  |  |
