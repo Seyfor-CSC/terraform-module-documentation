@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.9.3
+
+## Enhancements
+
+- Add support for kubelet identity, bootstrap profile, and API server access profile (#101)
+
+
+   
 ## Release v2.9.2
 
 ## Enhancements
@@ -218,9 +226,4 @@
 ### Added
 
 - Outputs needed for further deployments
-   
-## Release v1.1.1
-
-### Updated
-- Output of identity parameter `principal_id` 
    

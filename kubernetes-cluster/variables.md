@@ -20,6 +20,7 @@ variable "config" {  type = list(object({
       only_critical_addons_enabled  = optional(bool)
       os_disk_size_gb               = optional(string)
       os_disk_type                  = optional(string)
+      os_sku                        = optional(string)
       pod_subnet_id                 = optional(string)
       temporary_name_for_rotation   = optional(string)
       type                          = optional(string)
@@ -39,6 +40,11 @@ variable "config" {  type = list(object({
     dns_prefix                 = optional(string)
     dns_prefix_private_cluster = optional(string)
     automatic_upgrade_channel  = optional(string)
+    api_server_access_profile = optional(object({
+      authorized_ip_ranges                = optional(list(string))
+      subnet_id                           = optional(string)
+      virtual_network_integration_enabled = optional(bool)
+    }))
     azure_active_directory_role_based_access_control = optional(object({
       tenant_id              = optional(string)
       admin_group_object_ids = optional(list(string))
@@ -63,6 +69,15 @@ variable "config" {  type = list(object({
       secret_rotation_interval = optional(string)
     }))
     kubernetes_version = optional(string)
+    kubelet_identity = optional(object({
+      client_id                 = optional(string)
+      object_id                 = optional(string)
+      user_assigned_identity_id = optional(string)
+    }))
+    bootstrap_profile = optional(object({
+      artifact_source       = optional(string)
+      container_registry_id = optional(string)
+    }))
     linux_profile = optional(object({
       admin_username = string
       ssh_key = object({
@@ -253,6 +268,7 @@ variable "config" {  type = list(object({
 |&nbsp;only_critical_addons_enabled | bool | Optional |  |  |
 |&nbsp;os_disk_size_gb | string | Optional |  |  |
 |&nbsp;os_disk_type | string | Optional |  |  |
+|&nbsp;os_sku | string | Optional |  |  |
 |&nbsp;pod_subnet_id | string | Optional |  |  |
 |&nbsp;temporary_name_for_rotation | string | Optional |  |  |
 |&nbsp;type | string | Optional |  |  |
@@ -270,6 +286,10 @@ variable "config" {  type = list(object({
 |dns_prefix | string | Optional |  |  |
 |dns_prefix_private_cluster | string | Optional |  |  |
 |automatic_upgrade_channel | string | Optional |  |  |
+|api_server_access_profile | object | Optional |  |  |
+|&nbsp;authorized_ip_ranges | list(string) | Optional |  |  |
+|&nbsp;subnet_id | string | Optional |  |  |
+|&nbsp;virtual_network_integration_enabled | bool | Optional |  |  |
 |azure_active_directory_role_based_access_control | object | Optional |  |  |
 |&nbsp;tenant_id | string | Optional |  |  |
 |&nbsp;admin_group_object_ids | list(string) | Optional |  |  |
@@ -290,140 +310,147 @@ variable "config" {  type = list(object({
 |&nbsp;&nbsp;secret_rotation_enabled | bool | Optional |  |  |
 |&nbsp;&nbsp;secret_rotation_interval | string | Optional |  |  |
 |&nbsp;kubernetes_version | string | Optional |  |  |
-|&nbsp;linux_profile | object | Optional |  |  |
-|&nbsp;&nbsp;admin_username | string | Required |  |  |
-|&nbsp;&nbsp;ssh_key | object | Required |  |  |
-|&nbsp;&nbsp;&nbsp;key_data | string | Required |  |  |
-|&nbsp;local_account_disabled | bool | Optional |  |  |
-|&nbsp;maintenance_window | object | Optional |  |  |
-|&nbsp;&nbsp;allowed | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;&nbsp;day | string | Required |  |  |
-|&nbsp;&nbsp;&nbsp;hours | list(number) | Required |  |  |
-|&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
-|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
-|&nbsp;maintenance_window_auto_upgrade | object | Optional |  |  |
-|&nbsp;&nbsp;frequency | string | Required |  |  |
-|&nbsp;&nbsp;interval | number | Required |  |  |
-|&nbsp;&nbsp;duration | number | Required |  |  |
-|&nbsp;&nbsp;day_of_week | string | Optional |  |  |
-|&nbsp;&nbsp;day_of_month | number | Optional |  |  |
-|&nbsp;&nbsp;week_index | string | Optional |  |  |
-|&nbsp;&nbsp;start_time | string | Optional |  |  |
-|&nbsp;&nbsp;utc_offset | string | Optional |  |  |
-|&nbsp;&nbsp;start_date | string | Optional |  |  |
-|&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
-|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
-|&nbsp;maintenance_window_node_os | object | Optional |  |  |
-|&nbsp;&nbsp;frequency | string | Required |  |  |
-|&nbsp;&nbsp;interval | number | Required |  |  |
-|&nbsp;&nbsp;duration | number | Required |  |  |
-|&nbsp;&nbsp;day_of_week | string | Optional |  |  |
-|&nbsp;&nbsp;day_of_month | number | Optional |  |  |
-|&nbsp;&nbsp;week_index | string | Optional |  |  |
-|&nbsp;&nbsp;start_time | string | Optional |  |  |
-|&nbsp;&nbsp;utc_offset | string | Optional |  |  |
-|&nbsp;&nbsp;start_date | string | Optional |  |  |
-|&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
-|&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
-|&nbsp;microsoft_defender | object | Optional |  |  |
-|&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
-|&nbsp;monitor_metrics | object | Optional |  |  |
-|&nbsp;&nbsp;annotations_allowed | string | Optional |  |  |
-|&nbsp;&nbsp;labels_allowed | string | Optional |  |  |
-|&nbsp;network_profile | object | Optional |  |  |
-|&nbsp;&nbsp;network_plugin | string | Required |  |  |
-|&nbsp;&nbsp;network_policy | string | Optional |  |  |
-|&nbsp;&nbsp;dns_service_ip | string | Optional |  |  |
-|&nbsp;&nbsp;network_data_plane | string | Optional |  |  |
-|&nbsp;&nbsp;network_plugin_mode | string | Optional |  |  |
-|&nbsp;&nbsp;outbound_type | string | Optional |  |  |
-|&nbsp;&nbsp;pod_cidr | string | Optional |  |  |
-|&nbsp;&nbsp;service_cidr | string | Optional |  |  |
-|&nbsp;&nbsp;load_balancer_sku | string | Optional |  |  |
-|&nbsp;&nbsp;advanced_networking | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;observability_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;security_enabled | bool | Optional |  |  |
-|&nbsp;node_os_upgrade_channel | string | Optional |  |  |
-|&nbsp;node_resource_group | string | Optional |  |  |
-|&nbsp;oidc_issuer_enabled | bool | Optional |  |  |
-|&nbsp;oms_agent | object | Optional |  |  |
-|&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
-|&nbsp;&nbsp;msi_auth_for_monitoring_enabled | bool | Optional |  |  |
-|&nbsp;private_cluster_enabled | bool | Optional |  true |  |
-|&nbsp;private_dns_zone_id | string | Optional |  |  |
-|&nbsp;private_cluster_public_fqdn_enabled | bool | Optional |  |  |
-|&nbsp;workload_autoscaler_profile | object | Optional |  |  |
-|&nbsp;&nbsp;keda_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;vertical_pod_autoscaler_enabled | bool | Optional |  |  |
-|&nbsp;workload_identity_enabled | bool | Optional |  |  |
-|&nbsp;role_based_access_control_enabled | bool | Optional |  |  |
-|&nbsp;sku_tier | string | Optional |  |  |
-|&nbsp;storage_profile | object | Optional |  |  |
-|&nbsp;&nbsp;blob_driver_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;disk_driver_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;file_driver_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;snapshot_controller_enabled | bool | Optional |  |  |
-|&nbsp;support_plan | string | Optional |  |  |
-|&nbsp;upgrade_override | object | Optional |  |  |
-|&nbsp;&nbsp;force_upgrade_enabled | bool | Required |  |  |
-|&nbsp;&nbsp;effective_until | string | Optional |  |  |
-|&nbsp;windows_profile | object | Optional |  |  |
-|&nbsp;&nbsp;admin_username | string | Required |  |  |
-|&nbsp;&nbsp;admin_password | string | Optional |  |  |
-|&nbsp;&nbsp;license | string | Optional |  |  |
-|&nbsp;&nbsp;gmsa | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;dns_server | string | Required |  |  |
-|&nbsp;&nbsp;&nbsp;root_domain | string | Required |  |  |
-|&nbsp;tags | map(any) | Optional |  |  |
-|&nbsp;cluster_node_pool | list(object) | Optional | [] |  |
-|&nbsp;&nbsp;name | string | Required |  |  |
-|&nbsp;&nbsp;kubernetes_cluster_id | string | Optional |  |  Inherited in module from parent resource |
-|&nbsp;&nbsp;autoscale | bool | Optional |  false |  Custom variable to enable autoscaling |
-|&nbsp;&nbsp;vm_size | string | Optional |  |  |
-|&nbsp;&nbsp;capacity_reservation_group_id | string | Optional |  |  |
-|&nbsp;&nbsp;auto_scaling_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;host_encryption_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;node_public_ip_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;max_pods | number | Optional |  |  |
-|&nbsp;&nbsp;node_labels | map(any) | Optional |  |  |
-|&nbsp;&nbsp;node_public_ip_prefix_id | string | Optional |  |  |
-|&nbsp;&nbsp;node_taints | list(string) | Optional |  |  |
-|&nbsp;&nbsp;os_disk_size_gb | string | Optional |  |  |
-|&nbsp;&nbsp;os_disk_type | string | Optional |  |  |
-|&nbsp;&nbsp;pod_subnet_id | string | Optional |  |  |
-|&nbsp;&nbsp;temporary_name_for_rotation | string | Optional |  |  |
-|&nbsp;&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
-|&nbsp;&nbsp;upgrade_settings | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;drain_timeout_in_minutes | number | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;node_soak_duration_in_minutes | number | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;max_surge | string | Required |  |  |
-|&nbsp;&nbsp;vnet_subnet_id | string | Optional |  |  |
-|&nbsp;&nbsp;zones | list(string) | Optional |  |  |
-|&nbsp;&nbsp;max_count | number | Optional |  |  |
-|&nbsp;&nbsp;min_count | number | Optional |  |  |
-|&nbsp;&nbsp;node_count | number | Optional |  |  |
-|&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
-|&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
-|&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
-|&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
-|&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
-|&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
-|&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
-|&nbsp;&nbsp;categories | object | Optional |  |  |
-|&nbsp;&nbsp;&nbsp;kube_controller_manager | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;cloud_controller_manager | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;csi_azuredisk_controller | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;csi_azurefile_controller | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;csi_snapshot_controller | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;guard | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;cluster_autoscaler | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;kube_apiserver | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;kube_scheduler | bool | Optional |  true |  |
-|&nbsp;&nbsp;&nbsp;kube_audit | bool | Optional |  false |  |
-|&nbsp;&nbsp;&nbsp;kube_audit_admin | bool | Optional |  false |  |
-|&nbsp;&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
+|&nbsp;kubelet_identity | object | Optional |  |  |
+|&nbsp;&nbsp;client_id | string | Optional |  |  |
+|&nbsp;&nbsp;object_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;user_assigned_identity_id | string | Optional |  |  |
+|&nbsp;&nbsp;bootstrap_profile | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;artifact_source | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;container_registry_id | string | Optional |  |  |
+|&nbsp;&nbsp;linux_profile | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;admin_username | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;ssh_key | object | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;key_data | string | Required |  |  |
+|&nbsp;&nbsp;local_account_disabled | bool | Optional |  |  |
+|&nbsp;&nbsp;maintenance_window | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;day | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;hours | list(number) | Required |  |  |
+|&nbsp;&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
+|&nbsp;&nbsp;maintenance_window_auto_upgrade | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;frequency | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;interval | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;duration | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;day_of_week | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;day_of_month | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;week_index | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;start_time | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;utc_offset | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;start_date | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
+|&nbsp;&nbsp;maintenance_window_node_os | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;frequency | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;interval | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;duration | number | Required |  |  |
+|&nbsp;&nbsp;&nbsp;day_of_week | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;day_of_month | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;week_index | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;start_time | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;utc_offset | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;start_date | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;not_allowed | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;end | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;start | string | Required |  |  |
+|&nbsp;&nbsp;microsoft_defender | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
+|&nbsp;&nbsp;monitor_metrics | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;annotations_allowed | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;labels_allowed | string | Optional |  |  |
+|&nbsp;&nbsp;network_profile | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;network_plugin | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;network_policy | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;dns_service_ip | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;network_data_plane | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;network_plugin_mode | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;outbound_type | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;pod_cidr | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;service_cidr | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;load_balancer_sku | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;advanced_networking | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;observability_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;security_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;node_os_upgrade_channel | string | Optional |  |  |
+|&nbsp;&nbsp;node_resource_group | string | Optional |  |  |
+|&nbsp;&nbsp;oidc_issuer_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;oms_agent | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;msi_auth_for_monitoring_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;private_cluster_enabled | bool | Optional |  true |  |
+|&nbsp;&nbsp;private_dns_zone_id | string | Optional |  |  |
+|&nbsp;&nbsp;private_cluster_public_fqdn_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;workload_autoscaler_profile | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;keda_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;vertical_pod_autoscaler_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;workload_identity_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;role_based_access_control_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;sku_tier | string | Optional |  |  |
+|&nbsp;&nbsp;storage_profile | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;blob_driver_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;disk_driver_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;file_driver_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;snapshot_controller_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;support_plan | string | Optional |  |  |
+|&nbsp;&nbsp;upgrade_override | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;force_upgrade_enabled | bool | Required |  |  |
+|&nbsp;&nbsp;&nbsp;effective_until | string | Optional |  |  |
+|&nbsp;&nbsp;windows_profile | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;admin_username | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;admin_password | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;license | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;gmsa | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;dns_server | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;root_domain | string | Required |  |  |
+|&nbsp;&nbsp;tags | map(any) | Optional |  |  |
+|&nbsp;&nbsp;cluster_node_pool | list(object) | Optional | [] |  |
+|&nbsp;&nbsp;&nbsp;name | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;kubernetes_cluster_id | string | Optional |  |  Inherited in module from parent resource |
+|&nbsp;&nbsp;&nbsp;autoscale | bool | Optional |  false |  Custom variable to enable autoscaling |
+|&nbsp;&nbsp;&nbsp;vm_size | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;capacity_reservation_group_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;auto_scaling_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;host_encryption_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;node_public_ip_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;max_pods | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;node_labels | map(any) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;node_public_ip_prefix_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;node_taints | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;os_disk_size_gb | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;os_disk_type | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;pod_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;temporary_name_for_rotation | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;ultra_ssd_enabled | bool | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;upgrade_settings | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;drain_timeout_in_minutes | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;node_soak_duration_in_minutes | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;max_surge | string | Required |  |  |
+|&nbsp;&nbsp;&nbsp;vnet_subnet_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;zones | list(string) | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;max_count | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;min_count | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;node_count | number | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;tags | map(any) | Optional |  |  If not provided, inherited in module from parent resource |
+|&nbsp;&nbsp;monitoring | list(object) | Optional | [] |  Custom object for enabling diagnostic settings |
+|&nbsp;&nbsp;&nbsp;diag_name | string | Optional |  |  Name of the diagnostic setting |
+|&nbsp;&nbsp;&nbsp;log_analytics_workspace_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;eventhub_name | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;eventhub_authorization_rule_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;storage_account_id | string | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;categories | object | Optional |  |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;kube_controller_manager | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;cloud_controller_manager | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;csi_azuredisk_controller | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;csi_azurefile_controller | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;csi_snapshot_controller | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;guard | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;cluster_autoscaler | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;kube_apiserver | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;kube_scheduler | bool | Optional |  true |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;kube_audit | bool | Optional |  false |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;kube_audit_admin | bool | Optional |  false |  |
+|&nbsp;&nbsp;&nbsp;&nbsp;all_metrics | bool | Optional |  true |  |
 
 
