@@ -1,6 +1,8 @@
 # Introduction
 Policy Set Definition module can deploy these resources:
-* azurerm_policy_set_definition (required)
+* azurerm_policy_set_definition (optional)
+* azurerm_management_group_policy_set_definition (optional)
+> **_NOTE:_** At least one of these needs to be specified in module configuration
 
 Example variables structure is located in [variables.md](variables.md).
 
@@ -12,6 +14,8 @@ Terraform documentation:
 
 https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/policy_set_definition
 
+https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/management_group_policy_set_definition
+
 &nbsp;
 
 > **WARNING:** AzureRM provider had been updated to a new major version. Many breaking changes were implemented. See the [providers guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/4.0-upgrade-guide) for more information.
@@ -19,7 +23,7 @@ https://registry.terraform.io/providers/hashicorp/azurerm/4.77.0/docs/resources/
 # Terraform Import
 There are a few things you need to do to import resources into .tfstate. In the example below there are resources which can be imported within the module. You may need to modify these commands to the OS on which they will be running (Refer to the [documentation](https://developer.hashicorp.com/terraform/cli/commands/import#example-import-into-resource-configured-with-for_each) for additional details).
 ### Management Group Level Policy Set Definition
-* terraform import '`<path-to-module>`.azurerm_policy_set_definition.policy_set_definition["`<policy-set-definition-name>`"]' '/providers/Microsoft.Management/managementGroups/`<management-group-id>`/providers/Microsoft.Authorization/policySetDefinitions/`<policy-set-definition-name>`'
+* terraform import '`<path-to-module>`.azurerm_management_group_policy_set_definition.management_group_policy_set_definition["`<policy-set-definition-name>`"]' '/providers/Microsoft.Management/managementGroups/`<management-group-id>`/providers/Microsoft.Authorization/policySetDefinitions/`<policy-set-definition-name>`'
 ### Subscription Level Policy Set Definition
 * terraform import '`<path-to-module>`.azurerm_policy_set_definition.policy_set_definition["`<policy-set-definition-name>`"]' '/subscriptions/`<subscription-id>`/providers/Microsoft.Authorization/policySetDefinitions/`<policy-set-definition-name>`'
 
@@ -84,9 +88,12 @@ resource "azurerm_policy_assignment" "policy_assignment" {
 &nbsp;
 
 # Module Features
-No special features in module.
+## management_group_id
+This module can deploy policy set definitions on either the management group or the subscription level. When _management\_group\_id_ is specified, the policy set definition is deployed on that management group, otherwise it is deployed on the subscription configured in the azurerm provider. See [test-case/locals.tf](test-case/locals.tf) for an example of how to deploy on both levels.
 
 &nbsp;
 
 # Known Issues
-We currently log no issues in this module.
+## Migrating existing management group level policy set definitions
+Management group level policy set definitions are deployed by the _azurerm\_management\_group\_policy\_set\_definition_ resource since module version v2.9.0. Existing policy set definitions which were deployed on the management group level by an older version of this module are held in .tfstate under the old resource address, so terraform plans them as destroy and create. Move them to the new resource address before applying:
+* terraform state mv '`<path-to-module>`.azurerm_policy_set_definition.policy_set_definition["`<policy-set-definition-name>`"]' '`<path-to-module>`.azurerm_management_group_policy_set_definition.management_group_policy_set_definition["`<policy-set-definition-name>`"]'

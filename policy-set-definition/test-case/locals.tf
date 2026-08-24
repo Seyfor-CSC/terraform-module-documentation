@@ -3,10 +3,12 @@ locals {
 
   naming = {
     policy_1 = "SEY-TERRAFORM-POLICY01"
+    policy_2 = "SEY-TERRAFORM-POLICY02"
   }
 
   policy = [
     {
+      # management group level policy set definition
       name                = local.naming.policy_1
       policy_type         = "Custom"
       display_name        = local.naming.policy_1
@@ -36,6 +38,28 @@ locals {
           parameter_values = jsonencode(
             {
               tagName = { value = "[parameters('RequiredRGTagAPMID')]" }
+            }
+          )
+        }
+      ]
+    },
+    {
+      # subscription level policy set definition - management_group_id is not specified
+      name         = local.naming.policy_2
+      policy_type  = "Custom"
+      display_name = local.naming.policy_2
+      description  = "Policy initiative to enforce tagging on the RG level."
+      metadata = jsonencode({
+        category = "Tags"
+      })
+
+      policy_definition_reference = [
+        {
+          reference_id : "RequiredRGTagStatus",
+          policy_definition_id : "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+          parameter_values = jsonencode(
+            {
+              tagName = { value = "Status" }
             }
           )
         }

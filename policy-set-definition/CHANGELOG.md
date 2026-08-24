@@ -1,5 +1,13 @@
 # Changelog
 
+## Release v2.9.0
+
+## Enhancements
+
+- Add `azurerm_management_group_policy_set_definition` resource (#63)
+
+
+   
 ## Release v2.8.0
 
 ## Provider & Terraform & OpenTofu Upgrade
